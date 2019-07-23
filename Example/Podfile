@@ -1,0 +1,11 @@
+use_frameworks!
+
+target 'MoeUI_Example' do
+  pod 'MoeUI', :path => '../'
+
+  target 'MoeUI_Tests' do
+    inherit! :search_paths
+
+    
+  end
+end
