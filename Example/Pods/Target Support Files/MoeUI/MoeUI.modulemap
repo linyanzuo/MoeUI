@@ -1,0 +1,6 @@
+framework module MoeUI {
+  umbrella header "MoeUI-umbrella.h"
+
+  export *
+  module * { export * }
+}

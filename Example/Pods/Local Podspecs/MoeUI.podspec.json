@@ -1,0 +1,22 @@
+{
+  "name": "MoeUI",
+  "version": "0.1.0",
+  "summary": "A short description of MoeUI.",
+  "description": "TODO: Add long description of the pod here.",
+  "homepage": "https://github.com/linyanzuo1222@gmail.com/MoeUI",
+  "license": {
+    "type": "MIT",
+    "file": "LICENSE"
+  },
+  "authors": {
+    "linyanzuo1222@gmail.com": "zed@moemoetech.com"
+  },
+  "source": {
+    "git": "https://github.com/linyanzuo1222@gmail.com/MoeUI.git",
+    "tag": "0.1.0"
+  },
+  "platforms": {
+    "ios": "8.0"
+  },
+  "source_files": "MoeUI/Classes/**/*"
+}

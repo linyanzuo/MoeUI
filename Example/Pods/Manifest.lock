@@ -1,0 +1,16 @@
+PODS:
+  - MoeUI (0.1.0)
+
+DEPENDENCIES:
+  - MoeUI (from `../`)
+
+EXTERNAL SOURCES:
+  MoeUI:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  MoeUI: 16c08893e3624fd3494bdf223cea82c5f77befd5
+
+PODFILE CHECKSUM: 7596bd67a0f0d8f245b75bdb371a1d4ce18cea08
+
+COCOAPODS: 1.7.4
