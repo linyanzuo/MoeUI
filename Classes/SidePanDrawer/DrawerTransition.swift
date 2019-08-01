@@ -74,20 +74,22 @@ public class DrawerTransition: NSObject, UIViewControllerAnimatedTransitioning {
             containerView.addSubview(imageView!)
         }
 
-        let width = configuration.distancePercent * MScreen.width
-        let x = configuration.panDirection == .fromLeft ? (-width / 2) : (MScreen.width - width / 2)
-        toVC.view.frame = CGRect(x: x, y: 0, width: containerView.frame.width, height: containerView.frame.height)
+        // --- 动画效果计算; toTransform初始状态就显示一半内容, 执行动画时再移动一半内容的距离 ---
+        let sidePageWidth = configuration.distancePercent * MScreen.width
+        let toViewX = configuration.panDirection == .fromLeft ?
+            (-sidePageWidth / 2) : (MScreen.width - sidePageWidth / 2)
+        toVC.view.frame = CGRect(x: toViewX, y: 0, width: containerView.frame.width, height: containerView.frame.height)
         containerView.addSubview(toVC.view)
         containerView.addSubview(fromVC.view)
 
-        let multiple: CGFloat = configuration.panDirection == .fromLeft ? -1.0 : 1.0
-        let translationX = width - (MScreen.width * (1 - configuration.viewScaleY) / 2)
+        let multiple: CGFloat = configuration.panDirection == .fromLeft ? 1.0 : -1.0
+        let translationX = sidePageWidth - (MScreen.width * (1 - configuration.viewScaleY) / 2)
         let scale = CGAffineTransform(scaleX: configuration.viewScaleY, y: configuration.viewScaleY)
         let translation = CGAffineTransform(translationX: multiple * translationX, y: 0)
         let fromTransform = scale.concatenating(translation)
-        var toTransform = CGAffineTransform(translationX: multiple * width / 2, y: 0)
+        var toTransform = CGAffineTransform(translationX: multiple * sidePageWidth / 2, y: 0)
         if configuration.panDirection == .fromRight {
-            toTransform = CGAffineTransform(translationX: multiple * (x - containerView.frame.width), y: 0)
+            toTransform = CGAffineTransform(translationX: multiple * (sidePageWidth - (containerView.frame.width - toViewX)), y: 0)
         }
 
         UIView.animateKeyframes(withDuration: self.transitionDuration(using: transitionContext), delay: animationDelayTime, options: .calculationModeLinear, animations: {
@@ -99,6 +101,7 @@ public class DrawerTransition: NSObject, UIViewControllerAnimatedTransitioning {
             })
         }) { (finished) in
             if transitionContext.transitionWasCancelled == false {
+                // 针对导航控制器特殊效果的处理
                 if toVC.isKind(of: UINavigationController.classForCoder()) == false {
                     maskView.subviewsOfToVCRootView = fromVC.view.subviews
                 }
@@ -106,6 +109,7 @@ public class DrawerTransition: NSObject, UIViewControllerAnimatedTransitioning {
                 containerView.addSubview(fromVC.view)
             } else {
                 imageView?.removeFromSuperview()
+                maskView.releaseShared()
                 transitionContext.completeTransition(false)
             }
         }
@@ -132,7 +136,8 @@ public class DrawerTransition: NSObject, UIViewControllerAnimatedTransitioning {
             bgImgView = containerView.subviews.first as? UIImageView
         }
 
-        UIView.animateKeyframes(withDuration: self.transitionDuration(using: transitionContext), delay: animationDelayTime, options: .calculationModeLinear, animations: {
+        let duration = self.transitionDuration(using: transitionContext)
+        UIView.animateKeyframes(withDuration: duration, delay: animationDelayTime, options: .calculationModeLinear, animations: {
             UIView.addKeyframe(withRelativeStartTime: 0, relativeDuration: 1.0, animations: {
                 toVC.view.transform = CGAffineTransform.identity
                 fromVC.view.transform = CGAffineTransform.identity
@@ -142,6 +147,8 @@ public class DrawerTransition: NSObject, UIViewControllerAnimatedTransitioning {
         }) { (finished) in
             if transitionContext.transitionWasCancelled == false {
                 maskView.subviewsOfToVCRootView = nil
+                maskView.removeFromSuperview()
+                maskView.releaseShared()
                 bgImgView?.removeFromSuperview()
             }
             transitionContext.completeTransition(!transitionContext.transitionWasCancelled)

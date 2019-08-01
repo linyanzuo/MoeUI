@@ -7,25 +7,29 @@
 
 import UIKit
 
+
 public func MRuntimeKey(for name: String, file: String = #file) -> UnsafeRawPointer? {
     let fileName = NSString(string: file).pathComponents.last!
     let strValue = String(format: "[%@]: %@", fileName, name)
     return UnsafeRawPointer(bitPattern: strValue.hashValue)
 }
+public struct RuntimeKey {}
+
 
 let valueTypesMap: Dictionary<String, Any> = [
     "c" : Int8.self,
     "s" : Int16.self,
     "i" : Int32.self,
-    "q" : Int.self,         //也是 Int64, NSInteger, 64位平台时有效
+    "q" : Int.self,         // 64位平台时也是`Int64`, `NSInteger`,
     "S" : UInt16.self,
     "I" : UInt32.self,
-    "Q" : UInt.self,        //也是 UInt64, 64位平台时有效
+    "Q" : UInt.self,        // 64位平台时也是`UInt64`
     "B" : Bool.self,
     "d" : Double.self,
     "f" : Float.self,
     "{" : Decimal.self
 ]
+
 
 public protocol Runtime {
     func getTypesOfProperties(in clazz: AnyClass?) -> Dictionary<String, Any>?

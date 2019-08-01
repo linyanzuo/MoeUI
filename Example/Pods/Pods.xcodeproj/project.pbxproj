@@ -19,6 +19,8 @@
 		952C802922E9B927000EC935 /* Runtime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 952C802822E9B927000EC935 /* Runtime.swift */; };
 		952C802B22EA9661000EC935 /* Mask+CornerRadius.swift in Sources */ = {isa = PBXBuildFile; fileRef = 952C802A22EA9661000EC935 /* Mask+CornerRadius.swift */; };
 		95A7A9A222F1C5A200A5AD0A /* Animator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95A7A9A122F1C5A200A5AD0A /* Animator.swift */; };
+		95A7A9A422F2877F00A5AD0A /* InteractiveTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95A7A9A322F2877F00A5AD0A /* InteractiveTransition.swift */; };
+		95A7A9A622F2C70B00A5AD0A /* UIViewController+SidePanDrawer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95A7A9A522F2C70B00A5AD0A /* UIViewController+SidePanDrawer.swift */; };
 		95B6336722E7364100B6DC8F /* ProjectConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95B6336622E7364100B6DC8F /* ProjectConstants.swift */; };
 		95B6336922E738F600B6DC8F /* UIConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95B6336822E738F600B6DC8F /* UIConstants.swift */; };
 		95B6336B22E739B300B6DC8F /* UI+Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95B6336A22E739B300B6DC8F /* UI+Color.swift */; };
@@ -79,6 +81,8 @@
 		952C802A22EA9661000EC935 /* Mask+CornerRadius.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Mask+CornerRadius.swift"; sourceTree = "<group>"; };
 		9530750E71CA78532F64EE3512AE9099 /* MoeUI-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "MoeUI-Info.plist"; sourceTree = "<group>"; };
 		95A7A9A122F1C5A200A5AD0A /* Animator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Animator.swift; sourceTree = "<group>"; };
+		95A7A9A322F2877F00A5AD0A /* InteractiveTransition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InteractiveTransition.swift; sourceTree = "<group>"; };
+		95A7A9A522F2C70B00A5AD0A /* UIViewController+SidePanDrawer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+SidePanDrawer.swift"; sourceTree = "<group>"; };
 		95B6336622E7364100B6DC8F /* ProjectConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectConstants.swift; sourceTree = "<group>"; };
 		95B6336822E738F600B6DC8F /* UIConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIConstants.swift; sourceTree = "<group>"; };
 		95B6336A22E739B300B6DC8F /* UI+Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UI+Color.swift"; sourceTree = "<group>"; };
@@ -199,7 +203,9 @@
 				9503302222F17EAC001A0F9B /* MaskView.swift */,
 				9503301E22F174D7001A0F9B /* Configuration.swift */,
 				9503302022F178EF001A0F9B /* DrawerTransition.swift */,
+				95A7A9A322F2877F00A5AD0A /* InteractiveTransition.swift */,
 				95A7A9A122F1C5A200A5AD0A /* Animator.swift */,
+				95A7A9A522F2C70B00A5AD0A /* UIViewController+SidePanDrawer.swift */,
 			);
 			path = SidePanDrawer;
 			sourceTree = "<group>";
@@ -491,6 +497,7 @@
 				952C802B22EA9661000EC935 /* Mask+CornerRadius.swift in Sources */,
 				CE4ECA0E9BAB7A15FC7324EC116097EC /* MoeUI-dummy.m in Sources */,
 				95B6336F22E73AB800B6DC8F /* UI+CornerRadius.swift in Sources */,
+				95A7A9A422F2877F00A5AD0A /* InteractiveTransition.swift in Sources */,
 				9503302122F178EF001A0F9B /* DrawerTransition.swift in Sources */,
 				95032FE622F085E8001A0F9B /* UIButton+Appearance.swift in Sources */,
 				9503301F22F174D7001A0F9B /* Configuration.swift in Sources */,
@@ -503,6 +510,7 @@
 				952C802922E9B927000EC935 /* Runtime.swift in Sources */,
 				95C55D7A22F0478B001CF9FF /* UIView+Appearance.swift in Sources */,
 				95B6336922E738F600B6DC8F /* UIConstants.swift in Sources */,
+				95A7A9A622F2C70B00A5AD0A /* UIViewController+SidePanDrawer.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

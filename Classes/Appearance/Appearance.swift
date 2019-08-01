@@ -18,7 +18,7 @@ import UIKit
 }
 
 
-struct RuntimeKey {
+extension RuntimeKey {
     static let attributer = MRuntimeKey(for: "Attributer")!
 }
 extension UIView {

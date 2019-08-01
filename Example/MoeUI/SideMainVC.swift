@@ -10,17 +10,6 @@ import UIKit
 import MoeUI
 
 class SideMainVC: UIViewController, UIViewControllerTransitioningDelegate {
-    // UIViewControllerAnimatedTransitioning
-//    func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
-//        return 1.0
-//    }
-//
-//    func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
-//        Animator(configuration: Configuration())
-//    }
-
-    let animator = Animator(configuration: Configuration())
-
     func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         return DrawerTransition(configuration: Configuration(), transitionType: .present, animationType: .default)
     }
@@ -40,15 +29,13 @@ class SideMainVC: UIViewController, UIViewControllerTransitioningDelegate {
         let btn = UIButton(type: .contactAdd)
         btn.addTarget(self, action: #selector(btnAction), for: .touchUpInside)
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(customView: btn)
+
+        let pageVC = SidePageVC.storyboardInstance()!
+        enableSidePanGesturePresent(pageVC, requireEdge: false)
     }
 
     @objc private func btnAction() {
-        print("Hello world")
         let pageVC = SidePageVC.storyboardInstance()!
-//        let animator = Animator(configuration: Configuration())
-        pageVC.transitioningDelegate = animator
-        pageVC.modalPresentationStyle = .custom
-        self.present(pageVC, animated: true, completion: nil)
+        self.presentSidePan(pageVC)
     }
-
 }

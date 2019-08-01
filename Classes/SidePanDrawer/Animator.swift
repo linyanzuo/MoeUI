@@ -6,11 +6,13 @@
 //
 
 import UIKit
-import MoeUI
 
 
 public class Animator: NSObject, UIViewControllerTransitioningDelegate {
     // MARK: Object Life Cycle
+    public var presentInteraction: InteractiveTransition?
+    public var dismissInteraction: InteractiveTransition?
+
     var configuration: Configuration
     var animationType: AnimationType
 
@@ -19,12 +21,26 @@ public class Animator: NSObject, UIViewControllerTransitioningDelegate {
         self.animationType = animationType
     }
 
+    deinit {
+        MLog("Animator deinit")
+    }
+
     // MARK: UIViewControllerTransitioningDelegate
-    func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+    public func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         return DrawerTransition(configuration: configuration, transitionType: .present, animationType: animationType)
     }
 
-    func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+    public func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         return DrawerTransition(configuration: configuration, transitionType: .dismiss, animationType: animationType)
+    }
+
+    public func interactionControllerForPresentation(using animator: UIViewControllerAnimatedTransitioning) -> UIViewControllerInteractiveTransitioning? {
+        guard presentInteraction?.isInteracting == true else { return nil}
+        return presentInteraction
+    }
+
+    public func interactionControllerForDismissal(using animator: UIViewControllerAnimatedTransitioning) -> UIViewControllerInteractiveTransitioning? {
+        guard dismissInteraction?.isInteracting == true else { return nil }
+        return dismissInteraction
     }
 }

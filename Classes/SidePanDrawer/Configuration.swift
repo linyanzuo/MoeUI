@@ -9,16 +9,17 @@
 import UIKit
 
 
-public struct Configuration {
-    public enum PanDirection {
-        case fromLeft
-        case fromRight
-    }
+public enum PanDirection {
+    case fromLeft
+    case fromRight
+}
 
-    /// 侧滑偏移距离占屏幕宽度的百分比
+
+public struct Configuration {
+    /// 侧滑内容宽度(偏移距离)占屏幕宽度的百分比
     public var distancePercent: CGFloat = 0.75
     /// 手势触发的临界点比例, 达到临界点则触发完成
-    public var criticalPointPercent: CGFloat = 0.5
+    public var criticalPercent: CGFloat = 0.5
 
     /// 展现时的动画时长
     public var presentAnimationDuration: Double = 0.25
