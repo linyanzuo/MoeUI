@@ -10,14 +10,6 @@ import UIKit
 import MoeUI
 
 class SideMainVC: UIViewController, UIViewControllerTransitioningDelegate {
-    func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-        return DrawerTransition(configuration: Configuration(), transitionType: .present, animationType: .default)
-    }
-
-    func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-        return DrawerTransition(configuration: Configuration(), transitionType: .dismiss, animationType: .default)
-    }
-
     class func storyboardInstance() -> SideMainVC? {
         return UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: NSStringFromClass(self.classForCoder())) as? SideMainVC
     }
@@ -31,11 +23,14 @@ class SideMainVC: UIViewController, UIViewControllerTransitioningDelegate {
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(customView: btn)
 
         let pageVC = SidePageVC.storyboardInstance()!
-        enableSidePanGesturePresent(pageVC, requireEdge: false)
+//        let nav = UINavigationController(rootViewController: pageVC)
+        drawerEnableEdgePan(pageVC, requireScreenEdge: true)
     }
 
     @objc private func btnAction() {
         let pageVC = SidePageVC.storyboardInstance()!
-        self.presentSidePan(pageVC)
+//        let nav = UINavigationController(rootViewController: pageVC)
+        self.drawerPresentSide(pageVC)
+//        self.present(nav, animated: true, completion: nil)
     }
 }

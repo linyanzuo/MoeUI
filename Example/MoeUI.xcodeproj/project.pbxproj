@@ -16,6 +16,14 @@
 		607FACEC1AFB9204008FA782 /* Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACEB1AFB9204008FA782 /* Tests.swift */; };
 		9503302822F198F7001A0F9B /* SideMainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9503302722F198F7001A0F9B /* SideMainVC.swift */; };
 		9503302A22F19903001A0F9B /* SidePageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9503302922F19903001A0F9B /* SidePageVC.swift */; };
+		9519C6EC230A49D1005AEF22 /* AlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9519C6EB230A49D1005AEF22 /* AlertController.swift */; };
+		9519C6EE230A49F9005AEF22 /* PickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9519C6ED230A49F9005AEF22 /* PickerViewController.swift */; };
+		95686A1022FA76F200485864 /* OtherVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95686A0F22FA76F200485864 /* OtherVC.swift */; };
+		9590646022FD1FC40099C02E /* GradientVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9590645F22FD1FC40099C02E /* GradientVC.swift */; };
+		95AF992F22F4604F002CFC76 /* ContactCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95AF992C22F4604F002CFC76 /* ContactCell.swift */; };
+		95AF993022F4604F002CFC76 /* ContactCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 95AF992D22F4604F002CFC76 /* ContactCell.xib */; };
+		95AF993122F4604F002CFC76 /* ContactViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95AF992E22F4604F002CFC76 /* ContactViewController.swift */; };
+		95AF993322F46345002CFC76 /* PageDemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95AF993222F46345002CFC76 /* PageDemoViewController.swift */; };
 		95B6337122E856EE00B6DC8F /* ListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95B6337022E856EE00B6DC8F /* ListVC.swift */; };
 		95B6337422E8583600B6DC8F /* CornerRaidusCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95B6337322E8583600B6DC8F /* CornerRaidusCell.swift */; };
 		95C55D7722F03BE1001CF9FF /* AppearanceVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95C55D7622F03BE1001CF9FF /* AppearanceVC.swift */; };
@@ -49,6 +57,14 @@
 		8A094EB94C775F3C4A27B6E9 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		9503302722F198F7001A0F9B /* SideMainVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMainVC.swift; sourceTree = "<group>"; };
 		9503302922F19903001A0F9B /* SidePageVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidePageVC.swift; sourceTree = "<group>"; };
+		9519C6EB230A49D1005AEF22 /* AlertController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertController.swift; sourceTree = "<group>"; };
+		9519C6ED230A49F9005AEF22 /* PickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PickerViewController.swift; sourceTree = "<group>"; };
+		95686A0F22FA76F200485864 /* OtherVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtherVC.swift; sourceTree = "<group>"; };
+		9590645F22FD1FC40099C02E /* GradientVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientVC.swift; sourceTree = "<group>"; };
+		95AF992C22F4604F002CFC76 /* ContactCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactCell.swift; sourceTree = "<group>"; };
+		95AF992D22F4604F002CFC76 /* ContactCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ContactCell.xib; sourceTree = "<group>"; };
+		95AF992E22F4604F002CFC76 /* ContactViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactViewController.swift; sourceTree = "<group>"; };
+		95AF993222F46345002CFC76 /* PageDemoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageDemoViewController.swift; sourceTree = "<group>"; };
 		95B6337022E856EE00B6DC8F /* ListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListVC.swift; sourceTree = "<group>"; };
 		95B6337322E8583600B6DC8F /* CornerRaidusCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CornerRaidusCell.swift; sourceTree = "<group>"; };
 		95C55D7622F03BE1001CF9FF /* AppearanceVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppearanceVC.swift; sourceTree = "<group>"; };
@@ -114,10 +130,12 @@
 		607FACD21AFB9204008FA782 /* Example for MoeUI */ = {
 			isa = PBXGroup;
 			children = (
+				9590645E22FD1F950099C02E /* GradientView */,
 				607FACD51AFB9204008FA782 /* AppDelegate.swift */,
+				95AF992822F44FB0002CFC76 /* PageMenu */,
 				95B6337222E8581200B6DC8F /* CornerRadius */,
-				95C55D7522F03BB2001CF9FF /* Appearance */,
 				9503302622F198CF001A0F9B /* SidePanDrawer */,
+				95C55D7522F03BB2001CF9FF /* Appearance */,
 				607FACD91AFB9204008FA782 /* Main.storyboard */,
 				607FACDC1AFB9204008FA782 /* Images.xcassets */,
 				607FACDE1AFB9204008FA782 /* LaunchScreen.xib */,
@@ -176,8 +194,36 @@
 			children = (
 				9503302722F198F7001A0F9B /* SideMainVC.swift */,
 				9503302922F19903001A0F9B /* SidePageVC.swift */,
+				95686A0F22FA76F200485864 /* OtherVC.swift */,
 			);
 			name = SidePanDrawer;
+			sourceTree = "<group>";
+		};
+		9590645E22FD1F950099C02E /* GradientView */ = {
+			isa = PBXGroup;
+			children = (
+				9590645F22FD1FC40099C02E /* GradientVC.swift */,
+			);
+			name = GradientView;
+			sourceTree = "<group>";
+		};
+		95AF992822F44FB0002CFC76 /* PageMenu */ = {
+			isa = PBXGroup;
+			children = (
+				95AF993222F46345002CFC76 /* PageDemoViewController.swift */,
+				95AF992B22F4604F002CFC76 /* Contact */,
+			);
+			name = PageMenu;
+			sourceTree = "<group>";
+		};
+		95AF992B22F4604F002CFC76 /* Contact */ = {
+			isa = PBXGroup;
+			children = (
+				95AF992C22F4604F002CFC76 /* ContactCell.swift */,
+				95AF992D22F4604F002CFC76 /* ContactCell.xib */,
+				95AF992E22F4604F002CFC76 /* ContactViewController.swift */,
+			);
+			path = Contact;
 			sourceTree = "<group>";
 		};
 		95B6337222E8581200B6DC8F /* CornerRadius */ = {
@@ -194,6 +240,8 @@
 			isa = PBXGroup;
 			children = (
 				95C55D7622F03BE1001CF9FF /* AppearanceVC.swift */,
+				9519C6EB230A49D1005AEF22 /* AlertController.swift */,
+				9519C6ED230A49F9005AEF22 /* PickerViewController.swift */,
 			);
 			name = Appearance;
 			sourceTree = "<group>";
@@ -286,6 +334,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				95AF993022F4604F002CFC76 /* ContactCell.xib in Resources */,
 				607FACDB1AFB9204008FA782 /* Main.storyboard in Resources */,
 				607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */,
 				607FACDD1AFB9204008FA782 /* Images.xcassets in Resources */,
@@ -371,13 +420,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9519C6EE230A49F9005AEF22 /* PickerViewController.swift in Sources */,
+				95AF993322F46345002CFC76 /* PageDemoViewController.swift in Sources */,
+				9519C6EC230A49D1005AEF22 /* AlertController.swift in Sources */,
+				95AF992F22F4604F002CFC76 /* ContactCell.swift in Sources */,
+				95686A1022FA76F200485864 /* OtherVC.swift in Sources */,
 				95B6337122E856EE00B6DC8F /* ListVC.swift in Sources */,
 				607FACD81AFB9204008FA782 /* CornerRadiusVC.swift in Sources */,
 				9503302822F198F7001A0F9B /* SideMainVC.swift in Sources */,
+				9590646022FD1FC40099C02E /* GradientVC.swift in Sources */,
 				95B6337422E8583600B6DC8F /* CornerRaidusCell.swift in Sources */,
 				95C55D7722F03BE1001CF9FF /* AppearanceVC.swift in Sources */,
 				9503302A22F19903001A0F9B /* SidePageVC.swift in Sources */,
 				607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */,
+				95AF993122F4604F002CFC76 /* ContactViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

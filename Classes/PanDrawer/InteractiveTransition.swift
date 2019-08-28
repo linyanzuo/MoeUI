@@ -51,7 +51,7 @@ public class InteractiveTransition: UIPercentDrivenInteractiveTransition, UIGest
 
         if enableEdgePan == true {
             let edgePan = UIScreenEdgePanGestureRecognizer(target: self, action: #selector(edgePanAction(edgePan:)))
-            edgePan.edges = [.left, .right]
+            edgePan.edges = configuration.panDirection == .fromLeft ? .left : .right
             edgePan.delegate = self
             sideMainVC!.view.addGestureRecognizer(edgePan)
         } else {
@@ -80,32 +80,60 @@ public class InteractiveTransition: UIPercentDrivenInteractiveTransition, UIGest
     }
 
     @objc private func edgePanAction(edgePan: UIScreenEdgePanGestureRecognizer) {
-
+        if transitionType == .dismiss { return }
+        handle(edgePan: edgePan)
     }
 
     // MARK: Private Method
+    /// 处理Pan手势状态改变时, 相应的转场交互及动画效果的切换与执行
     private func handle(pan: UIPanGestureRecognizer) {
         guard pan.view != nil else { return }
         let x = pan.translation(in: pan.view!).x
         percent = x / pan.view!.frame.width
 
-        if configuration.panDirection == .fromRight && transitionType == .present
-            || configuration.panDirection == .fromLeft && transitionType == .dismiss
+        if (configuration.panDirection == .fromRight && transitionType == .present)
+            || (configuration.panDirection == .fromLeft && transitionType == .dismiss)
         { percent *= -1.0 }
 
         switch pan.state {
+        case .began:
+            MLog("Begin Interactive Transition")
         case .changed:
-            // 交互中, 更新交互状态
-            if isInteracting == true { updateInteracting() }
-            else {
-                // 结束交互, 执行消失操作
-                if transitionType == .dismiss { interactingDismiss(translationX: x) }
-                    // 开始交互, 执行呈现操作
-                else {
+            if isInteracting == false {
+                // 开始交互, 执行呈现操作
+                if transitionType == .present {
                     if fabs(x) > atLeastDistanceOfPan { interactingPresent(translationX: x) }
                 }
+                // 结束交互, 执行消失操作
+                else { interactingDismiss(translationX: x) }
             }
+            // 交互中, 更新交互状态
+            else { updateInteracting() }
         case .cancelled, .ended:
+            MLog("End Interactive Transition")
+            endInteracting()
+        default:
+            MLog("Panning but not handle")
+        }
+    }
+
+    /// 处理ScreenEdgePan手势状态改变时, 相应的转场交互及动画效果的切换与执行
+    private func handle(edgePan: UIScreenEdgePanGestureRecognizer) {
+        guard edgePan.view != nil else { return }
+        let x = edgePan.translation(in: edgePan.view!).x
+        percent = x / edgePan.view!.frame.width
+
+        if configuration.panDirection == .fromRight { percent *= -1.0 }
+
+        switch edgePan.state {
+        case .began:
+            MLog("Begin Interactive Transition")
+            isInteracting = true
+            didPanClosure?(configuration.panDirection)
+        case .changed:
+            updateInteracting()
+        case .cancelled, .ended:
+            MLog("End Interactive Transition")
             endInteracting()
         default:
             MLog("Panning but not handle")
@@ -116,6 +144,7 @@ public class InteractiveTransition: UIPercentDrivenInteractiveTransition, UIGest
     private func updateInteracting() {
         percent = fmax(percent, cancelLimitPercent)
         percent = fmin(percent, finishLimitPercent)
+//        MLog("updatingInteraction: \(percent)")
         update(percent)
     }
 
@@ -127,8 +156,9 @@ public class InteractiveTransition: UIPercentDrivenInteractiveTransition, UIGest
 
     // MARK: -- Translate Interaction
     private func interactingPresent(translationX: CGFloat) {
-        if translationX >= 0.0 { configuration.panDirection = .fromLeft }
-        else { configuration.panDirection = .fromRight }
+        if (configuration.panDirection == .fromLeft && translationX <= 0.0) ||
+            (configuration.panDirection == .fromRight && translationX >= 0.0)
+        { return }
 
         if translationX < 0.0 && configuration.panDirection == .fromLeft ||
             translationX > 0.0 && configuration.panDirection == .fromRight

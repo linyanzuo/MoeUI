@@ -16,21 +16,39 @@
 		9503301F22F174D7001A0F9B /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9503301E22F174D7001A0F9B /* Configuration.swift */; };
 		9503302122F178EF001A0F9B /* DrawerTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9503302022F178EF001A0F9B /* DrawerTransition.swift */; };
 		9503302322F17EAC001A0F9B /* MaskView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9503302222F17EAC001A0F9B /* MaskView.swift */; };
+		9506AAD122F44BB1005CFE1C /* SwiftyNamespace.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9506AAD022F44BB1005CFE1C /* SwiftyNamespace.swift */; };
+		9519C6DE2307E64B005AEF22 /* AlertAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9519C6DD2307E64B005AEF22 /* AlertAnimator.swift */; };
+		9519C6E8230A49AA005AEF22 /* UIApplication+TopVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9519C6E7230A49A9005AEF22 /* UIApplication+TopVC.swift */; };
 		952C802922E9B927000EC935 /* Runtime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 952C802822E9B927000EC935 /* Runtime.swift */; };
 		952C802B22EA9661000EC935 /* Mask+CornerRadius.swift in Sources */ = {isa = PBXBuildFile; fileRef = 952C802A22EA9661000EC935 /* Mask+CornerRadius.swift */; };
+		956869EC22F85FFB00485864 /* AppearanceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 956869EB22F85FFB00485864 /* AppearanceManager.swift */; };
+		956869EE22F917B500485864 /* Extension+Moe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 956869ED22F917B500485864 /* Extension+Moe.swift */; };
+		956869F022F91DC800485864 /* AppearanceUnity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 956869EF22F91DC800485864 /* AppearanceUnity.swift */; };
 		95A7A9A222F1C5A200A5AD0A /* Animator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95A7A9A122F1C5A200A5AD0A /* Animator.swift */; };
 		95A7A9A422F2877F00A5AD0A /* InteractiveTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95A7A9A322F2877F00A5AD0A /* InteractiveTransition.swift */; };
 		95A7A9A622F2C70B00A5AD0A /* UIViewController+SidePanDrawer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95A7A9A522F2C70B00A5AD0A /* UIViewController+SidePanDrawer.swift */; };
+		95AF991722F44CAF002CFC76 /* PageMenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95AF991622F44CAF002CFC76 /* PageMenuController.swift */; };
+		95AF991922F44D89002CFC76 /* PageMenuItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95AF991822F44D89002CFC76 /* PageMenuItem.swift */; };
+		95AF991C22F44DC4002CFC76 /* PageMenuOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95AF991B22F44DC4002CFC76 /* PageMenuOption.swift */; };
+		95AF991E22F44DEF002CFC76 /* PageMenuConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95AF991D22F44DEF002CFC76 /* PageMenuConfiguration.swift */; };
+		95AF992422F44E2B002CFC76 /* PageMenuController+View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95AF992022F44E2A002CFC76 /* PageMenuController+View.swift */; };
+		95AF992522F44E2B002CFC76 /* PageMenuController+Gesture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95AF992122F44E2A002CFC76 /* PageMenuController+Gesture.swift */; };
+		95AF992622F44E2B002CFC76 /* PageMenuController+Scroll.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95AF992222F44E2A002CFC76 /* PageMenuController+Scroll.swift */; };
+		95AF992722F44E2B002CFC76 /* PageMenuController+Page.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95AF992322F44E2A002CFC76 /* PageMenuController+Page.swift */; };
+		95AF993522F520ED002CFC76 /* PageMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95AF993422F520ED002CFC76 /* PageMenuView.swift */; };
+		95AF995522F587C5002CFC76 /* UIImageView+Appearance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95AF995422F587C5002CFC76 /* UIImageView+Appearance.swift */; };
+		95AF995822F598FB002CFC76 /* TextAttributer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95AF995722F598FB002CFC76 /* TextAttributer.swift */; };
+		95AF995A22F59965002CFC76 /* BackgroundAttributer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95AF995922F59965002CFC76 /* BackgroundAttributer.swift */; };
+		95AF995C22F5998D002CFC76 /* ImageAttributer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95AF995B22F5998D002CFC76 /* ImageAttributer.swift */; };
+		95AF995E22F59A15002CFC76 /* ShadowAttributer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95AF995D22F59A15002CFC76 /* ShadowAttributer.swift */; };
 		95B6336722E7364100B6DC8F /* ProjectConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95B6336622E7364100B6DC8F /* ProjectConstants.swift */; };
 		95B6336922E738F600B6DC8F /* UIConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95B6336822E738F600B6DC8F /* UIConstants.swift */; };
-		95B6336B22E739B300B6DC8F /* UI+Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95B6336A22E739B300B6DC8F /* UI+Color.swift */; };
+		95B6336B22E739B300B6DC8F /* UIColor+Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95B6336A22E739B300B6DC8F /* UIColor+Color.swift */; };
 		95B6336D22E739DB00B6DC8F /* String+Character.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95B6336C22E739DB00B6DC8F /* String+Character.swift */; };
-		95B6336F22E73AB800B6DC8F /* UI+CornerRadius.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95B6336E22E73AB800B6DC8F /* UI+CornerRadius.swift */; };
-		95C55D6C22EFF33A001CF9FF /* Attributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95C55D6B22EFF33A001CF9FF /* Attributes.swift */; };
-		95C55D6E22EFFBDB001CF9FF /* Attributer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95C55D6D22EFFBDB001CF9FF /* Attributer.swift */; };
+		95B6336F22E73AB800B6DC8F /* UIImage+CornerRadius.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95B6336E22E73AB800B6DC8F /* UIImage+CornerRadius.swift */; };
+		95B9A3902316613900D7DE15 /* MoeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95B9A38F2316613900D7DE15 /* MoeView.swift */; };
 		95C55D7022F02657001CF9FF /* UILabel+Appearance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95C55D6F22F02657001CF9FF /* UILabel+Appearance.swift */; };
 		95C55D7222F02E8E001CF9FF /* Appearance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95C55D7122F02E8E001CF9FF /* Appearance.swift */; };
-		95C55D7422F03A36001CF9FF /* MoeUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95C55D7322F03A36001CF9FF /* MoeUI.swift */; };
 		95C55D7A22F0478B001CF9FF /* UIView+Appearance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95C55D7922F0478B001CF9FF /* UIView+Appearance.swift */; };
 		A7697016005801A4E48E9F7DB8034A3E /* MoeUI-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 812300AA4B939C0036A6C606BD043E2F /* MoeUI-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C57BEF7B9766A82E5F3427F525E65D55 /* Pods-MoeUI_Tests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 17DA88FA67F211DA729DF98ED84A4F4A /* Pods-MoeUI_Tests-dummy.m */; };
@@ -77,22 +95,40 @@
 		9503301E22F174D7001A0F9B /* Configuration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Configuration.swift; sourceTree = "<group>"; };
 		9503302022F178EF001A0F9B /* DrawerTransition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawerTransition.swift; sourceTree = "<group>"; };
 		9503302222F17EAC001A0F9B /* MaskView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MaskView.swift; sourceTree = "<group>"; };
+		9506AAD022F44BB1005CFE1C /* SwiftyNamespace.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyNamespace.swift; sourceTree = "<group>"; };
+		9519C6DD2307E64B005AEF22 /* AlertAnimator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertAnimator.swift; sourceTree = "<group>"; };
+		9519C6E7230A49A9005AEF22 /* UIApplication+TopVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIApplication+TopVC.swift"; sourceTree = "<group>"; };
 		952C802822E9B927000EC935 /* Runtime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Runtime.swift; sourceTree = "<group>"; };
 		952C802A22EA9661000EC935 /* Mask+CornerRadius.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Mask+CornerRadius.swift"; sourceTree = "<group>"; };
 		9530750E71CA78532F64EE3512AE9099 /* MoeUI-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "MoeUI-Info.plist"; sourceTree = "<group>"; };
+		956869EB22F85FFB00485864 /* AppearanceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppearanceManager.swift; sourceTree = "<group>"; };
+		956869ED22F917B500485864 /* Extension+Moe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+Moe.swift"; sourceTree = "<group>"; };
+		956869EF22F91DC800485864 /* AppearanceUnity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppearanceUnity.swift; sourceTree = "<group>"; };
 		95A7A9A122F1C5A200A5AD0A /* Animator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Animator.swift; sourceTree = "<group>"; };
 		95A7A9A322F2877F00A5AD0A /* InteractiveTransition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InteractiveTransition.swift; sourceTree = "<group>"; };
 		95A7A9A522F2C70B00A5AD0A /* UIViewController+SidePanDrawer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+SidePanDrawer.swift"; sourceTree = "<group>"; };
+		95AF991622F44CAF002CFC76 /* PageMenuController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageMenuController.swift; sourceTree = "<group>"; };
+		95AF991822F44D89002CFC76 /* PageMenuItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageMenuItem.swift; sourceTree = "<group>"; };
+		95AF991B22F44DC4002CFC76 /* PageMenuOption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageMenuOption.swift; sourceTree = "<group>"; };
+		95AF991D22F44DEF002CFC76 /* PageMenuConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageMenuConfiguration.swift; sourceTree = "<group>"; };
+		95AF992022F44E2A002CFC76 /* PageMenuController+View.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "PageMenuController+View.swift"; sourceTree = "<group>"; };
+		95AF992122F44E2A002CFC76 /* PageMenuController+Gesture.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "PageMenu\U0010Controller+Gesture.swift"; sourceTree = "<group>"; };
+		95AF992222F44E2A002CFC76 /* PageMenuController+Scroll.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "PageMenu\U0010Controller+Scroll.swift"; sourceTree = "<group>"; };
+		95AF992322F44E2A002CFC76 /* PageMenuController+Page.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "PageMenu\U0010Controller+Page.swift"; sourceTree = "<group>"; };
+		95AF993422F520ED002CFC76 /* PageMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageMenuView.swift; sourceTree = "<group>"; };
+		95AF995422F587C5002CFC76 /* UIImageView+Appearance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Appearance.swift"; sourceTree = "<group>"; };
+		95AF995722F598FB002CFC76 /* TextAttributer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextAttributer.swift; sourceTree = "<group>"; };
+		95AF995922F59965002CFC76 /* BackgroundAttributer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundAttributer.swift; sourceTree = "<group>"; };
+		95AF995B22F5998D002CFC76 /* ImageAttributer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageAttributer.swift; sourceTree = "<group>"; };
+		95AF995D22F59A15002CFC76 /* ShadowAttributer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShadowAttributer.swift; sourceTree = "<group>"; };
 		95B6336622E7364100B6DC8F /* ProjectConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectConstants.swift; sourceTree = "<group>"; };
 		95B6336822E738F600B6DC8F /* UIConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIConstants.swift; sourceTree = "<group>"; };
-		95B6336A22E739B300B6DC8F /* UI+Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UI+Color.swift"; sourceTree = "<group>"; };
+		95B6336A22E739B300B6DC8F /* UIColor+Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Color.swift"; sourceTree = "<group>"; };
 		95B6336C22E739DB00B6DC8F /* String+Character.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Character.swift"; sourceTree = "<group>"; };
-		95B6336E22E73AB800B6DC8F /* UI+CornerRadius.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UI+CornerRadius.swift"; sourceTree = "<group>"; };
-		95C55D6B22EFF33A001CF9FF /* Attributes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Attributes.swift; sourceTree = "<group>"; };
-		95C55D6D22EFFBDB001CF9FF /* Attributer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Attributer.swift; sourceTree = "<group>"; };
+		95B6336E22E73AB800B6DC8F /* UIImage+CornerRadius.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+CornerRadius.swift"; sourceTree = "<group>"; };
+		95B9A38F2316613900D7DE15 /* MoeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoeView.swift; sourceTree = "<group>"; };
 		95C55D6F22F02657001CF9FF /* UILabel+Appearance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+Appearance.swift"; sourceTree = "<group>"; };
 		95C55D7122F02E8E001CF9FF /* Appearance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Appearance.swift; sourceTree = "<group>"; };
-		95C55D7322F03A36001CF9FF /* MoeUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoeUI.swift; sourceTree = "<group>"; };
 		95C55D7922F0478B001CF9FF /* UIView+Appearance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Appearance.swift"; sourceTree = "<group>"; };
 		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		A4C08A75B705CFA1D6377F17B8CADA7F /* MoeUI-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "MoeUI-dummy.m"; sourceTree = "<group>"; };
@@ -197,7 +233,7 @@
 			name = Pod;
 			sourceTree = "<group>";
 		};
-		9503301D22F17381001A0F9B /* SidePanDrawer */ = {
+		9503301D22F17381001A0F9B /* PanDrawer */ = {
 			isa = PBXGroup;
 			children = (
 				9503302222F17EAC001A0F9B /* MaskView.swift */,
@@ -207,7 +243,36 @@
 				95A7A9A122F1C5A200A5AD0A /* Animator.swift */,
 				95A7A9A522F2C70B00A5AD0A /* UIViewController+SidePanDrawer.swift */,
 			);
-			path = SidePanDrawer;
+			path = PanDrawer;
+			sourceTree = "<group>";
+		};
+		9506AAC822F4485A005CFE1C /* PageMenu */ = {
+			isa = PBXGroup;
+			children = (
+				95AF991F22F44E06002CFC76 /* PageMenuController */,
+				95AF991A22F44DAE002CFC76 /* option */,
+				95AF991822F44D89002CFC76 /* PageMenuItem.swift */,
+				95AF993422F520ED002CFC76 /* PageMenuView.swift */,
+				95AF991622F44CAF002CFC76 /* PageMenuController.swift */,
+			);
+			path = PageMenu;
+			sourceTree = "<group>";
+		};
+		9506AACB22F44945005CFE1C /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				95B6336522E735EF00B6DC8F /* Constants */,
+				95B6336422E735E500B6DC8F /* Extension */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		9519C6DA2307DEC7005AEF22 /* Alert */ = {
+			isa = PBXGroup;
+			children = (
+				9519C6DD2307E64B005AEF22 /* AlertAnimator.swift */,
+			);
+			path = Alert;
 			sourceTree = "<group>";
 		};
 		952C802122E9B5A8000EC935 /* Runtime */ = {
@@ -218,15 +283,35 @@
 			path = Runtime;
 			sourceTree = "<group>";
 		};
+		95AF991A22F44DAE002CFC76 /* option */ = {
+			isa = PBXGroup;
+			children = (
+				95AF991B22F44DC4002CFC76 /* PageMenuOption.swift */,
+				95AF991D22F44DEF002CFC76 /* PageMenuConfiguration.swift */,
+			);
+			path = option;
+			sourceTree = "<group>";
+		};
+		95AF991F22F44E06002CFC76 /* PageMenuController */ = {
+			isa = PBXGroup;
+			children = (
+				95AF992122F44E2A002CFC76 /* PageMenuController+Gesture.swift */,
+				95AF992322F44E2A002CFC76 /* PageMenuController+Page.swift */,
+				95AF992222F44E2A002CFC76 /* PageMenuController+Scroll.swift */,
+				95AF992022F44E2A002CFC76 /* PageMenuController+View.swift */,
+			);
+			path = PageMenuController;
+			sourceTree = "<group>";
+		};
 		95B6336322E7353F00B6DC8F /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				9503301D22F17381001A0F9B /* SidePanDrawer */,
-				95C55D7322F03A36001CF9FF /* MoeUI.swift */,
+				9519C6DA2307DEC7005AEF22 /* Alert */,
+				9506AACB22F44945005CFE1C /* Common */,
+				9506AAC822F4485A005CFE1C /* PageMenu */,
+				9503301D22F17381001A0F9B /* PanDrawer */,
 				95C55D6A22EFEC6C001CF9FF /* Appearance */,
 				952C802122E9B5A8000EC935 /* Runtime */,
-				95B6336522E735EF00B6DC8F /* Constants */,
-				95B6336422E735E500B6DC8F /* Extension */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -234,10 +319,11 @@
 		95B6336422E735E500B6DC8F /* Extension */ = {
 			isa = PBXGroup;
 			children = (
-				95B6336A22E739B300B6DC8F /* UI+Color.swift */,
-				95B6336E22E73AB800B6DC8F /* UI+CornerRadius.swift */,
-				952C802A22EA9661000EC935 /* Mask+CornerRadius.swift */,
+				9506AAD022F44BB1005CFE1C /* SwiftyNamespace.swift */,
+				956869ED22F917B500485864 /* Extension+Moe.swift */,
 				95B6336C22E739DB00B6DC8F /* String+Character.swift */,
+				95B6336A22E739B300B6DC8F /* UIColor+Color.swift */,
+				9519C6E7230A49A9005AEF22 /* UIApplication+TopVC.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -254,12 +340,20 @@
 		95C55D6A22EFEC6C001CF9FF /* Appearance */ = {
 			isa = PBXGroup;
 			children = (
+				956869EF22F91DC800485864 /* AppearanceUnity.swift */,
 				95C55D7122F02E8E001CF9FF /* Appearance.swift */,
-				95C55D6B22EFF33A001CF9FF /* Attributes.swift */,
-				95C55D6D22EFFBDB001CF9FF /* Attributer.swift */,
+				956869EB22F85FFB00485864 /* AppearanceManager.swift */,
 				95C55D7922F0478B001CF9FF /* UIView+Appearance.swift */,
+				95AF995422F587C5002CFC76 /* UIImageView+Appearance.swift */,
 				95C55D6F22F02657001CF9FF /* UILabel+Appearance.swift */,
 				95032FE522F085E8001A0F9B /* UIButton+Appearance.swift */,
+				95AF995722F598FB002CFC76 /* TextAttributer.swift */,
+				95AF995922F59965002CFC76 /* BackgroundAttributer.swift */,
+				95AF995B22F5998D002CFC76 /* ImageAttributer.swift */,
+				95AF995D22F59A15002CFC76 /* ShadowAttributer.swift */,
+				95B6336E22E73AB800B6DC8F /* UIImage+CornerRadius.swift */,
+				952C802A22EA9661000EC935 /* Mask+CornerRadius.swift */,
+				95B9A38F2316613900D7DE15 /* MoeView.swift */,
 			);
 			path = Appearance;
 			sourceTree = "<group>";
@@ -492,24 +586,42 @@
 			files = (
 				95A7A9A222F1C5A200A5AD0A /* Animator.swift in Sources */,
 				95B6336D22E739DB00B6DC8F /* String+Character.swift in Sources */,
-				95C55D7422F03A36001CF9FF /* MoeUI.swift in Sources */,
+				956869EC22F85FFB00485864 /* AppearanceManager.swift in Sources */,
+				95AF992622F44E2B002CFC76 /* PageMenuController+Scroll.swift in Sources */,
 				9503302322F17EAC001A0F9B /* MaskView.swift in Sources */,
+				956869F022F91DC800485864 /* AppearanceUnity.swift in Sources */,
 				952C802B22EA9661000EC935 /* Mask+CornerRadius.swift in Sources */,
 				CE4ECA0E9BAB7A15FC7324EC116097EC /* MoeUI-dummy.m in Sources */,
-				95B6336F22E73AB800B6DC8F /* UI+CornerRadius.swift in Sources */,
+				95AF991922F44D89002CFC76 /* PageMenuItem.swift in Sources */,
+				95B6336F22E73AB800B6DC8F /* UIImage+CornerRadius.swift in Sources */,
+				95AF993522F520ED002CFC76 /* PageMenuView.swift in Sources */,
 				95A7A9A422F2877F00A5AD0A /* InteractiveTransition.swift in Sources */,
+				95AF995E22F59A15002CFC76 /* ShadowAttributer.swift in Sources */,
 				9503302122F178EF001A0F9B /* DrawerTransition.swift in Sources */,
+				95AF992722F44E2B002CFC76 /* PageMenuController+Page.swift in Sources */,
+				95AF992422F44E2B002CFC76 /* PageMenuController+View.swift in Sources */,
 				95032FE622F085E8001A0F9B /* UIButton+Appearance.swift in Sources */,
+				95B9A3902316613900D7DE15 /* MoeView.swift in Sources */,
 				9503301F22F174D7001A0F9B /* Configuration.swift in Sources */,
-				95C55D6C22EFF33A001CF9FF /* Attributes.swift in Sources */,
 				95C55D7022F02657001CF9FF /* UILabel+Appearance.swift in Sources */,
-				95C55D6E22EFFBDB001CF9FF /* Attributer.swift in Sources */,
+				9506AAD122F44BB1005CFE1C /* SwiftyNamespace.swift in Sources */,
+				95AF995522F587C5002CFC76 /* UIImageView+Appearance.swift in Sources */,
+				95AF995C22F5998D002CFC76 /* ImageAttributer.swift in Sources */,
 				95C55D7222F02E8E001CF9FF /* Appearance.swift in Sources */,
-				95B6336B22E739B300B6DC8F /* UI+Color.swift in Sources */,
+				9519C6E8230A49AA005AEF22 /* UIApplication+TopVC.swift in Sources */,
+				956869EE22F917B500485864 /* Extension+Moe.swift in Sources */,
+				95B6336B22E739B300B6DC8F /* UIColor+Color.swift in Sources */,
+				9519C6DE2307E64B005AEF22 /* AlertAnimator.swift in Sources */,
 				95B6336722E7364100B6DC8F /* ProjectConstants.swift in Sources */,
+				95AF992522F44E2B002CFC76 /* PageMenuController+Gesture.swift in Sources */,
+				95AF991722F44CAF002CFC76 /* PageMenuController.swift in Sources */,
 				952C802922E9B927000EC935 /* Runtime.swift in Sources */,
+				95AF995822F598FB002CFC76 /* TextAttributer.swift in Sources */,
 				95C55D7A22F0478B001CF9FF /* UIView+Appearance.swift in Sources */,
 				95B6336922E738F600B6DC8F /* UIConstants.swift in Sources */,
+				95AF995A22F59965002CFC76 /* BackgroundAttributer.swift in Sources */,
+				95AF991C22F44DC4002CFC76 /* PageMenuOption.swift in Sources */,
+				95AF991E22F44DEF002CFC76 /* PageMenuConfiguration.swift in Sources */,
 				95A7A9A622F2C70B00A5AD0A /* UIViewController+SidePanDrawer.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

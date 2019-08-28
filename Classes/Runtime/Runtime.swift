@@ -8,7 +8,7 @@
 import UIKit
 
 
-public func MRuntimeKey(for name: String, file: String = #file) -> UnsafeRawPointer? {
+public func MRuntimeKey(for name: String, file: String = #file) -> Runtime.Key? {
     let fileName = NSString(string: file).pathComponents.last!
     let strValue = String(format: "[%@]: %@", fileName, name)
     return UnsafeRawPointer(bitPattern: strValue.hashValue)
@@ -20,10 +20,10 @@ let valueTypesMap: Dictionary<String, Any> = [
     "c" : Int8.self,
     "s" : Int16.self,
     "i" : Int32.self,
-    "q" : Int.self,         // 64位平台时也是`Int64`, `NSInteger`,
+    "q" : Int.self,         // Also `Int64`, `NSInteger` in 64bit Platform
     "S" : UInt16.self,
     "I" : UInt32.self,
-    "Q" : UInt.self,        // 64位平台时也是`UInt64`
+    "Q" : UInt.self,        // Also `UInt64` in 64bit Platform
     "B" : Bool.self,
     "d" : Double.self,
     "f" : Float.self,
@@ -32,37 +32,29 @@ let valueTypesMap: Dictionary<String, Any> = [
 
 
 public protocol Runtime {
-    func getTypesOfProperties(in clazz: AnyClass?) -> Dictionary<String, Any>?
-    func isProperty(name: String, availableIn clazz: AnyClass?) -> Bool
-    func getNameOf(property: objc_property_t) -> String?
-    func getTypeOf(property: objc_property_t) -> Any
-    func valueType(withAttributes attributes: String) -> Any
-    func swizzleInstanceMethod(target: Any, original: Selector, target: Selector)
+    typealias Key = UnsafeRawPointer
 }
 public extension Runtime {
-    func swizzleInstanceMethod(target: AnyClass, original: Selector, replace: Selector) {
-        let originalMethod = class_getInstanceMethod(target.class(), original)
-        let targetMethod = class_getInstanceMethod(target.class(), replace)
-        guard originalMethod != nil, targetMethod != nil else { return }
-        method_exchangeImplementations(originalMethod!, targetMethod!)
-    }
-
-    func getAssociateObject(for key: UnsafeRawPointer) -> Any? {
+    // MARK: Associated Object
+    func getAssociatedObject(for key: Runtime.Key) -> Any? {
         return objc_getAssociatedObject(self, key)
     }
 
-    func setAssociatedRetainObject(object: Any, for key: UnsafeRawPointer) {
+    func setAssociatedRetainObject(object: Any?, for key: Runtime.Key) {
         objc_setAssociatedObject(self, key, object, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
     }
 
-    func setAssociatedAssignValue(object: Any, for key: UnsafeRawPointer) {
+    func setAssociatedAssignValue(object: Any?, for key: Runtime.Key) {
         objc_setAssociatedObject(self, key, object, .OBJC_ASSOCIATION_ASSIGN)
     }
 
-    func setAssociatedCopyObject(object: Any, for key: UnsafeRawPointer) {
+    func setAssociatedCopyObject(object: Any?, for key: Runtime.Key) {
         objc_setAssociatedObject(self, key, object, .OBJC_ASSOCIATION_COPY_NONATOMIC)
     }
 
+    // MARK: Property And Type
+
+    /// return all type of propertys in class
     func getTypesOfProperties(in clazz: AnyClass?) -> Dictionary<String, Any>? {
         var count = UInt32()
         guard let properties = class_copyPropertyList(clazz, &count)
@@ -80,6 +72,7 @@ public extension Runtime {
         return types
     }
 
+    /// check if the class has property of specify name
     func isProperty(name: String, availableIn clazz: AnyClass?) -> Bool {
 
         guard let properties = getTypesOfProperties(in: clazz)
@@ -91,6 +84,7 @@ public extension Runtime {
         return false
     }
 
+    /// return the name of property
     func getNameOf(property: objc_property_t) -> String? {
         guard let name: NSString = NSString(utf8String: property_getName(property))
             else { return nil }
@@ -98,14 +92,15 @@ public extension Runtime {
         return name as String
     }
 
+    /// retrun the type of property
     func getTypeOf(property: objc_property_t) -> Any {
         guard
             let attributes = property_getAttributes(property),
             let attrAsString: NSString = NSString(utf8String: attributes)
             else { return Any.self }
 
-        // Tq,N,Vcount                  : Int类型的, 属性名为count
-        // T@"NSString",N,R,Vtitle      : NSString类型, 属性名为title
+        // Tq,N,Vcount                  : `Int` type, named `count`
+        // T@"NSString",N,R,Vtitle      : `NSString` type, named `title`
         let attrString = attrAsString as String
         // [Tq,N,Vcount]
         // ["T@", "NSString", ",N,R,Vtitle"]
@@ -119,12 +114,23 @@ public extension Runtime {
         return objectClass
     }
 
+    /// return type which association with attribute, see `valueTypesMap`
     func valueType(withAttributes attributes: String) -> Any {
-        // "Tq,N,Vcount"         : Int类型的, 属性名为count
-        let letter = attributes.subString(start: 1, length: 1)
+        // "Tq,N,Vcount" : `Int` type, named `count`
+        let letter = attributes.moe.subString(start: 1, length: 1)
         guard let type = valueTypesMap[letter]
             else { return Any.self }
 
         return type
+    }
+
+    // MARK: Method Swizzle
+
+    /// exchange target's original method and replace method
+    func swizzleInstanceMethod(target: AnyClass, original: Selector, replace: Selector) {
+        let originalMethod = class_getInstanceMethod(target.class(), original)
+        let targetMethod = class_getInstanceMethod(target.class(), replace)
+        guard originalMethod != nil, targetMethod != nil else { return }
+        method_exchangeImplementations(originalMethod!, targetMethod!)
     }
 }

@@ -14,19 +14,53 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
-
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        // Appearance Demo
-//        CALayer.swizzleLayoutSubviews()
-
-        // SidePanDrawer Demo
-        let mainVC = SideMainVC.storyboardInstance()
-        let navVC = UINavigationController(rootViewController: mainVC!)
         window = UIWindow(frame: MScreen.bounds)
+        window?.makeKeyAndVisible()
+
+        // Gradient Demo
+//        let gradientVC = GradientVC.storyboardInstance()
+//        window?.rootViewController = gradientVC
+
+        // Appearance Demo
+        CALayer.swizzleLayoutSubviews()
+        UIView.swizzleLayoutSubviews()
+//        UIImageView.swizzleLayoutSubviews()
+//        UIButton.swizzleLayoutSubviews()
+
+        registerAppearance()
+
+        let appearanceVC = AppearanceVC.storyboardInstance()!
+        let navVC = UINavigationController(rootViewController: appearanceVC)
         window?.rootViewController = navVC
         window?.makeKeyAndVisible()
+
+        // SidePanDrawer Demo
+//        let mainVC = SideMainVC.storyboardInstance()
+//        let navVC = UINavigationController(rootViewController: mainVC!)
+//        window?.rootViewController = navVC
+//        window?.makeKeyAndVisible()
+
+//        // PageMenu
+//        let main = PageDemoViewController()
+//        let navVC = UINavigationController(rootViewController: main)
+//        window?.rootViewController = navVC
+//        window?.makeKeyAndVisible()
 
         return true
     }
 
+    func registerAppearance() {
+        MoeUI.register(identifier: .smallLabel) { (attr) in
+            attr.text("Bye bye!!!").color(.blue)
+            attr.background(color: .yellow).cornerRadius(8)
+        }
+    }
+}
+
+
+extension AppearanceIdentifier {
+    static let normalLabel = AppearanceIdentifier(rawValue: 0)
+    static let hintLabel = AppearanceIdentifier(rawValue: 1)
+    static let smallLabel = AppearanceIdentifier(rawValue: 2)
 }

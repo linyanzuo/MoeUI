@@ -1,5 +1,5 @@
 import XCTest
-import MoeUI
+@testable import MoeUI
 
 class Tests: XCTestCase {
     

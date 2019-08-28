@@ -17,7 +17,7 @@ public extension NSNotification.Name {
 
 class MaskView: UIView {
     // MARK: Object Life Cycle
-    var subviewsOfToVCRootView: Array<UIView>?
+//    var subviewsOfToVCRootView: Array<UIView>?
 
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -37,6 +37,7 @@ class MaskView: UIView {
     }
 
     func releaseShared() {
+        MaskView.Static.instance?.removeFromSuperview()
         MaskView.Static.instance = nil
     }
 
@@ -48,7 +49,7 @@ class MaskView: UIView {
         self.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(tapAction(_:))))
         self.addGestureRecognizer(UIPanGestureRecognizer(target: self, action: #selector(panAction(_:))))
 
-        self.backgroundColor = UIColor.yellow
+        self.backgroundColor = UIColor.black
         self.alpha = 0.0
     }
 

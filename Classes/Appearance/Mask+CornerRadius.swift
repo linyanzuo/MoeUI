@@ -8,49 +8,8 @@
 
 import UIKit
 
+
 fileprivate var maskImageCache: Set<CALayer.MaskImage> = Set()
-
-
-public extension UIImage {
-    class func roundedMaskIamge(radius: CGFloat,
-                                corner: UIRectCorner = .allCorners,
-                                size: CGSize,
-                                maskColor: UIColor,
-                                borderWidth: CGFloat = 0,
-                                borderColor: UIColor = UIColor.black) -> UIImage?
-    {
-        UIGraphicsBeginImageContextWithOptions(size, false, UIScreen.main.scale)
-        guard let context = UIGraphicsGetCurrentContext() else { return nil }
-
-        maskColor.setFill()
-        let rect = CGRect(x: 0, y: 0, width: size.width, height: size.height)
-        let rectPath = UIBezierPath(rect: rect)
-        let roundedPath = UIBezierPath(roundedRect: rect,
-                                       byRoundingCorners: corner,
-                                       cornerRadii: CGSize(width: radius, height: radius))
-        rectPath.append(roundedPath)
-        context.addPath(rectPath.cgPath)
-        context.drawPath(using: .eoFill)
-
-        if borderWidth > 0 {
-            let borderOutterPath = UIBezierPath(roundedRect: rect,
-                                                byRoundingCorners: corner,
-                                                cornerRadii: CGSize(width: radius, height: radius))
-            let borderInnerPath = UIBezierPath(roundedRect: rect.insetBy(dx: borderWidth, dy: borderWidth),
-                                          byRoundingCorners: corner,
-                                          cornerRadii: CGSize(width: radius, height: radius))
-            borderOutterPath.append(borderInnerPath)
-            context.addPath(borderOutterPath.cgPath)
-            borderColor.setFill()
-            context.drawPath(using: .eoFill
-            )
-        }
-
-        let output = UIGraphicsGetImageFromCurrentImageContext();
-        UIGraphicsEndImageContext();
-        return output
-    }
-}
 
 
 extension CALayer {
@@ -151,7 +110,7 @@ extension CALayer {
         }
 
         guard attribute.size != CGSize.zero else { return nil }
-        let image = UIImage.roundedMaskIamge(radius: attribute.radius,
+        let image = UIImage.moe.roundedMaskIamge(radius: attribute.radius,
                                              corner: attribute.corner,
                                              size: attribute.size,
                                              maskColor: attribute.color,

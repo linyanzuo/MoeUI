@@ -6,7 +6,7 @@
 //
 //  常量 - 项目通用
 
-import Foundation
+import UIKit
 
 /// 调试打印
 ///
@@ -14,7 +14,7 @@ import Foundation
 public func MLog<T>(_ fmt: T, file: String = #file, function: String = #function, line: Int = #line) {
     #if DEBUG
     let fileName = NSString(string: file).pathComponents.last!
-    print("[MoeUI_Debug_Print: \(function)@\(fileName), \(line)]\n\t\(fmt)")
+    print("[MoeUI_Debug_Print: \(fileName) > \(function), \(line)]\n\t\(fmt)")
 //    debugPrint(fmt)
     #endif
 }
@@ -24,7 +24,7 @@ public func MKey(for name: String, file: String = #file) -> String {
     return String(format: "[%@]: %@", fileName, name)
 }
 
-/// 快速获取设备及应用信息
+/// 获取设备及应用信息
 public struct MInfo {
     /// 命名空间
     public static let namespace = Bundle.main.infoDictionary!["CFBundleExecutable"] as! String

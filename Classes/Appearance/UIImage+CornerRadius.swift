@@ -8,7 +8,8 @@
 
 import UIKit
 
-public extension UIImage {
+
+extension TypeWrapperProtocol where WrappedType: UIImage {
     /// 生成指定尺寸的圆角图片
     ///
     /// - Parameters:
@@ -27,7 +28,7 @@ public extension UIImage {
         context.addPath(roundingPath.cgPath)
         context.clip()
 
-        self.draw(in: rect)
+        wrappedValue.draw(in: rect)
         context.drawPath(using: .fillStroke)
         let output = UIGraphicsGetImageFromCurrentImageContext();
         UIGraphicsEndImageContext();
@@ -41,7 +42,7 @@ public extension UIImage {
     ///   - radius: 圆角半径
     /// - Returns: 生成的圆角图片
     func image(radius: CGFloat, corner: UIRectCorner = .allCorners) -> UIImage? {
-        return image(radius: radius, corner: corner, size: self.size)
+        return image(radius: radius, corner: corner, size: wrappedValue.size)
     }
 
     /// 绘制带框的圆角图片并返回
@@ -53,7 +54,7 @@ public extension UIImage {
     ///   - borderColor: 边框的颜色, 默认为黑色
     ///   - backgroundColor: 图片背景色
     /// - Returns: 带框的圆角图片实例
-    class func roundedRectImage(radius: CGFloat,
+    static func roundedRectImage(radius: CGFloat,
                                 corner: UIRectCorner = .allCorners,
                                 size: CGSize,
                                 borderWidth: CGFloat = 0,
@@ -78,7 +79,47 @@ public extension UIImage {
         UIGraphicsEndImageContext();
         return output
     }
+
+    static func roundedMaskIamge(radius: CGFloat,
+                                 corner: UIRectCorner = .allCorners,
+                                 size: CGSize,
+                                 maskColor: UIColor,
+                                 borderWidth: CGFloat = 0,
+                                 borderColor: UIColor = UIColor.black) -> UIImage?
+    {
+        UIGraphicsBeginImageContextWithOptions(size, false, UIScreen.main.scale)
+        guard let context = UIGraphicsGetCurrentContext() else { return nil }
+
+        maskColor.setFill()
+        let rect = CGRect(x: 0, y: 0, width: size.width, height: size.height)
+        let rectPath = UIBezierPath(rect: rect)
+        let roundedPath = UIBezierPath(roundedRect: rect,
+                                       byRoundingCorners: corner,
+                                       cornerRadii: CGSize(width: radius, height: radius))
+        rectPath.append(roundedPath)
+        context.addPath(rectPath.cgPath)
+        context.drawPath(using: .eoFill)
+
+        if borderWidth > 0 {
+            let borderOutterPath = UIBezierPath(roundedRect: rect,
+                                                byRoundingCorners: corner,
+                                                cornerRadii: CGSize(width: radius, height: radius))
+            let borderInnerPath = UIBezierPath(roundedRect: rect.insetBy(dx: borderWidth, dy: borderWidth),
+                                               byRoundingCorners: corner,
+                                               cornerRadii: CGSize(width: radius, height: radius))
+            borderOutterPath.append(borderInnerPath)
+            context.addPath(borderOutterPath.cgPath)
+            borderColor.setFill()
+            context.drawPath(using: .eoFill
+            )
+        }
+
+        let output = UIGraphicsGetImageFromCurrentImageContext();
+        UIGraphicsEndImageContext();
+        return output
+    }
 }
+
 
 public extension UIImageView {
     /// 对`UIImageView`的图片进行处理实现圆角效果. 此方法不会对溢出的子视图作处理
@@ -86,7 +127,7 @@ public extension UIImageView {
     /// - Parameters:
     ///   - radius: 圆角半径
     func addCornerRadius(_ radius: CGFloat) {
-        self.image = self.image?.image(radius: radius, corner: .allCorners, size: self.bounds.size)
+        self.image = self.image?.moe.image(radius: radius, corner: .allCorners, size: self.bounds.size)
     }
 }
 

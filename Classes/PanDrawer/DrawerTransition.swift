@@ -21,7 +21,7 @@ public enum TransitionType {
 }
 
 
-public class DrawerTransition: NSObject, UIViewControllerAnimatedTransitioning {
+class DrawerTransition: NSObject, UIViewControllerAnimatedTransitioning {
     // MARK: Object Life Cycle
     var configuration: Configuration
     var transitionType: TransitionType
@@ -100,17 +100,17 @@ public class DrawerTransition: NSObject, UIViewControllerAnimatedTransitioning {
                 maskView.alpha = self.configuration.maskViewAlpha
             })
         }) { (finished) in
-            if transitionContext.transitionWasCancelled == false {
-                // 针对导航控制器特殊效果的处理
-                if toVC.isKind(of: UINavigationController.classForCoder()) == false {
-                    maskView.subviewsOfToVCRootView = fromVC.view.subviews
-                }
-                transitionContext.completeTransition(true)
-                containerView.addSubview(fromVC.view)
-            } else {
+            if transitionContext.transitionWasCancelled == true {
                 imageView?.removeFromSuperview()
                 maskView.releaseShared()
                 transitionContext.completeTransition(false)
+            } else {
+//                // 针对导航控制器特殊效果的处理
+//                if toVC.isKind(of: UINavigationController.classForCoder()) == false {
+//                    maskView.subviewsOfToVCRootView = fromVC.view.subviews
+//                }
+                transitionContext.completeTransition(true)
+                containerView.addSubview(fromVC.view)
             }
         }
     }
@@ -124,11 +124,11 @@ public class DrawerTransition: NSObject, UIViewControllerAnimatedTransitioning {
         else { return }
 
         let maskView = MaskView.shared
-        if toVC.isKind(of: UINavigationController.classForCoder()) == false {
-            for subview in toVC.view.subviews {
-                if maskView.subviewsOfToVCRootView?.contains(subview) == false { subview.removeFromSuperview() }
-            }
-        }
+//        if toVC.isKind(of: UINavigationController.classForCoder()) == false {
+//            for subview in toVC.view.subviews {
+//                if maskView.subviewsOfToVCRootView?.contains(subview) == false { subview.removeFromSuperview() }
+//            }
+//        }
 
         let containerView = transitionContext.containerView
         var bgImgView: UIImageView?
@@ -146,8 +146,7 @@ public class DrawerTransition: NSObject, UIViewControllerAnimatedTransitioning {
             })
         }) { (finished) in
             if transitionContext.transitionWasCancelled == false {
-                maskView.subviewsOfToVCRootView = nil
-                maskView.removeFromSuperview()
+//                maskView.subviewsOfToVCRootView = nil
                 maskView.releaseShared()
                 bgImgView?.removeFromSuperview()
             }
