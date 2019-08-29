@@ -53,11 +53,11 @@ Pod::Spec.new do |s|
     drawer.dependency 'MoeUI/Common'
     drawer.dependency 'MoeUI/Runtime'
   end
-#  s.subspec 'Alert' do |alert|
-#    alert.source_files = 'Classes/Alert/*'
-#    alert.frameworks = 'UIKit'
-#    alert.dependency 'MoeUI/Common'
-#  end
+  s.subspec 'Alert' do |alert|
+    alert.source_files = 'Classes/Alert/*'
+    alert.frameworks = 'UIKit'
+    alert.dependency 'MoeUI/Common'
+  end
 
   # s.resource_bundles = {
   #   'MoeUI' => ['MoeUI/Assets/*.png']

@@ -76,7 +76,7 @@ public class MoeButton: UIButton, AppearanceUnity, AppearanceApply {
 
 
 extension MoeUI {
-    public class func makeButton(toView: UIView? = nil, _ closure: AppearanceClosure?) -> UIButton {
+    public class func makeButton(toView: UIView? = nil, _ closure: AppearanceClosure?) -> MoeButton {
         let btn = MoeButton(frame: .zero)
         toView?.addSubview(btn)
         if closure != nil {
