@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'MoeUI'
-  s.version          = '1.1.0'
+  s.version          = '1.1.1'
   s.summary          = 'MoeUI is a framework that make UI controls create and configure easily'
 
   # This description is used to generate tags and improve search results.
