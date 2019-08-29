@@ -12,7 +12,7 @@ internal struct BackgroundAttribute: AppearanceAttribute {
     internal var color: UIColor?
     internal var image: UIImage?
     internal var cornerRadius: CGFloat?
-    internal var maskBackground: UIColor?
+    internal var maskColor: UIColor?
     internal var isMaskCornerRadius: Bool?
     internal var border: BorderAttribute?
     internal var gradient: GradientAttribute?
@@ -54,8 +54,9 @@ public class BackgroundAttributer: AppearanceAttributer, Codable {
     }
 
     @discardableResult
-    public func maskCornerRadius(_ cornerRadius: CGFloat) -> Self {
+    public func maskCornerRadius(_ cornerRadius: CGFloat, maskColor: UIColor) -> Self {
         attribute.isMaskCornerRadius = true
+        attribute.maskColor = maskColor
         if cornerRadius > 0.0 { attribute.cornerRadius = cornerRadius }
         return self
     }

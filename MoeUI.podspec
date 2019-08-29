@@ -29,7 +29,7 @@ Pod::Spec.new do |s|
   # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
 
   s.ios.deployment_target = '9.0'
-  s.swift_versions = '4.0'
+  s.swift_versions = '5.0'
 
   #  s.source_files = 'MoeUI/Classes/*'
   s.subspec 'Common' do |common|
@@ -53,11 +53,11 @@ Pod::Spec.new do |s|
     drawer.dependency 'MoeUI/Common'
     drawer.dependency 'MoeUI/Runtime'
   end
-  s.subspec 'Alert' do |alert|
-    alert.source_files = 'Classes/Alert/*'
-    alert.frameworks = 'UIKit'
-    alert.dependency 'MoeUI/Common'
-  end
+#  s.subspec 'Alert' do |alert|
+#    alert.source_files = 'Classes/Alert/*'
+#    alert.frameworks = 'UIKit'
+#    alert.dependency 'MoeUI/Common'
+#  end
 
   # s.resource_bundles = {
   #   'MoeUI' => ['MoeUI/Assets/*.png']

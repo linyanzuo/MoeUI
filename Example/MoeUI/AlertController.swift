@@ -9,7 +9,7 @@ import UIKit
 import MoeUI
 
 
-class AlertController: UIViewController, UIViewControllerTransitioningDelegate, SheetAnimatorProtocol {
+class MoeAlertController: UIViewController, UIViewControllerTransitioningDelegate, SheetAnimatorProtocol {
     // MARK: View Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -81,7 +81,7 @@ public extension MoeUI {
         if #available(iOS 9.0, *) {
             let topVC = UIApplication.moe.topViewController()
 
-            let pickerVC = AlertController()
+            let pickerVC = MoeAlertController()
             pickerVC.view.backgroundColor = .clear
             pickerVC.modalPresentationStyle = .overCurrentContext
             pickerVC.transitioningDelegate = pickerVC

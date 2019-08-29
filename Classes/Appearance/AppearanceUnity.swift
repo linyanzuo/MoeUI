@@ -5,78 +5,53 @@
 //  Created by Zed on 2019/8/6.
 //
 
-import Foundation
+import UIKit
 
 
-/// 提供快速使用的类方法
+/// provide some class method for make appearance or UI control
 public class MoeUI: NSObject {}
-/// 配置原型, 保存配置数据
+/// Appearance attribute model, used for save attribute value
 protocol AppearanceAttribute {}
-/// 配置器, 负责生成配置
+/// Attribute configurator, responsible for apply attrubutes in appearance
 protocol AppearanceAttributer {}
 
 
-/// Appearance 统一协议
-protocol AppearanceUnity where Self: UIView {
+public protocol AppearanceUnity where Self: UIView {
     var appearance: Appearance { get set }
 
-    func applyAppearanceMoe()
-    func updateAppearance(_ closure: AppearanceClosure)
-
-    //    func availableAppearance() -> Array<UInt>
+    func applyAttribute()
 }
 extension AppearanceUnity {
-    public init(appearanceMoe: Appearance) {
+    public init(appearance: Appearance) {
         self.init(frame: .zero)
         self.appearance = appearance
-        self.applyAppearanceMoe()
+        self.applyAttribute()
     }
 
-    public init(_ closureMoe: AppearanceClosure) {
+    public init(_ closure: AppearanceClosure) {
         self.init(frame: .zero)
-        closureMoe(self.appearance)
-        self.applyAppearanceMoe()
+        closure(self.appearance)
+        self.applyAttribute()
     }
 
-    func applyAppearanceMoe() {
-        self.applyBackgroundAppearanceMoe()
+    public func updateAppearance(_ closure: AppearanceClosure) {
+        closure(self.appearance)
+        self.applyAttribute()
     }
 
-    // MARK: Appearance Method
-    func applyBackgroundAppearanceMoe() {
-        let attr = self.appearance.backgrounder.attribute
-
-        guard attr.color != nil else { return }
-        self.backgroundColor = attr.color
-        if attr.cornerRadius != nil {
-            if attr.isMaskCornerRadius == true {
-                let maskColor = self.superview?.backgroundColor
-                self.layer.addCornerRadius(attr.cornerRadius!, maskColor: maskColor ?? UIColor.white)
-            } else {
-                self.layer.cornerRadius = attr.cornerRadius!
-            }
-        }
-
-        if attr.border?.width ?? 0.0 > 0.0 {
-            layer.borderWidth = attr.border!.width!
-            layer.borderColor = (attr.border?.color ?? UIColor.black).cgColor
-        }
-
-        if let gradient = attr.gradient {
-            var cgColors: [CGColor] = []
-            for color in gradient.colors {
-                cgColors.append(color.cgColor)
-            }
-
-            self.gradientLayer.frame = self.layer.bounds
-            self.gradientLayer.colors = cgColors
-            self.gradientLayer.locations = gradient.locations
-            self.gradientLayer.startPoint = gradient.startPoint
-            self.gradientLayer.endPoint = gradient.endPoint
-            if attr.cornerRadius != nil { gradientLayer.cornerRadius = attr.cornerRadius! }
-
-            self.layer.addSublayer(gradientLayer)
-        }
+    public func resetAppearance(_ closure: AppearanceClosure) {
+        self.appearance = Appearance()
+        closure(self.appearance)
+        self.applyAttribute()
     }
 
+    public func resetAppearance(identifier: AppearanceIdentifier) {
+        guard let appearance = AppearanceManager.shared.dequeue(with: identifier) else {
+            MLog("Reset Appearance Fail. Can't find appearance which matches to identifier")
+            return
+        }
+
+        self.appearance = appearance
+        self.applyAttribute()
+    }
 }

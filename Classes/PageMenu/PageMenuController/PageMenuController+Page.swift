@@ -16,7 +16,7 @@ extension MoePageMenuController {
         delegate?.willMoveToPage?(currentControlelr, index: index)
         
         let newController = controllerArray[index]
-        newController.willMove(toParentViewController: self)
+        newController.willMove(toParent: self)
         /**
          * 解决`addChild(newController)`后, `newController.view`的宽高变成2倍大小的问题
             1. 该问题由`childVC.view.autoresizingMask`导致, 默认为宽高`flexible`(可伸缩, 随容器而变化).
@@ -28,9 +28,9 @@ extension MoePageMenuController {
                                           y: configuration.menuHeight,
                                           width: view.frame.width,
                                           height: view.frame.height - configuration.menuHeight)
-        addChildViewController(newController)
+        addChild(newController)
         controllerView.addSubview(newController.view)
-        newController.didMove(toParentViewController: self)
+        newController.didMove(toParent: self)
     }
     
     /// 从当前页移动到指定索引对应的页
@@ -72,10 +72,10 @@ extension MoePageMenuController {
     /// 移除指定索引位置的页面
     func removeControllerPageAtIndex(_ index: Int) {
         let oldController = controllerArray[index]
-        oldController.willMove(toParentViewController: nil)
+        oldController.willMove(toParent: nil)
         oldController.view.removeFromSuperview()
-        oldController.removeFromParentViewController()
-        oldController.didMove(toParentViewController: nil)
+        oldController.removeFromParent()
+        oldController.didMove(toParent: nil)
     }
     
     /// 移动指示器至选中标签项

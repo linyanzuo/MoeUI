@@ -12,10 +12,12 @@ public typealias AppearanceClosure = (_ attr: Appearance) -> Void
 
 
 public class Appearance: NSObject {
-    private(set) var texters: [TextAttributer] = []
-    private(set) var imagers: [ImageAttributer] = []
+    private(set) var generaler: GeneralAttributer = GeneralAttributer()
     private(set) var backgrounder: BackgroundAttributer = BackgroundAttributer()
     private(set) var shadower: ShadowAttributer = ShadowAttributer()
+    private(set) var texters: [TextAttributer] = []
+    private(set) var imagers: [ImageAttributer] = []
+    private(set) var eventers: [EventAttributer] = []
 
     @discardableResult
     public func text(_ text: String, state: UIControl.State = .normal) -> TextAttributer {
@@ -61,8 +63,31 @@ public class Appearance: NSObject {
         return shadower
     }
 
+    @discardableResult
+    public func event(target: Any, action: Selector, for controlEvents: UIControl.Event = .touchUpInside) -> EventAttributer {
+        var eventer: EventAttributer? = nil
+        for existedEventer in eventers {
+            if existedEventer.attribute.controlEvents == controlEvents {
+                eventer = existedEventer
+                break
+            }
+        }
+        if eventer == nil { eventer = EventAttributer() }
+
+        eventer!.target(target: target).action(action, for: controlEvents)
+        eventers.append(eventer!)
+        return eventer!
+    }
+
+    @discardableResult
+    public func alpha(_ alpha: CGFloat) -> Self {
+        generaler.alpha(alpha)
+        return self
+    }
+
     // MARK: Private Method
     private func getImager(for state: UIControl.State) -> ImageAttributer {
+
         var imager: ImageAttributer? = nil
         for existedImager in imagers {
             if existedImager.attribute.state == state {

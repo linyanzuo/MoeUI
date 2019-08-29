@@ -9,17 +9,14 @@
 import UIKit
 import MoeUI
 
-extension RuntimeKey {
-    static let test = MRuntimeKey(for: "test")!
-}
 
 class AppearanceVC: UIViewController, Runtime {
-    @IBOutlet weak var label: UILabel!
-    @IBOutlet weak var bigLab: UILabel!
-    @IBOutlet weak var colorView: UIView!
-    @IBOutlet weak var imgView: UIImageView!
-    @IBOutlet weak var bgBtn: UIButton!
-    @IBOutlet weak var imgBtn: UIButton!
+    @IBOutlet weak var label: MoeLabel!
+    @IBOutlet weak var bigLab: MoeLabel!
+    @IBOutlet weak var colorView: MoeView!
+    @IBOutlet weak var imgView: MoeImageView!
+    @IBOutlet weak var bgBtn: MoeButton!
+    @IBOutlet weak var imgBtn: MoeButton!
     
     class func storyboardInstance() -> AppearanceVC? {
         return UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: NSStringFromClass(self.classForCoder())) as? AppearanceVC
@@ -30,17 +27,13 @@ class AppearanceVC: UIViewController, Runtime {
         self.view.backgroundColor = UIColor.white
 
         colorView.updateAppearance { (attr) in
-//            attr.background(color: UIColor.green).cornerRadius(16).border(1, color: UIColor.red)
-//            attr.shadow(color: UIColor.red).cornerRadius(16)
-            attr.background(color: UIColor.green).cornerRadius(16)
+            attr.shadow(color: UIColor.red).cornerRadius(16)
+            attr.background(color: UIColor.green).cornerRadius(16).border(1, color: UIColor.red)
                 .gradient(startPoint: CGPoint(x: 0, y: 0.5),
                           endPoint: CGPoint(x: 1.0, y: 0.5),
                           colors: [.red, .blue],
                           locations: [0, 1])
         }
-
-        setAssociatedRetainObject(object: colorView, for: RuntimeKey.test)
-        MLog(getAssociatedObject(for: RuntimeKey.test))
 
         label.updateAppearance { (attr) in
             attr.background(color: UIColor.red).cornerRadius(4).border(1)
@@ -56,7 +49,7 @@ class AppearanceVC: UIViewController, Runtime {
                           endPoint: CGPoint(x: 1.0, y: 0.5),
                           colors: [UIColor(rgb: 0x048DF7), UIColor(rgb: 0x5F4AF0)],
                           locations: [0, 1])
-//            attr.shadow(color: UIColor.red).cornerRadius(16)
+            attr.shadow(color: UIColor.red).cornerRadius(16)
         }
 
 //        let byeLab = MoeUI.makeLabel(appearance: nil, toView: self.view) { (attr) in
@@ -83,12 +76,12 @@ class AppearanceVC: UIViewController, Runtime {
         ])
 
         imgView.updateAppearance { (attr) in
-//            attr.image(UIImage(named: "Lambert")!).cornerRadius(16)
+            attr.image(UIImage(named: "Lambert")!).cornerRadius(16)
             attr.background(color: .clear).border(2, color: .blue).cornerRadius(16)
-                .gradient(startPoint: CGPoint(x: 0, y: 0.5),
-                          endPoint: CGPoint(x: 1.0, y: 0.5),
-                          colors: [UIColor(rgb: 0x048DF7), UIColor(rgb: 0x5F4AF0)],
-                          locations: [0, 1])
+//                .gradient(startPoint: CGPoint(x: 0, y: 0.5),
+//                          endPoint: CGPoint(x: 1.0, y: 0.5),
+//                          colors: [.red, .blue],
+//                          locations: [0, 1])
 //            attr.image(UIImage(named: "Lambert")!, state: .selected)
 //            attr.shadow(color: UIColor.red).cornerRadius(16)
         }
@@ -103,8 +96,10 @@ class AppearanceVC: UIViewController, Runtime {
                           colors: [.red, .blue],
                           locations: [0, 1])
             attr.text("Button").color(.black)
+            attr.event(target: self, action: #selector(btnAction))
+            attr.event(target: self, action: #selector(logAction), for: .touchDown)
         }
-        bgBtn.addTarget(self, action: #selector(btnAction), for: .touchUpInside)
+//        bgBtn.addTarget(self, action: #selector(btnAction), for: .touchUpInside)
         imgBtn.updateAppearance { (attr) in
             attr.backgroundImage(UIImage(named: "Lambert")!, state: .normal).cornerRadius(16)
             attr.backgroundImage(UIImage(named: "Lambert")!, state: .highlighted).cornerRadius(16)
@@ -116,7 +111,23 @@ class AppearanceVC: UIViewController, Runtime {
     }
 
     @objc func btnAction() {
-        MoeUI.alert()
-//        MoeUI.sheet()
+        MLog("Btn Action")
+
+//        let alertVC = AlertController(style: .success, text: "Congratulation, It work!")
+//        self.present(alertVC, animated: true, completion: nil)
+
+        let dialog = AlertDialog(style: .progress, text: "Hello word")
+        self.view.addSubview(dialog)
+        dialog.translatesAutoresizingMaskIntoConstraints = false
+        dialog.addConstraints([
+            NSLayoutConstraint(item: dialog, attribute: .centerX, relatedBy: .equal, toItem: self.view, attribute: .centerX, multiplier: 1.0, constant: 0.0),
+            NSLayoutConstraint(item: dialog, attribute: .centerY, relatedBy: .equal, toItem: self.view, attribute: .centerY, multiplier: 1.0, constant: 0.0),
+            NSLayoutConstraint(item: dialog, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: 200.0),
+            NSLayoutConstraint(item: dialog, attribute: .height, relatedBy: .equal, toItem: nil, attribute: . notAnAttribute, multiplier: 1.0, constant: 160.0)
+        ])
+    }
+
+    @objc func logAction() {
+        MLog("Touch Log")
     }
 }

@@ -23,8 +23,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //        window?.rootViewController = gradientVC
 
         // Appearance Demo
-        CALayer.swizzleLayoutSubviews()
-        UIView.swizzleLayoutSubviews()
+//        CALayer.swizzleLayoutSubviews()
+//        UIView.swizzleLayoutSubviews()
 //        UIImageView.swizzleLayoutSubviews()
 //        UIButton.swizzleLayoutSubviews()
 

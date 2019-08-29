@@ -102,7 +102,7 @@ public class InteractiveTransition: UIPercentDrivenInteractiveTransition, UIGest
             if isInteracting == false {
                 // 开始交互, 执行呈现操作
                 if transitionType == .present {
-                    if fabs(x) > atLeastDistanceOfPan { interactingPresent(translationX: x) }
+                    if abs(x) > atLeastDistanceOfPan { interactingPresent(translationX: x) }
                 }
                 // 结束交互, 执行消失操作
                 else { interactingDismiss(translationX: x) }
@@ -203,7 +203,7 @@ public class InteractiveTransition: UIPercentDrivenInteractiveTransition, UIGest
     private func startDisplayLink() {
         guard link == nil else { return }
         link = CADisplayLink(target: self, selector: #selector(displayLinkAction))
-        link?.add(to: RunLoop.current, forMode: .commonModes)
+        link?.add(to: RunLoop.current, forMode: .common)
     }
 
     private func stopDisplayLink() {

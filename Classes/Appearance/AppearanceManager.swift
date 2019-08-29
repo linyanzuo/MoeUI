@@ -28,7 +28,7 @@ class AppearanceManager {
     @discardableResult
     public func register(identifier: AppearanceIdentifier, for appearance: Appearance) -> Bool {
         guard appearanceCache.keys.contains(identifier.rawValue) == false else {
-            MLog("标识为`\(identifier.rawValue)`的外观样式已经注册, 请更换其它Key值")
+            MLog("FAIL: Appearance which identify by`\(identifier.rawValue)` has already registered, please try again by using another identifier")
             return false
         }
         appearanceCache[identifier.rawValue] = appearance
@@ -44,7 +44,7 @@ class AppearanceManager {
 
     public func unRegister(with identifier: AppearanceIdentifier) {
         guard appearanceCache.keys.contains(identifier.rawValue) == true else {
-            MLog("标识为`\(identifier.rawValue)`的外观样式尚未注册, 无法取消注册")
+            MLog("FAIL: Appearance which identify by `\(identifier.rawValue)` is not registered")
             return
         }
         appearanceCache.removeValue(forKey: identifier.rawValue)

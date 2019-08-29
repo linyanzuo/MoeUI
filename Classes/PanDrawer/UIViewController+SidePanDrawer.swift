@@ -49,7 +49,7 @@ extension UIViewController {
 
     public func drawerPush(_ viewController: UIViewController) {
         let animator = self.transitioningDelegate as? Animator
-        var transitionType = kCATransitionPush
+        var transitionType = CATransitionType.push
 
         let rootVC = UIApplication.shared.keyWindow?.rootViewController
         guard rootVC != nil else { return }
@@ -60,7 +60,7 @@ extension UIViewController {
         {
             navVC = tabbarItemNavVC
         } else if let rootNavVC = rootVC as? UINavigationController {
-            if animator?.animationType == .default { transitionType = kCATransitionFade }
+            if animator?.animationType == .default { transitionType = CATransitionType.fade }
             navVC = rootNavVC
         }
         guard navVC != nil else { return }
@@ -69,10 +69,10 @@ extension UIViewController {
         if animator != nil {
             let transition = CATransition()
             transition.duration = 0.10
-            transition.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseOut)
+            transition.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeOut)
             transition.type = transitionType
             transition.subtype = animator?.configuration.panDirection == .fromRight ?
-                kCATransitionFromRight : kCATransitionFromLeft
+                CATransitionSubtype.fromRight : CATransitionSubtype.fromLeft
             navVC!.view.layer.add(transition, forKey: nil)
         }
 
