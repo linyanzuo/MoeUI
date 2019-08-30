@@ -57,7 +57,7 @@ Pod::Spec.new do |s|
     alert.source_files = 'Classes/Alert/*'
     alert.frameworks = 'UIKit'
     alert.dependency 'MoeUI/Common'
-    drawer.dependency 'MoeUI/Appearance'
+    alert.dependency 'MoeUI/Appearance'
   end
 
   s.resource_bundles = {
