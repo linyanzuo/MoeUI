@@ -8,7 +8,8 @@
 import UIKit
 
 
-public class AlertController: UIViewController, UIViewControllerTransitioningDelegate, SheetAnimatorProtocol {
+public class AlertController: UIViewController, UIViewControllerTransitioningDelegate, AlertAnimatorProtocol {
+    
     var bezelView: UIView
 
     // MARK: Object Life Cycle
@@ -31,15 +32,15 @@ public class AlertController: UIViewController, UIViewControllerTransitioningDel
     private func setupSelf() {
         self.modalPresentationStyle = .overCurrentContext
         self.transitioningDelegate = self
-
-        self.view.addSubview(bezelView)
     }
 
     // MARK: View Life Cycle
     public override func viewDidLoad() {
         super.viewDidLoad()
+        view.backgroundColor = UIColor.yellow
 
-        self.view.backgroundColor = .clear
+        view.addSubview(maskBtn)
+        view.addSubview(bezelView)
         setupConstraints()
     }
 
@@ -51,7 +52,6 @@ public class AlertController: UIViewController, UIViewControllerTransitioningDel
             NSLayoutConstraint(item: maskBtn, attribute: .right, relatedBy: .equal, toItem: self.view, attribute: .right, multiplier: 1.0, constant: 0.0),
             NSLayoutConstraint(item: maskBtn, attribute: .bottom, relatedBy: .equal, toItem: self.view, attribute: .bottom, multiplier: 1.0, constant: 0.0)
         ])
-
         bezelView.translatesAutoresizingMaskIntoConstraints = false
         self.view.addConstraints([
             NSLayoutConstraint(item: bezelView, attribute: .centerX, relatedBy: .equal, toItem: self.view, attribute: .centerX, multiplier: 1.0, constant: 0.0),
@@ -88,6 +88,6 @@ public class AlertController: UIViewController, UIViewControllerTransitioningDel
         let appear = Appearance()
         appear.alpha(0.6).background(color: .black)
         appear.event(target: self, action: #selector(maskBtnAction(_:)))
-        return MoeUI.makeButton(toView: self.view, with: appear)
+        return MoeUI.makeButton(with: appear)
     }()
 }

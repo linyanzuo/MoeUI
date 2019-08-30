@@ -12,9 +12,9 @@ public typealias AppearanceClosure = (_ attr: Appearance) -> Void
 
 
 public class Appearance: NSObject {
-    private(set) var generaler: GeneralAttributer = GeneralAttributer()
-    private(set) var backgrounder: BackgroundAttributer = BackgroundAttributer()
-    private(set) var shadower: ShadowAttributer = ShadowAttributer()
+    private(set) var generaler: GeneralAttributer?
+    private(set) var backgrounder: BackgroundAttributer?
+    private(set) var shadower: ShadowAttributer?
     private(set) var texters: [TextAttributer] = []
     private(set) var imagers: [ImageAttributer] = []
     private(set) var eventers: [EventAttributer] = []
@@ -37,8 +37,9 @@ public class Appearance: NSObject {
 
     @discardableResult
     public func background(color: UIColor) -> BackgroundAttributer {
-        backgrounder.background(color: color)
-        return backgrounder
+        if backgrounder == nil { backgrounder = BackgroundAttributer() }
+        backgrounder!.background(color: color)
+        return backgrounder!
     }
 
     @discardableResult
@@ -59,8 +60,9 @@ public class Appearance: NSObject {
 
     @discardableResult
     public func shadow(color: UIColor) -> ShadowAttributer {
-        shadower.color(color)
-        return shadower
+        if shadower == nil { shadower = ShadowAttributer() }
+        shadower!.color(color)
+        return shadower!
     }
 
     @discardableResult
@@ -81,7 +83,8 @@ public class Appearance: NSObject {
 
     @discardableResult
     public func alpha(_ alpha: CGFloat) -> Self {
-        generaler.alpha(alpha)
+        if generaler == nil { generaler = GeneralAttributer() }
+        generaler!.alpha(alpha)
         return self
     }
 

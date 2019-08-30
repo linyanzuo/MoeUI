@@ -16,7 +16,7 @@ protocol PSPickerViewControllerDelegate {
 
 
 @available(iOS 9.0, *)
-class PickerViewController: UIViewController, SheetAnimatorProtocol, UIPickerViewDelegate, UIPickerViewDataSource, UIViewControllerTransitioningDelegate {
+class PickerViewController: UIViewController, AlertAnimatorProtocol, UIPickerViewDelegate, UIPickerViewDataSource, UIViewControllerTransitioningDelegate {
     private(set) var pickerTitle: String
     private(set) var itemTitles: [String]
 

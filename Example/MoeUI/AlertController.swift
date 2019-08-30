@@ -9,7 +9,7 @@ import UIKit
 import MoeUI
 
 
-class MoeAlertController: UIViewController, UIViewControllerTransitioningDelegate, SheetAnimatorProtocol {
+class MoeAlertController: UIViewController, UIViewControllerTransitioningDelegate, AlertAnimatorProtocol {
     // MARK: View Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()

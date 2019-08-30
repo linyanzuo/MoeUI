@@ -57,11 +57,12 @@ Pod::Spec.new do |s|
     alert.source_files = 'Classes/Alert/*'
     alert.frameworks = 'UIKit'
     alert.dependency 'MoeUI/Common'
+    drawer.dependency 'MoeUI/Appearance'
   end
 
-  # s.resource_bundles = {
-  #   'MoeUI' => ['MoeUI/Assets/*.png']
-  # }
+  s.resource_bundles = {
+    'MoeUI' => ['MoeUI.xcassets']
+  }
 
   # s.public_header_files = 'Pod/Classes/**/*.h'
   # s.frameworks = 'UIKit', 'MapKit'

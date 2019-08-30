@@ -19,7 +19,7 @@ public class MoeImageView: UIImageView, AppearanceUnity, AppearanceApply {
 
             if attr.image != nil { self.image = attr.image }
             if attr.cornerRadius != nil {
-                if MInfo.phoneVersion >= 11.0 && self.appearance.shadower.attribute.color == nil {
+                if MInfo.phoneVersion >= 11.0 && self.appearance.shadower?.attribute.color == nil {
                     layer.masksToBounds = true
                     layer.cornerRadius = attr.cornerRadius!
                 } else { addCornerRadius(attr.cornerRadius!) }
@@ -28,8 +28,8 @@ public class MoeImageView: UIImageView, AppearanceUnity, AppearanceApply {
     }
 
     public func applyShadowAttribute() {
-        let attr = self.appearance.shadower.attribute
-        guard attr.color != nil else { return }
+        guard let attr = self.appearance.shadower?.attribute, attr.color != nil
+            else { return }
 
         layer.shadowColor = attr.color!.cgColor
         layer.shadowOpacity = attr.opacity ?? 1.0
@@ -56,7 +56,7 @@ extension MoeUI {
         return imgView
     }
 
-    public class func makeImageView(toView: UIView?, with appearance: Appearance) -> MoeImageView {
+    public class func makeImageView(toView: UIView? = nil, with appearance: Appearance) -> MoeImageView {
         let imgView = MoeImageView(appearance: appearance)
         toView?.addSubview(imgView)
         return imgView

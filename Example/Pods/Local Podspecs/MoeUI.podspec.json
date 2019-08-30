@@ -1,9 +1,9 @@
 {
   "name": "MoeUI",
-  "version": "0.1.0",
-  "summary": "A short description of MoeUI.",
+  "version": "1.1.1",
+  "summary": "MoeUI is a framework that make UI controls create and configure easily",
   "description": "TODO: Add long description of the pod here.",
-  "homepage": "https://github.com/linyanzuo1222@gmail.com/MoeUI",
+  "homepage": "https://github.com/linyanzuo/MoeUI",
   "license": {
     "type": "MIT",
     "file": "LICENSE"
@@ -12,11 +12,70 @@
     "linyanzuo1222@gmail.com": "zed@moemoetech.com"
   },
   "source": {
-    "git": "https://github.com/linyanzuo1222@gmail.com/MoeUI.git",
-    "tag": "0.1.0"
+    "git": "https://github.com/linyanzuo/MoeUI.git",
+    "tag": "1.1.1"
   },
   "platforms": {
-    "ios": "8.0"
+    "ios": "9.0"
   },
-  "source_files": "MoeUI/Classes/**/*"
+  "swift_versions": "5.0",
+  "resource_bundles": {
+    "MoeUI": [
+      "MoeUI.xcassets"
+    ]
+  },
+  "subspecs": [
+    {
+      "name": "Common",
+      "source_files": "Classes/Common/*/*",
+      "frameworks": "UIKit"
+    },
+    {
+      "name": "Runtime",
+      "source_files": "Classes/Runtime/*",
+      "frameworks": "UIKit",
+      "dependencies": {
+        "MoeUI/Common": [
+
+        ]
+      }
+    },
+    {
+      "name": "Appearance",
+      "source_files": "Classes/Appearance/*",
+      "frameworks": "UIKit",
+      "dependencies": {
+        "MoeUI/Common": [
+
+        ],
+        "MoeUI/Runtime": [
+
+        ]
+      }
+    },
+    {
+      "name": "PanDrawer",
+      "source_files": "Classes/PanDrawer/*",
+      "frameworks": "UIKit",
+      "dependencies": {
+        "MoeUI/Common": [
+
+        ],
+        "MoeUI/Runtime": [
+
+        ]
+      }
+    },
+    {
+      "name": "Alert",
+      "source_files": "Classes/Alert/*",
+      "frameworks": "UIKit",
+      "dependencies": {
+        "MoeUI/Common": [
+
+        ]
+      }
+    }
+  ],
+  "swift_version": "5.0"
 }

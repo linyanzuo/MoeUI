@@ -112,21 +112,32 @@ class AppearanceVC: UIViewController, Runtime {
     @objc func btnAction() {
         MLog("Btn Action")
 
+//        let dialog = AlertDialog(style: .progress, text: "Hello word")
+//        self.view.addSubview(dialog)
+//        dialog.translatesAutoresizingMaskIntoConstraints = false
+//        self.view.addConstraints([
+//            NSLayoutConstraint(item: dialog, attribute: .centerX, relatedBy: .equal, toItem: self.view, attribute: .centerX, multiplier: 1.0, constant: 0.0),
+//            NSLayoutConstraint(item: dialog, attribute: .centerY, relatedBy: .equal, toItem: self.view, attribute: .centerY, multiplier: 1.0, constant: 0.0),
+//            NSLayoutConstraint(item: dialog, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: 200.0),
+//            NSLayoutConstraint(item: dialog, attribute: .height, relatedBy: .equal, toItem: nil, attribute: . notAnAttribute, multiplier: 1.0, constant: 160.0)
+//        ])
+
 //        let alertVC = AlertController(style: .success, text: "Congratulation, It work!")
+//        alertVC.view.backgroundColor = .clear
 //        self.present(alertVC, animated: true, completion: nil)
 
-        let dialog = AlertDialog(style: .progress, text: "Hello word")
-        self.view.addSubview(dialog)
-        dialog.translatesAutoresizingMaskIntoConstraints = false
-        dialog.addConstraints([
-            NSLayoutConstraint(item: dialog, attribute: .centerX, relatedBy: .equal, toItem: self.view, attribute: .centerX, multiplier: 1.0, constant: 0.0),
-            NSLayoutConstraint(item: dialog, attribute: .centerY, relatedBy: .equal, toItem: self.view, attribute: .centerY, multiplier: 1.0, constant: 0.0),
-            NSLayoutConstraint(item: dialog, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: 200.0),
-            NSLayoutConstraint(item: dialog, attribute: .height, relatedBy: .equal, toItem: nil, attribute: . notAnAttribute, multiplier: 1.0, constant: 160.0)
-        ])
+        GlobalAlertManager.shared.alert(style: .success, text: "Configuration, It work!", with: "Success")
+        GlobalAlertManager.shared.alert(style: .fail, text: "Unfortunately, It doesn't work!", with: "Fail")
+        GlobalAlertManager.shared.alert(style: .progress, text: "So bad, It doesn't finish", with: "Progress")
+
+        perform(#selector(test), with: nil, afterDelay: 1.0)
     }
 
     @objc func logAction() {
         MLog("Touch Log")
+    }
+
+    @objc func test() {
+        GlobalAlertManager.shared.hide(with: "Fail")
     }
 }

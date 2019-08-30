@@ -56,7 +56,9 @@ public class MoeButton: UIButton, AppearanceUnity, AppearanceApply {
 
     // MARK: Layout update Method
     private func updateShadowIfLayoutSubviews() {
-        let shadower = self.appearance.shadower.attribute
+        guard let shadower = self.appearance.shadower?.attribute
+            else { return }
+
         if shadower.color != nil {
             let cornerRadius = shadower.cornerRadius ?? 0.0
             let rect = bounds.insetBy(dx: -(shadower.extend?.width ?? 0.0),
@@ -67,7 +69,9 @@ public class MoeButton: UIButton, AppearanceUnity, AppearanceApply {
     }
 
     private func updateGradientIfLayoutSubviews() {
-        let backgrounder = self.appearance.backgrounder.attribute
+        guard let backgrounder = self.appearance.backgrounder?.attribute
+            else { return }
+
         if backgrounder.gradient != nil {
             self.gradientLayer.frame = self.layer.bounds
         }
@@ -86,7 +90,7 @@ extension MoeUI {
         return btn
     }
 
-    public class func makeButton(toView: UIView?, with appearance: Appearance) -> MoeButton {
+    public class func makeButton(toView: UIView? = nil, with appearance: Appearance) -> MoeButton {
         let btn = MoeButton(appearance: appearance)
         toView?.addSubview(btn)
         return btn

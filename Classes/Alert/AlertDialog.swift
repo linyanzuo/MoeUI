@@ -12,7 +12,7 @@ public class AlertDialog: UIView {
     public enum Style {
         case progress
         case success
-        case error
+        case fail
     }
 
     private let themeColor = UIColor(rgb: 0x333333)
@@ -34,8 +34,14 @@ public class AlertDialog: UIView {
 
     // MARK: Subviews Initialize
     private func setupSubviews() {
+        backgroundColor = .white
+        layer.cornerRadius = 8
+
         let imageName = self.style == .success ? "common_icon_finish" : "common_icon_error"
-        imageView.image = UIImage(named: imageName)
+        let frameworkBundle = Bundle(for: self.classForCoder)
+        if let image = UIImage(named: imageName, in: frameworkBundle, compatibleWith: nil) {
+            imageView.image = image
+        }
         label.text = message
     }
 
@@ -46,7 +52,7 @@ public class AlertDialog: UIView {
                 NSLayoutConstraint(item: indicator, attribute: .top, relatedBy: .equal, toItem: self, attribute: .top, multiplier: 1.0, constant: 16),
                 NSLayoutConstraint(item: indicator, attribute: .centerX, relatedBy: .equal, toItem: self, attribute: .centerX, multiplier: 1.0, constant: 0.0)
             ])
-        } else if self.style == .success || self.style == .error {
+        } else if self.style == .success || self.style == .fail {
             imageView.translatesAutoresizingMaskIntoConstraints = false
             self.addConstraints([
                 NSLayoutConstraint(item: imageView, attribute: .top, relatedBy: .equal, toItem: self, attribute: .top, multiplier: 1.0, constant: 16),
@@ -58,7 +64,7 @@ public class AlertDialog: UIView {
 
         let constraintTarget = self.style == .progress ? self.indicator : self.imageView
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.addConstraints([
+        self.addConstraints([
             NSLayoutConstraint(item: label, attribute: .top, relatedBy: .equal, toItem: constraintTarget, attribute: .bottom, multiplier: 1.0, constant: 8.0),
             NSLayoutConstraint(item: label, attribute: .left, relatedBy: .equal, toItem: self, attribute: .left, multiplier: 1.0, constant: 24),
             NSLayoutConstraint(item: label, attribute: .right, relatedBy: .equal, toItem: self, attribute: .right, multiplier: 1.0, constant: -24),
@@ -69,7 +75,7 @@ public class AlertDialog: UIView {
     // MARK: Getter & Setter
     private(set) lazy var label: MoeLabel = {
         let appear = Appearance()
-        appear.text("Loading").font(15).color(self.themeColor).lines(0)
+        appear.text("Loading").font(15).color(self.themeColor).lines(0).alignment(.center)
         return MoeUI.makeLabel(toView: self, with: appear)
     }()
 

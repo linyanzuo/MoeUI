@@ -18,8 +18,9 @@ protocol AppearanceApply where Self: UIView {
 }
 extension AppearanceApply {
     public func applyAttribute() {
-        applyBackgroundAttribute()
-        applyShadowAttribute()
+        if appearance.generaler != nil { applyGeneralAttribute() }
+        if appearance.backgrounder != nil { applyBackgroundAttribute() }
+        if appearance.shadower != nil { applyShadowAttribute() }
         if appearance.texters.count > 0 { applyTextAttribute() }
         if appearance.imagers.count > 0 { applyImageAttribute() }
         if appearance.eventers.count > 0 { applyEventAppearance() }
@@ -27,13 +28,15 @@ extension AppearanceApply {
 
     // MARK: Attribute apply methods
     public func applyGeneralAttribute() {
-        let attr = self.appearance.generaler.attribute
+        guard let attr = self.appearance.generaler?.attribute
+            else { return }
 
-        if attr.alpha != nil { self.alpha = alpha }
+        if attr.alpha != nil { self.alpha = attr.alpha! }
     }
 
     public func applyBackgroundAttribute() {
-        let attr = self.appearance.backgrounder.attribute
+        guard let attr = self.appearance.backgrounder?.attribute
+            else { return }
 
         guard attr.color != nil else { return }
         self.backgroundColor = attr.color
@@ -77,8 +80,8 @@ extension AppearanceApply {
     }
 
     public func applyShadowAttribute() {
-        let attr = self.appearance.shadower.attribute
-        guard attr.color != nil else { return }
+        guard let attr = self.appearance.shadower?.attribute, attr.color != nil
+            else { return }
 
         layer.shadowColor = attr.color!.cgColor
         layer.shadowOpacity = attr.opacity ?? 1.0
@@ -91,7 +94,9 @@ extension AppearanceApply {
 
     // MARK: Layout update methods
     public func updateShadowIfLayoutSubviews() {
-        let shadower = self.appearance.shadower.attribute
+        guard let shadower = self.appearance.shadower?.attribute
+            else { return }
+
         if shadower.color != nil {
             let cornerRadius = shadower.cornerRadius ?? 0.0
             let rect = bounds.insetBy(dx: -(shadower.extend?.width ?? 0.0),
@@ -102,7 +107,9 @@ extension AppearanceApply {
     }
 
     public func updateGradientIfLayoutSubviews() {
-        let backgrounder = self.appearance.backgrounder.attribute
+        guard let backgrounder = self.appearance.backgrounder?.attribute
+            else { return }
+
         if backgrounder.gradient != nil {
             self.gradientLayer.frame = self.layer.bounds
         }

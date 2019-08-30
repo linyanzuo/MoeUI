@@ -10,7 +10,9 @@ import UIKit
 
 public class MoeLabel: UILabel, AppearanceUnity, AppearanceApply {
     public func applyBackgroundAttribute() {
-        let attr = self.appearance.backgrounder.attribute
+        guard let attr = self.appearance.backgrounder?.attribute
+            else { return }
+
         if attr.color != nil { self.layer.backgroundColor = attr.color?.cgColor }
         if attr.cornerRadius != nil {
             if attr.isMaskCornerRadius == true  {
@@ -45,6 +47,7 @@ public class MoeLabel: UILabel, AppearanceUnity, AppearanceApply {
             if attr.text != nil { self.text = attr.text }
             if attr.color != nil { self.textColor = attr.color }
             if attr.font != nil { self.font = attr.font }
+            if attr.alignment != nil { self.textAlignment = attr.alignment! }
             if attr.numberOfLines != nil { self.numberOfLines = attr.numberOfLines! }
             if attr.firstLineIndent != nil {
                 var attrDict: [NSAttributedString.Key: Any] = [:]
@@ -63,8 +66,8 @@ public class MoeLabel: UILabel, AppearanceUnity, AppearanceApply {
     }
 
     public func applyShadowAttribute() {
-        let attr = self.appearance.shadower.attribute
-        guard attr.color != nil else { return }
+        guard let attr = self.appearance.shadower?.attribute, attr.color != nil
+            else { return }
 
         layer.shadowColor = attr.color!.cgColor
         layer.shadowOpacity = attr.opacity ?? 1.0
@@ -85,7 +88,7 @@ extension MoeUI {
         return label
     }
 
-    public class func makeLabel(toView: UIView?, with appearance: Appearance) -> MoeLabel {
+    public class func makeLabel(toView: UIView? = nil, with appearance: Appearance) -> MoeLabel {
         let label = MoeLabel(appearance: appearance)
         toView?.addSubview(label)
         return label

@@ -15,6 +15,7 @@ internal struct TextAttribute: AppearanceAttribute {
     internal var numberOfLines: Int?
     internal var firstLineIndent: CGFloat?
     internal var state: UIControl.State?
+    internal var alignment: NSTextAlignment?
 }
 
 
@@ -54,6 +55,12 @@ public class TextAttributer: AppearanceAttributer, Codable {
     @discardableResult
     public func firstLineIndent(_ indent: CGFloat) -> Self {
         attribute.firstLineIndent = indent
+        return self
+    }
+
+    @discardableResult
+    public func alignment(_ alignment: NSTextAlignment) -> Self {
+        attribute.alignment = alignment
         return self
     }
 

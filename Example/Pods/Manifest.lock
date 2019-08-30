@@ -1,5 +1,21 @@
 PODS:
-  - MoeUI (0.1.0)
+  - MoeUI (1.1.1):
+    - MoeUI/Alert (= 1.1.1)
+    - MoeUI/Appearance (= 1.1.1)
+    - MoeUI/Common (= 1.1.1)
+    - MoeUI/PanDrawer (= 1.1.1)
+    - MoeUI/Runtime (= 1.1.1)
+  - MoeUI/Alert (1.1.1):
+    - MoeUI/Common
+  - MoeUI/Appearance (1.1.1):
+    - MoeUI/Common
+    - MoeUI/Runtime
+  - MoeUI/Common (1.1.1)
+  - MoeUI/PanDrawer (1.1.1):
+    - MoeUI/Common
+    - MoeUI/Runtime
+  - MoeUI/Runtime (1.1.1):
+    - MoeUI/Common
 
 DEPENDENCIES:
   - MoeUI (from `../`)
@@ -9,7 +25,7 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  MoeUI: 16c08893e3624fd3494bdf223cea82c5f77befd5
+  MoeUI: fd3ba6ab5325ad030e3da85f90702ea595516b0b
 
 PODFILE CHECKSUM: 7596bd67a0f0d8f245b75bdb371a1d4ce18cea08
 

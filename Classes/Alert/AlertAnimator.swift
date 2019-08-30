@@ -8,7 +8,7 @@
 import UIKit
 
 
-public protocol SheetAnimatorProtocol where Self: UIViewController {
+public protocol AlertAnimatorProtocol where Self: UIViewController {
     func contentViewForAnimation() -> UIView
     func maskViewForAnimation() -> UIView
 }
@@ -26,14 +26,14 @@ public class AlertAnimator: NSObject, UIViewControllerAnimatedTransitioning, CAA
         case sheet
     }
 
-    let DEFAULT_SIZE = CGFloat(32)
+    private let kBezelCornerRadius: CGFloat = 5.0
 
     // MARK: Object Life Cycle
-    var owner: SheetAnimatorProtocol
+    var owner: AlertAnimatorProtocol
     var transitionType: TransitionType
     var animationType: AnimationType
 
-    public init(owner: SheetAnimatorProtocol, transitionType: TransitionType, animationType: AnimationType = .sheet) {
+    public init(owner: AlertAnimatorProtocol, transitionType: TransitionType, animationType: AnimationType = .sheet) {
         self.owner = owner
         self.transitionType = transitionType
         self.animationType = animationType
@@ -55,7 +55,7 @@ public class AlertAnimator: NSObject, UIViewControllerAnimatedTransitioning, CAA
     // MARK: Private Method
     private func animatePresentTransition(using transitionContext: UIViewControllerContextTransitioning) {
         guard let _ = transitionContext.viewController(forKey: .from),
-            let toVC = transitionContext.viewController(forKey: .to) as? SheetAnimatorProtocol
+            let toVC = transitionContext.viewController(forKey: .to) as? AlertAnimatorProtocol
         else { return }
 
         let containerView = transitionContext.containerView
@@ -65,12 +65,12 @@ public class AlertAnimator: NSObject, UIViewControllerAnimatedTransitioning, CAA
         if animationType == .sheet {
             sheetAnimation(containerView: containerView, using: transitionContext, transitionType: .present)
         } else if animationType == .alert {
-            extendOutAnimation(using: transitionContext, transitionType: .present)
+            alertAnimation(using: transitionContext, transitionType: .present)
         }
     }
 
     private func animateDismissTransition(using transitionContext: UIViewControllerContextTransitioning) {
-        guard let fromVC = transitionContext.viewController(forKey: .from) as? SheetAnimatorProtocol,
+        guard let fromVC = transitionContext.viewController(forKey: .from) as? AlertAnimatorProtocol,
             let _ = transitionContext.viewController(forKey: .to)
         else { return }
 
@@ -80,7 +80,7 @@ public class AlertAnimator: NSObject, UIViewControllerAnimatedTransitioning, CAA
         if animationType == .sheet {
             sheetAnimation(containerView: containerView, using: transitionContext, transitionType: .dismiss)
         } else if animationType == .alert {
-            extendOutAnimation(using: transitionContext, transitionType: .dismiss)
+            alertAnimation(using: transitionContext, transitionType: .dismiss)
         }
     }
 
@@ -113,40 +113,59 @@ public class AlertAnimator: NSObject, UIViewControllerAnimatedTransitioning, CAA
         }
     }
 
-    private func extendOutAnimation(using transitionContext: UIViewControllerContextTransitioning, transitionType: TransitionType) {
+    private func alertAnimation(using transitionContext: UIViewControllerContextTransitioning, transitionType: TransitionType) {
         let maskView = owner.maskViewForAnimation()
-        let contentView = owner.contentViewForAnimation()
+        let maskOpacity = maskView.alpha
+        let bezelView = owner.contentViewForAnimation()
         let duration = self.transitionDuration(using: transitionContext)
-        let defaultSource = CGRect(x: (MScreen.width - DEFAULT_SIZE) / 2,
-                                   y: (MScreen.height - DEFAULT_SIZE) / 2,
-                                   width: DEFAULT_SIZE,
-                                   height: DEFAULT_SIZE)
+
+        let bezelCornerRadii = CGSize(width: kBezelCornerRadius, height: kBezelCornerRadius)
+        let sourceRect = CGRect(x: bezelView.bounds.width / 2,
+                                y: bezelView.bounds.height / 2,
+                                width: kBezelCornerRadius * 2,
+                                height: kBezelCornerRadius * 2)
+        let sourcePath = UIBezierPath(roundedRect: sourceRect, byRoundingCorners: .allCorners, cornerRadii: bezelCornerRadii)
+        let destinPtah = UIBezierPath(roundedRect: bezelView.bounds, byRoundingCorners: .allCorners, cornerRadii: bezelCornerRadii)
+        let mask = CAShapeLayer()
+
+        let pathAnimation = CABasicAnimation(keyPath:"path")
+        pathAnimation.duration = duration
+        pathAnimation.delegate = self
+        pathAnimation.isRemovedOnCompletion = true
+        pathAnimation.setValue(mask, forKey: "mask")
+        pathAnimation.setValue(transitionContext, forKey: "transitionContext")
+
+        let opacityAnimation = CABasicAnimation(keyPath: "opacity")
+        opacityAnimation.duration = duration
+        opacityAnimation.duration = duration
+        opacityAnimation.isRemovedOnCompletion = true
 
         if transitionType == .present {
-            let maskViewOriginalAlpha = maskView.alpha
-            maskView.alpha = 0.0
-            let contentViewOriginalAlpha = contentView.alpha
-            contentView.alpha = 0.0
-            let contentViewOriginalFrame = contentView.frame
-            contentView.frame = defaultSource
-
-            UIView.animate(withDuration: duration, animations: {
-                maskView.alpha = maskViewOriginalAlpha
-                contentView.frame = contentViewOriginalFrame
-                contentView.alpha = contentViewOriginalAlpha
-            }) { (isFinish) in
-                let isComplete = !transitionContext.transitionWasCancelled
-                transitionContext.completeTransition(isComplete)
-            }
+            pathAnimation.fromValue = sourcePath.cgPath
+            pathAnimation.toValue = destinPtah.cgPath
+            opacityAnimation.fromValue = 0.0
+            opacityAnimation.toValue = maskOpacity
+            mask.path = destinPtah.cgPath
         } else if transitionType == .dismiss {
-            UIView.animate(withDuration: duration, animations: {
-                maskView.alpha = 0.0
-                contentView.frame = defaultSource
-                contentView.alpha = 0.0
-            }) { (isFinish) in
-                let isComplete = !transitionContext.transitionWasCancelled
-                transitionContext.completeTransition(isComplete)
-            }
+            pathAnimation.fromValue = destinPtah.cgPath
+            pathAnimation.toValue = sourcePath.cgPath
+            opacityAnimation.fromValue = maskOpacity
+            opacityAnimation.toValue = 0.0
+            mask.path = sourcePath.cgPath
+        }
+
+        maskView.layer.add(opacityAnimation, forKey: "opacityAnimation")
+        mask.add(pathAnimation, forKey: "pathAnimation")
+        bezelView.layer.mask = mask
+    }
+
+    // MARK: CAAnimationDelegate
+    public func animationDidStop(_ anim: CAAnimation, finished flag: Bool) {
+        if let mask = anim.value(forKey: "mask") as? CAShapeLayer,
+            let transitionContext = anim.value(forKey: "transitionContext") as? UIViewControllerContextTransitioning
+        {
+            mask.removeFromSuperlayer()
+            transitionContext.completeTransition(flag)
         }
     }
 }
