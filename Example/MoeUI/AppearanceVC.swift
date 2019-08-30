@@ -88,14 +88,13 @@ class AppearanceVC: UIViewController, Runtime {
 
         bgBtn.updateAppearance { (attr) in
 //            attr.image(UIImage(named: "color-icon")!).cornerRadius(16)
-//            attr.background(color: UIColor.purple).cornerRadius(16).border(2, color: .blue)
 //            attr.shadow(color: UIColor.red).cornerRadius(16)
-            attr.background(color: .purple).cornerRadius(8)
-                .gradient(startPoint: CGPoint(x: 0, y: 0.5),
-                          endPoint: CGPoint(x: 1.0, y: 0.5),
-                          colors: [.red, .blue],
-                          locations: [0, 1])
-            attr.text("Button").color(.black)
+            attr.background(color: UIColor(rgb: 0xF43431)).cornerRadius(5)
+                .gradient(startPoint: CGPoint(x: 0, y: 0),
+                          endPoint: CGPoint(x: 1, y: 1),
+                          colors: [UIColor(rgb: 0x048DF7), UIColor(rgb: 0x5F4AF0)],
+                          locations: [0.0, 1.0])
+            attr.text("取消").color(.white).font(18, weight: .bold)
             attr.event(target: self, action: #selector(btnAction))
             attr.event(target: self, action: #selector(logAction), for: .touchDown)
         }

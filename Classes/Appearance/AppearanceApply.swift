@@ -18,11 +18,11 @@ protocol AppearanceApply where Self: UIView {
 }
 extension AppearanceApply {
     public func applyAttribute() {
+        applyBackgroundAttribute()
+        applyShadowAttribute()
         if appearance.texters.count > 0 { applyTextAttribute() }
         if appearance.imagers.count > 0 { applyImageAttribute() }
         if appearance.eventers.count > 0 { applyEventAppearance() }
-        applyBackgroundAttribute()
-        applyShadowAttribute()
     }
 
     // MARK: Attribute apply methods
