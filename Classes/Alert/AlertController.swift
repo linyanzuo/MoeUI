@@ -56,6 +56,8 @@ public class AlertController: UIViewController, UIViewControllerTransitioningDel
         self.view.addConstraints([
             NSLayoutConstraint(item: bezelView, attribute: .centerX, relatedBy: .equal, toItem: self.view, attribute: .centerX, multiplier: 1.0, constant: 0.0),
             NSLayoutConstraint(item: bezelView, attribute: .centerY, relatedBy: .equal, toItem: self.view, attribute: .centerY, multiplier: 1.0, constant: 0.0),
+            NSLayoutConstraint(item: bezelView, attribute: .left, relatedBy: .greaterThanOrEqual, toItem: self.view, attribute: .left, multiplier: 1.0, constant: 24),
+            NSLayoutConstraint(item: bezelView, attribute: .right, relatedBy: .lessThanOrEqual, toItem: self.view, attribute: .right, multiplier: 1.0, constant: -24)
         ])
     }
 

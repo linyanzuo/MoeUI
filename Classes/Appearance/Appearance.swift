@@ -88,6 +88,20 @@ public class Appearance: NSObject {
         return self
     }
 
+    @discardableResult
+    public func frame(_ frame: CGRect) -> Self {
+        if generaler == nil { generaler = GeneralAttributer() }
+        generaler!.frame(frame)
+        return self
+    }
+
+    @discardableResult
+    public func userInterfaceEnable(_ enable: Bool) -> Self {
+        if generaler == nil { generaler = GeneralAttributer() }
+        generaler!.userInterfaceEnable(enable)
+        return self
+    }
+
     // MARK: Private Method
     private func getImager(for state: UIControl.State) -> ImageAttributer {
 

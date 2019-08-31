@@ -50,12 +50,13 @@ public class GlobalAlertManager {
         window.isHidden = false
         window.addSubview(customView)
         alerts.append((id!, customView))
-        MLog(window.subviews)
 
         customView.translatesAutoresizingMaskIntoConstraints = false
         window.addConstraints([
             NSLayoutConstraint(item: customView, attribute: .centerX, relatedBy: .equal, toItem: window, attribute: .centerX, multiplier: 1.0, constant: 0.0),
             NSLayoutConstraint(item: customView, attribute: .centerY, relatedBy: .equal, toItem: window, attribute: .centerY, multiplier: 1.0, constant: 0.0),
+            NSLayoutConstraint(item: customView, attribute: .left, relatedBy: .greaterThanOrEqual, toItem: window, attribute: .left, multiplier: 1.0, constant: 24),
+            NSLayoutConstraint(item: customView, attribute: .right, relatedBy: .lessThanOrEqual, toItem: window, attribute: .right, multiplier: 1.0, constant: -24)
         ])
     }
 

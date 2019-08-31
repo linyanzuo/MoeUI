@@ -6,7 +6,8 @@
 //
 //  常量 - UI功能
 
-import Foundation
+import UIKit
+
 
 public struct MScreen {
     public static let sacle = UIScreen.main.scale

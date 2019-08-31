@@ -31,7 +31,9 @@ extension AppearanceApply {
         guard let attr = self.appearance.generaler?.attribute
             else { return }
 
+        if attr.frame != nil { self.frame = attr.frame! }
         if attr.alpha != nil { self.alpha = attr.alpha! }
+        if attr.userInterfaceEnable != nil { self.isUserInteractionEnabled = attr.userInterfaceEnable! }
     }
 
     public func applyBackgroundAttribute() {

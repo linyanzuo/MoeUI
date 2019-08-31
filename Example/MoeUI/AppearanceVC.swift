@@ -97,6 +97,7 @@ class AppearanceVC: UIViewController, Runtime {
             attr.text("取消").color(.white).font(18, weight: .bold)
             attr.event(target: self, action: #selector(btnAction))
             attr.event(target: self, action: #selector(logAction), for: .touchDown)
+            attr.userInterfaceEnable(false)
         }
 //        bgBtn.addTarget(self, action: #selector(btnAction), for: .touchUpInside)
         imgBtn.updateAppearance { (attr) in
