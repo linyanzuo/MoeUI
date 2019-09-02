@@ -21,7 +21,7 @@ internal struct TextAttribute: AppearanceAttribute {
 
 public class TextAttributer: AppearanceAttributer, Codable {
     @discardableResult
-    public func text(_ text: String, state: UIControl.State = .normal) -> Self {
+    public func text(_ text: String?, state: UIControl.State = .normal) -> Self {
         attribute.text = text
         attribute.state = state
         return self
@@ -51,7 +51,6 @@ public class TextAttributer: AppearanceAttributer, Codable {
         return self
     }
 
-    @available (iOS 11.0, *)
     @discardableResult
     public func firstLineIndent(_ indent: CGFloat) -> Self {
         attribute.firstLineIndent = indent

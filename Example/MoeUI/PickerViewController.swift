@@ -16,7 +16,7 @@ protocol PSPickerViewControllerDelegate {
 
 
 @available(iOS 9.0, *)
-class PickerViewController: UIViewController, AlertAnimatorProtocol, UIPickerViewDelegate, UIPickerViewDataSource, UIViewControllerTransitioningDelegate {
+class PickerViewController: UIViewController, MaskAlertAnimatorProtocol, UIPickerViewDelegate, UIPickerViewDataSource, UIViewControllerTransitioningDelegate {
     private(set) var pickerTitle: String
     private(set) var itemTitles: [String]
 
@@ -99,11 +99,11 @@ class PickerViewController: UIViewController, AlertAnimatorProtocol, UIPickerVie
 
     // MARK: UIViewControllerTransitioningDelegate
     public func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-        return AlertAnimator(owner: self, transitionType: .present)
+        return MaskAlertAnimator(owner: self, transitionType: .present)
     }
 
     public func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-        return AlertAnimator(owner: self, transitionType: .dismiss)
+        return MaskAlertAnimator(owner: self, transitionType: .dismiss)
     }
 
     // MARK: Event Response

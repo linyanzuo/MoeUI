@@ -18,22 +18,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window = UIWindow(frame: MScreen.bounds)
         window?.makeKeyAndVisible()
 
+        let usageListVC = UsageListVC()
+        let navVC = UINavigationController(rootViewController: usageListVC)
+        window?.rootViewController = navVC
+        window?.makeKeyAndVisible()
+
         // Gradient Demo
 //        let gradientVC = GradientVC.storyboardInstance()
 //        window?.rootViewController = gradientVC
 
         // Appearance Demo
-//        CALayer.swizzleLayoutSubviews()
-//        UIView.swizzleLayoutSubviews()
-//        UIImageView.swizzleLayoutSubviews()
-//        UIButton.swizzleLayoutSubviews()
-
-        registerAppearance()
-
-        let appearanceVC = AppearanceVC.storyboardInstance()!
-        let navVC = UINavigationController(rootViewController: appearanceVC)
-        window?.rootViewController = navVC
-        window?.makeKeyAndVisible()
+//        registerAppearance()
+//
+//        let appearanceVC = AppearanceVC.storyboardInstance()!
+//        let navVC = UINavigationController(rootViewController: appearanceVC)
+//        window?.rootViewController = navVC
+//        window?.makeKeyAndVisible()
 
         // SidePanDrawer Demo
 //        let mainVC = SideMainVC.storyboardInstance()

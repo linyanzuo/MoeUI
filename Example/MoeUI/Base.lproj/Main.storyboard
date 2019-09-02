@@ -260,45 +260,45 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" Label " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IQ4-9f-g6g" customClass="MoeLabel" customModule="MoeUI">
-                                <rect key="frame" x="162" y="172" width="51" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BdF-KZ-Vas" customClass="MoeView" customModule="MoeUI">
-                                <rect key="frame" x="16" y="313" width="343" height="200"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <rect key="frame" x="16" y="60" width="343" height="100"/>
+                                <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="200" id="Xfn-c8-MDW"/>
+                                    <constraint firstAttribute="height" constant="100" id="Xfn-c8-MDW"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gVO-Hy-0cN" customClass="MoeView" customModule="MoeUI">
+                                <rect key="frame" x="16" y="176" width="343" height="100"/>
+                                <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="3ow-Ig-8ht"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="100" id="5PI-mE-EuH"/>
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" Label " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PjR-Y6-NVo" customClass="MoeLabel" customModule="MoeUI">
-                                <rect key="frame" x="143" y="209" width="89.333333333333314" height="38.333333333333343"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="32"/>
+                                <rect key="frame" x="16.000000000000004" y="300" width="53.333333333333343" height="21.666666666666686"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" Label " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VFd-cq-wIc" customClass="MoeLabel" customModule="MoeUI">
+                                <rect key="frame" x="16.000000000000004" y="337.66666666666669" width="53.333333333333343" height="21.666666666666686"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="g63-vW-Q8z" customClass="MoeImageView" customModule="MoeUI">
-                                <rect key="frame" x="123.66666666666669" y="529" width="128" height="128"/>
+                                <rect key="frame" x="123.66666666666669" y="618" width="128" height="128"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="128" id="7TH-Sl-62d"/>
                                     <constraint firstAttribute="height" constant="128" id="AFs-09-Qlv"/>
                                 </constraints>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9Eg-rf-VXW" customClass="MoeButton" customModule="MoeUI">
-                                <rect key="frame" x="32" y="164" width="64" height="32"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Th5-ia-u9h" customClass="MoeButton" customModule="MoeUI">
+                                <rect key="frame" x="123.66666666666669" y="383.33333333333331" width="128" height="44"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="64" id="gMf-GL-Vkm"/>
-                                    <constraint firstAttribute="height" constant="32" id="vwb-y9-XJu"/>
-                                </constraints>
-                                <state key="normal" title="Button"/>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0Xy-0v-CPO" customClass="MoeButton" customModule="MoeUI">
-                                <rect key="frame" x="32" y="212" width="64" height="32"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="64" id="mpO-LS-0J8"/>
-                                    <constraint firstAttribute="height" constant="32" id="z3M-3e-Cpe"/>
+                                    <constraint firstAttribute="width" constant="128" id="GMW-r6-xOy"/>
+                                    <constraint firstAttribute="height" constant="44" id="L4C-Xy-eeX"/>
                                 </constraints>
                                 <state key="normal" title="Button"/>
                             </button>
@@ -306,32 +306,33 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="BdF-KZ-Vas" secondAttribute="trailing" constant="16" id="2bM-Wk-gxc"/>
+                            <constraint firstItem="VFd-cq-wIc" firstAttribute="leading" secondItem="PjR-Y6-NVo" secondAttribute="leading" id="4dT-hz-HUS"/>
+                            <constraint firstItem="BdF-KZ-Vas" firstAttribute="top" secondItem="L10-J2-rLj" secondAttribute="bottom" constant="16" id="7mO-ts-Bqw"/>
                             <constraint firstItem="BdF-KZ-Vas" firstAttribute="leading" secondItem="8H9-pi-y6S" secondAttribute="leading" constant="16" id="HpM-Af-rXX"/>
-                            <constraint firstItem="0Xy-0v-CPO" firstAttribute="leading" secondItem="8H9-pi-y6S" secondAttribute="leadingMargin" constant="16" id="THd-ZF-49j"/>
+                            <constraint firstItem="PjR-Y6-NVo" firstAttribute="leading" secondItem="BdF-KZ-Vas" secondAttribute="leading" id="KPb-YW-6jX"/>
+                            <constraint firstItem="gVO-Hy-0cN" firstAttribute="top" secondItem="BdF-KZ-Vas" secondAttribute="bottom" constant="16" id="YUL-VC-XvX"/>
                             <constraint firstItem="g63-vW-Q8z" firstAttribute="centerX" secondItem="8H9-pi-y6S" secondAttribute="centerX" id="bAa-oW-sH4"/>
-                            <constraint firstItem="g63-vW-Q8z" firstAttribute="top" secondItem="BdF-KZ-Vas" secondAttribute="bottom" constant="16" id="bWs-tx-E5z"/>
-                            <constraint firstItem="PjR-Y6-NVo" firstAttribute="centerX" secondItem="8H9-pi-y6S" secondAttribute="centerX" id="e8Q-ap-WUv"/>
-                            <constraint firstItem="IQ4-9f-g6g" firstAttribute="top" secondItem="L10-J2-rLj" secondAttribute="bottom" constant="128" id="iJq-gh-u3c"/>
-                            <constraint firstItem="BdF-KZ-Vas" firstAttribute="top" secondItem="IQ4-9f-g6g" secondAttribute="bottom" constant="120" id="jM4-u7-NCI"/>
-                            <constraint firstItem="0Xy-0v-CPO" firstAttribute="top" secondItem="9Eg-rf-VXW" secondAttribute="bottom" constant="16" id="lQG-Ed-MVH"/>
-                            <constraint firstItem="9Eg-rf-VXW" firstAttribute="leading" secondItem="8H9-pi-y6S" secondAttribute="leadingMargin" constant="16" id="ls4-Y2-tH6"/>
-                            <constraint firstItem="PjR-Y6-NVo" firstAttribute="top" secondItem="IQ4-9f-g6g" secondAttribute="bottom" constant="16" id="t5Y-i3-4Ql"/>
-                            <constraint firstItem="9Eg-rf-VXW" firstAttribute="top" secondItem="L10-J2-rLj" secondAttribute="bottom" constant="120" id="tT7-1B-yOp"/>
-                            <constraint firstItem="IQ4-9f-g6g" firstAttribute="centerX" secondItem="8H9-pi-y6S" secondAttribute="centerX" id="zZr-Sn-LnA"/>
+                            <constraint firstAttribute="trailing" secondItem="gVO-Hy-0cN" secondAttribute="trailing" constant="16" id="fWu-ek-M4i"/>
+                            <constraint firstItem="Th5-ia-u9h" firstAttribute="centerX" secondItem="8H9-pi-y6S" secondAttribute="centerX" id="m9g-AK-EcM"/>
+                            <constraint firstItem="Th5-ia-u9h" firstAttribute="top" secondItem="VFd-cq-wIc" secondAttribute="bottom" constant="24" id="o5r-OB-qvd"/>
+                            <constraint firstItem="VFd-cq-wIc" firstAttribute="top" secondItem="PjR-Y6-NVo" secondAttribute="bottom" constant="16" id="oyH-Mp-gqx"/>
+                            <constraint firstItem="PjR-Y6-NVo" firstAttribute="top" secondItem="gVO-Hy-0cN" secondAttribute="bottom" constant="24" id="ug8-sT-yJ1"/>
+                            <constraint firstItem="cNg-u4-xbE" firstAttribute="top" secondItem="g63-vW-Q8z" secondAttribute="bottom" constant="32" id="z1J-rg-aZe"/>
+                            <constraint firstItem="gVO-Hy-0cN" firstAttribute="leading" secondItem="8H9-pi-y6S" secondAttribute="leading" constant="16" id="zhZ-pA-Qej"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="bgBtn" destination="9Eg-rf-VXW" id="Spr-2F-ZXB"/>
-                        <outlet property="bigLab" destination="PjR-Y6-NVo" id="ddf-uf-GTr"/>
+                        <outlet property="bgBtn" destination="Th5-ia-u9h" id="eQw-VR-82J"/>
+                        <outlet property="bigLabel" destination="VFd-cq-wIc" id="bfi-kY-nfQ"/>
                         <outlet property="colorView" destination="BdF-KZ-Vas" id="cKU-8A-r3x"/>
-                        <outlet property="imgBtn" destination="0Xy-0v-CPO" id="qrp-Hs-bYa"/>
+                        <outlet property="gradientView" destination="gVO-Hy-0cN" id="wQH-Jo-khJ"/>
                         <outlet property="imgView" destination="g63-vW-Q8z" id="qy0-0j-BGR"/>
-                        <outlet property="label" destination="IQ4-9f-g6g" id="gIu-sg-w7W"/>
+                        <outlet property="label" destination="PjR-Y6-NVo" id="0OQ-YQ-HkW"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cVg-CF-3kw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2150" y="7"/>
+            <point key="canvasLocation" x="2149.5999999999999" y="6.6502463054187197"/>
         </scene>
         <!--GradientVC-->
         <scene sceneID="g61-yN-CBv">

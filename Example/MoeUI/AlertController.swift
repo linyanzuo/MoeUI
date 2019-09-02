@@ -9,16 +9,16 @@ import UIKit
 import MoeUI
 
 
-class MoeAlertController: UIViewController, UIViewControllerTransitioningDelegate, AlertAnimatorProtocol {
+class MoeAlertController: UIViewController, UIViewControllerTransitioningDelegate, MaskAlertAnimatorProtocol {
     // MARK: View Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = .white
 
-        setupSubview()
+        setupViewConstraint()
     }
 
-    func setupSubview() {
+    func setupViewConstraint() {
         maskBtn.translatesAutoresizingMaskIntoConstraints = false
         self.view.addConstraints([
             NSLayoutConstraint(item: maskBtn, attribute: .top, relatedBy: .equal, toItem: self.view, attribute: .top, multiplier: 1.0, constant: 0.0),
@@ -26,6 +26,7 @@ class MoeAlertController: UIViewController, UIViewControllerTransitioningDelegat
             NSLayoutConstraint(item: maskBtn, attribute: .right, relatedBy: .equal, toItem: self.view, attribute: .right, multiplier: 1.0, constant: 0.0),
             NSLayoutConstraint(item: maskBtn, attribute: .bottom, relatedBy: .equal, toItem: self.view, attribute: .bottom, multiplier: 1.0, constant: 0.0)
         ])
+
         contentView.translatesAutoresizingMaskIntoConstraints = false
         self.view.addConstraints([
             NSLayoutConstraint(item: contentView, attribute: .centerX, relatedBy: .equal, toItem: self.view, attribute: .centerX, multiplier: 1.0, constant: 0.0),
@@ -33,15 +34,19 @@ class MoeAlertController: UIViewController, UIViewControllerTransitioningDelegat
             NSLayoutConstraint(item: contentView, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: 280),
             NSLayoutConstraint(item: contentView, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: 128)
         ])
+
+        setupBezelSizeConstraint()
     }
+
+    open func setupBezelSizeConstraint() {}
 
     // MARK: UIViewControllerTransitioningDelegate
     public func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-        return AlertAnimator(owner: self, transitionType: .present, animationType: .alert)
+        return MaskAlertAnimator(owner: self, transitionType: .present, animationType: .alert)
     }
 
     public func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-        return AlertAnimator(owner: self, transitionType: .dismiss, animationType: .alert)
+        return MaskAlertAnimator(owner: self, transitionType: .dismiss, animationType: .alert)
     }
 
     // MARK: SheetAnimatorProtocol
@@ -59,7 +64,7 @@ class MoeAlertController: UIViewController, UIViewControllerTransitioningDelegat
             appear.background(color: .black)
         }
         maskBtn.alpha = 0.6
-        maskBtn.addTarget(self, action: #selector(maskBtnAction(_:)), for: .touchUpInside)
+        maskBtn.addTarget(self, action: #selector(maskTapAction(_:)), for: .touchUpInside)
         return maskBtn
     }()
 
@@ -70,7 +75,7 @@ class MoeAlertController: UIViewController, UIViewControllerTransitioningDelegat
     }()
 
     // MARK: Event Response
-    @objc func maskBtnAction(_ sender: UIButton) {
+    @objc func maskTapAction(_ sender: UIButton) {
         self.dismiss(animated: true, completion: nil)
     }
 }

@@ -8,14 +8,14 @@
 import UIKit
 
 
-public protocol AlertAnimatorProtocol where Self: UIViewController {
+public protocol MaskAlertAnimatorProtocol where Self: UIViewController {
     func contentViewForAnimation() -> UIView
     func maskViewForAnimation() -> UIView
 }
 
 
-/// Sheet Transition Animation Performer
-public class AlertAnimator: NSObject, UIViewControllerAnimatedTransitioning, CAAnimationDelegate {
+/// Transition Animation Performer
+public class MaskAlertAnimator: NSObject, UIViewControllerAnimatedTransitioning, CAAnimationDelegate {
     public enum TransitionType {
         case present
         case dismiss
@@ -26,14 +26,14 @@ public class AlertAnimator: NSObject, UIViewControllerAnimatedTransitioning, CAA
         case sheet
     }
 
-    private let kBezelCornerRadius: CGFloat = 5.0
+    private let kBezelCornerRadius: CGFloat = 8.0
 
     // MARK: Object Life Cycle
-    var owner: AlertAnimatorProtocol
+    var owner: MaskAlertAnimatorProtocol
     var transitionType: TransitionType
     var animationType: AnimationType
 
-    public init(owner: AlertAnimatorProtocol, transitionType: TransitionType, animationType: AnimationType = .sheet) {
+    public init(owner: MaskAlertAnimatorProtocol, transitionType: TransitionType, animationType: AnimationType = .sheet) {
         self.owner = owner
         self.transitionType = transitionType
         self.animationType = animationType
@@ -55,7 +55,7 @@ public class AlertAnimator: NSObject, UIViewControllerAnimatedTransitioning, CAA
     // MARK: Private Method
     private func animatePresentTransition(using transitionContext: UIViewControllerContextTransitioning) {
         guard let _ = transitionContext.viewController(forKey: .from),
-            let toVC = transitionContext.viewController(forKey: .to) as? AlertAnimatorProtocol
+            let toVC = transitionContext.viewController(forKey: .to) as? MaskAlertAnimatorProtocol
         else { return }
 
         let containerView = transitionContext.containerView
@@ -63,14 +63,14 @@ public class AlertAnimator: NSObject, UIViewControllerAnimatedTransitioning, CAA
         toVC.view.layoutIfNeeded()
 
         if animationType == .sheet {
-            sheetAnimation(containerView: containerView, using: transitionContext, transitionType: .present)
+            animation(containerView: containerView, using: transitionContext, transitionType: .present)
         } else if animationType == .alert {
             alertAnimation(using: transitionContext, transitionType: .present)
         }
     }
 
     private func animateDismissTransition(using transitionContext: UIViewControllerContextTransitioning) {
-        guard let fromVC = transitionContext.viewController(forKey: .from) as? AlertAnimatorProtocol,
+        guard let fromVC = transitionContext.viewController(forKey: .from) as? MaskAlertAnimatorProtocol,
             let _ = transitionContext.viewController(forKey: .to)
         else { return }
 
@@ -78,14 +78,14 @@ public class AlertAnimator: NSObject, UIViewControllerAnimatedTransitioning, CAA
         containerView.addSubview(fromVC.view)
 
         if animationType == .sheet {
-            sheetAnimation(containerView: containerView, using: transitionContext, transitionType: .dismiss)
+            animation(containerView: containerView, using: transitionContext, transitionType: .dismiss)
         } else if animationType == .alert {
             alertAnimation(using: transitionContext, transitionType: .dismiss)
         }
     }
 
     // MARK: Animation
-    private func sheetAnimation(containerView: UIView, using transitionContext: UIViewControllerContextTransitioning, transitionType: TransitionType) {
+    private func animation(containerView: UIView, using transitionContext: UIViewControllerContextTransitioning, transitionType: TransitionType) {
         let maskView = owner.maskViewForAnimation()
         let contentView = owner.contentViewForAnimation()
         let duration = self.transitionDuration(using: transitionContext)

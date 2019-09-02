@@ -20,7 +20,7 @@ public class Appearance: NSObject {
     private(set) var eventers: [EventAttributer] = []
 
     @discardableResult
-    public func text(_ text: String, state: UIControl.State = .normal) -> TextAttributer {
+    public func text(_ text: String?, state: UIControl.State = .normal) -> TextAttributer {
         var texter: TextAttributer? = nil
         for existedTexter in texters {
             if existedTexter.attribute.state == state {
@@ -36,9 +36,9 @@ public class Appearance: NSObject {
     }
 
     @discardableResult
-    public func background(color: UIColor) -> BackgroundAttributer {
+    public func background(color: UIColor?) -> BackgroundAttributer {
         if backgrounder == nil { backgrounder = BackgroundAttributer() }
-        backgrounder!.background(color: color)
+        if color != nil { backgrounder!.background(color: color!) }
         return backgrounder!
     }
 

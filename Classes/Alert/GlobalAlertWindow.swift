@@ -41,14 +41,14 @@ final class GlobalAlertWindow: UIWindow {
     }
 
     // MARK: Event Response
-    @objc func maskBtnAction(_ sender: UIButton) {
+    @objc func maskTapAction(_ sender: UIButton) {
         completionHandler?()
     }
 
     private(set) lazy var maskBtn: UIButton = {
         let appear = Appearance()
         appear.alpha(0.6).background(color: .black)
-        appear.event(target: self, action: #selector(maskBtnAction(_:)))
+        appear.event(target: self, action: #selector(maskTapAction(_:)))
         return MoeUI.makeButton(toView: self, with: appear)
     }()
 }

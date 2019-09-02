@@ -34,6 +34,14 @@ extension AppearanceUnity {
         self.applyAttribute()
     }
 
+    public init?(identifier: AppearanceIdentifier) {
+        guard let appearance = AppearanceManager.shared.dequeue(with: identifier) else {
+            MLog("Reset Appearance Fail. Can't find appearance which matches to identifier")
+            return nil
+        }
+        self.init(appearance: appearance)
+    }
+
     public func updateAppearance(_ closure: AppearanceClosure) {
         closure(self.appearance)
         self.applyAttribute()
@@ -45,13 +53,16 @@ extension AppearanceUnity {
         self.applyAttribute()
     }
 
+    public func resetAppearance(appearance: Appearance) {
+        self.appearance = appearance
+        self.applyAttribute()
+    }
+
     public func resetAppearance(identifier: AppearanceIdentifier) {
         guard let appearance = AppearanceManager.shared.dequeue(with: identifier) else {
             MLog("Reset Appearance Fail. Can't find appearance which matches to identifier")
             return
         }
-
-        self.appearance = appearance
-        self.applyAttribute()
+        self.resetAppearance(appearance: appearance)
     }
 }

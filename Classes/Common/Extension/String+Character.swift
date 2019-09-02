@@ -14,7 +14,7 @@ extension TypeWrapperProtocol where WrappedType == String {
     ///
     /// - Parameter range: NSRange实例
     /// - Returns: Range<String.Index>实例
-    func toRange(_ range: NSRange) -> Range<String.Index>? {
+    public func toRange(_ range: NSRange) -> Range<String.Index>? {
         let utf16 = wrappedValue.utf16
         guard let from16 = utf16.index(utf16.startIndex, offsetBy: range.location, limitedBy: utf16.endIndex) else { return nil }
         guard let to16 = utf16.index(from16, offsetBy: range.length, limitedBy: utf16.endIndex) else { return nil }

@@ -16,7 +16,7 @@
 		9503302122F178EF001A0F9B /* DrawerTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9503302022F178EF001A0F9B /* DrawerTransition.swift */; };
 		9503302322F17EAC001A0F9B /* MaskView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9503302222F17EAC001A0F9B /* MaskView.swift */; };
 		9506AAD122F44BB1005CFE1C /* SwiftyNamespace.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9506AAD022F44BB1005CFE1C /* SwiftyNamespace.swift */; };
-		9519C6DE2307E64B005AEF22 /* AlertAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9519C6DD2307E64B005AEF22 /* AlertAnimator.swift */; };
+		9519C6DE2307E64B005AEF22 /* MaskAlertAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9519C6DD2307E64B005AEF22 /* MaskAlertAnimator.swift */; };
 		9519C6E8230A49AA005AEF22 /* UIApplication+TopVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9519C6E7230A49A9005AEF22 /* UIApplication+TopVC.swift */; };
 		952C802922E9B927000EC935 /* Runtime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 952C802822E9B927000EC935 /* Runtime.swift */; };
 		952C802B22EA9661000EC935 /* Mask+CornerRadius.swift in Sources */ = {isa = PBXBuildFile; fileRef = 952C802A22EA9661000EC935 /* Mask+CornerRadius.swift */; };
@@ -51,11 +51,12 @@
 		95B9A39823168F6500D7DE15 /* AppearanceApply.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95B9A39723168F6500D7DE15 /* AppearanceApply.swift */; };
 		95B9A39A2317675A00D7DE15 /* EventAttributer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95B9A3992317675A00D7DE15 /* EventAttributer.swift */; };
 		95B9A39E2317784500D7DE15 /* AlertDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95B9A39D2317784500D7DE15 /* AlertDialog.swift */; };
-		95B9A3A02317785600D7DE15 /* AlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95B9A39F2317785600D7DE15 /* AlertController.swift */; };
+		95B9A3A02317785600D7DE15 /* MaskAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95B9A39F2317785600D7DE15 /* MaskAlertController.swift */; };
 		95B9A3A2231786A800D7DE15 /* GeneralAttributer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95B9A3A1231786A800D7DE15 /* GeneralAttributer.swift */; };
 		95B9A3A923190D2000D7DE15 /* MoeUI.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 95B9A3A823190D1F00D7DE15 /* MoeUI.xcassets */; };
 		95B9A3AB23191C5F00D7DE15 /* GlobalAlertManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95B9A3AA23191C5F00D7DE15 /* GlobalAlertManager.swift */; };
 		95B9A3AD2319256700D7DE15 /* GlobalAlertWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95B9A3AC2319256700D7DE15 /* GlobalAlertWindow.swift */; };
+		95B9A3B5231CB8B000D7DE15 /* ProgressAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95B9A3B4231CB8B000D7DE15 /* ProgressAlertController.swift */; };
 		95C55D7222F02E8E001CF9FF /* Appearance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95C55D7122F02E8E001CF9FF /* Appearance.swift */; };
 		A7697016005801A4E48E9F7DB8034A3E /* MoeUI-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 812300AA4B939C0036A6C606BD043E2F /* MoeUI-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C57BEF7B9766A82E5F3427F525E65D55 /* Pods-MoeUI_Tests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 17DA88FA67F211DA729DF98ED84A4F4A /* Pods-MoeUI_Tests-dummy.m */; };
@@ -102,7 +103,7 @@
 		9503302022F178EF001A0F9B /* DrawerTransition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawerTransition.swift; sourceTree = "<group>"; };
 		9503302222F17EAC001A0F9B /* MaskView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MaskView.swift; sourceTree = "<group>"; };
 		9506AAD022F44BB1005CFE1C /* SwiftyNamespace.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyNamespace.swift; sourceTree = "<group>"; };
-		9519C6DD2307E64B005AEF22 /* AlertAnimator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertAnimator.swift; sourceTree = "<group>"; };
+		9519C6DD2307E64B005AEF22 /* MaskAlertAnimator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MaskAlertAnimator.swift; sourceTree = "<group>"; };
 		9519C6E7230A49A9005AEF22 /* UIApplication+TopVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIApplication+TopVC.swift"; sourceTree = "<group>"; };
 		952C802822E9B927000EC935 /* Runtime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Runtime.swift; sourceTree = "<group>"; };
 		952C802A22EA9661000EC935 /* Mask+CornerRadius.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Mask+CornerRadius.swift"; sourceTree = "<group>"; };
@@ -138,11 +139,12 @@
 		95B9A39723168F6500D7DE15 /* AppearanceApply.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppearanceApply.swift; sourceTree = "<group>"; };
 		95B9A3992317675A00D7DE15 /* EventAttributer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventAttributer.swift; sourceTree = "<group>"; };
 		95B9A39D2317784500D7DE15 /* AlertDialog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertDialog.swift; sourceTree = "<group>"; };
-		95B9A39F2317785600D7DE15 /* AlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertController.swift; sourceTree = "<group>"; };
+		95B9A39F2317785600D7DE15 /* MaskAlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MaskAlertController.swift; sourceTree = "<group>"; };
 		95B9A3A1231786A800D7DE15 /* GeneralAttributer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralAttributer.swift; sourceTree = "<group>"; };
 		95B9A3A823190D1F00D7DE15 /* MoeUI.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = MoeUI.xcassets; sourceTree = "<group>"; };
 		95B9A3AA23191C5F00D7DE15 /* GlobalAlertManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalAlertManager.swift; sourceTree = "<group>"; };
 		95B9A3AC2319256700D7DE15 /* GlobalAlertWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalAlertWindow.swift; sourceTree = "<group>"; };
+		95B9A3B4231CB8B000D7DE15 /* ProgressAlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressAlertController.swift; sourceTree = "<group>"; };
 		95C55D7122F02E8E001CF9FF /* Appearance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Appearance.swift; sourceTree = "<group>"; };
 		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		A4C08A75B705CFA1D6377F17B8CADA7F /* MoeUI-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "MoeUI-dummy.m"; sourceTree = "<group>"; };
@@ -284,8 +286,9 @@
 		9519C6DA2307DEC7005AEF22 /* Alert */ = {
 			isa = PBXGroup;
 			children = (
-				9519C6DD2307E64B005AEF22 /* AlertAnimator.swift */,
-				95B9A39F2317785600D7DE15 /* AlertController.swift */,
+				9519C6DD2307E64B005AEF22 /* MaskAlertAnimator.swift */,
+				95B9A39F2317785600D7DE15 /* MaskAlertController.swift */,
+				95B9A3B4231CB8B000D7DE15 /* ProgressAlertController.swift */,
 				95B9A3AA23191C5F00D7DE15 /* GlobalAlertManager.swift */,
 				95B9A3AC2319256700D7DE15 /* GlobalAlertWindow.swift */,
 				95B9A39D2317784500D7DE15 /* AlertDialog.swift */,
@@ -634,9 +637,9 @@
 				95B9A39A2317675A00D7DE15 /* EventAttributer.swift in Sources */,
 				9519C6E8230A49AA005AEF22 /* UIApplication+TopVC.swift in Sources */,
 				956869EE22F917B500485864 /* Extension+Moe.swift in Sources */,
-				95B9A3A02317785600D7DE15 /* AlertController.swift in Sources */,
+				95B9A3A02317785600D7DE15 /* MaskAlertController.swift in Sources */,
 				95B6336B22E739B300B6DC8F /* UIColor+Color.swift in Sources */,
-				9519C6DE2307E64B005AEF22 /* AlertAnimator.swift in Sources */,
+				9519C6DE2307E64B005AEF22 /* MaskAlertAnimator.swift in Sources */,
 				95B9A3AD2319256700D7DE15 /* GlobalAlertWindow.swift in Sources */,
 				95B6336722E7364100B6DC8F /* ProjectConstants.swift in Sources */,
 				95AF992522F44E2B002CFC76 /* PageMenuController+Gesture.swift in Sources */,
@@ -647,6 +650,7 @@
 				95B6336922E738F600B6DC8F /* UIConstants.swift in Sources */,
 				95AF995A22F59965002CFC76 /* BackgroundAttributer.swift in Sources */,
 				95AF991C22F44DC4002CFC76 /* PageMenuOption.swift in Sources */,
+				95B9A3B5231CB8B000D7DE15 /* ProgressAlertController.swift in Sources */,
 				95B9A3AB23191C5F00D7DE15 /* GlobalAlertManager.swift in Sources */,
 				95AF991E22F44DEF002CFC76 /* PageMenuConfiguration.swift in Sources */,
 				95A7A9A622F2C70B00A5AD0A /* UIViewController+SidePanDrawer.swift in Sources */,
