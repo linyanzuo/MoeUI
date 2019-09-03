@@ -8,7 +8,7 @@
 import UIKit
 
 
-public class MoeButton: UIButton, AppearanceUnity, AppearanceApply {
+open class MoeButton: UIButton, AppearanceUnity, AppearanceApply {
     public func applyTextAttribute() {
         for texter in appearance.texters {
             let attr = texter.attribute
@@ -48,7 +48,7 @@ public class MoeButton: UIButton, AppearanceUnity, AppearanceApply {
         }
     }
 
-    public override func layoutSubviews() {
+    open override func layoutSubviews() {
         super.layoutSubviews()
         updateGradientIfLayoutSubviews()
         updateShadowIfLayoutSubviews()

@@ -8,7 +8,7 @@
 import UIKit
 
 
-public class MoeLabel: UILabel, AppearanceUnity, AppearanceApply {
+open class MoeLabel: UILabel, AppearanceUnity, AppearanceApply {
     public func applyBackgroundAttribute() {
         guard let attr = self.appearance.backgrounder?.attribute
             else { return }

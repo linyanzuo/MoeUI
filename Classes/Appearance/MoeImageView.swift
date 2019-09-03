@@ -8,7 +8,7 @@
 import UIKit
 
 
-public class MoeImageView: UIImageView, AppearanceUnity, AppearanceApply {
+open class MoeImageView: UIImageView, AppearanceUnity, AppearanceApply {
     public func applyImageAttribute() {
         for imager in appearance.imagers {
             let attr = imager.attribute
@@ -37,7 +37,7 @@ public class MoeImageView: UIImageView, AppearanceUnity, AppearanceApply {
         layer.masksToBounds = false
     }
 
-    public override func layoutSubviews() {
+    open override func layoutSubviews() {
         super.layoutSubviews()
         updateGradientIfLayoutSubviews()
         updateShadowIfLayoutSubviews()

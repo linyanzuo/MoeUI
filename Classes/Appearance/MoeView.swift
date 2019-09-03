@@ -8,8 +8,8 @@
 import UIKit
 
 
-public class MoeView: UIView, AppearanceUnity, AppearanceApply {
-    public override func layoutSubviews() {
+open class MoeView: UIView, AppearanceUnity, AppearanceApply {
+    open override func layoutSubviews() {
         super.layoutSubviews()
         updateGradientIfLayoutSubviews()
         updateShadowIfLayoutSubviews()
