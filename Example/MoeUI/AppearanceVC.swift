@@ -135,21 +135,21 @@ class AppearanceVC: UIViewController, Runtime {
     @objc func test() {
 //        GlobalAlertManager.shared.hide(with: "Fail")
 
-        //        let dialog = AlertDialog(style: .progress, text: "Hello word")
-        //        self.view.addSubview(dialog)
-        //        dialog.translatesAutoresizingMaskIntoConstraints = false
-        //        self.view.addConstraints([
-        //            NSLayoutConstraint(item: dialog, attribute: .centerX, relatedBy: .equal, toItem: self.view, attribute: .centerX, multiplier: 1.0, constant: 0.0),
-        //            NSLayoutConstraint(item: dialog, attribute: .centerY, relatedBy: .equal, toItem: self.view, attribute: .centerY, multiplier: 1.0, constant: 0.0),
-        //            NSLayoutConstraint(item: dialog, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: 200.0),
-        //            NSLayoutConstraint(item: dialog, attribute: .height, relatedBy: .equal, toItem: nil, attribute: . notAnAttribute, multiplier: 1.0, constant: 160.0)
-        //        ])
+//        let dialog = AlertDialog(style: .progress, text: "Hello word")
+//        self.view.addSubview(dialog)
+//        dialog.translatesAutoresizingMaskIntoConstraints = false
+//        self.view.addConstraints([
+//            NSLayoutConstraint(item: dialog, attribute: .centerX, relatedBy: .equal, toItem: self.view, attribute: .centerX, multiplier: 1.0, constant: 0.0),
+//            NSLayoutConstraint(item: dialog, attribute: .centerY, relatedBy: .equal, toItem: self.view, attribute: .centerY, multiplier: 1.0, constant: 0.0),
+//            NSLayoutConstraint(item: dialog, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: 200.0),
+//            NSLayoutConstraint(item: dialog, attribute: .height, relatedBy: .equal, toItem: nil, attribute: . notAnAttribute, multiplier: 1.0, constant: 160.0)
+//        ])
 
-        let maskAlertVC = MaskAlertController()
-        self.present(maskAlertVC, animated: true, completion: nil)
+//        let maskAlertVC = MaskAlertController()
+//        self.present(maskAlertVC, animated: true, completion: nil)
 
-//        let alertVC = ProgressAlertController(style: .success, text: "Congratulation, It work!")
-//        self.present(alertVC, animated: true, completion: nil)
+        let alertVC = ProgressAlertController(style: .toast, text: "Congratulation, It work!")
+        self.present(alertVC, animated: true, completion: nil)
 
         //        GlobalAlertManager.shared.alert(style: .success, text: "Configuration, It work!", with: "Success")
         //        GlobalAlertManager.shared.alert(style: .fail, text: "Unfortunately, It doesn't work!", with: "Fail")

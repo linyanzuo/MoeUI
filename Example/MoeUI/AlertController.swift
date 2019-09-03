@@ -42,11 +42,11 @@ class MoeAlertController: UIViewController, UIViewControllerTransitioningDelegat
 
     // MARK: UIViewControllerTransitioningDelegate
     public func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-        return MaskAlertAnimator(owner: self, transitionType: .present, animationType: .alert)
+        return MaskAlertAnimator(owner: self, transitionType: .present, animationType: .external)
     }
 
     public func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-        return MaskAlertAnimator(owner: self, transitionType: .dismiss, animationType: .alert)
+        return MaskAlertAnimator(owner: self, transitionType: .dismiss, animationType: .external)
     }
 
     // MARK: SheetAnimatorProtocol

@@ -22,8 +22,10 @@ public class MaskAlertAnimator: NSObject, UIViewControllerAnimatedTransitioning,
     }
 
     public enum AnimationType {
-        case alert
-        case sheet
+        /// tiled content from inner to external
+        case external
+        /// translate content from bottom to target position
+        case translation
     }
 
     private let kBezelCornerRadius: CGFloat = 8.0
@@ -33,7 +35,7 @@ public class MaskAlertAnimator: NSObject, UIViewControllerAnimatedTransitioning,
     var transitionType: TransitionType
     var animationType: AnimationType
 
-    public init(owner: MaskAlertAnimatorProtocol, transitionType: TransitionType, animationType: AnimationType = .sheet) {
+    public init(owner: MaskAlertAnimatorProtocol, transitionType: TransitionType, animationType: AnimationType = .translation) {
         self.owner = owner
         self.transitionType = transitionType
         self.animationType = animationType
@@ -62,11 +64,13 @@ public class MaskAlertAnimator: NSObject, UIViewControllerAnimatedTransitioning,
         containerView.addSubview(toVC.view)
         toVC.view.layoutIfNeeded()
 
-        if animationType == .sheet {
-            animation(containerView: containerView, using: transitionContext, transitionType: .present)
-        } else if animationType == .alert {
-            alertAnimation(using: transitionContext, transitionType: .present)
+        switch animationType {
+        case .external:
+            externalAnimation(using: transitionContext, transitionType: .present)
+        case .translation:
+            translationAnimation(in: containerView, using: transitionContext, transitionType: .present)
         }
+        alphaAnimation(using: transitionContext, transitionType: .present)
     }
 
     private func animateDismissTransition(using transitionContext: UIViewControllerContextTransitioning) {
@@ -77,48 +81,39 @@ public class MaskAlertAnimator: NSObject, UIViewControllerAnimatedTransitioning,
         let containerView = transitionContext.containerView
         containerView.addSubview(fromVC.view)
 
-        if animationType == .sheet {
-            animation(containerView: containerView, using: transitionContext, transitionType: .dismiss)
-        } else if animationType == .alert {
-            alertAnimation(using: transitionContext, transitionType: .dismiss)
+        switch animationType {
+        case .external:
+            externalAnimation(using: transitionContext, transitionType: .dismiss)
+        case .translation:
+            translationAnimation(in: containerView, using: transitionContext, transitionType: .dismiss)
         }
+        alphaAnimation(using: transitionContext, transitionType: .dismiss)
     }
 
     // MARK: Animation
-    private func animation(containerView: UIView, using transitionContext: UIViewControllerContextTransitioning, transitionType: TransitionType) {
-        let maskView = owner.maskViewForAnimation()
-        let contentView = owner.contentViewForAnimation()
-        let duration = self.transitionDuration(using: transitionContext)
+    private func translationAnimation(in containerView: UIView, using transitionContext: UIViewControllerContextTransitioning, transitionType: TransitionType) {
+        let bezelPosition = bezelView.center
+        let bezelTargetPosition = CGPoint(x: bezelPosition.x,
+                                          y: containerView.frame.height - bezelView.frame.height / 2)
+
+        let bezelPositionAnim = CABasicAnimation(keyPath:"position")
+        bezelPositionAnim.delegate = self
+        bezelPositionAnim.timingFunction = CAMediaTimingFunction(name: .easeInEaseOut)
+        bezelPositionAnim.isRemovedOnCompletion = true
+        bezelPositionAnim.duration = self.transitionDuration(using: transitionContext)
+        bezelPositionAnim.setValue(transitionContext, forKey: "transitionContext")
 
         if transitionType == .present {
-            let maskViewOriginalAlpha = maskView.alpha
-            maskView.alpha = 0.0
-            contentView.frame.origin = CGPoint(x: 0, y: containerView.frame.height)
-
-            UIView.animate(withDuration: duration, animations: {
-                maskView.alpha = maskViewOriginalAlpha
-                contentView.frame.origin = CGPoint(x: 0, y: (containerView.frame.height - contentView.frame.height))
-            }) { (isFinish) in
-                let isComplete = !transitionContext.transitionWasCancelled
-                transitionContext.completeTransition(isComplete)
-            }
+            bezelPositionAnim.fromValue = bezelTargetPosition
+            bezelPositionAnim.toValue = bezelPosition
         } else if transitionType == .dismiss {
-            UIView.animate(withDuration: duration, animations: {
-                maskView.alpha = 0.0
-                contentView.frame.origin = CGPoint(x: 0, y: containerView.frame.height + contentView.frame.height)
-            }) { (isFinish) in
-                let isComplete = !transitionContext.transitionWasCancelled
-                transitionContext.completeTransition(isComplete)
-            }
+            bezelPositionAnim.fromValue = bezelPosition
+            bezelPositionAnim.toValue = bezelTargetPosition
         }
+        bezelView.layer.add(bezelPositionAnim, forKey: "bezelPositionAnimation")
     }
 
-    private func alertAnimation(using transitionContext: UIViewControllerContextTransitioning, transitionType: TransitionType) {
-        let maskView = owner.maskViewForAnimation()
-        let maskOpacity = maskView.alpha
-        let bezelView = owner.contentViewForAnimation()
-        let duration = self.transitionDuration(using: transitionContext)
-
+    private func externalAnimation(using transitionContext: UIViewControllerContextTransitioning, transitionType: TransitionType) {
         let bezelCornerRadii = CGSize(width: kBezelCornerRadius, height: kBezelCornerRadius)
         let sourceRect = CGRect(x: bezelView.bounds.width / 2,
                                 y: bezelView.bounds.height / 2,
@@ -128,45 +123,74 @@ public class MaskAlertAnimator: NSObject, UIViewControllerAnimatedTransitioning,
         let destinPtah = UIBezierPath(roundedRect: bezelView.bounds, byRoundingCorners: .allCorners, cornerRadii: bezelCornerRadii)
         let mask = CAShapeLayer()
 
-        let pathAnimation = CABasicAnimation(keyPath:"path")
-        pathAnimation.duration = duration
-        pathAnimation.delegate = self
-        pathAnimation.isRemovedOnCompletion = true
-        pathAnimation.setValue(mask, forKey: "mask")
-        pathAnimation.setValue(transitionContext, forKey: "transitionContext")
-
-        let opacityAnimation = CABasicAnimation(keyPath: "opacity")
-        opacityAnimation.duration = duration
-        opacityAnimation.duration = duration
-        opacityAnimation.isRemovedOnCompletion = true
+        let bezelMaskPathAnim = CABasicAnimation(keyPath:"path")
+        bezelMaskPathAnim.delegate = self
+        bezelMaskPathAnim.timingFunction = CAMediaTimingFunction(name: .easeInEaseOut)
+        bezelMaskPathAnim.isRemovedOnCompletion = true
+        bezelMaskPathAnim.duration = self.transitionDuration(using: transitionContext)
+        bezelMaskPathAnim.setValue(mask, forKey: "mask")
+        bezelMaskPathAnim.setValue(transitionContext, forKey: "transitionContext")
 
         if transitionType == .present {
-            pathAnimation.fromValue = sourcePath.cgPath
-            pathAnimation.toValue = destinPtah.cgPath
-            opacityAnimation.fromValue = 0.0
-            opacityAnimation.toValue = maskOpacity
+            bezelMaskPathAnim.fromValue = sourcePath.cgPath
+            bezelMaskPathAnim.toValue = destinPtah.cgPath
             mask.path = destinPtah.cgPath
         } else if transitionType == .dismiss {
-            pathAnimation.fromValue = destinPtah.cgPath
-            pathAnimation.toValue = sourcePath.cgPath
-            opacityAnimation.fromValue = maskOpacity
-            opacityAnimation.toValue = 0.0
+            bezelMaskPathAnim.fromValue = destinPtah.cgPath
+            bezelMaskPathAnim.toValue = sourcePath.cgPath
             mask.path = sourcePath.cgPath
         }
 
-        maskView.layer.add(opacityAnimation, forKey: "opacityAnimation")
-        mask.add(pathAnimation, forKey: "pathAnimation")
+        mask.add(bezelMaskPathAnim, forKey: "bezelPathAnimation")
         bezelView.layer.mask = mask
+    }
+
+    private func alphaAnimation(using transitionContext: UIViewControllerContextTransitioning, transitionType: TransitionType) {
+        let maskAlpha = maskView.alpha
+        let bezelAlpha = bezelView.alpha
+        let duration = self.transitionDuration(using: transitionContext)
+
+        let bezelAlphaAnim = CABasicAnimation(keyPath: "opacity")
+        bezelAlphaAnim.timingFunction = CAMediaTimingFunction(name: .easeInEaseOut)
+        bezelAlphaAnim.isRemovedOnCompletion = true
+        bezelAlphaAnim.duration = duration
+
+        let maskAlphaAnim = CABasicAnimation(keyPath: "opacity")
+        maskAlphaAnim.timingFunction = CAMediaTimingFunction(name: .easeInEaseOut)
+        maskAlphaAnim.isRemovedOnCompletion = true
+        maskAlphaAnim.duration = duration
+
+        if transitionType == .present {
+            bezelAlphaAnim.fromValue = 0.0
+            bezelAlphaAnim.toValue = bezelAlpha
+            maskAlphaAnim.fromValue = 0.0
+            maskAlphaAnim.toValue = maskAlpha
+        } else if transitionType == .dismiss {
+            bezelAlphaAnim.fromValue = bezelAlpha
+            bezelAlphaAnim.toValue = 0.0
+            maskAlphaAnim.fromValue = maskAlpha
+            maskAlphaAnim.toValue = 0.0
+        }
+
+        maskView.layer.add(maskAlphaAnim, forKey: "maskOpacityAnimation")
+        bezelView.layer.add(bezelAlphaAnim, forKey: "bezelOpacityAnimation")
     }
 
     // MARK: CAAnimationDelegate
     public func animationDidStop(_ anim: CAAnimation, finished flag: Bool) {
-        if let mask = anim.value(forKey: "mask") as? CAShapeLayer,
-            let transitionContext = anim.value(forKey: "transitionContext") as? UIViewControllerContextTransitioning
-        {
-            mask.removeFromSuperlayer()
+        if let mask = anim.value(forKey: "mask") as? CAShapeLayer { mask.removeFromSuperlayer() }
+        if let transitionContext = anim.value(forKey: "transitionContext") as? UIViewControllerContextTransitioning {
             transitionContext.completeTransition(flag)
         }
+    }
+
+    // MARK: Getter & Setter
+    private var maskView: UIView {
+        get { return owner.maskViewForAnimation() }
+    }
+
+    private var bezelView: UIView {
+        get { return owner.contentViewForAnimation() }
     }
 }
 

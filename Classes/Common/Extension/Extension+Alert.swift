@@ -17,3 +17,11 @@ public extension TypeWrapperProtocol where WrappedType: UIApplication {
         return base
     }
 }
+
+public extension TypeWrapperProtocol where WrappedType: UIViewController {
+    func clearPresentationBackground()  {
+        wrappedValue.providesPresentationContextTransitionStyle = true
+        wrappedValue.definesPresentationContext = true
+        wrappedValue.modalPresentationStyle = .overCurrentContext
+    }
+}

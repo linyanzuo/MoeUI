@@ -10,14 +10,15 @@ import UIKit
 
 public class AlertDialog: UIView {
     public enum Style {
+        case toast
         case progress
         case success
         case fail
     }
 
     private let themeColor = UIColor(rgb: 0x333333)
-    var style: AlertDialog.Style?
-    var message: String?
+    var style: AlertDialog.Style
+    var message: String
 
     // MARK: Object Life Cycle
     public init(style: Style, text: String) {
@@ -37,22 +38,31 @@ public class AlertDialog: UIView {
         backgroundColor = .white
         layer.cornerRadius = 8
 
-        let imageName = self.style == .success ? "common_icon_finish" : "common_icon_error"
-        let frameworkBundle = Bundle(for: self.classForCoder)
-        if let image = UIImage(named: imageName, in: frameworkBundle, compatibleWith: nil) {
-            imageView.image = image
-        }
         label.text = message
+        if style == .success || style == .fail {
+            let imageName = self.style == .success ? "common_icon_finish" : "common_icon_error"
+            let frameworkBundle = Bundle(for: self.classForCoder)
+            if let targetBundleUrl = frameworkBundle.url(forResource: "MoeUI", withExtension: "bundle"),
+                let targetBundle = Bundle(url: targetBundleUrl) {
+                imageView.image = UIImage(named: imageName, in: targetBundle, compatibleWith: nil)
+            } else {
+                imageView.image = UIImage(named: imageName, in: frameworkBundle, compatibleWith: nil)
+            }
+        }
     }
 
     private func setupConstraints() {
-        if self.style == .progress {
+        var labelTopConstraint: NSLayoutConstraint? = nil
+
+        switch self.style {
+        case .progress:
             indicator.translatesAutoresizingMaskIntoConstraints = false
             self.addConstraints([
                 NSLayoutConstraint(item: indicator, attribute: .top, relatedBy: .equal, toItem: self, attribute: .top, multiplier: 1.0, constant: 16),
                 NSLayoutConstraint(item: indicator, attribute: .centerX, relatedBy: .equal, toItem: self, attribute: .centerX, multiplier: 1.0, constant: 0.0)
             ])
-        } else if self.style == .success || self.style == .fail {
+            labelTopConstraint = NSLayoutConstraint(item: label, attribute: .top, relatedBy: .equal, toItem: indicator, attribute: .bottom, multiplier: 1.0, constant: 8.0)
+        case .success, .fail:
             imageView.translatesAutoresizingMaskIntoConstraints = false
             self.addConstraints([
                 NSLayoutConstraint(item: imageView, attribute: .top, relatedBy: .equal, toItem: self, attribute: .top, multiplier: 1.0, constant: 16),
@@ -60,15 +70,17 @@ public class AlertDialog: UIView {
                 NSLayoutConstraint(item: imageView, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: 44.0),
                 NSLayoutConstraint(item: imageView, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: 44.0)
             ])
+            labelTopConstraint = NSLayoutConstraint(item: label, attribute: .top, relatedBy: .equal, toItem: imageView, attribute: .bottom, multiplier: 1.0, constant: 8.0)
+        case .toast:
+            labelTopConstraint = NSLayoutConstraint(item: label, attribute: .top, relatedBy: .equal, toItem: self, attribute: .top, multiplier: 1.0, constant: 24.0)
         }
 
-        let constraintTarget = self.style == .progress ? self.indicator : self.imageView
         label.translatesAutoresizingMaskIntoConstraints = false
         self.addConstraints([
-            NSLayoutConstraint(item: label, attribute: .top, relatedBy: .equal, toItem: constraintTarget, attribute: .bottom, multiplier: 1.0, constant: 8.0),
-            NSLayoutConstraint(item: label, attribute: .left, relatedBy: .equal, toItem: self, attribute: .left, multiplier: 1.0, constant: 24),
-            NSLayoutConstraint(item: label, attribute: .right, relatedBy: .equal, toItem: self, attribute: .right, multiplier: 1.0, constant: -24),
-            NSLayoutConstraint(item: label, attribute: .bottom, relatedBy: .equal, toItem: self, attribute: .bottom, multiplier: 1.0, constant: -16.0)
+            labelTopConstraint!,
+            NSLayoutConstraint(item: label, attribute: .left, relatedBy: .equal, toItem: self, attribute: .left, multiplier: 1.0, constant: 16),
+            NSLayoutConstraint(item: label, attribute: .right, relatedBy: .equal, toItem: self, attribute: .right, multiplier: 1.0, constant: -16),
+            NSLayoutConstraint(item: label, attribute: .bottom, relatedBy: .equal, toItem: self, attribute: .bottom, multiplier: 1.0, constant: -24.0)
         ])
     }
 

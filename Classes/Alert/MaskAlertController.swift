@@ -11,23 +11,23 @@ import UIKit
 open class MaskAlertController: UIViewController, UIViewControllerTransitioningDelegate, MaskAlertAnimatorProtocol {
     // MARK: Subclass should override methods
     open func viewToAlert() -> UIView {
-        let appear = Appearance()
-        appear.background(color: .white).cornerRadius(8.0)
-        let bezelView = MoeUI.makeView(with: appear)
-
         let content = "Plaese override the `viewToAlert` method, and return custom view which you want to alert"
-        let label = MoeUI.makeLabel(toView: bezelView) { (appear) in
-            appear.text(content).font(15).color(.black).lines(0)
-        }
-        label.translatesAutoresizingMaskIntoConstraints = false
-        bezelView.addConstraints([
-            NSLayoutConstraint(item: label, attribute: .top, relatedBy: .equal, toItem: bezelView, attribute: .top, multiplier: 1.0, constant: 24),
-            NSLayoutConstraint(item: label, attribute: .bottom, relatedBy: .equal, toItem: bezelView, attribute: .bottom, multiplier: 1.0, constant: -24),
-            NSLayoutConstraint(item: label, attribute: .left, relatedBy: .greaterThanOrEqual, toItem: bezelView, attribute: .left, multiplier: 1.0, constant: 16),
-            NSLayoutConstraint(item: label, attribute: .right, relatedBy: .lessThanOrEqual, toItem: bezelView, attribute: .right, multiplier: 1.0, constant: -16)
-        ])
-
+        let bezelView = AlertDialog(style: .toast, text: content)
         return bezelView
+    }
+
+    open func addConstraintsFor(_ alert: UIView, in superView: UIView) {
+        alert.translatesAutoresizingMaskIntoConstraints = false
+        superView.addConstraints([
+            NSLayoutConstraint(item: alert, attribute: .centerX, relatedBy: .equal, toItem: superView, attribute: .centerX, multiplier: 1.0, constant: 0.0),
+            NSLayoutConstraint(item: alert, attribute: .centerY, relatedBy: .equal, toItem: superView, attribute: .centerY, multiplier: 1.0, constant: 0.0),
+            NSLayoutConstraint(item: alert, attribute: .left, relatedBy: .greaterThanOrEqual, toItem: superView, attribute: .left, multiplier: 1.0, constant: 24),
+            NSLayoutConstraint(item: alert, attribute: .right, relatedBy: .lessThanOrEqual, toItem: superView, attribute: .right, multiplier: 1.0, constant: -24)
+            ])
+    }
+
+    open func animationType() -> MaskAlertAnimator.AnimationType {
+        return .external
     }
 
     @objc open func maskTapAction(_ sender: UIButton) {
@@ -35,8 +35,6 @@ open class MaskAlertController: UIViewController, UIViewControllerTransitioningD
     }
 
     // MARK: Object Life Cycle
-    var bezelView: UIView?
-
     public required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -44,11 +42,10 @@ open class MaskAlertController: UIViewController, UIViewControllerTransitioningD
     public init() {
         super.init(nibName: nil, bundle: nil)
         self.setupSelf()
-        self.bezelView = self.viewToAlert()
     }
 
     private func setupSelf() {
-        self.modalPresentationStyle = .overCurrentContext
+        self.moe.clearPresentationBackground()
         self.transitioningDelegate = self
     }
 
@@ -58,8 +55,9 @@ open class MaskAlertController: UIViewController, UIViewControllerTransitioningD
         view.backgroundColor = .clear
 
         view.addSubview(maskBtn)
-        view.addSubview(bezelView!)
+        view.addSubview(bezelView)
         setupConstraints()
+        addConstraintsFor(bezelView, in: self.view)
     }
 
     private func setupConstraints() {
@@ -70,25 +68,16 @@ open class MaskAlertController: UIViewController, UIViewControllerTransitioningD
             NSLayoutConstraint(item: maskBtn, attribute: .right, relatedBy: .equal, toItem: self.view, attribute: .right, multiplier: 1.0, constant: 0.0),
             NSLayoutConstraint(item: maskBtn, attribute: .bottom, relatedBy: .equal, toItem: self.view, attribute: .bottom, multiplier: 1.0, constant: 0.0)
         ])
-
-        guard bezelView != nil else { return }
-        bezelView!.translatesAutoresizingMaskIntoConstraints = false
-        self.view.addConstraints([
-            NSLayoutConstraint(item: bezelView!, attribute: .centerX, relatedBy: .equal, toItem: self.view, attribute: .centerX, multiplier: 1.0, constant: 0.0),
-            NSLayoutConstraint(item: bezelView!, attribute: .centerY, relatedBy: .equal, toItem: self.view, attribute: .centerY, multiplier: 1.0, constant: 0.0),
-            NSLayoutConstraint(item: bezelView!, attribute: .left, relatedBy: .greaterThanOrEqual, toItem: self.view, attribute: .left, multiplier: 1.0, constant: 24),
-            NSLayoutConstraint(item: bezelView!, attribute: .right, relatedBy: .lessThanOrEqual, toItem: self.view, attribute: .right, multiplier: 1.0, constant: -24)
-        ])
     }
 
     // MARK: Delegate Method
     // MARK: -- UIViewControllerTransitioningDelegate
     public func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-        return MaskAlertAnimator(owner: self, transitionType: .present, animationType: .alert)
+        return MaskAlertAnimator(owner: self, transitionType: .present, animationType: self.animationType())
     }
 
     public func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-        return MaskAlertAnimator(owner: self, transitionType: .dismiss, animationType: .alert)
+        return MaskAlertAnimator(owner: self, transitionType: .dismiss, animationType: self.animationType())
     }
 
     // MARK: -- SheetAnimatorProtocol
@@ -97,7 +86,7 @@ open class MaskAlertController: UIViewController, UIViewControllerTransitioningD
     }
 
     public func contentViewForAnimation() -> UIView {
-        return bezelView!
+        return bezelView
     }
 
     // MARK: Getter & Setter
@@ -106,5 +95,9 @@ open class MaskAlertController: UIViewController, UIViewControllerTransitioningD
         appear.alpha(0.6).background(color: .black)
         appear.event(target: self, action: #selector(maskTapAction(_:)))
         return MoeUI.makeButton(with: appear)
+    }()
+
+    private(set) lazy var bezelView: UIView = {
+        return self.viewToAlert()
     }()
 }

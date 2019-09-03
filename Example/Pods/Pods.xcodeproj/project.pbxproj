@@ -17,7 +17,7 @@
 		9503302322F17EAC001A0F9B /* MaskView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9503302222F17EAC001A0F9B /* MaskView.swift */; };
 		9506AAD122F44BB1005CFE1C /* SwiftyNamespace.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9506AAD022F44BB1005CFE1C /* SwiftyNamespace.swift */; };
 		9519C6DE2307E64B005AEF22 /* MaskAlertAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9519C6DD2307E64B005AEF22 /* MaskAlertAnimator.swift */; };
-		9519C6E8230A49AA005AEF22 /* UIApplication+TopVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9519C6E7230A49A9005AEF22 /* UIApplication+TopVC.swift */; };
+		9519C6E8230A49AA005AEF22 /* Extension+Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9519C6E7230A49A9005AEF22 /* Extension+Alert.swift */; };
 		952C802922E9B927000EC935 /* Runtime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 952C802822E9B927000EC935 /* Runtime.swift */; };
 		952C802B22EA9661000EC935 /* Mask+CornerRadius.swift in Sources */ = {isa = PBXBuildFile; fileRef = 952C802A22EA9661000EC935 /* Mask+CornerRadius.swift */; };
 		956869EC22F85FFB00485864 /* AppearanceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 956869EB22F85FFB00485864 /* AppearanceManager.swift */; };
@@ -104,7 +104,7 @@
 		9503302222F17EAC001A0F9B /* MaskView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MaskView.swift; sourceTree = "<group>"; };
 		9506AAD022F44BB1005CFE1C /* SwiftyNamespace.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyNamespace.swift; sourceTree = "<group>"; };
 		9519C6DD2307E64B005AEF22 /* MaskAlertAnimator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MaskAlertAnimator.swift; sourceTree = "<group>"; };
-		9519C6E7230A49A9005AEF22 /* UIApplication+TopVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIApplication+TopVC.swift"; sourceTree = "<group>"; };
+		9519C6E7230A49A9005AEF22 /* Extension+Alert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Extension+Alert.swift"; sourceTree = "<group>"; };
 		952C802822E9B927000EC935 /* Runtime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Runtime.swift; sourceTree = "<group>"; };
 		952C802A22EA9661000EC935 /* Mask+CornerRadius.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Mask+CornerRadius.swift"; sourceTree = "<group>"; };
 		9530750E71CA78532F64EE3512AE9099 /* MoeUI-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "MoeUI-Info.plist"; sourceTree = "<group>"; };
@@ -342,9 +342,9 @@
 			children = (
 				9506AAD022F44BB1005CFE1C /* SwiftyNamespace.swift */,
 				956869ED22F917B500485864 /* Extension+Moe.swift */,
+				9519C6E7230A49A9005AEF22 /* Extension+Alert.swift */,
 				95B6336C22E739DB00B6DC8F /* String+Character.swift */,
 				95B6336A22E739B300B6DC8F /* UIColor+Color.swift */,
-				9519C6E7230A49A9005AEF22 /* UIApplication+TopVC.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -635,7 +635,7 @@
 				95AF995C22F5998D002CFC76 /* ImageAttributer.swift in Sources */,
 				95C55D7222F02E8E001CF9FF /* Appearance.swift in Sources */,
 				95B9A39A2317675A00D7DE15 /* EventAttributer.swift in Sources */,
-				9519C6E8230A49AA005AEF22 /* UIApplication+TopVC.swift in Sources */,
+				9519C6E8230A49AA005AEF22 /* Extension+Alert.swift in Sources */,
 				956869EE22F917B500485864 /* Extension+Moe.swift in Sources */,
 				95B9A3A02317785600D7DE15 /* MaskAlertController.swift in Sources */,
 				95B6336B22E739B300B6DC8F /* UIColor+Color.swift in Sources */,
