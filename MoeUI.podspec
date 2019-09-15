@@ -36,6 +36,10 @@ Pod::Spec.new do |s|
     common.source_files = 'Classes/Common/*/*'
     common.frameworks = 'UIKit'
   end
+  s.subspec 'Unity' do |unity|
+    unity.source_files = 'Classes/Unity/*'
+    unity.frameworks = 'UIKit'
+  end
   s.subspec 'Runtime' do |runtime|
     runtime.source_files = 'Classes/Runtime/*'
     runtime.frameworks = 'UIKit'
@@ -57,6 +61,7 @@ Pod::Spec.new do |s|
     alert.source_files = 'Classes/MaskAlert/*'
     alert.frameworks = 'UIKit'
     alert.dependency 'MoeUI/Common'
+    alert.dependency 'MoeUI/Unity'
     alert.dependency 'MoeUI/Appearance'
   end
 
