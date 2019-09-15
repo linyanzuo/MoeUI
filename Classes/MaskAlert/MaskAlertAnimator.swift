@@ -26,6 +26,8 @@ public class MaskAlertAnimator: NSObject, UIViewControllerAnimatedTransitioning,
         case external
         /// translate content from bottom to target position
         case translation
+        /// translate content from fully transparent to target alpha
+        case alpha
     }
 
     private let kBezelCornerRadius: CGFloat = 8.0
@@ -67,10 +69,13 @@ public class MaskAlertAnimator: NSObject, UIViewControllerAnimatedTransitioning,
         switch animationType {
         case .external:
             externalAnimation(using: transitionContext, transitionType: .present)
+            alphaAnimation(using: transitionContext, transitionType: .present)
         case .translation:
             translationAnimation(in: containerView, using: transitionContext, transitionType: .present)
+            alphaAnimation(using: transitionContext, transitionType: .present)
+        case .alpha:
+            alphaAnimation(using: transitionContext, transitionType: .present)
         }
-        alphaAnimation(using: transitionContext, transitionType: .present)
     }
 
     private func animateDismissTransition(using transitionContext: UIViewControllerContextTransitioning) {
@@ -84,10 +89,13 @@ public class MaskAlertAnimator: NSObject, UIViewControllerAnimatedTransitioning,
         switch animationType {
         case .external:
             externalAnimation(using: transitionContext, transitionType: .dismiss)
+            alphaAnimation(using: transitionContext, transitionType: .dismiss)
         case .translation:
             translationAnimation(in: containerView, using: transitionContext, transitionType: .dismiss)
+            alphaAnimation(using: transitionContext, transitionType: .dismiss)
+        case .alpha:
+            alphaAnimation(using: transitionContext, transitionType: .dismiss)
         }
-        alphaAnimation(using: transitionContext, transitionType: .dismiss)
     }
 
     // MARK: Animation

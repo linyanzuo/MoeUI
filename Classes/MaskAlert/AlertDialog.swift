@@ -8,7 +8,8 @@
 import UIKit
 
 
-public class AlertDialog: UIView {
+/// default dialog view to show
+public class AlertDialog: MoeView {
     public enum Style {
         case toast
         case progress
@@ -16,7 +17,7 @@ public class AlertDialog: UIView {
         case fail
     }
 
-    private let themeColor = UIColor(rgb: 0x333333)
+    private let fontColor = UIColor(rgb: 0x333333)
     var style: AlertDialog.Style
     var message: String
 
@@ -33,10 +34,16 @@ public class AlertDialog: UIView {
         fatalError("use `init(style: Style, text: String)` instead")
     }
 
+    deinit {
+        MLog("[\(self)] died!")
+    }
+
     // MARK: Subviews Initialize
     private func setupSubviews() {
-        backgroundColor = .white
-        layer.cornerRadius = 8
+        self.updateAppearance { (appear) in
+            appear.background(color: UIColor(rgb: 0xE7E8EA)).cornerRadius(6)
+                .border(1, color: UIColor(rgb: 0xD7D8DA))
+        }
 
         label.text = message
         if style == .success || style == .fail {
@@ -49,6 +56,9 @@ public class AlertDialog: UIView {
                 imageView.image = UIImage(named: imageName, in: frameworkBundle, compatibleWith: nil)
             }
         }
+//        if style == .progress {
+//            indicator.startAnimating()
+//        }
     }
 
     private func setupConstraints() {
@@ -72,29 +82,29 @@ public class AlertDialog: UIView {
             ])
             labelTopConstraint = NSLayoutConstraint(item: label, attribute: .top, relatedBy: .equal, toItem: imageView, attribute: .bottom, multiplier: 1.0, constant: 8.0)
         case .toast:
-            labelTopConstraint = NSLayoutConstraint(item: label, attribute: .top, relatedBy: .equal, toItem: self, attribute: .top, multiplier: 1.0, constant: 24.0)
+            labelTopConstraint = NSLayoutConstraint(item: label, attribute: .top, relatedBy: .equal, toItem: self, attribute: .top, multiplier: 1.0, constant: 20.0)
         }
 
         label.translatesAutoresizingMaskIntoConstraints = false
         self.addConstraints([
             labelTopConstraint!,
-            NSLayoutConstraint(item: label, attribute: .left, relatedBy: .equal, toItem: self, attribute: .left, multiplier: 1.0, constant: 16),
-            NSLayoutConstraint(item: label, attribute: .right, relatedBy: .equal, toItem: self, attribute: .right, multiplier: 1.0, constant: -16),
-            NSLayoutConstraint(item: label, attribute: .bottom, relatedBy: .equal, toItem: self, attribute: .bottom, multiplier: 1.0, constant: -24.0)
+            NSLayoutConstraint(item: label, attribute: .left, relatedBy: .equal, toItem: self, attribute: .left, multiplier: 1.0, constant: 24),
+            NSLayoutConstraint(item: label, attribute: .right, relatedBy: .equal, toItem: self, attribute: .right, multiplier: 1.0, constant: -24),
+            NSLayoutConstraint(item: label, attribute: .bottom, relatedBy: .equal, toItem: self, attribute: .bottom, multiplier: 1.0, constant: -20.0)
         ])
     }
 
     // MARK: Getter & Setter
     private(set) lazy var label: MoeLabel = {
         let appear = Appearance()
-        appear.text("Loading").font(15).color(self.themeColor).lines(0).alignment(.center)
+        appear.text("Loading").font(15, weight: .medium).color(self.fontColor).lines(0).alignment(.center)
         return MoeUI.makeLabel(toView: self, with: appear)
     }()
 
     private(set) lazy var indicator: UIActivityIndicatorView = {
         let indicator = UIActivityIndicatorView(style: .whiteLarge)
         indicator.hidesWhenStopped = true
-        indicator.color = self.themeColor
+        indicator.color = self.fontColor
         self.addSubview(indicator)
 
         return indicator

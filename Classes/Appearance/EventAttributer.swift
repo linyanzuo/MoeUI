@@ -8,8 +8,8 @@
 import UIKit
 
 
-internal struct EventAttribute: AppearanceAttribute {
-    internal var target: Any?
+internal class EventAttribute: AppearanceAttribute {
+    internal weak var target: AnyObject?
     internal var action: Selector?
     internal var controlEvents: UIControl.Event?
 }
@@ -17,7 +17,7 @@ internal struct EventAttribute: AppearanceAttribute {
 
 public class EventAttributer: AppearanceAttributer, Codable {
     @discardableResult
-    public func target(target: Any) -> Self {
+    public func target(target: AnyObject) -> Self {
         attribute.target = target
         return self
     }

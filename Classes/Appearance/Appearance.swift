@@ -66,7 +66,7 @@ public class Appearance: NSObject {
     }
 
     @discardableResult
-    public func event(target: Any, action: Selector, for controlEvents: UIControl.Event = .touchUpInside) -> EventAttributer {
+    public func event(target: AnyObject, action: Selector, for controlEvents: UIControl.Event = .touchUpInside) -> EventAttributer {
         var eventer: EventAttributer? = nil
         for existedEventer in eventers {
             if existedEventer.attribute.controlEvents == controlEvents {

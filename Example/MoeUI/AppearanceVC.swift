@@ -120,6 +120,11 @@ class AppearanceVC: UIViewController, Runtime {
 
     @objc func bgBtnTouchDownAction() {
         MLog("Touch down")
+//        Alerter.showError(text: "Unfortunately, It don't work!", in: self.view)
+//        GlobalAlertManager.shared.alert(style: .progress, text: "So bad, It doesn't finish", with: "Progress")
+//        Alerter.showGlobalDialog(style: .progress, text: "So bad, It doesn't finish")
+
+        perform(#selector(hide), with: nil, afterDelay: 1.0)
     }
 
     @objc func bgBtnTouchUpInsideAction() {
@@ -133,27 +138,33 @@ class AppearanceVC: UIViewController, Runtime {
     }
 
     @objc func test() {
-//        GlobalAlertManager.shared.hide(with: "Fail")
-
-//        let dialog = AlertDialog(style: .progress, text: "Hello word")
-//        self.view.addSubview(dialog)
-//        dialog.translatesAutoresizingMaskIntoConstraints = false
-//        self.view.addConstraints([
-//            NSLayoutConstraint(item: dialog, attribute: .centerX, relatedBy: .equal, toItem: self.view, attribute: .centerX, multiplier: 1.0, constant: 0.0),
-//            NSLayoutConstraint(item: dialog, attribute: .centerY, relatedBy: .equal, toItem: self.view, attribute: .centerY, multiplier: 1.0, constant: 0.0),
-//            NSLayoutConstraint(item: dialog, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: 200.0),
-//            NSLayoutConstraint(item: dialog, attribute: .height, relatedBy: .equal, toItem: nil, attribute: . notAnAttribute, multiplier: 1.0, constant: 160.0)
-//        ])
-
 //        let maskAlertVC = MaskAlertController()
 //        self.present(maskAlertVC, animated: true, completion: nil)
 
-        let alertVC = ProgressAlertController(style: .toast, text: "Congratulation, It work!")
-        self.present(alertVC, animated: true, completion: nil)
+//        let alertVC = ProgressAlertController(style: .progress, text: "Congratulation, It work!")
+//        self.present(alertVC, animated: true, completion: nil)
 
-        //        GlobalAlertManager.shared.alert(style: .success, text: "Configuration, It work!", with: "Success")
-        //        GlobalAlertManager.shared.alert(style: .fail, text: "Unfortunately, It doesn't work!", with: "Fail")
-        //        GlobalAlertManager.shared.alert(style: .progress, text: "So bad, It doesn't finish", with: "Progress")
-        //
+//        GlobalAlertManager.shared.alert(style: .success, text: "Configuration, It work!", with: "Success")
+//        GlobalAlertManager.shared.alert(style: .fail, text: "Unfortunately, It doesn't work!", with: "Fail")
+//        GlobalAlertManager.shared.alert(style: .progress, text: "So bad, It doesn't finish", with: "Progress")
+
+//        Alerter.showProgress(text: "Configuration, It work!", in: self.view)
+//        Alerter.showSuccess(text: "Configuration, It work!", in: self.view)
+//        Alerter.showDialog(style: .success, text: "Configuration, It work!", in: self.view)
+//        Alerter.showDialog(style: .fail, text: "Unfortunately, It doesn't work!", in: self.view)
+//        Alerter.showDialog(style: .progress, text: "So bad, It doesn't finish", in: self.view)
+
+        Alerter.showGlobalDialog(style: .success, text: "Configuration, It work!")
+//        Alerter.showGlobalDialog(style: .fail, text: "Unfortunately, It doesn't work!")
+
+//        let dialog = AlertDialog(style: .success, text: "Configuration, It work!")
+//        let alertView = AlertView(frame: .zero)
+    }
+
+    @objc func hide() {
+//        Alerter.showDialog(style: .fail, text: "Unfortunately, It doesn't work!", in: self.view)
+        Alerter.showGlobalDialog(style: .fail, text: "Unfortunately, It doesn't work!")
+//        Alerter.hide(in: self.view)
+//        Alerter.hideGlobal()
     }
 }

@@ -24,6 +24,11 @@ public class ProgressAlertController: MaskAlertController {
     }
 
     // MARK: View Life Cycle
+    public override func viewDidLoad() {
+        super.viewDidLoad()
+        self.view.backgroundColor = .clear
+    }
+
     public override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         if style == .progress { self.dialog.indicator.startAnimating() }

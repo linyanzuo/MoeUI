@@ -9,21 +9,21 @@ import UIKit
 
 
 open class MaskAlertController: UIViewController, UIViewControllerTransitioningDelegate, MaskAlertAnimatorProtocol {
-    // MARK: Subclass should override methods
+    // MARK: Subclass override methods
     open func viewToAlert() -> UIView {
         let content = "Plaese override the `viewToAlert` method, and return custom view which you want to alert"
         let bezelView = AlertDialog(style: .toast, text: content)
         return bezelView
     }
 
-    open func addConstraintsFor(_ alert: UIView, in superView: UIView) {
-        alert.translatesAutoresizingMaskIntoConstraints = false
+    open func addConstraintsFor(_ alertView: UIView, in superView: UIView) {
+        alertView.translatesAutoresizingMaskIntoConstraints = false
         superView.addConstraints([
-            NSLayoutConstraint(item: alert, attribute: .centerX, relatedBy: .equal, toItem: superView, attribute: .centerX, multiplier: 1.0, constant: 0.0),
-            NSLayoutConstraint(item: alert, attribute: .centerY, relatedBy: .equal, toItem: superView, attribute: .centerY, multiplier: 1.0, constant: 0.0),
-            NSLayoutConstraint(item: alert, attribute: .left, relatedBy: .greaterThanOrEqual, toItem: superView, attribute: .left, multiplier: 1.0, constant: 24),
-            NSLayoutConstraint(item: alert, attribute: .right, relatedBy: .lessThanOrEqual, toItem: superView, attribute: .right, multiplier: 1.0, constant: -24)
-            ])
+            NSLayoutConstraint(item: alertView, attribute: .centerX, relatedBy: .equal, toItem: superView, attribute: .centerX, multiplier: 1.0, constant: 0.0),
+            NSLayoutConstraint(item: alertView, attribute: .centerY, relatedBy: .equal, toItem: superView, attribute: .centerY, multiplier: 1.0, constant: 0.0),
+            NSLayoutConstraint(item: alertView, attribute: .left, relatedBy: .greaterThanOrEqual, toItem: superView, attribute: .left, multiplier: 1.0, constant: 24),
+            NSLayoutConstraint(item: alertView, attribute: .right, relatedBy: .lessThanOrEqual, toItem: superView, attribute: .right, multiplier: 1.0, constant: -24)
+        ])
     }
 
     open func animationType() -> MaskAlertAnimator.AnimationType {

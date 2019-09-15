@@ -20,6 +20,8 @@
 		9519C6E8230A49AA005AEF22 /* Extension+Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9519C6E7230A49A9005AEF22 /* Extension+Alert.swift */; };
 		952C802922E9B927000EC935 /* Runtime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 952C802822E9B927000EC935 /* Runtime.swift */; };
 		952C802B22EA9661000EC935 /* Mask+CornerRadius.swift in Sources */ = {isa = PBXBuildFile; fileRef = 952C802A22EA9661000EC935 /* Mask+CornerRadius.swift */; };
+		953E0A542324EED1009924E4 /* AlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 953E0A532324EED1009924E4 /* AlertView.swift */; };
+		953E0A56232510A5009924E4 /* Alerter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 953E0A55232510A5009924E4 /* Alerter.swift */; };
 		956869EC22F85FFB00485864 /* AppearanceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 956869EB22F85FFB00485864 /* AppearanceManager.swift */; };
 		956869EE22F917B500485864 /* Extension+Moe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 956869ED22F917B500485864 /* Extension+Moe.swift */; };
 		956869F022F91DC800485864 /* AppearanceUnity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 956869EF22F91DC800485864 /* AppearanceUnity.swift */; };
@@ -54,8 +56,7 @@
 		95B9A3A02317785600D7DE15 /* MaskAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95B9A39F2317785600D7DE15 /* MaskAlertController.swift */; };
 		95B9A3A2231786A800D7DE15 /* GeneralAttributer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95B9A3A1231786A800D7DE15 /* GeneralAttributer.swift */; };
 		95B9A3A923190D2000D7DE15 /* MoeUI.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 95B9A3A823190D1F00D7DE15 /* MoeUI.xcassets */; };
-		95B9A3AB23191C5F00D7DE15 /* GlobalAlertManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95B9A3AA23191C5F00D7DE15 /* GlobalAlertManager.swift */; };
-		95B9A3AD2319256700D7DE15 /* GlobalAlertWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95B9A3AC2319256700D7DE15 /* GlobalAlertWindow.swift */; };
+		95B9A3AD2319256700D7DE15 /* AlertWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95B9A3AC2319256700D7DE15 /* AlertWindow.swift */; };
 		95B9A3B5231CB8B000D7DE15 /* ProgressAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95B9A3B4231CB8B000D7DE15 /* ProgressAlertController.swift */; };
 		95B9A3BA231E798400D7DE15 /* Unity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95B9A3B9231E798400D7DE15 /* Unity.swift */; };
 		95B9A3BC231E7AA100D7DE15 /* ViewUnity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95B9A3BB231E7AA100D7DE15 /* ViewUnity.swift */; };
@@ -111,6 +112,8 @@
 		952C802822E9B927000EC935 /* Runtime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Runtime.swift; sourceTree = "<group>"; };
 		952C802A22EA9661000EC935 /* Mask+CornerRadius.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Mask+CornerRadius.swift"; sourceTree = "<group>"; };
 		9530750E71CA78532F64EE3512AE9099 /* MoeUI-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "MoeUI-Info.plist"; sourceTree = "<group>"; };
+		953E0A532324EED1009924E4 /* AlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertView.swift; sourceTree = "<group>"; };
+		953E0A55232510A5009924E4 /* Alerter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alerter.swift; sourceTree = "<group>"; };
 		956869EB22F85FFB00485864 /* AppearanceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppearanceManager.swift; sourceTree = "<group>"; };
 		956869ED22F917B500485864 /* Extension+Moe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+Moe.swift"; sourceTree = "<group>"; };
 		956869EF22F91DC800485864 /* AppearanceUnity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppearanceUnity.swift; sourceTree = "<group>"; };
@@ -145,8 +148,7 @@
 		95B9A39F2317785600D7DE15 /* MaskAlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MaskAlertController.swift; sourceTree = "<group>"; };
 		95B9A3A1231786A800D7DE15 /* GeneralAttributer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralAttributer.swift; sourceTree = "<group>"; };
 		95B9A3A823190D1F00D7DE15 /* MoeUI.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = MoeUI.xcassets; sourceTree = "<group>"; };
-		95B9A3AA23191C5F00D7DE15 /* GlobalAlertManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalAlertManager.swift; sourceTree = "<group>"; };
-		95B9A3AC2319256700D7DE15 /* GlobalAlertWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalAlertWindow.swift; sourceTree = "<group>"; };
+		95B9A3AC2319256700D7DE15 /* AlertWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertWindow.swift; sourceTree = "<group>"; };
 		95B9A3B4231CB8B000D7DE15 /* ProgressAlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressAlertController.swift; sourceTree = "<group>"; };
 		95B9A3B9231E798400D7DE15 /* Unity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Unity.swift; sourceTree = "<group>"; };
 		95B9A3BB231E7AA100D7DE15 /* ViewUnity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewUnity.swift; sourceTree = "<group>"; };
@@ -289,17 +291,18 @@
 			path = Common;
 			sourceTree = "<group>";
 		};
-		9519C6DA2307DEC7005AEF22 /* Alert */ = {
+		9519C6DA2307DEC7005AEF22 /* MaskAlert */ = {
 			isa = PBXGroup;
 			children = (
+				953E0A55232510A5009924E4 /* Alerter.swift */,
+				95B9A39D2317784500D7DE15 /* AlertDialog.swift */,
+				953E0A532324EED1009924E4 /* AlertView.swift */,
 				9519C6DD2307E64B005AEF22 /* MaskAlertAnimator.swift */,
 				95B9A39F2317785600D7DE15 /* MaskAlertController.swift */,
 				95B9A3B4231CB8B000D7DE15 /* ProgressAlertController.swift */,
-				95B9A3AA23191C5F00D7DE15 /* GlobalAlertManager.swift */,
-				95B9A3AC2319256700D7DE15 /* GlobalAlertWindow.swift */,
-				95B9A39D2317784500D7DE15 /* AlertDialog.swift */,
+				95B9A3AC2319256700D7DE15 /* AlertWindow.swift */,
 			);
-			path = Alert;
+			path = MaskAlert;
 			sourceTree = "<group>";
 		};
 		952C802122E9B5A8000EC935 /* Runtime */ = {
@@ -334,7 +337,7 @@
 			isa = PBXGroup;
 			children = (
 				95B9A3B8231E787B00D7DE15 /* Unity */,
-				9519C6DA2307DEC7005AEF22 /* Alert */,
+				9519C6DA2307DEC7005AEF22 /* MaskAlert */,
 				9506AACB22F44945005CFE1C /* Common */,
 				9506AAC822F4485A005CFE1C /* PageMenu */,
 				9503301D22F17381001A0F9B /* PanDrawer */,
@@ -631,8 +634,10 @@
 				95B6336D22E739DB00B6DC8F /* String+Character.swift in Sources */,
 				956869EC22F85FFB00485864 /* AppearanceManager.swift in Sources */,
 				95AF992622F44E2B002CFC76 /* PageMenuController+Scroll.swift in Sources */,
+				953E0A542324EED1009924E4 /* AlertView.swift in Sources */,
 				9503302322F17EAC001A0F9B /* MaskView.swift in Sources */,
 				95B9A3A2231786A800D7DE15 /* GeneralAttributer.swift in Sources */,
+				953E0A56232510A5009924E4 /* Alerter.swift in Sources */,
 				956869F022F91DC800485864 /* AppearanceUnity.swift in Sources */,
 				952C802B22EA9661000EC935 /* Mask+CornerRadius.swift in Sources */,
 				CE4ECA0E9BAB7A15FC7324EC116097EC /* MoeUI-dummy.m in Sources */,
@@ -660,7 +665,7 @@
 				95B9A3A02317785600D7DE15 /* MaskAlertController.swift in Sources */,
 				95B6336B22E739B300B6DC8F /* UIColor+Color.swift in Sources */,
 				9519C6DE2307E64B005AEF22 /* MaskAlertAnimator.swift in Sources */,
-				95B9A3AD2319256700D7DE15 /* GlobalAlertWindow.swift in Sources */,
+				95B9A3AD2319256700D7DE15 /* AlertWindow.swift in Sources */,
 				95B6336722E7364100B6DC8F /* ProjectConstants.swift in Sources */,
 				95AF992522F44E2B002CFC76 /* PageMenuController+Gesture.swift in Sources */,
 				95AF991722F44CAF002CFC76 /* PageMenuController.swift in Sources */,
@@ -671,7 +676,6 @@
 				95AF995A22F59965002CFC76 /* BackgroundAttributer.swift in Sources */,
 				95AF991C22F44DC4002CFC76 /* PageMenuOption.swift in Sources */,
 				95B9A3B5231CB8B000D7DE15 /* ProgressAlertController.swift in Sources */,
-				95B9A3AB23191C5F00D7DE15 /* GlobalAlertManager.swift in Sources */,
 				95AF991E22F44DEF002CFC76 /* PageMenuConfiguration.swift in Sources */,
 				95A7A9A622F2C70B00A5AD0A /* UIViewController+SidePanDrawer.swift in Sources */,
 				95B9A3962316689100D7DE15 /* MoeButton.swift in Sources */,

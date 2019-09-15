@@ -53,8 +53,8 @@ Pod::Spec.new do |s|
     drawer.dependency 'MoeUI/Common'
     drawer.dependency 'MoeUI/Runtime'
   end
-  s.subspec 'Alert' do |alert|
-    alert.source_files = 'Classes/Alert/*'
+  s.subspec 'MaskAlert' do |alert|
+    alert.source_files = 'Classes/MaskAlert/*'
     alert.frameworks = 'UIKit'
     alert.dependency 'MoeUI/Common'
     alert.dependency 'MoeUI/Appearance'
