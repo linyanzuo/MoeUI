@@ -119,16 +119,16 @@ class AppearanceVC: UIViewController, Runtime {
     }
 
     @objc func bgBtnTouchDownAction() {
-        MLog("Touch down")
+//        MLog("Touch down")
 //        Alerter.showError(text: "Unfortunately, It don't work!", in: self.view)
 //        GlobalAlertManager.shared.alert(style: .progress, text: "So bad, It doesn't finish", with: "Progress")
 //        Alerter.showGlobalDialog(style: .progress, text: "So bad, It doesn't finish")
 
-        perform(#selector(hide), with: nil, afterDelay: 1.0)
+        perform(#selector(hide), with: nil, afterDelay: 0.5)
     }
 
     @objc func bgBtnTouchUpInsideAction() {
-        MLog("Touch up inside")
+//        MLog("Touch up inside")
         bigLabel.updateAppearance { (appear) in
             // nil 不会影响原有的文本
             appear.text(nil).color(.green)
@@ -137,34 +137,16 @@ class AppearanceVC: UIViewController, Runtime {
         test()
     }
 
+    var id: AlertIdentifier? = nil
     @objc func test() {
-//        let maskAlertVC = MaskAlertController()
-//        self.present(maskAlertVC, animated: true, completion: nil)
+//        HUD.showSuccess(text: "Configuration, It work!")
 
-//        let alertVC = ProgressAlertController(style: .progress, text: "Congratulation, It work!")
-//        self.present(alertVC, animated: true, completion: nil)
-
-//        GlobalAlertManager.shared.alert(style: .success, text: "Configuration, It work!", with: "Success")
-//        GlobalAlertManager.shared.alert(style: .fail, text: "Unfortunately, It doesn't work!", with: "Fail")
-//        GlobalAlertManager.shared.alert(style: .progress, text: "So bad, It doesn't finish", with: "Progress")
-
-//        Alerter.showProgress(text: "Configuration, It work!", in: self.view)
-//        Alerter.showSuccess(text: "Configuration, It work!", in: self.view)
-//        Alerter.showDialog(style: .success, text: "Configuration, It work!", in: self.view)
-//        Alerter.showDialog(style: .fail, text: "Unfortunately, It doesn't work!", in: self.view)
-//        Alerter.showDialog(style: .progress, text: "So bad, It doesn't finish", in: self.view)
-
-        Alerter.showGlobalDialog(style: .success, text: "Configuration, It work!")
-//        Alerter.showGlobalDialog(style: .fail, text: "Unfortunately, It doesn't work!")
-
-//        let dialog = AlertDialog(style: .success, text: "Configuration, It work!")
-//        let alertView = AlertView(frame: .zero)
+        Alerter.showDialog(style: .success, text: "Configuration, it work!", in: self.view, with: "Test")
     }
 
     @objc func hide() {
-//        Alerter.showDialog(style: .fail, text: "Unfortunately, It doesn't work!", in: self.view)
-        Alerter.showGlobalDialog(style: .fail, text: "Unfortunately, It doesn't work!")
-//        Alerter.hide(in: self.view)
-//        Alerter.hideGlobal()
+//        HUD.showToast(text: "Message here!")
+
+//        Alerter.hide(in: self.view, with: "Test")
     }
 }

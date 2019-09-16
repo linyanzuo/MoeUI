@@ -291,7 +291,7 @@
 			path = Common;
 			sourceTree = "<group>";
 		};
-		9519C6DA2307DEC7005AEF22 /* MaskAlert */ = {
+		9519C6DA2307DEC7005AEF22 /* Alert */ = {
 			isa = PBXGroup;
 			children = (
 				953E0A55232510A5009924E4 /* Alerter.swift */,
@@ -302,7 +302,7 @@
 				95B9A3B4231CB8B000D7DE15 /* ProgressAlertController.swift */,
 				95B9A3AC2319256700D7DE15 /* AlertWindow.swift */,
 			);
-			path = MaskAlert;
+			path = Alert;
 			sourceTree = "<group>";
 		};
 		952C802122E9B5A8000EC935 /* Runtime */ = {
@@ -337,7 +337,7 @@
 			isa = PBXGroup;
 			children = (
 				95B9A3B8231E787B00D7DE15 /* Unity */,
-				9519C6DA2307DEC7005AEF22 /* MaskAlert */,
+				9519C6DA2307DEC7005AEF22 /* Alert */,
 				9506AACB22F44945005CFE1C /* Common */,
 				9506AAC822F4485A005CFE1C /* PageMenu */,
 				9503301D22F17381001A0F9B /* PanDrawer */,

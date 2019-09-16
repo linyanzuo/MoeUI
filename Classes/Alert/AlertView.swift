@@ -55,9 +55,11 @@ public class AlertView: BaseView {
     }
 
     public func addAlert(customView: UIView, with identifier: String? = nil) {
+        if let previousView = alerts.last?.view { previousView.layer.removeAllAnimations() }
+
         maskBtn.isUserInteractionEnabled = false
         var id = identifier
-        if id == nil { id = self.generateIdentifier() }
+        if id == nil { id = Alerter.generateIdentifier() }
         for alert in alerts {
             if alert.id == id {
                 MLog("Can't alert view which identifier \(id!) is already in use. ")
@@ -85,6 +87,8 @@ public class AlertView: BaseView {
     }
 
     public func removeAlert(with identifier: String? = nil, completionHandler: (() -> Void)?) {
+        if let previousView = alerts.last?.view { previousView.layer.removeAllAnimations() }
+
         maskBtn.isUserInteractionEnabled = false
         guard alerts.count > 0 else {
             MLog("There's no view alert now")
@@ -102,17 +106,14 @@ public class AlertView: BaseView {
                 index += 1
             }
             if targetAlert == nil {
-                MLog("Can't hide view which identifier \(identifier!) is not in use")
+                MLog("Can't hide view which identifier \(identifier!) has not in use")
                 return
             }
         }
         else { targetAlert = alerts.last }
 
         var shouldMaskDismiss = false
-        if alerts.count >= 2 {
-            let newTarget = alerts[alerts.count - 2]
-            bringSubviewToFront(newTarget.view)
-        } else { shouldMaskDismiss = true }
+        if alerts.count <= 1 { shouldMaskDismiss = true }
 
         if useAnaimation == true {
             addAlphaAnimation(to: targetAlert!, transitionType: .dismiss)
@@ -123,25 +124,20 @@ public class AlertView: BaseView {
 
     private func done(with alert: Alert) {
         for index in 0 ..< alerts.count {
-            if alerts[index].id == targetAlert?.id {
+            if alerts[index].id == alert.id {
                 alerts.remove(at: index)
                 break
             }
         }
         alert.view.removeFromSuperview()
-        if alerts.count == 0 && removeFromSuperViewOnHide == true {
+
+        if alerts.count >= 1 {
+            if let previousView = alerts.last?.view { bringSubviewToFront(previousView) }
+        } else if alerts.count == 0 && removeFromSuperViewOnHide == true {
             self.removeFromSuperview()
         }
         maskBtn.isUserInteractionEnabled = true
         completionHandler?()
-    }
-
-    private func generateIdentifier() -> String {
-        let formatter = DateFormatter()
-        formatter.dateFormat = "MMddHHmmssSSSSSS"
-        let dateDesc = formatter.string(from: Date())
-//        let random = Int(arc4random_uniform(8999) + 1000)
-        return dateDesc
     }
 
     // MARK: Event Response
@@ -156,13 +152,6 @@ public class AlertView: BaseView {
         appear.event(target: self, action: #selector(maskTapAction(_:)))
         return MoeUI.makeButton(with: appear)
     }()
-
-    // Todo: 。。。
-//    private lazy var alertQueue: OperationQueue = {
-//        let queue = OperationQueue()
-//        queue.name = "AlertView.AlertOperationQueue"
-//        return queue
-//    }()
 }
 
 
@@ -224,6 +213,6 @@ extension AlertView: CAAnimationDelegate {
             if transitionType == .dismiss { self.done(with: alert) }
             else { maskBtn.isUserInteractionEnabled = true }
         }
-        MLog("Animation did stop")
+//        MLog("Animation did stop")
     }
 }
