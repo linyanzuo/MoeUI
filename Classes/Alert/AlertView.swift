@@ -18,6 +18,7 @@ struct Alert {
 public class AlertView: BaseView {
     private(set) var alerts: [Alert] = []
     private var targetAlert: Alert? = nil
+    private var customViewAlpha: CGFloat = 0.0
 
     let kMaskAlpha: CGFloat = 0.4
     let kCustomOpacityAnimKey = "customOpacityAnimation"
@@ -57,6 +58,7 @@ public class AlertView: BaseView {
     public func addAlert(customView: UIView, with identifier: String? = nil) {
         if let previousView = alerts.last?.view { previousView.layer.removeAllAnimations() }
 
+        customViewAlpha = customView.alpha
         maskBtn.isUserInteractionEnabled = false
         var id = identifier
         if id == nil { id = Alerter.generateIdentifier() }
@@ -197,10 +199,12 @@ extension AlertView: CAAnimationDelegate {
         let customView = alert.view
         if transitionType == .present {
             customAlphaAnim.fromValue = 0.0
-            customAlphaAnim.toValue = customView.alpha
+            customAlphaAnim.toValue = customViewAlpha
+            customView.alpha = customViewAlpha
         } else if transitionType == .dismiss {
-            customAlphaAnim.fromValue = customView.alpha
+            customAlphaAnim.fromValue = customViewAlpha
             customAlphaAnim.toValue = 0.0
+            customView.alpha = 0.0
         }
         customView.layer.add(customAlphaAnim, forKey: kCustomOpacityAnimKey)
     }
