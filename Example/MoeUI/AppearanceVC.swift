@@ -139,9 +139,9 @@ class AppearanceVC: UIViewController, Runtime {
 
     var id: AlertIdentifier? = nil
     @objc func test() {
-//        HUD.showSuccess(text: "Configuration, It work!")
+        HUD.showSuccess(text: "Configuration, It work!")
 
-        Alerter.showDialog(style: .success, text: "Configuration, it work!", in: self.view, with: "Test")
+//        Alerter.showDialog(style: .success, text: "Configuration, it work!", in: self.view, with: "Test")
     }
 
     @objc func hide() {
