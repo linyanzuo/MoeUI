@@ -12,38 +12,51 @@ public typealias AlertIdentifier = String
 
 
 public class HUD {
-    public class func showProgress(text: String, continued: TimeInterval = 1.0) {
-        showGlobalHUD(style: .progress, text: text, continued: continued)
-    }
-
     public class func showSuccess(text: String, continued: TimeInterval = 1.0) {
-        showGlobalHUD(style: .success, text: text, continued: continued)
+        showHUD(style: .success, text: text, continued: continued)
     }
 
     public class func showError(text: String, continued: TimeInterval = 1.0) {
-        showGlobalHUD(style: .error, text: text, continued: continued)
+        showHUD(style: .error, text: text, continued: continued)
     }
 
     public class func showToast(text: String, continued: TimeInterval = 1.0) {
-        showGlobalHUD(style: .toast, text: text, continued: continued)
+        showHUD(style: .toast, text: text, continued: continued)
     }
 
-    public class func showGlobalHUD(style: AlertDialog.Style, text: String, continued: TimeInterval) {
-        let id = Alerter.showGlobalCustom(AlertDialog(style: style, text: text))
+    public class func showHUD(style: AlertDialog.Style, text: String, continued: TimeInterval) {
+        let dialog = AlertDialog(style: style, text: text)
+        showCustomHUD(view: dialog, continued: continued)
+    }
+
+    public class func showCustomHUD(view: UIView, continued: TimeInterval) {
+        let id = Alerter.generateIdentifier()
+        Alerter.showGlobal(view, with: id)
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + continued, execute: {
             Alerter.hideGlobal(with: id)
         })
+    }
+
+    public class func showProgress(text: String) -> AlertIdentifier {
+        let dialog = AlertDialog(style: .progress, text: text)
+        return showCustomHUD(view: dialog)
+    }
+
+    public class func hide(with identifier: AlertIdentifier) {
+        Alerter.hideGlobal(with: identifier)
+    }
+
+    public class func showCustomHUD(view: UIView) -> AlertIdentifier {
+        let id = Alerter.generateIdentifier()
+        Alerter.showGlobal(view, with: id)
+        return id
     }
 }
 
 
 public class Alerter: NSObject {
     // MARK: Alert in view
-    public class func showDialog(style: AlertDialog.Style, text: String, in view: UIView, with identifier: String) {
-        showCustom(AlertDialog(style: style, text: text), in: view, with: identifier)
-    }
-
-    public class func showCustom(_ customView: UIView, in view: UIView, with identifier: String) {
+    public class func show(_ customView: UIView, in view: UIView, with identifier: String) {
         checkThread()
 
         var alertView: AlertView? = nil
@@ -79,11 +92,9 @@ public class Alerter: NSObject {
     }
 
     // MARK: Alert in window
-    public class func showGlobalCustom(_ customView: UIView) -> AlertIdentifier {
+    public class func showGlobal(_ customView: UIView, with identifier: AlertIdentifier) {
         checkThread()
-        let id = Alerter.generateIdentifier()
-        AlertWindow.shared.addAlert(customView: customView, with: id)
-        return id
+        AlertWindow.shared.addAlert(customView: customView, with: identifier)
     }
 
     public class func hideGlobal(with identifier: AlertIdentifier) {

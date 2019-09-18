@@ -19,10 +19,11 @@ open class MoeImageView: UIImageView, AppearanceUnity, AppearanceApply {
 
             if attr.image != nil { self.image = attr.image }
             if attr.cornerRadius != nil {
-                if MInfo.phoneVersion >= 11.0 && self.appearance.shadower?.attribute.color == nil {
+                if attr.isMaskCornerRadius != true {
                     layer.masksToBounds = true
                     layer.cornerRadius = attr.cornerRadius!
-                } else { addCornerRadius(attr.cornerRadius!) }
+                }
+                else { addCornerRadius(attr.cornerRadius!) }
             }
         }
     }

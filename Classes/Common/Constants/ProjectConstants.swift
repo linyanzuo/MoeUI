@@ -9,9 +9,9 @@
 import UIKit
 
 
-/// 调试打印
+/// Debug message log
 ///
-/// 输出信息包含: 函数名@文件名, 所在行数; 及输出的调试内容
+/// print debug message, include: `method name@file name`, `line number`, `log message`
 public func MLog<T>(_ fmt: T, file: String = #file, function: String = #function, line: Int = #line) {
     #if DEBUG
     let fileName = NSString(string: file).pathComponents.last!
@@ -20,12 +20,14 @@ public func MLog<T>(_ fmt: T, file: String = #file, function: String = #function
     #endif
 }
 
+
 public func MKey(for name: String, file: String = #file) -> String {
     let fileName = NSString(string: file).pathComponents.last!
     return String(format: "[%@]: %@", fileName, name)
 }
 
-/// 获取设备及应用信息
+
+/// Device info & App info
 public struct MInfo {
     /// 命名空间
     public static let namespace = Bundle.main.infoDictionary!["CFBundleExecutable"] as! String

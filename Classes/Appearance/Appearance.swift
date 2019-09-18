@@ -104,7 +104,6 @@ public class Appearance: NSObject {
 
     // MARK: Private Method
     private func getImager(for state: UIControl.State) -> ImageAttributer {
-
         var imager: ImageAttributer? = nil
         for existedImager in imagers {
             if existedImager.attribute.state == state {

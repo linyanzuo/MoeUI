@@ -11,6 +11,8 @@ import UIKit
 internal struct ImageAttribute {
     internal var image: UIImage?
     internal var cornerRadius: CGFloat?
+    internal var maskColor: UIColor?
+    internal var isMaskCornerRadius: Bool?
     internal var state: UIControl.State?
     internal var type: ImageType = .content
 
@@ -41,6 +43,15 @@ public class ImageAttributer: AppearanceAttributer, Codable {
     @discardableResult
     public func cornerRadius(_ cornerRadius: CGFloat) -> Self {
         if cornerRadius > 0.0 { attribute.cornerRadius = cornerRadius }
+        return self
+    }
+
+    @discardableResult
+    public func maskCornerRadius(_ cornerRadius: CGFloat, maskColor: UIColor) -> Self {
+        guard cornerRadius > 0 else { return self }
+        attribute.isMaskCornerRadius = true
+        attribute.maskColor = maskColor
+        attribute.cornerRadius = cornerRadius
         return self
     }
 

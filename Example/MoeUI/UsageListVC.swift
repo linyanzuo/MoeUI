@@ -11,48 +11,61 @@ import MoeUI
 
 
 class UsageListVC: UITableViewController {
-    private let kUsageCellReuseID = "UsageCellReuseIdentifier"
-    private let usages: [(title: String, clazzName: String)] = [
-        ("Appearance Usage", "AppearanceVC"),
-        ("Appearance Registration Usage", "RegistrationVC"),
+    private let usagesGroup: [[(title: String, clazzName: String)]] = [
+        [
+            ("Appearance", "AppearanceVC"),
+            ("Appearance Registration", "RegistrationVC"),
+        ], [
+            ("HUD  &  Alert", "AlertUsageVC")
+        ]
     ]
+    private let kTitleCellReuseID = "TitleCellReuseID"
 
     // MARK: Object Life Cycle
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 
-    init() {
-        super.init(style: .plain)
-        setupSelf()
+    override init(style: UITableViewStyle) {
+        super.init(style: .grouped)
     }
 
-    private func setupSelf() {
+    // MARK: View Life Cycle
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
         self.title = "MoeUI"
-        self.tableView.register(UITableViewCell.classForCoder(), forCellReuseIdentifier: kUsageCellReuseID)
+        self.tableView.register(TitleCell.classForCoder(), forCellReuseIdentifier: kTitleCellReuseID)
     }
 
     // MARK: Delegate Method
+    override func numberOfSections(in tableView: UITableView) -> Int {
+        return usagesGroup.count
+    }
+
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        let usages = usagesGroup[section]
         return usages.count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: kUsageCellReuseID)
-        let data = usages[indexPath.row]
+        let usages = usagesGroup[indexPath.section]
+        let usage = usages[indexPath.row]
 
-        cell!.textLabel?.text = data.title
-
-        return cell!
+        let cell = tableView.dequeueReusableCell(withIdentifier: kTitleCellReuseID) as! TitleCell
+        cell.titleLabel.text = usage.title
+        return cell
     }
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if indexPath.row == 0 {
+        let usages = usagesGroup[indexPath.section]
+        let usage = usages[indexPath.row]
+
+        if indexPath.section == 0 && indexPath.row == 0 {
             let targetVC = AppearanceVC.storyboardInstance()
             self.navigationController?.pushViewController(targetVC, animated: true)
         } else {
-            let data = usages[indexPath.row]
-            pushToTargetClass(with: data.clazzName)
+            pushToTargetClass(with: usage.clazzName)
         }
     }
 

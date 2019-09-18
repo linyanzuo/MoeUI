@@ -18,7 +18,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window = UIWindow(frame: MScreen.bounds)
         window?.makeKeyAndVisible()
 
-        let usageListVC = UsageListVC()
+        let usageListVC = UsageListVC(style: .grouped)
         let navVC = UINavigationController(rootViewController: usageListVC)
         window?.rootViewController = navVC
         window?.makeKeyAndVisible()

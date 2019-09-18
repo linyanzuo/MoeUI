@@ -294,27 +294,36 @@
                                     <constraint firstAttribute="height" constant="128" id="AFs-09-Qlv"/>
                                 </constraints>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Th5-ia-u9h" customClass="MoeButton" customModule="MoeUI">
-                                <rect key="frame" x="123.66666666666669" y="383.33333333333331" width="128" height="44"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="7Jy-uK-8uX">
+                                <rect key="frame" x="16" y="375.33333333333331" width="343" height="44"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Th5-ia-u9h" customClass="MoeButton" customModule="MoeUI">
+                                        <rect key="frame" x="0.0" y="0.0" width="171.66666666666666" height="44"/>
+                                        <state key="normal" title="Button"/>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pTY-P8-jpH" customClass="MoeButton" customModule="MoeUI">
+                                        <rect key="frame" x="171.66666666666663" y="0.0" width="171.33333333333337" height="44"/>
+                                        <state key="normal" title="Button"/>
+                                    </button>
+                                </subviews>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="128" id="GMW-r6-xOy"/>
-                                    <constraint firstAttribute="height" constant="44" id="L4C-Xy-eeX"/>
+                                    <constraint firstAttribute="height" constant="44" id="Meh-Jm-8dw"/>
                                 </constraints>
-                                <state key="normal" title="Button"/>
-                            </button>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="BdF-KZ-Vas" secondAttribute="trailing" constant="16" id="2bM-Wk-gxc"/>
                             <constraint firstItem="VFd-cq-wIc" firstAttribute="leading" secondItem="PjR-Y6-NVo" secondAttribute="leading" id="4dT-hz-HUS"/>
+                            <constraint firstItem="7Jy-uK-8uX" firstAttribute="top" secondItem="VFd-cq-wIc" secondAttribute="bottom" constant="16" id="7Ke-Ev-bxp"/>
                             <constraint firstItem="BdF-KZ-Vas" firstAttribute="top" secondItem="L10-J2-rLj" secondAttribute="bottom" constant="16" id="7mO-ts-Bqw"/>
+                            <constraint firstAttribute="trailing" secondItem="7Jy-uK-8uX" secondAttribute="trailing" constant="16" id="Ayh-Dy-2mv"/>
                             <constraint firstItem="BdF-KZ-Vas" firstAttribute="leading" secondItem="8H9-pi-y6S" secondAttribute="leading" constant="16" id="HpM-Af-rXX"/>
                             <constraint firstItem="PjR-Y6-NVo" firstAttribute="leading" secondItem="BdF-KZ-Vas" secondAttribute="leading" id="KPb-YW-6jX"/>
                             <constraint firstItem="gVO-Hy-0cN" firstAttribute="top" secondItem="BdF-KZ-Vas" secondAttribute="bottom" constant="16" id="YUL-VC-XvX"/>
                             <constraint firstItem="g63-vW-Q8z" firstAttribute="centerX" secondItem="8H9-pi-y6S" secondAttribute="centerX" id="bAa-oW-sH4"/>
+                            <constraint firstItem="7Jy-uK-8uX" firstAttribute="leading" secondItem="8H9-pi-y6S" secondAttribute="leading" constant="16" id="edo-ng-UCL"/>
                             <constraint firstAttribute="trailing" secondItem="gVO-Hy-0cN" secondAttribute="trailing" constant="16" id="fWu-ek-M4i"/>
-                            <constraint firstItem="Th5-ia-u9h" firstAttribute="centerX" secondItem="8H9-pi-y6S" secondAttribute="centerX" id="m9g-AK-EcM"/>
-                            <constraint firstItem="Th5-ia-u9h" firstAttribute="top" secondItem="VFd-cq-wIc" secondAttribute="bottom" constant="24" id="o5r-OB-qvd"/>
                             <constraint firstItem="VFd-cq-wIc" firstAttribute="top" secondItem="PjR-Y6-NVo" secondAttribute="bottom" constant="16" id="oyH-Mp-gqx"/>
                             <constraint firstItem="PjR-Y6-NVo" firstAttribute="top" secondItem="gVO-Hy-0cN" secondAttribute="bottom" constant="24" id="ug8-sT-yJ1"/>
                             <constraint firstItem="cNg-u4-xbE" firstAttribute="top" secondItem="g63-vW-Q8z" secondAttribute="bottom" constant="32" id="z1J-rg-aZe"/>
@@ -327,6 +336,7 @@
                         <outlet property="colorView" destination="BdF-KZ-Vas" id="cKU-8A-r3x"/>
                         <outlet property="gradientView" destination="gVO-Hy-0cN" id="wQH-Jo-khJ"/>
                         <outlet property="imgView" destination="g63-vW-Q8z" id="qy0-0j-BGR"/>
+                        <outlet property="insertBtn" destination="pTY-P8-jpH" id="PRO-iw-FiB"/>
                         <outlet property="label" destination="PjR-Y6-NVo" id="0OQ-YQ-HkW"/>
                     </connections>
                 </viewController>

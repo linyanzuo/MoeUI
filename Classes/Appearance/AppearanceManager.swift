@@ -13,8 +13,6 @@ public struct AppearanceIdentifier: OptionSet {
     public init(rawValue: UInt) {
         self.rawValue = rawValue
     }
-
-//    static let `default` = AppearanceIdentifier(rawValue: 0)
 }
 
 

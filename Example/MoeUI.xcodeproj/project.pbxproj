@@ -29,6 +29,9 @@
 		95B9A3B1231A68DD00D7DE15 /* UsageListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95B9A3B0231A68DD00D7DE15 /* UsageListVC.swift */; };
 		95B9A3B3231BDA5C00D7DE15 /* CustomAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95B9A3B2231BDA5C00D7DE15 /* CustomAlertController.swift */; };
 		95C55D7722F03BE1001CF9FF /* AppearanceVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95C55D7622F03BE1001CF9FF /* AppearanceVC.swift */; };
+		95F98CD22331E4200091017B /* AlertUsageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95F98CD12331E4200091017B /* AlertUsageVC.swift */; };
+		95F98CD42331E51E0091017B /* TitleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95F98CD32331E51E0091017B /* TitleCell.swift */; };
+		95F98CD6233219620091017B /* CustomDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95F98CD5233219620091017B /* CustomDialog.swift */; };
 		E7102A3B34A4D0BBE1D546E1 /* Pods_MoeUI_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A6ECB442DFE0164409B96F36 /* Pods_MoeUI_Tests.framework */; };
 /* End PBXBuildFile section */
 
@@ -72,6 +75,9 @@
 		95B9A3B0231A68DD00D7DE15 /* UsageListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsageListVC.swift; sourceTree = "<group>"; };
 		95B9A3B2231BDA5C00D7DE15 /* CustomAlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAlertController.swift; sourceTree = "<group>"; };
 		95C55D7622F03BE1001CF9FF /* AppearanceVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppearanceVC.swift; sourceTree = "<group>"; };
+		95F98CD12331E4200091017B /* AlertUsageVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertUsageVC.swift; sourceTree = "<group>"; };
+		95F98CD32331E51E0091017B /* TitleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleCell.swift; sourceTree = "<group>"; };
+		95F98CD5233219620091017B /* CustomDialog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomDialog.swift; sourceTree = "<group>"; };
 		97C8E5E34F804AC69415C4EC /* Pods-MoeUI_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MoeUI_Example.debug.xcconfig"; path = "Target Support Files/Pods-MoeUI_Example/Pods-MoeUI_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		A6ECB442DFE0164409B96F36 /* Pods_MoeUI_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MoeUI_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BB5A5ABE435860855C4DE2C3 /* Pods-MoeUI_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MoeUI_Example.release.xcconfig"; path = "Target Support Files/Pods-MoeUI_Example/Pods-MoeUI_Example.release.xcconfig"; sourceTree = "<group>"; };
@@ -136,7 +142,9 @@
 			children = (
 				607FACD51AFB9204008FA782 /* AppDelegate.swift */,
 				95B9A3B0231A68DD00D7DE15 /* UsageListVC.swift */,
+				95F98CD32331E51E0091017B /* TitleCell.swift */,
 				95C55D7522F03BB2001CF9FF /* Appearance */,
+				95F98CCE2331E2AA0091017B /* Alert */,
 				9590645E22FD1F950099C02E /* GradientView */,
 				95AF992822F44FB0002CFC76 /* PageMenu */,
 				95B6337222E8581200B6DC8F /* CornerRadius */,
@@ -250,6 +258,15 @@
 				95B9A3B2231BDA5C00D7DE15 /* CustomAlertController.swift */,
 			);
 			name = Appearance;
+			sourceTree = "<group>";
+		};
+		95F98CCE2331E2AA0091017B /* Alert */ = {
+			isa = PBXGroup;
+			children = (
+				95F98CD12331E4200091017B /* AlertUsageVC.swift */,
+				95F98CD5233219620091017B /* CustomDialog.swift */,
+			);
+			name = Alert;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -434,14 +451,17 @@
 				95B6337122E856EE00B6DC8F /* ListVC.swift in Sources */,
 				607FACD81AFB9204008FA782 /* CornerRadiusVC.swift in Sources */,
 				9503302822F198F7001A0F9B /* SideMainVC.swift in Sources */,
+				95F98CD22331E4200091017B /* AlertUsageVC.swift in Sources */,
 				9590646022FD1FC40099C02E /* GradientVC.swift in Sources */,
 				95B6337422E8583600B6DC8F /* CornerRaidusCell.swift in Sources */,
 				95C55D7722F03BE1001CF9FF /* AppearanceVC.swift in Sources */,
+				95F98CD42331E51E0091017B /* TitleCell.swift in Sources */,
 				9503302A22F19903001A0F9B /* SidePageVC.swift in Sources */,
 				607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */,
 				95B9A3B3231BDA5C00D7DE15 /* CustomAlertController.swift in Sources */,
 				95AF993122F4604F002CFC76 /* ContactViewController.swift in Sources */,
 				95B9A3B1231A68DD00D7DE15 /* UsageListVC.swift in Sources */,
+				95F98CD6233219620091017B /* CustomDialog.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

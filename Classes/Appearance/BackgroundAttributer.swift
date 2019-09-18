@@ -55,9 +55,10 @@ public class BackgroundAttributer: AppearanceAttributer, Codable {
 
     @discardableResult
     public func maskCornerRadius(_ cornerRadius: CGFloat, maskColor: UIColor) -> Self {
+        guard cornerRadius > 0 else { return self }
         attribute.isMaskCornerRadius = true
         attribute.maskColor = maskColor
-        if cornerRadius > 0.0 { attribute.cornerRadius = cornerRadius }
+        attribute.cornerRadius = cornerRadius
         return self
     }
 
