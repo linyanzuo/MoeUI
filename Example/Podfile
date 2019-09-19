@@ -5,7 +5,6 @@ target 'MoeUI_Example' do
 
   target 'MoeUI_Tests' do
     inherit! :search_paths
-
     
   end
 end
