@@ -15,7 +15,7 @@ struct Alert {
 
 
 /// popup view used for alert
-public class AlertView: BaseView {
+public class AlertView: UnitedView {
     private(set) var alerts: [Alert] = []
     private var targetAlert: Alert? = nil
     private var customViewAlpha: CGFloat = 0.0
@@ -34,7 +34,7 @@ public class AlertView: BaseView {
         MLog("[\(self)] died!")
     }
 
-    override func setupViews() {
+    override public func setupSubviews() {
         self.backgroundColor = .clear
         self.addSubview(maskBtn)
 
@@ -43,7 +43,7 @@ public class AlertView: BaseView {
         }
     }
 
-    override func setupConstraints() {
+    override public func setupConstraints() {
         maskBtn.isHidden = !isMaskEnable
         guard isMaskEnable == true else { return }
         maskBtn.translatesAutoresizingMaskIntoConstraints = false

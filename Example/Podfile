@@ -2,6 +2,7 @@ use_frameworks!
 
 target 'MoeUI_Example' do
   pod 'MoeUI', :path => '../'
+  pod 'SnapKit', '~> 4.2.0'
 
   target 'MoeUI_Tests' do
     inherit! :search_paths

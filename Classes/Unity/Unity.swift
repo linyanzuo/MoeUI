@@ -7,5 +7,21 @@
 
 
 /// Programming unity standard
-protocol Unity {}
+public protocol Unity {}
 
+
+/// UIView programming unity standard
+public protocol ViewUnity: Unity where Self: UIView  {
+    func setupSelf()
+    func setupSubviews()
+    func setupConstraints()
+}
+
+
+/// UIViewController programming unity standard
+public protocol ViewControllerUnity: Unity where Self: UIViewController  {
+    func setupNavigation()
+    func setupViews()
+    func setupViewConstraints()
+    func setupRequest()
+}

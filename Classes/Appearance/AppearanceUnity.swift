@@ -35,7 +35,7 @@ extension AppearanceUnity {
     }
 
     public init?(identifier: AppearanceIdentifier) {
-        guard let appearance = AppearanceManager.shared.dequeue(with: identifier) else {
+        guard let appearance = AppearanceRegister.shared.dequeue(with: identifier) else {
             MLog("Reset Appearance Fail. Can't find appearance which matches to identifier")
             return nil
         }
@@ -59,7 +59,7 @@ extension AppearanceUnity {
     }
 
     public func resetAppearance(identifier: AppearanceIdentifier) {
-        guard let appearance = AppearanceManager.shared.dequeue(with: identifier) else {
+        guard let appearance = AppearanceRegister.shared.dequeue(with: identifier) else {
             MLog("Reset Appearance Fail. Can't find appearance which matches to identifier")
             return
         }

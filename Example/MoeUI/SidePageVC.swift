@@ -7,11 +7,17 @@
 //
 
 import UIKit
+import MoeUI
+
 
 class SidePageVC: UITableViewController {
 
     class func storyboardInstance() -> SidePageVC? {
         return UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: NSStringFromClass(self.classForCoder())) as? SidePageVC
+    }
+    
+    deinit {
+        MLog("SidePageVC Died!")
     }
 
     override func awakeFromNib() {
@@ -25,6 +31,12 @@ class SidePageVC: UITableViewController {
         self.navigationItem.title = "SidePage"
         let btn = UIButton(type: .contactAdd)
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(customView: btn)
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        MLog("SidePageVC View Did Load")
     }
 
     @objc private func tapAction() {

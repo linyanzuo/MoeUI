@@ -95,7 +95,7 @@ extension MoeUI {
     }
 
     public class func makeLabel(toView: UIView? = nil, with identifier: AppearanceIdentifier) -> MoeLabel? {
-        let appearance = AppearanceManager.shared.dequeue(with: identifier)
+        let appearance = AppearanceRegister.shared.dequeue(with: identifier)
         guard appearance != nil else { return nil }
 
         let label = MoeLabel(appearance: appearance!)

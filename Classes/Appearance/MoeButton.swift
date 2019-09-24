@@ -97,7 +97,7 @@ extension MoeUI {
     }
 
     public class func makeButton(toView: UIView? = nil, with identifier: AppearanceIdentifier) -> MoeButton? {
-        let appearance = AppearanceManager.shared.dequeue(with: identifier)
+        let appearance = AppearanceRegister.shared.dequeue(with: identifier)
         guard appearance != nil else { return nil }
 
         let btn = MoeButton(appearance: appearance!)

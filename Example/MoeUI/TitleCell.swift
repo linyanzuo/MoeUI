@@ -10,19 +10,12 @@ import UIKit
 import MoeUI
 
 
-class TitleCell: UITableViewCell {
-
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-
-    override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
-        super.init(style: style, reuseIdentifier: reuseIdentifier)
+class TitleCell: UnitedTableViewCell {
+    override func setupSelf() {
         selectionStyle = .none
-        setupConstraints()
     }
 
-    private func setupConstraints() {
+    override func setupConstraints() {
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
         self.addConstraints([
             NSLayoutConstraint(item: titleLabel, attribute: .centerX, relatedBy: .equal, toItem: self, attribute: .centerX, multiplier: 1.0, constant: 0.0),

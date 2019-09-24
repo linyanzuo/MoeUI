@@ -21,9 +21,9 @@ public class Animator: NSObject, UIViewControllerTransitioningDelegate {
         self.animationType = animationType
     }
 
-    deinit {
-        MLog("Animator deinit")
-    }
+//    deinit {
+//        MLog("Animator deinit")
+//    }
 
     // MARK: UIViewControllerTransitioningDelegate
     public func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {

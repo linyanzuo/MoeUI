@@ -41,9 +41,9 @@ class MaskView: UIView {
         MaskView.Static.instance = nil
     }
 
-    deinit {
-        MLog("MaskView deinit")
-    }
+//    deinit {
+//        MLog("MaskView deinit")
+//    }
 
     private func setupSelf() {
         self.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(tapAction(_:))))

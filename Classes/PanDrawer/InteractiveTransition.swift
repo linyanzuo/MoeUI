@@ -40,7 +40,7 @@ public class InteractiveTransition: UIPercentDrivenInteractiveTransition, UIGest
     }
 
     deinit {
-        MLog("InteractiveTransition deinit")
+//        MLog("InteractiveTransition deinit")
         NotificationCenter.default.removeObserver(self)
     }
 

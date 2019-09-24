@@ -44,6 +44,7 @@ extension UIViewController {
         animator!.dismissInteraction = dismissInteraction
 
         drawerViewController.transitioningDelegate = animator
+        drawerViewController.modalPresentationStyle = .fullScreen
         self.present(drawerViewController, animated: true, completion: nil)
     }
 

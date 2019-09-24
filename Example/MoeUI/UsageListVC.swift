@@ -13,7 +13,7 @@ import MoeUI
 class UsageListVC: UITableViewController {
     private let usagesGroup: [[(title: String, clazzName: String)]] = [
         [
-            ("Appearance", "AppearanceVC"),
+            ("Appearance Update", "AppearanceVC"),
             ("Appearance Registration", "RegistrationVC"),
         ], [
             ("HUD  &  Alert", "AlertUsageVC")
@@ -26,7 +26,7 @@ class UsageListVC: UITableViewController {
         fatalError("init(coder:) has not been implemented")
     }
 
-    override init(style: UITableViewStyle) {
+    override init(style: UITableView.Style) {
         super.init(style: .grouped)
     }
 

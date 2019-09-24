@@ -12,7 +12,7 @@ class ListVC: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.tableView.rowHeight = UITableViewAutomaticDimension
+        self.tableView.rowHeight = UITableView.automaticDimension
         self.tableView.backgroundColor = UIColor.white
     }
 

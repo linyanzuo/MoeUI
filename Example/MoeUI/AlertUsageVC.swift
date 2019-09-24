@@ -32,7 +32,7 @@ class AlertUsageVC: UITableViewController {
         fatalError("init(coder:) has not been implemented")
     }
 
-    override init(style: UITableViewStyle) {
+    override init(style: UITableView.Style) {
         super.init(style: .grouped)
     }
 

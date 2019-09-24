@@ -13,6 +13,10 @@ class SideMainVC: UIViewController, UIViewControllerTransitioningDelegate {
     class func storyboardInstance() -> SideMainVC? {
         return UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: NSStringFromClass(self.classForCoder())) as? SideMainVC
     }
+    
+    deinit {
+        MLog("SideMainVC Died!")
+    }
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -22,9 +26,21 @@ class SideMainVC: UIViewController, UIViewControllerTransitioningDelegate {
         btn.addTarget(self, action: #selector(btnAction), for: .touchUpInside)
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(customView: btn)
 
-        let pageVC = SidePageVC.storyboardInstance()!
+//        let pageVC = SidePageVC.storyboardInstance()!
 //        let nav = UINavigationController(rootViewController: pageVC)
-        drawerEnableEdgePan(pageVC, requireScreenEdge: true)
+//        drawerEnableEdgePan(pageVC, requireScreenEdge: true)
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        MLog("SideMainVC View Did Load")
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        MLog("SideMainVC View Will Appear")
     }
 
     @objc private func btnAction() {

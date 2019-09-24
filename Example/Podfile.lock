@@ -1,32 +1,43 @@
 PODS:
-  - MoeUI (1.1.1):
-    - MoeUI/Alert (= 1.1.1)
-    - MoeUI/Appearance (= 1.1.1)
-    - MoeUI/Common (= 1.1.1)
-    - MoeUI/PanDrawer (= 1.1.1)
-    - MoeUI/Runtime (= 1.1.1)
-  - MoeUI/Alert (1.1.1):
+  - MoeUI (1.2.0):
+    - MoeUI/Alert (= 1.2.0)
+    - MoeUI/Appearance (= 1.2.0)
+    - MoeUI/Common (= 1.2.0)
+    - MoeUI/PanDrawer (= 1.2.0)
+    - MoeUI/Runtime (= 1.2.0)
+    - MoeUI/Unity (= 1.2.0)
+  - MoeUI/Alert (1.2.0):
+    - MoeUI/Appearance
     - MoeUI/Common
-  - MoeUI/Appearance (1.1.1):
+    - MoeUI/Unity
+  - MoeUI/Appearance (1.2.0):
     - MoeUI/Common
     - MoeUI/Runtime
-  - MoeUI/Common (1.1.1)
-  - MoeUI/PanDrawer (1.1.1):
+  - MoeUI/Common (1.2.0)
+  - MoeUI/PanDrawer (1.2.0):
     - MoeUI/Common
     - MoeUI/Runtime
-  - MoeUI/Runtime (1.1.1):
+  - MoeUI/Runtime (1.2.0):
     - MoeUI/Common
+  - MoeUI/Unity (1.2.0)
+  - SnapKit (4.2.0)
 
 DEPENDENCIES:
   - MoeUI (from `../`)
+  - SnapKit (~> 4.2.0)
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - SnapKit
 
 EXTERNAL SOURCES:
   MoeUI:
     :path: "../"
 
 SPEC CHECKSUMS:
-  MoeUI: fd3ba6ab5325ad030e3da85f90702ea595516b0b
+  MoeUI: 16cf1e7bb0994af931d992ee4f6b2fd20829f0dd
+  SnapKit: fe8a619752f3f27075cc9a90244d75c6c3f27e2a
 
-PODFILE CHECKSUM: 7596bd67a0f0d8f245b75bdb371a1d4ce18cea08
+PODFILE CHECKSUM: 0e0c0e3ba41c921e06c1b8faf5b2515b5c1ab078
 
 COCOAPODS: 1.7.4

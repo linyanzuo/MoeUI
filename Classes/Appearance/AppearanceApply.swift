@@ -20,9 +20,9 @@ extension AppearanceApply {
     public func applyAttribute() {
         if appearance.generaler != nil { applyGeneralAttribute() }
         if appearance.backgrounder != nil { applyBackgroundAttribute() }
-        if appearance.shadower != nil { applyShadowAttribute() }
         if appearance.texters.count > 0 { applyTextAttribute() }
         if appearance.imagers.count > 0 { applyImageAttribute() }
+        if appearance.shadower != nil { applyShadowAttribute() }
         if appearance.eventers.count > 0 { applyEventAppearance() }
     }
 

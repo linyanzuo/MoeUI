@@ -35,7 +35,7 @@ extension MoeUI {
     }
 
     public class func makeView(toView: UIView? = nil, with identifier: AppearanceIdentifier) -> MoeView? {
-        let appearance = AppearanceManager.shared.dequeue(with: identifier)
+        let appearance = AppearanceRegister.shared.dequeue(with: identifier)
         guard appearance != nil else { return nil }
 
         let view = MoeView(appearance: appearance!)

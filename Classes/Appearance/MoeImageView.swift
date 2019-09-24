@@ -19,7 +19,11 @@ open class MoeImageView: UIImageView, AppearanceUnity, AppearanceApply {
 
             if attr.image != nil { self.image = attr.image }
             if attr.cornerRadius != nil {
-                if attr.isMaskCornerRadius != true {
+                // corner radius by clip layer conflicting with shadow, so use maskCornerRadius
+                if let shadowAttr = self.appearance.shadower?.attribute, shadowAttr.color != nil {
+                    addCornerRadius(attr.cornerRadius!)
+                }
+                else if attr.isMaskCornerRadius != true {
                     layer.masksToBounds = true
                     layer.cornerRadius = attr.cornerRadius!
                 }
@@ -64,7 +68,7 @@ extension MoeUI {
     }
 
     public class func makeImageView(toView: UIView? = nil, with identifier: AppearanceIdentifier) -> MoeImageView? {
-        let appearance = AppearanceManager.shared.dequeue(with: identifier)
+        let appearance = AppearanceRegister.shared.dequeue(with: identifier)
         guard appearance != nil else { return nil }
 
         let imgView = MoeImageView(appearance: appearance!)
