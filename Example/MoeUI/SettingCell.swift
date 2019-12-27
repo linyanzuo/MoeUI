@@ -206,7 +206,7 @@ class SettingCell: UnitedTableViewCell {
     }()
 
     private(set) lazy var iconImgView: MoeImageView = {
-        return Designator.makeImageView(toView: self.contentView, nil)
+        return MoeUI.makeImageView(toView: self.contentView, nil)
     }()
 
     private(set) lazy var arrowImgView: MoeImageView = {

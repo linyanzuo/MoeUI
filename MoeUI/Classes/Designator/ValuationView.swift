@@ -10,6 +10,9 @@ import UIKit
 import MoeCommon
 
 
+public typealias DesignClosure = (_ designator: Designator) -> Void
+
+
 /// 控件可赋值协议。控件在该协议方法实现中完成赋值器对自身属性的赋值
 public protocol ValuationViewProtocol where Self: UIView {
     var designator: Designator { get set }
@@ -249,4 +252,36 @@ public class MoeImageView: UIImageView, ValuationViewProtocol, ValuationApplyPro
         updateGradientLayout()
         updateShadowLayout()
     }
+}
+
+
+// MARK: MoeUI Extension
+
+extension MoeUI {
+    static func addView(_ view: ValuationViewProtocol,
+                        to superView: UIView?,
+                        _ closure: DesignClosure?) -> ValuationViewProtocol
+    {
+        superView?.addSubview(view)
+        
+        let designator = Designator()
+        closure?(designator)
+        designator.applyValuator(toView: view)
+        
+        return view
+    }
+    
+    // MARK: Public Method
+    
+    public static func makeView(toView: UIView? = nil, _ closure: DesignClosure?) -> MoeView
+    { return addView(MoeView(frame: .zero), to: toView, closure) as! MoeView }
+    
+    public static func makeLabel(toView: UIView? = nil, _ closure: DesignClosure?) -> MoeLabel
+    { return addView(MoeLabel(frame: .zero), to: toView, closure) as! MoeLabel }
+    
+    public static func makeButton(toView: UIView? = nil, _ closure: DesignClosure?) -> MoeButton
+    { return addView(MoeButton(type: .custom), to: toView, closure) as! MoeButton }
+    
+    public static func makeImageView(toView: UIView? = nil, _ closure: DesignClosure?) -> MoeImageView
+    { return addView(MoeImageView(frame: .zero), to: toView, closure) as! MoeImageView }
 }

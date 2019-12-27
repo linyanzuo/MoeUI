@@ -127,7 +127,7 @@ public class AlertDialog: MoeView {
     }()
 
     private(set) lazy var imageView: UIImageView = {
-        return Designator.makeImageView(toView: self, nil)
+        return MoeUI.makeImageView(toView: self, nil)
     }()
 
     private(set) lazy var label: MoeLabel = {

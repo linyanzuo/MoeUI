@@ -84,7 +84,7 @@ class AppearanceVC: UIViewController {
         let x = CGFloat(arc4random_uniform(UInt32(MScreen.width - 100)))
         let y = CGFloat(arc4random_uniform(UInt32(MScreen.height - 100)))
         
-        let newBtn = Designator.makeButton(toView: view) { (des) in
+        let newBtn = MoeUI.makeButton(toView: view) { (des) in
             des.background(.random).cornerRadius(8)
             des.text("这是个按钮").font(14).color(.random)
             des.event(.touchUpInside, for: self, action: #selector(self.insideAction(_:)))

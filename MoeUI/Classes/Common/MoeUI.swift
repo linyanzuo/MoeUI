@@ -8,6 +8,4 @@
 import Foundation
 
 
-class MoeUI {
-    
-}
+public class MoeUI {}
