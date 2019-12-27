@@ -8,6 +8,7 @@
 
 import UIKit
 import MoeUI
+import MoeCommon
 
 
 class CustomDialog: UIView {
@@ -63,8 +64,9 @@ class CustomDialog: UIView {
     }()
 
     private(set) lazy var label: MoeLabel = {
-        let appear = Appearance()
-        appear.text("Loading").font(15, weight: .medium).color(0x666666).lines(0).alignment(.center)
-        return MoeUI.makeLabel(toView: self, with: appear)
+        let des = Designator()
+        des.text("Loading").font(15, weight: .medium)
+            .color(0x666666).lines(0).alignment(.center)
+        return des.makeLabel(toView: self)
     }()
 }

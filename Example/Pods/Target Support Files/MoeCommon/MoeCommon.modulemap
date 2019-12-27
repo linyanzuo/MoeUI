@@ -1,0 +1,6 @@
+framework module MoeCommon {
+  umbrella header "MoeCommon-umbrella.h"
+
+  export *
+  module * { export * }
+}

@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'MoeUI'
-  s.version          = '1.2.0'
+  s.version          = '1.3.0'
   s.summary          = 'MoeUI is a framework that make UI controls create and configure easily'
 
   # This description is used to generate tags and improve search results.
@@ -24,7 +24,7 @@ Pod::Spec.new do |s|
   s.homepage         = 'https://github.com/linyanzuo/MoeUI'
   # s.screenshots     = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
-  s.author           = { 'linyanzuo1222@gmail.com' => 'zed@moemoetech.com' }
+  s.author           = { 'linyanzuo1222@gmail.com' => 'zed@moemone.com' }
   s.source           = { :git => 'https://github.com/linyanzuo/MoeUI.git', :tag => s.version.to_s }
   # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
 
@@ -32,37 +32,28 @@ Pod::Spec.new do |s|
   s.swift_versions = '5.0'
 
   #  s.source_files = 'MoeUI/Classes/*'
-  s.subspec 'Common' do |common|
-    common.source_files = 'Classes/Common/*/*'
-    common.frameworks = 'UIKit'
-  end
   s.subspec 'Unity' do |unity|
-    unity.source_files = 'Classes/Unity/*'
+    unity.source_files = 'MoeUI/Classes/Unity/*'
     unity.frameworks = 'UIKit'
   end
-  s.subspec 'Runtime' do |runtime|
-    runtime.source_files = 'Classes/Runtime/*'
-    runtime.frameworks = 'UIKit'
-    runtime.dependency 'MoeUI/Common'
-  end
-  s.subspec 'Appearance' do |appearance|
-    appearance.source_files = 'Classes/Appearance/*'
+  s.subspec 'Designator' do |appearance|
+    appearance.source_files = 'MoeUI/Classes/Designator/*'
     appearance.frameworks = 'UIKit'
-    appearance.dependency 'MoeUI/Common'
-    appearance.dependency 'MoeUI/Runtime'
   end
+# Appearance已废弃, 使用Designator替代
+#  s.subspec 'Appearance' do |appearance|
+#    appearance.source_files = 'MoeUI/Classes/Appearance/*'
+#    appearance.frameworks = 'UIKit'
+#  end
   s.subspec 'PanDrawer' do |drawer|
-    drawer.source_files = 'Classes/PanDrawer/*'
+    drawer.source_files = 'MoeUI/Classes/PanDrawer/*'
     drawer.frameworks = 'UIKit'
-    drawer.dependency 'MoeUI/Common'
-    drawer.dependency 'MoeUI/Runtime'
   end
   s.subspec 'Alert' do |alert|
-    alert.source_files = 'Classes/Alert/*'
+    alert.source_files = 'MoeUI/Classes/Alert/*'
     alert.frameworks = 'UIKit'
-    alert.dependency 'MoeUI/Common'
     alert.dependency 'MoeUI/Unity'
-    alert.dependency 'MoeUI/Appearance'
+    alert.dependency 'MoeUI/Designator'
   end
 
   s.resource_bundles = {
@@ -71,5 +62,5 @@ Pod::Spec.new do |s|
 
   # s.public_header_files = 'Pod/Classes/**/*.h'
   # s.frameworks = 'UIKit', 'MapKit'
-  # s.dependency 'AFNetworking', '~> 2.3'
+  s.dependency 'MoeCommon', '~> 0.1.2'
 end

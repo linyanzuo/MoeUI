@@ -7,23 +7,33 @@
 //
 
 import UIKit
+import MoeUI
+import MoeCommon
+
 
 class OtherVC: UIViewController {
-
+    
+    deinit {
+        MLog("OtherVC Died!")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = UIColor.red
+        
+        MLog("OtherVC View Did Load")
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        MLog("OtherVC View Will Appear")
     }
-    */
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        MLog("OtherVC View Did Appear")
+    }
 
 }

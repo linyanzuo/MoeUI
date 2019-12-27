@@ -9,7 +9,7 @@
     "file": "LICENSE"
   },
   "authors": {
-    "linyanzuo1222@gmail.com": "zed@moemoetech.com"
+    "linyanzuo1222@gmail.com": "zed@moemone.com"
   },
   "source": {
     "git": "https://github.com/linyanzuo/MoeUI.git",
@@ -24,61 +24,32 @@
       "MoeUI.xcassets"
     ]
   },
+  "dependencies": {
+    "MoeCommon": [
+      "~> 0.1.2"
+    ]
+  },
   "subspecs": [
     {
-      "name": "Common",
-      "source_files": "Classes/Common/*/*",
-      "frameworks": "UIKit"
-    },
-    {
       "name": "Unity",
-      "source_files": "Classes/Unity/*",
+      "source_files": "MoeUI/Classes/Unity/*",
       "frameworks": "UIKit"
-    },
-    {
-      "name": "Runtime",
-      "source_files": "Classes/Runtime/*",
-      "frameworks": "UIKit",
-      "dependencies": {
-        "MoeUI/Common": [
-
-        ]
-      }
     },
     {
       "name": "Appearance",
-      "source_files": "Classes/Appearance/*",
-      "frameworks": "UIKit",
-      "dependencies": {
-        "MoeUI/Common": [
-
-        ],
-        "MoeUI/Runtime": [
-
-        ]
-      }
+      "source_files": "MoeUI/Classes/Appearance/*",
+      "frameworks": "UIKit"
     },
     {
       "name": "PanDrawer",
-      "source_files": "Classes/PanDrawer/*",
-      "frameworks": "UIKit",
-      "dependencies": {
-        "MoeUI/Common": [
-
-        ],
-        "MoeUI/Runtime": [
-
-        ]
-      }
+      "source_files": "MoeUI/Classes/PanDrawer/*",
+      "frameworks": "UIKit"
     },
     {
       "name": "Alert",
-      "source_files": "Classes/Alert/*",
+      "source_files": "MoeUI/Classes/Alert/*",
       "frameworks": "UIKit",
       "dependencies": {
-        "MoeUI/Common": [
-
-        ],
         "MoeUI/Unity": [
 
         ],

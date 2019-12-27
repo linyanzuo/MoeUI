@@ -33,9 +33,9 @@ class TitleCell: UnitedTableViewCell {
 
     // MARK: Getter & Setter
     private(set) lazy var titleLabel: UILabel = {
-        let appear = Appearance()
-        appear.text(nil).color(UIColor(rgb: 0x4C86B1)).font(15)
-        return MoeUI.makeLabel(toView: self, with: appear)
+        let des = Designator()
+        des.text(nil).color(UIColor(rgb: 0x4C86B1)).font(15)
+        return des.makeLabel(toView: self)
     }()
 
     private(set) lazy var separator: CALayer = {

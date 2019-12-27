@@ -8,6 +8,7 @@
 
 import UIKit
 import MoeUI
+import MoeCommon
 
 
 class SidePageVC: UITableViewController {
@@ -37,6 +38,18 @@ class SidePageVC: UITableViewController {
         super.viewDidLoad()
         
         MLog("SidePageVC View Did Load")
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        MLog("SidePageVC View Will Appear")
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        MLog("SidePageVC View Did Appear")
     }
 
     @objc private func tapAction() {

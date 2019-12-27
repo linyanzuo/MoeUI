@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import MoeCommon
 import MoeUI
 
 
@@ -60,8 +61,8 @@ class MoeAlertController: UIViewController, UIViewControllerTransitioningDelegat
 
     // MARK: Getter & Setter
     private(set) lazy var maskBtn: UIButton = {
-        let maskBtn = MoeUI.makeButton(toView: self.view) { (appear) in
-            appear.background(color: .black)
+        let maskBtn = Designator.makeButton(toView: self.view) { (appear) in
+            appear.background(.black)
         }
         maskBtn.alpha = 0.6
         maskBtn.addTarget(self, action: #selector(maskTapAction(_:)), for: .touchUpInside)
@@ -69,8 +70,8 @@ class MoeAlertController: UIViewController, UIViewControllerTransitioningDelegat
     }()
 
     private(set) lazy var contentView: UIView = {
-        return MoeUI.makeView(toView: self.view) { (appear) in
-            appear.background(color: UIColor(rgb: 0xEDEDED)).cornerRadius(16)
+        return Designator.makeView(toView: self.view) { (appear) in
+            appear.background(UIColor(rgb: 0xEDEDED)).cornerRadius(16)
         }
     }()
 
@@ -81,7 +82,7 @@ class MoeAlertController: UIViewController, UIViewControllerTransitioningDelegat
 }
 
 
-public extension MoeUI {
+class MoeUI {
     class func alert() {
         if #available(iOS 9.0, *) {
             let topVC = UIApplication.moe.topViewController()

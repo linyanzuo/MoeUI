@@ -8,24 +8,18 @@
 
 import UIKit
 import MoeUI
+import MoeCommon
 
 
 class AlertUsageVC: UITableViewController {
     private let datasources: [[String]] = [
-        [
-            ("HUD ShowSuccess"),
-            ("HUD ShowError"),
-            ("HUD ShowProgress"),
-            ("HUD ShowToast"),
-            ("HUD ShowCustom")
-        ], [
-//            ("Alert ShowSuccess"),
-//            ("Alert ShowError"),
-//            ("Alert ShowProgress"),
-//            ("Alert ShowToast")
-        ],
+        [("HUD ShowSuccess"),
+         ("HUD ShowError"),
+         ("HUD ShowProgress"),
+         ("HUD ShowToast"),
+         ("HUD ShowCustom")]
     ]
-    private let reuseID = "TitleCellResueID"
+    private let kReuseID = "TitleCellResueID"
 
     // MARK: Object Life Cycle
     required init?(coder aDecoder: NSCoder) {
@@ -41,7 +35,7 @@ class AlertUsageVC: UITableViewController {
         super.viewDidLoad()
 
         tableView.separatorStyle = .none
-        tableView.register(TitleCell.classForCoder(), forCellReuseIdentifier: reuseID)
+        tableView.register(TitleCell.classForCoder(), forCellReuseIdentifier: kReuseID)
     }
 
     // MARK: -- UITableViewDelegate & UITableViewDataSource
@@ -58,7 +52,7 @@ class AlertUsageVC: UITableViewController {
         let titles = datasources[indexPath.section]
         let title = titles[indexPath.row]
 
-        let cell = tableView.dequeueReusableCell(withIdentifier: reuseID) as! TitleCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: kReuseID) as! TitleCell
         cell.titleLabel.text = title
         return cell
     }
@@ -66,42 +60,32 @@ class AlertUsageVC: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.section == 0 {
             switch indexPath.row {
-            case 0:
-                HUD.showSuccess(text: "Configuration, it work!")
-            case 1:
-                HUD.showError(text: "unfortunately, it does't work!")
+            case 0: HUD.showSuccess(text: "Configuration, it work!")
+            case 1: HUD.showError(text: "unfortunately, it does't work!")
             case 2:
                 let id = HUD.showProgress(text: "Loading...")
-
                 DispatchQueue.global().async {
                     self.doSomework()
-                    DispatchQueue.main.async {
-                        HUD.hide(with: id)
-                    }
+                    DispatchQueue.main.async { HUD.hide(with: id) }
                 }
-            case 3:
-                HUD.showToast(text: "Message here!")
+            case 3: HUD.showToast(text: "Message here!")
             case 4:
                 let customDialog = CustomDialog()
                 let id = HUD.showCustomHUD(view: customDialog)
 
                 DispatchQueue.global().async {
                     self.doSomework()
-                    DispatchQueue.main.async {
-                        HUD.hide(with: id)
-                    }
+                    DispatchQueue.main.async { HUD.hide(with: id) }
                 }
             default:
                 MLog("Nothing")
             }
-        } else if indexPath.section == 0 {
-            // Todo...
         }
     }
 
     // MARK: Others
     func doSomework() {
-        // Simulate by just waiting.
+        // 模拟耗时操作
         sleep(3)
     }
 }

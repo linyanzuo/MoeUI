@@ -14,25 +14,22 @@
 		607FACDD1AFB9204008FA782 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDC1AFB9204008FA782 /* Images.xcassets */; };
 		607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDE1AFB9204008FA782 /* LaunchScreen.xib */; };
 		607FACEC1AFB9204008FA782 /* Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACEB1AFB9204008FA782 /* Tests.swift */; };
-		9503302822F198F7001A0F9B /* SideMainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9503302722F198F7001A0F9B /* SideMainVC.swift */; };
+		9503302822F198F7001A0F9B /* UsageListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9503302722F198F7001A0F9B /* UsageListVC.swift */; };
 		9503302A22F19903001A0F9B /* SidePageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9503302922F19903001A0F9B /* SidePageVC.swift */; };
 		9519C6EC230A49D1005AEF22 /* AlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9519C6EB230A49D1005AEF22 /* AlertController.swift */; };
 		9519C6EE230A49F9005AEF22 /* PickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9519C6ED230A49F9005AEF22 /* PickerViewController.swift */; };
 		95686A1022FA76F200485864 /* OtherVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95686A0F22FA76F200485864 /* OtherVC.swift */; };
-		9590646022FD1FC40099C02E /* GradientVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9590645F22FD1FC40099C02E /* GradientVC.swift */; };
 		95AF992F22F4604F002CFC76 /* ContactCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95AF992C22F4604F002CFC76 /* ContactCell.swift */; };
 		95AF993022F4604F002CFC76 /* ContactCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 95AF992D22F4604F002CFC76 /* ContactCell.xib */; };
 		95AF993122F4604F002CFC76 /* ContactViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95AF992E22F4604F002CFC76 /* ContactViewController.swift */; };
 		95AF993322F46345002CFC76 /* PageDemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95AF993222F46345002CFC76 /* PageDemoViewController.swift */; };
 		95B6337122E856EE00B6DC8F /* ListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95B6337022E856EE00B6DC8F /* ListVC.swift */; };
 		95B6337422E8583600B6DC8F /* CornerRaidusCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95B6337322E8583600B6DC8F /* CornerRaidusCell.swift */; };
-		95B9A3B1231A68DD00D7DE15 /* UsageListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95B9A3B0231A68DD00D7DE15 /* UsageListVC.swift */; };
 		95C55D7722F03BE1001CF9FF /* AppearanceVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95C55D7622F03BE1001CF9FF /* AppearanceVC.swift */; };
 		95F98CD22331E4200091017B /* AlertUsageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95F98CD12331E4200091017B /* AlertUsageVC.swift */; };
 		95F98CD42331E51E0091017B /* TitleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95F98CD32331E51E0091017B /* TitleCell.swift */; };
 		95F98CD6233219620091017B /* CustomDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95F98CD5233219620091017B /* CustomDialog.swift */; };
 		95F98D0F23337FC00091017B /* RegistrationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95F98D0E23337FC00091017B /* RegistrationVC.swift */; };
-		95F98D1123338DD50091017B /* AppDelegate+Appearance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95F98D1023338DD50091017B /* AppDelegate+Appearance.swift */; };
 		95F98D13233470500091017B /* SettingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95F98D12233470500091017B /* SettingCell.swift */; };
 		E7102A3B34A4D0BBE1D546E1 /* Pods_MoeUI_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A6ECB442DFE0164409B96F36 /* Pods_MoeUI_Tests.framework */; };
 /* End PBXBuildFile section */
@@ -62,25 +59,22 @@
 		607FACEB1AFB9204008FA782 /* Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests.swift; sourceTree = "<group>"; };
 		68C2A43494619B0CC29BC820 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
 		8A094EB94C775F3C4A27B6E9 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
-		9503302722F198F7001A0F9B /* SideMainVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMainVC.swift; sourceTree = "<group>"; };
+		9503302722F198F7001A0F9B /* UsageListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsageListVC.swift; sourceTree = "<group>"; };
 		9503302922F19903001A0F9B /* SidePageVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidePageVC.swift; sourceTree = "<group>"; };
 		9519C6EB230A49D1005AEF22 /* AlertController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertController.swift; sourceTree = "<group>"; };
 		9519C6ED230A49F9005AEF22 /* PickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PickerViewController.swift; sourceTree = "<group>"; };
 		95686A0F22FA76F200485864 /* OtherVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtherVC.swift; sourceTree = "<group>"; };
-		9590645F22FD1FC40099C02E /* GradientVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientVC.swift; sourceTree = "<group>"; };
 		95AF992C22F4604F002CFC76 /* ContactCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactCell.swift; sourceTree = "<group>"; };
 		95AF992D22F4604F002CFC76 /* ContactCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ContactCell.xib; sourceTree = "<group>"; };
 		95AF992E22F4604F002CFC76 /* ContactViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactViewController.swift; sourceTree = "<group>"; };
 		95AF993222F46345002CFC76 /* PageDemoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageDemoViewController.swift; sourceTree = "<group>"; };
 		95B6337022E856EE00B6DC8F /* ListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListVC.swift; sourceTree = "<group>"; };
 		95B6337322E8583600B6DC8F /* CornerRaidusCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CornerRaidusCell.swift; sourceTree = "<group>"; };
-		95B9A3B0231A68DD00D7DE15 /* UsageListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsageListVC.swift; sourceTree = "<group>"; };
 		95C55D7622F03BE1001CF9FF /* AppearanceVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppearanceVC.swift; sourceTree = "<group>"; };
 		95F98CD12331E4200091017B /* AlertUsageVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertUsageVC.swift; sourceTree = "<group>"; };
 		95F98CD32331E51E0091017B /* TitleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleCell.swift; sourceTree = "<group>"; };
 		95F98CD5233219620091017B /* CustomDialog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomDialog.swift; sourceTree = "<group>"; };
 		95F98D0E23337FC00091017B /* RegistrationVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationVC.swift; sourceTree = "<group>"; };
-		95F98D1023338DD50091017B /* AppDelegate+Appearance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppDelegate+Appearance.swift"; sourceTree = "<group>"; };
 		95F98D12233470500091017B /* SettingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingCell.swift; sourceTree = "<group>"; };
 		97C8E5E34F804AC69415C4EC /* Pods-MoeUI_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MoeUI_Example.debug.xcconfig"; path = "Target Support Files/Pods-MoeUI_Example/Pods-MoeUI_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		A6ECB442DFE0164409B96F36 /* Pods_MoeUI_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MoeUI_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -145,12 +139,8 @@
 			isa = PBXGroup;
 			children = (
 				607FACD51AFB9204008FA782 /* AppDelegate.swift */,
-				95F98D1023338DD50091017B /* AppDelegate+Appearance.swift */,
-				95B9A3B0231A68DD00D7DE15 /* UsageListVC.swift */,
-				95F98CD32331E51E0091017B /* TitleCell.swift */,
 				95C55D7522F03BB2001CF9FF /* Appearance */,
 				95F98CCE2331E2AA0091017B /* Alert */,
-				9590645E22FD1F950099C02E /* GradientView */,
 				95AF992822F44FB0002CFC76 /* PageMenu */,
 				95B6337222E8581200B6DC8F /* CornerRadius */,
 				9503302622F198CF001A0F9B /* SidePanDrawer */,
@@ -210,19 +200,12 @@
 		9503302622F198CF001A0F9B /* SidePanDrawer */ = {
 			isa = PBXGroup;
 			children = (
-				9503302722F198F7001A0F9B /* SideMainVC.swift */,
+				95F98CD32331E51E0091017B /* TitleCell.swift */,
+				9503302722F198F7001A0F9B /* UsageListVC.swift */,
 				9503302922F19903001A0F9B /* SidePageVC.swift */,
 				95686A0F22FA76F200485864 /* OtherVC.swift */,
 			);
 			name = SidePanDrawer;
-			sourceTree = "<group>";
-		};
-		9590645E22FD1F950099C02E /* GradientView */ = {
-			isa = PBXGroup;
-			children = (
-				9590645F22FD1FC40099C02E /* GradientVC.swift */,
-			);
-			name = GradientView;
 			sourceTree = "<group>";
 		};
 		95AF992822F44FB0002CFC76 /* PageMenu */ = {
@@ -328,7 +311,7 @@
 				TargetAttributes = {
 					607FACCF1AFB9204008FA782 = {
 						CreatedOnToolsVersion = 6.3.1;
-						DevelopmentTeam = JPZD4Y72K9;
+						DevelopmentTeam = 368DW97H5X;
 						LastSwiftMigration = 0900;
 					};
 					607FACE41AFB9204008FA782 = {
@@ -409,11 +392,13 @@
 			);
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-MoeUI_Example/Pods-MoeUI_Example-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/MoeCommon/MoeCommon.framework",
 				"${BUILT_PRODUCTS_DIR}/MoeUI/MoeUI.framework",
 				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MoeCommon.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MoeUI.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
 			);
@@ -459,18 +444,15 @@
 				95686A1022FA76F200485864 /* OtherVC.swift in Sources */,
 				95B6337122E856EE00B6DC8F /* ListVC.swift in Sources */,
 				607FACD81AFB9204008FA782 /* CornerRadiusVC.swift in Sources */,
-				9503302822F198F7001A0F9B /* SideMainVC.swift in Sources */,
+				9503302822F198F7001A0F9B /* UsageListVC.swift in Sources */,
 				95F98CD22331E4200091017B /* AlertUsageVC.swift in Sources */,
-				9590646022FD1FC40099C02E /* GradientVC.swift in Sources */,
 				95F98D13233470500091017B /* SettingCell.swift in Sources */,
 				95B6337422E8583600B6DC8F /* CornerRaidusCell.swift in Sources */,
 				95C55D7722F03BE1001CF9FF /* AppearanceVC.swift in Sources */,
 				95F98CD42331E51E0091017B /* TitleCell.swift in Sources */,
-				95F98D1123338DD50091017B /* AppDelegate+Appearance.swift in Sources */,
 				9503302A22F19903001A0F9B /* SidePageVC.swift in Sources */,
 				607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */,
 				95AF993122F4604F002CFC76 /* ContactViewController.swift in Sources */,
-				95B9A3B1231A68DD00D7DE15 /* UsageListVC.swift in Sources */,
 				95F98CD6233219620091017B /* CustomDialog.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -617,12 +599,12 @@
 			baseConfigurationReference = 97C8E5E34F804AC69415C4EC /* Pods-MoeUI_Example.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = JPZD4Y72K9;
+				DEVELOPMENT_TEAM = 368DW97H5X;
 				INFOPLIST_FILE = MoeUI/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MODULE_NAME = ExampleApp;
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.moe.moeui;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
 				SWIFT_VERSION = 5.0;
@@ -635,7 +617,7 @@
 			baseConfigurationReference = BB5A5ABE435860855C4DE2C3 /* Pods-MoeUI_Example.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = JPZD4Y72K9;
+				DEVELOPMENT_TEAM = 368DW97H5X;
 				INFOPLIST_FILE = MoeUI/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

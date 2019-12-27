@@ -36,11 +36,11 @@ struct ImageSetting: SettingData {
 }
 
 
-extension AppearanceIdentifier {
-    static let settingTitle = AppearanceRegister.generateIdentifier()
-    static let settingDetail = AppearanceRegister.generateIdentifier()
-    static let settingArrowImg = AppearanceRegister.generateIdentifier()
-    static let settingSeparator = AppearanceRegister.generateIdentifier()
+struct SettingID {
+    static let Title: DesignatorID = Accessor.generateID()
+    static let Detail: DesignatorID = Accessor.generateID()
+    static let ArrowImg: DesignatorID = Accessor.generateID()
+    static let Separator: DesignatorID = Accessor.generateID()
 }
 
 
@@ -129,8 +129,8 @@ class SettingCell: UnitedTableViewCell {
     private func setImage(_ data: ImageSetting) {
         titleLabel.text = data.title
         let imageWidth: CGFloat = data.position == .left ? 28 : 32
-        iconImgView.updateAppearance { (appear) in
-            appear.image(data.image).cornerRadius(imageWidth / 2)
+        iconImgView.updateDesign { (des) in
+            des.image(data.image).cornerRadius(imageWidth / 2)
         }
         hiddenSubview(except: [titleLabel, iconImgView])
 
@@ -175,47 +175,45 @@ class SettingCell: UnitedTableViewCell {
         }
     }
 
-    // MARK: Open Method
-//    open func settingTitleAppearance() -> Appearance {
-//
-//    }
-
     // MARK: Override methods
     override func setupSelf() {
         super.setupSelf()
         self.selectionStyle = .none
     }
+    
+    private func autoRegister(id: DesignatorID, for design: DesignClosure) -> Designator? {
+        if Accessor.shared.isRegistered(valuatorID: id) == false {
+            let designator = Designator()
+            design(designator)
+            Accessor.shared.register(designator: designator, for: id)
+        }
+        return Accessor.shared.dequeue(designatorWith: id)
+    }
 
     // MARK: Getter & Setter
     private(set) lazy var titleLabel: MoeLabel = {
-        if AppearanceRegister.shared.isRegistered(identifier: .settingTitle) == false {
-            MoeUI.register(identifier: .settingTitle) { (appear) in
-                appear.text(nil).color(UIColor(rgb: 0x333333)).font(15, weight: .medium)
-            }
+        let des = autoRegister(id: SettingID.Title) { (des) in
+            des.text(nil).color(UIColor(rgb: 0x333333)).font(15, weight: .medium)
         }
-        return MoeUI.makeLabel(toView: self.contentView, with: .settingTitle)!
+        return des!.makeLabel(toView: self.contentView)
     }()
 
     private(set) lazy var detailLabel: MoeLabel = {
-        if AppearanceRegister.shared.isRegistered(identifier: .settingDetail) == false {
-            MoeUI.register(identifier: .settingDetail) { (appear) in
-                appear.text(nil).color(UIColor(rgb: 0x999999)).font(14, weight: .regular)
-            }
+        let des = autoRegister(id: SettingID.Detail) { (des) in
+            des.text(nil).color(UIColor(rgb: 0x999999)).font(14, weight: .regular)
         }
-        return MoeUI.makeLabel(toView: self.contentView, with: .settingDetail)!
+        return des!.makeLabel(toView: self.contentView)
     }()
 
     private(set) lazy var iconImgView: MoeImageView = {
-        return MoeUI.makeImageView(toView: self.contentView, nil)
+        return Designator.makeImageView(toView: self.contentView, nil)
     }()
 
     private(set) lazy var arrowImgView: MoeImageView = {
-        if AppearanceRegister.shared.isRegistered(identifier: .settingArrowImg) == false {
-            MoeUI.register(identifier: .settingArrowImg) { (appear) in
-                appear.image(UIImage(named: "arrow_right")!)
-            }
+        let des = autoRegister(id: SettingID.ArrowImg) { (des) in
+            des.image(UIImage(named: "arrow_right")!)
         }
-        return MoeUI.makeImageView(toView: self.contentView, with: .settingArrowImg)!
+        return des!.makeImageView(toView: self.contentView)
     }()
 
     private(set) lazy var switchView: UISwitch = {
@@ -225,11 +223,9 @@ class SettingCell: UnitedTableViewCell {
     }()
 
     private(set) lazy var separator: MoeView = {
-        if AppearanceRegister.shared.isRegistered(identifier: .settingSeparator) == false {
-            MoeUI.register(identifier: .settingSeparator) { (appear) in
-                appear.background(color: UIColor(rgb: 0xf0f0f0))
-            }
+        let des = autoRegister(id: SettingID.Separator) { (des) in
+            des.background(UIColor(rgb: 0xf0f0f0))
         }
-        return MoeUI.makeView(toView: self.contentView, with: .settingSeparator)!
+        return des!.makeView(toView: self.contentView)
     }()
 }

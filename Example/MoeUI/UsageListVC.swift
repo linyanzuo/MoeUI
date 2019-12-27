@@ -1,44 +1,54 @@
 //
-//  TutorialListVC.swift
+//  SideMainVC.swift
 //  MoeUI_Example
 //
-//  Created by Zed on 2019/8/31.
+//  Created by Zed on 2019/7/31.
 //  Copyright © 2019 CocoaPods. All rights reserved.
 //
 
 import UIKit
 import MoeUI
+import MoeCommon
 
 
-class UsageListVC: UITableViewController {
+class UsageListVC: UITableViewController, ViewControllerUnity {
+    
+    // MARK: Property
+    
     private let usagesGroup: [[(title: String, clazzName: String)]] = [
-        [
-            ("Appearance Update", "AppearanceVC"),
-            ("Appearance Registration", "RegistrationVC"),
-        ], [
-            ("HUD  &  Alert", "AlertUsageVC")
-        ]
+        [("Designator - 样式设计", "AppearanceVC"),
+         ("Accessor - 样式注册", "RegistrationVC")],
+        [("HUD & Alert - 弹窗提示", "AlertUsageVC")],
+        [("PageMenu - 多标签页", "PageDemoViewController")]
     ]
     private let kTitleCellReuseID = "TitleCellReuseID"
-
-    // MARK: Object Life Cycle
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-
-    override init(style: UITableView.Style) {
-        super.init(style: .grouped)
-    }
-
+    
     // MARK: View Life Cycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupNavigation()
 
         self.title = "MoeUI"
         self.tableView.register(TitleCell.classForCoder(), forCellReuseIdentifier: kTitleCellReuseID)
     }
+    
+    // MARK: Navigation
+    
+    func setupNavigation() {
+        self.navigationItem.title = "Main"
+        let btn = UIButton(type: .contactAdd)
+        btn.addTarget(self, action: #selector(btnAction), for: .touchUpInside)
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(customView: btn)
+    }
+    
+    @objc private func btnAction() {
+        let pageVC = SidePageVC.storyboardInstance()!
+        self.drawerPresentSide(pageVC)
+    }
 
     // MARK: Delegate Method
+    
     override func numberOfSections(in tableView: UITableView) -> Int {
         return usagesGroup.count
     }
@@ -62,7 +72,7 @@ class UsageListVC: UITableViewController {
         let usage = usages[indexPath.row]
 
         if indexPath.section == 0 && indexPath.row == 0 {
-            let targetVC = AppearanceVC.storyboardInstance()
+            let targetVC = AppearanceVC.moe.storyboardInstance()
             self.navigationController?.pushViewController(targetVC, animated: true)
         } else {
             pushToTargetClass(with: usage.clazzName)
@@ -70,14 +80,18 @@ class UsageListVC: UITableViewController {
     }
 
     // MARK: Private Method
-    private func pushToTargetClass(with clazzName: String) {
-        guard let clazz: AnyClass = NSClassFromString(MInfo.namespace + "." + clazzName)
-            else { return }
+    
+    @discardableResult
+    private func pushToTargetClass(with clazzName: String) -> Bool {
+        let namespace = MInfo.namespace ?? ""
+        guard let clazz: AnyClass = NSClassFromString(namespace + "." + clazzName)
+            else { return false }
 
         guard let vcClazz = clazz as? UIViewController.Type
-            else { return }
+            else { return false }
 
         let targetVC = vcClazz.init()
         self.navigationController?.pushViewController(targetVC, animated: true)
+        return true
     }
 }
