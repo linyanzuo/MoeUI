@@ -411,7 +411,7 @@
 		4215BA0D9B183EF9B028ED7A5BE62FCE /* MoeUI */ = {
 			isa = PBXGroup;
 			children = (
-				95102A8023B5B55600287422 /* Common */,
+				95102A8023B5B55600287422 /* Base */,
 				95102A6623B3649E00287422 /* PageMenu */,
 				95102A5323B3643E00287422 /* Designator */,
 				FE6CC857888DE646A11BDC3F2392B320 /* Alert */,
@@ -532,13 +532,13 @@
 			path = PageMenuController;
 			sourceTree = "<group>";
 		};
-		95102A8023B5B55600287422 /* Common */ = {
+		95102A8023B5B55600287422 /* Base */ = {
 			isa = PBXGroup;
 			children = (
 				95102A8123B5B59A00287422 /* MoeUI.swift */,
 			);
-			name = Common;
-			path = MoeUI/Classes/Common;
+			name = Base;
+			path = MoeUI/Classes/Base;
 			sourceTree = "<group>";
 		};
 		9C7295A65E8A9F38566F361985A67DAA /* Development Pods */ = {

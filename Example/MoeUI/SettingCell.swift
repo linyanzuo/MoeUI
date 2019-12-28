@@ -12,7 +12,18 @@ import SnapKit
 
 
 protocol SettingData {}
-struct TitleSetting: SettingData {
+
+
+struct TitleSetting: SettingData, UnitedTableCellDataProtocol {
+    
+    func cellClass() -> UnitedTableCellProtocol.Type {
+        return SettingCell.self
+    }
+    
+    func reuseIdentifier() -> String {
+        return "TitleSettingCellReuseID"
+    }
+    
     var title: String
     var isArrowShow: Bool
 }
@@ -44,7 +55,15 @@ struct SettingID {
 }
 
 
-class SettingCell: UnitedTableViewCell {
+class SettingCell: UnitedTableViewCell, UnitedTableCellProtocol {
+    func updateUI(with data: UnitedTableCellDataProtocol) {
+        
+        
+        
+        
+        
+    }
+    
     // MARK: Public Methods
     func setData(_ data: SettingData) {
         if data is TitleSetting, let setting = data as? TitleSetting {

@@ -72,13 +72,13 @@ extension UIView: Runtime {
 
 // MARK: MoeView
 
-public class MoeView: UIView, ValuationViewProtocol, ValuationApplyProtocol {
+open class MoeView: UIView, ValuationViewProtocol, ValuationApplyProtocol {
     convenience init(designator: Designator) {
         self.init(frame: .zero)
         designator.applyValuator(toView: self)
     }
     
-    override public func layoutSubviews() {
+    override open func layoutSubviews() {
         super.layoutSubviews()
         updateGradientLayout()
         updateShadowLayout()
@@ -88,7 +88,7 @@ public class MoeView: UIView, ValuationViewProtocol, ValuationApplyProtocol {
 
 // MARK: MoeLabel
 
-public class MoeLabel: UILabel, ValuationViewProtocol, ValuationApplyProtocol {
+open class MoeLabel: UILabel, ValuationViewProtocol, ValuationApplyProtocol {
     func applyBackground(_ valuator: BackgroundValuator) {
         backgroundColor = .clear
         layer.backgroundColor = valuator.color.cgColor
@@ -160,7 +160,7 @@ public class MoeLabel: UILabel, ValuationViewProtocol, ValuationApplyProtocol {
 
 // MARK: MoeButton
 
-public class MoeButton: UIButton, ValuationViewProtocol, ValuationApplyProtocol {
+open class MoeButton: UIButton, ValuationViewProtocol, ValuationApplyProtocol {
     func applyText(_ valuator: TextValuator) {
         let state = valuator.state
         let title = valuator.text
@@ -208,7 +208,7 @@ public class MoeButton: UIButton, ValuationViewProtocol, ValuationApplyProtocol 
 
 // MARK: ImageView
 
-public class MoeImageView: UIImageView, ValuationViewProtocol, ValuationApplyProtocol {
+open class MoeImageView: UIImageView, ValuationViewProtocol, ValuationApplyProtocol {
     func applyImage(_ valuator: ImageValuator) {
         guard valuator.state == .normal else {
             let clazzName = NSStringFromClass(self.classForCoder)
