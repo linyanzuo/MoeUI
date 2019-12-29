@@ -6,19 +6,27 @@
 //
 
 
-/// Programming unity standard
+// MARK: Programming unity standard
+
 public protocol Unity {}
 
 
-/// UIView programming unity standard
+// MARK: UIView programming unity standard
+
 public protocol ViewUnity: Unity where Self: UIView  {
     func setupSelf()
     func setupSubviews()
     func setupConstraints()
 }
+public extension ViewUnity {
+    func setupSelf() {}
+    func setupSubviews() {}
+    func setupConstraints() {}
+}
 
 
-/// UIViewController programming unity standard
+// MARK: UIViewController programming unity standard
+
 public protocol ViewControllerUnity: Unity where Self: UIViewController  {
     func setupNavigation()
     func setupViews()

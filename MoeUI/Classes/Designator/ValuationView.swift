@@ -257,7 +257,7 @@ open class MoeImageView: UIImageView, ValuationViewProtocol, ValuationApplyProto
 
 // MARK: MoeUI Extension
 
-extension MoeUI {
+extension Designator {
     static func addView(_ view: ValuationViewProtocol,
                         to superView: UIView?,
                         _ closure: DesignClosure?) -> ValuationViewProtocol

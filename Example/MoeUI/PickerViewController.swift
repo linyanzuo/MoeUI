@@ -85,7 +85,7 @@ class PickerViewController: UIViewController, MaskAlertAnimatorProtocol, UIPicke
 
     func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
         let title = itemTitles[row]
-        let label = MoeUI.makeLabel { (appear) in
+        let label = Designator.makeLabel { (appear) in
             appear.background(UIColor.clear)
             appear.text(title).color(0xEAEAED).font(18, weight: .medium)
         }
@@ -124,7 +124,7 @@ class PickerViewController: UIViewController, MaskAlertAnimatorProtocol, UIPicke
 
     // MARK: Getter & Setter
     private(set) lazy var maskBtn: UIButton = {
-        let maskBtn = MoeUI.makeButton(toView: self.view) { (appear) in
+        let maskBtn = Designator.makeButton(toView: self.view) { (appear) in
             appear.background(.black)
         }
         maskBtn.alpha = 0.6
@@ -142,13 +142,13 @@ class PickerViewController: UIViewController, MaskAlertAnimatorProtocol, UIPicke
 
     @available(iOS 9.0, *)
     private lazy var stackView: UIStackView = {
-        let cancelBtn = MoeUI.makeButton { (des) in
+        let cancelBtn = Designator.makeButton { (des) in
             des.text("取消").color(0xEAEAED).font(15, weight: .bold)
         }
-        let submitBtn = MoeUI.makeButton { (appear) in
+        let submitBtn = Designator.makeButton { (appear) in
             appear.text("完成").color(0xEAEAED).font(15, weight: .bold)
         }
-        let titleLabel = MoeUI.makeLabel { (appear) in
+        let titleLabel = Designator.makeLabel { (appear) in
             appear.text(self.pickerTitle).color(0xEAEAED).font(15, weight: .bold)
         }
 
@@ -183,7 +183,7 @@ class PickerViewController: UIViewController, MaskAlertAnimatorProtocol, UIPicke
 }
 
 
-extension MoeUI {
+extension Alerter {
     class func sheet() {
         if #available(iOS 9.0, *) {
             let topVC = UIApplication.moe.topViewController()

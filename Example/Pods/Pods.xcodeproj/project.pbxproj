@@ -62,7 +62,6 @@
 		95102A7823B3649E00287422 /* PageMenuController+Scroll.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95102A6F23B3649E00287422 /* PageMenuController+Scroll.swift */; };
 		95102A7923B3649E00287422 /* PageMenuController+Page.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95102A7023B3649E00287422 /* PageMenuController+Page.swift */; };
 		95102A7A23B3649E00287422 /* PageMenuController+Gesture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95102A7123B3649E00287422 /* PageMenuController+Gesture.swift */; };
-		95102A8223B5B59A00287422 /* MoeUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95102A8123B5B59A00287422 /* MoeUI.swift */; };
 		972E74315DE52E2E41576566F84EB7CD /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F8ED774327731F9449ED009DD2AC67F6 /* UIKit.framework */; };
 		97D29EAAED166567ABB9060B1B5970E5 /* MoeCommon-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 0F4EEB83B95130653E50F1DC64018021 /* MoeCommon-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		98AE4E2F24A858A47B5A1B405CEAD8FD /* UILayoutSupport+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AB365BC9CC2D723D671700875BA6AFF /* UILayoutSupport+Extensions.swift */; };
@@ -226,7 +225,6 @@
 		95102A6F23B3649E00287422 /* PageMenuController+Scroll.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "PageMenu\U0010Controller+Scroll.swift"; sourceTree = "<group>"; };
 		95102A7023B3649E00287422 /* PageMenuController+Page.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "PageMenu\U0010Controller+Page.swift"; sourceTree = "<group>"; };
 		95102A7123B3649E00287422 /* PageMenuController+Gesture.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "PageMenu\U0010Controller+Gesture.swift"; sourceTree = "<group>"; };
-		95102A8123B5B59A00287422 /* MoeUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoeUI.swift; sourceTree = "<group>"; };
 		9596B30E743FD267DC4F8B169767CB38 /* SnapKit-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "SnapKit-Info.plist"; sourceTree = "<group>"; };
 		95AE1991960CF64C7C91A26712F523EB /* MoeCommon-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "MoeCommon-Info.plist"; sourceTree = "<group>"; };
 		978E89DB41149FA306DAD2A712121A65 /* MoeUI.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; path = MoeUI.podspec; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
@@ -411,7 +409,6 @@
 		4215BA0D9B183EF9B028ED7A5BE62FCE /* MoeUI */ = {
 			isa = PBXGroup;
 			children = (
-				95102A8023B5B55600287422 /* Base */,
 				95102A6623B3649E00287422 /* PageMenu */,
 				95102A5323B3643E00287422 /* Designator */,
 				FE6CC857888DE646A11BDC3F2392B320 /* Alert */,
@@ -530,15 +527,6 @@
 				95102A7123B3649E00287422 /* PageMenuController+Gesture.swift */,
 			);
 			path = PageMenuController;
-			sourceTree = "<group>";
-		};
-		95102A8023B5B55600287422 /* Base */ = {
-			isa = PBXGroup;
-			children = (
-				95102A8123B5B59A00287422 /* MoeUI.swift */,
-			);
-			name = Base;
-			path = MoeUI/Classes/Base;
 			sourceTree = "<group>";
 		};
 		9C7295A65E8A9F38566F361985A67DAA /* Development Pods */ = {
@@ -1007,7 +995,6 @@
 				D1A9CB2363E5C7DDF87608C2E3FCB09D /* ProgressAlertController.swift in Sources */,
 				32F7E50A4B82DEC69921E1C8C5B8BC02 /* UIViewController+SidePanDrawer.swift in Sources */,
 				A3CB239DDD83B50BC8BA3269C73750F5 /* UnitedCell.swift in Sources */,
-				95102A8223B5B59A00287422 /* MoeUI.swift in Sources */,
 				EB19A313523DC8FFD81E043DF9C8C64F /* UnitedView.swift in Sources */,
 				95102A6323B3644600287422 /* Valuator.swift in Sources */,
 				95102A7723B3649E00287422 /* PageMenuController+View.swift in Sources */,

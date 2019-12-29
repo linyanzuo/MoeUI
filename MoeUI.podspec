@@ -32,10 +32,6 @@ Pod::Spec.new do |s|
   s.swift_versions = '5.0'
 
   #  s.source_files = 'MoeUI/Classes/*'
-  s.subspec 'Base' do |common|
-    common.source_files = 'MoeUI/Classes/Base/*'
-    common.frameworks = 'UIKit'
-  end
   s.subspec 'Unity' do |unity|
     unity.source_files = 'MoeUI/Classes/Unity/*'
     unity.frameworks = 'UIKit'
@@ -43,7 +39,6 @@ Pod::Spec.new do |s|
   s.subspec 'Designator' do |designator|
     designator.source_files = 'MoeUI/Classes/Designator/*'
     designator.frameworks = 'UIKit'
-    designator.dependency 'MoeUI/Base'
   end
 # Appearance已废弃, 使用Designator替代
 #  s.subspec 'Appearance' do |appearance|

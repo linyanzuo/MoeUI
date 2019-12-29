@@ -11,7 +11,7 @@ import UIKit
 public typealias AlertIdentifier = String
 
 
-public class HUD {
+open class HUD {
     public class func showSuccess(text: String, continued: TimeInterval = 1.0) {
         showHUD(style: .success, text: text, continued: continued)
     }
@@ -54,7 +54,7 @@ public class HUD {
 }
 
 
-public class Alerter: NSObject {
+open class Alerter: NSObject {
     // MARK: Alert in view
     public class func show(_ customView: UIView, in view: UIView, with identifier: String) {
         checkThread()

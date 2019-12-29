@@ -57,11 +57,6 @@ struct SettingID {
 
 class SettingCell: UnitedTableViewCell, UnitedTableCellProtocol {
     func updateUI(with data: UnitedTableCellDataProtocol) {
-        
-        
-        
-        
-        
     }
     
     // MARK: Public Methods
@@ -225,7 +220,7 @@ class SettingCell: UnitedTableViewCell, UnitedTableCellProtocol {
     }()
 
     private(set) lazy var iconImgView: MoeImageView = {
-        return MoeUI.makeImageView(toView: self.contentView, nil)
+        return Designator.makeImageView(toView: self.contentView, nil)
     }()
 
     private(set) lazy var arrowImgView: MoeImageView = {

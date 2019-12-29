@@ -66,7 +66,7 @@ public class Designator: NSObject, NSCopying {
     /// 返回指定状态的文本赋值器。并指定标题
     /// - Parameter state: 指定的状态
     @discardableResult
-    public func text(_ text: String?, for state: UIControl.State = .normal) -> TextValuator {
+    public func text(_ text: String? = nil, for state: UIControl.State = .normal) -> TextValuator {
         let valuator = read(valuatorType: TextValuator.self, conditionType: .state(state))
         if let title = text { return valuator.text(title) }
         return valuator
