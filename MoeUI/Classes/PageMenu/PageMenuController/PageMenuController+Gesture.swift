@@ -76,7 +76,6 @@ extension MoePageMenuController: UIGestureRecognizerDelegate {
             }
             
             addControllerPageAtIndex(itemIndex)
-            // 将原本展示页添加到pagesAddedDictionary, 确保页面切换后原本展示页会被移除, 只保留新的展示页面
             pagesAddedDictionary[lastPageIndex] = lastPageIndex
         }
         // 执行页面切换动画

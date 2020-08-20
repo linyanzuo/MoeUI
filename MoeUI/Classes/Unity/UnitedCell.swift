@@ -33,7 +33,7 @@ open class UnitedTableViewCell: UITableViewCell, ViewUnity {
     /// * 约束操作请在`setupConstraints`方法中完成
     /// * 通过IB加载的视图, 可不必实现本方法
     /// * 若使用"懒加载+约束"的结构，可不必实现本方法
-    public func setupSubviews() {}
+    open func setupSubviews() {}
 
     /// 统一编程规范: 视图约束初始化方法
     /// ---

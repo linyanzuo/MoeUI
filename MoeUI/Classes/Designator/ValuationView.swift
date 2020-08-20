@@ -3,7 +3,7 @@
 //  MoeUIDemo
 //
 //  Created by Zed on 2019/11/25.
-//  Copyright © 2019 www.moemoetech.com. All rights reserved.
+//  Copyright © 2019 www.moemone.com. All rights reserved.
 //
 
 import UIKit

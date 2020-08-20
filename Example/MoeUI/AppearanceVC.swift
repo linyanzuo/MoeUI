@@ -97,7 +97,8 @@ class AppearanceVC: UIViewController {
     /// 每个视图上都保存了属性自己的`Designator`实例，可随时更新样式配置
     @IBAction func designatorDemo4(_ sender: Any) {
         imgView.updateDesign { (des) in
-            des.image(UIImage(named: "Lambert")!).cornerRadius(16)
+//            des.image(UIImage(named: "Lambert")!).cornerRadius(16)
+            des.image(UIImage(named: "Lambert")!).maskCornerRadius(32, maskColor: .white)
         }
     }
     

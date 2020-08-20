@@ -35,7 +35,7 @@ extension MoePageMenuController: UIScrollViewDelegate {
         
         if contentOffsetX < 0.0 || contentOffsetX > CGFloat(controllerArray.count - 1) * view.frame.width {
             if menuView.contentSize.width > view.frame.width {
-                let ratio: CGFloat = (menuView.contentSize.width - view.frame.width) / (controllerView.contentSize.width - self.view.frame.width)
+                let ratio: CGFloat = (menuView.contentSize.width - view.frame.width) / (controllerView.contentSize.width - view.frame.width)
                 let offset = CGPoint(x: contentOffsetX * ratio, y: menuView.contentOffset.y)
                 menuView.setContentOffset(offset, animated: false)
             }

@@ -3,7 +3,7 @@
 //  MoeUIDemo
 //
 //  Created by Zed on 2019/11/28.
-//  Copyright © 2019 www.moemoetech.com. All rights reserved.
+//  Copyright © 2019 www.moemone.com. All rights reserved.
 //
 
 /// “圆角遮罩处理”： 在原图上添加一层“圆角遮罩图层”，遮罩图层上绘制了“圆角遮罩图片”。其中

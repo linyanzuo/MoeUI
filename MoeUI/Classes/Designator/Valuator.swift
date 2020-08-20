@@ -3,7 +3,7 @@
 //  MoeUIDemo
 //
 //  Created by Zed on 2019/11/22.
-//  Copyright © 2019 www.moemoetech.com. All rights reserved.
+//  Copyright © 2019 www.moemone.com. All rights reserved.
 //
 
 import UIKit
@@ -381,6 +381,11 @@ public class ImageValuator: StateValuator {
     internal var cornerRadius: CGFloat?
     internal var maskColor: UIColor?
     internal var isMaskCornerRadius: Bool?
+    
+    public convenience init(image: UIImage) {
+        self.init()
+        self.image = image
+    }
     
     // MARK: 链式赋值方法
     

@@ -3,7 +3,7 @@
 //  MoeUIDemo
 //
 //  Created by Zed on 2019/11/25.
-//  Copyright © 2019 www.moemoetech.com. All rights reserved.
+//  Copyright © 2019 www.moemone.com. All rights reserved.
 //
 
 import UIKit
@@ -68,7 +68,10 @@ extension ValuationApplyProtocol {
                 let maskColor = valuator.maskColor ?? superview?.backgroundColor
                 layer.addCornerRadius(radius, maskColor: maskColor ?? .black)
             }
-            else { layer.cornerRadius = radius }
+            else {
+                layer.cornerRadius = radius
+                layer.masksToBounds = true
+            }
         }
         if let border = valuator.border {
             layer.borderWidth = border.width ?? 0.0
