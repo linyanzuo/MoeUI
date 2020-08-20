@@ -10,7 +10,7 @@ import UIKit
 import MoeCommon
 
 
-/// 赋值器的默认实现协议，可赋值控件实现该协议取得各赋值器的默认实现效果
+// MARK: - 赋值器实现协议
 protocol ValuationApplyProtocol where Self: ValuationViewProtocol {
     
     /// 将赋值器应用于视图上
@@ -38,6 +38,9 @@ protocol ValuationApplyProtocol where Self: ValuationViewProtocol {
 }
 
 
+// MARK: - 赋值器实现协议的默认实现扩展
+/// 可赋值控件在实现了该协议后，取得各赋值器的默认实现效果
+/// 控件可根据实际情况自行实现协议内相关方法
 extension ValuationApplyProtocol {
     
     public func applyValuation(valuatorType: ValuatorType) {

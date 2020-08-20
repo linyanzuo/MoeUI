@@ -73,7 +73,7 @@ extension UIView: Runtime {
 // MARK: MoeView
 
 open class MoeView: UIView, ValuationViewProtocol, ValuationApplyProtocol {
-    convenience init(designator: Designator) {
+    public convenience init(designator: Designator) {
         self.init(frame: .zero)
         designator.applyValuator(toView: self)
     }
@@ -258,10 +258,11 @@ open class MoeImageView: UIImageView, ValuationViewProtocol, ValuationApplyProto
 // MARK: MoeUI Extension
 
 extension Designator {
-    static func addView(_ view: ValuationViewProtocol,
-                        to superView: UIView?,
-                        _ closure: DesignClosure?) -> ValuationViewProtocol
-    {
+    
+    static func addView(
+        _ view: ValuationViewProtocol,
+        to superView: UIView?,_ closure: DesignClosure?
+    ) -> ValuationViewProtocol {
         superView?.addSubview(view)
         
         let designator = Designator()
@@ -273,15 +274,15 @@ extension Designator {
     
     // MARK: Public Method
     
-    public static func makeView(toView: UIView? = nil, _ closure: DesignClosure?) -> MoeView
+    public static func makeView(toView: UIView? = nil, _ closure: DesignClosure? = nil) -> MoeView
     { return addView(MoeView(frame: .zero), to: toView, closure) as! MoeView }
     
-    public static func makeLabel(toView: UIView? = nil, _ closure: DesignClosure?) -> MoeLabel
+    public static func makeLabel(toView: UIView? = nil, _ closure: DesignClosure? = nil) -> MoeLabel
     { return addView(MoeLabel(frame: .zero), to: toView, closure) as! MoeLabel }
     
-    public static func makeButton(toView: UIView? = nil, _ closure: DesignClosure?) -> MoeButton
+    public static func makeButton(toView: UIView? = nil, _ closure: DesignClosure? = nil) -> MoeButton
     { return addView(MoeButton(type: .custom), to: toView, closure) as! MoeButton }
     
-    public static func makeImageView(toView: UIView? = nil, _ closure: DesignClosure?) -> MoeImageView
+    public static func makeImageView(toView: UIView? = nil, _ closure: DesignClosure? = nil) -> MoeImageView
     { return addView(MoeImageView(frame: .zero), to: toView, closure) as! MoeImageView }
 }
