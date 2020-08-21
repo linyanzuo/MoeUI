@@ -9,6 +9,7 @@ import UIKit
 
 
 final class AlertWindow: UIWindow {
+    
     static let shared = AlertWindow()
     internal var completionHandler: (() -> Void)?
 

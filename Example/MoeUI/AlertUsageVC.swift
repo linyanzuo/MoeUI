@@ -60,18 +60,19 @@ class AlertUsageVC: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.section == 0 {
             switch indexPath.row {
-            case 0: HUD.showSuccess(text: "Configuration, it work!")
-            case 1: HUD.showError(text: "unfortunately, it does't work!")
+            case 0: HUD.show(style: .success, text: "Configuration, it work!")
+            case 1: HUD.show(style: .error, text: "unfortunately, it does't work!")
             case 2:
-                let id = HUD.showProgress(text: "Loading...")
+                let dialog = AlertDialog(style: .progress, text: "Loading...")
+                let id = HUD.show(customView: dialog)
                 DispatchQueue.global().async {
                     self.doSomework()
                     DispatchQueue.main.async { HUD.hide(with: id) }
                 }
-            case 3: HUD.showToast(text: "Message here!")
+            case 3: HUD.show(style: .toast, text: "Message here!")
             case 4:
                 let customDialog = CustomDialog()
-                let id = HUD.showCustomHUD(view: customDialog)
+                let id = HUD.show(customView: customDialog)
 
                 DispatchQueue.global().async {
                     self.doSomework()

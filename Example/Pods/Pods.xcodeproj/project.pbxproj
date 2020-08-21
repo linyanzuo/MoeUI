@@ -55,6 +55,7 @@
 		95CB74DD24EF6754003C8DEB /* TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95CB74D724EF6754003C8DEB /* TableView.swift */; };
 		95CB74DE24EF6754003C8DEB /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95CB74D824EF6754003C8DEB /* TableViewController.swift */; };
 		95CB74DF24EF6754003C8DEB /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95CB74D924EF6754003C8DEB /* View.swift */; };
+		95CB74EA24EFB82A003C8DEB /* HUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95CB74E824EFB7F1003C8DEB /* HUD.swift */; };
 		98AE4E2F24A858A47B5A1B405CEAD8FD /* UILayoutSupport+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60C228CB6AAED192640F17AF88A906BE /* UILayoutSupport+Extensions.swift */; };
 		9C7B946C7BBCBA3D2A7031FD2EF11838 /* MoeCommon-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 1A1A01D50F06690C4948AEE29E59AAB4 /* MoeCommon-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		9E6184458532BFF2E3E3F804C54BD0E7 /* ConstraintDescription.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CC6EFFE775E5F7C10D1B98388721ADF /* ConstraintDescription.swift */; };
@@ -221,6 +222,7 @@
 		95CB74D724EF6754003C8DEB /* TableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableView.swift; sourceTree = "<group>"; };
 		95CB74D824EF6754003C8DEB /* TableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
 		95CB74D924EF6754003C8DEB /* View.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
+		95CB74E824EFB7F1003C8DEB /* HUD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = HUD.swift; path = MoeUI/Classes/Alert/HUD.swift; sourceTree = "<group>"; };
 		970CA9823D4FD9ECB3ACCFB16E818DE8 /* ConstraintConfig.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintConfig.swift; path = Source/ConstraintConfig.swift; sourceTree = "<group>"; };
 		979486118B3E90C08386079D57962701 /* SnapKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SnapKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
@@ -371,6 +373,7 @@
 				56D6EB566DA4F74CAFE5BEA9B5E3EB0E /* MaskAlertAnimator.swift */,
 				F2BE39C11F3E7D38FC6FD714EB5EB516 /* MaskAlertController.swift */,
 				2A0B4B5FFA9B3D65E63D5BF46FB55336 /* ProgressAlertController.swift */,
+				95CB74E824EFB7F1003C8DEB /* HUD.swift */,
 			);
 			name = Alert;
 			sourceTree = "<group>";
@@ -981,6 +984,7 @@
 				A7A501988531F8EF4AC6ABD63D0A12D9 /* InteractiveTransition.swift in Sources */,
 				57F27FA51B856468DC3AD3A5397229BF /* MaskAlertAnimator.swift in Sources */,
 				95CB74DD24EF6754003C8DEB /* TableView.swift in Sources */,
+				95CB74EA24EFB82A003C8DEB /* HUD.swift in Sources */,
 				3C697FE734F9A5651B2F7B8E030413E1 /* MaskAlertController.swift in Sources */,
 				4745DF6989482D59E53EDF49DA18916B /* MaskCornerRadius.swift in Sources */,
 				3097A50FB06F718C0076570FFDC03E88 /* MaskView.swift in Sources */,

@@ -4,17 +4,25 @@
 //
 //  Created by Zed on 2019/8/29.
 //
+/**
+ 【提示】默认对话框
+ */
 
 import UIKit
 import MoeCommon
 
 
-/// default dialog view to show
 public class AlertDialog: MoeView {
+    
+    /// 界面样式
     public enum Style {
+        /// 纯文本提示
         case toast
+        /// 转圈进度提示
         case progress
+        /// 操作成功提示
         case success
+        /// 操作失败提示
         case error
     }
 
@@ -23,6 +31,7 @@ public class AlertDialog: MoeView {
     var message: String
 
     // MARK: Object Life Cycle
+    
     public init(style: Style, text: String) {
         self.style = style
         self.message = text
@@ -35,15 +44,15 @@ public class AlertDialog: MoeView {
         fatalError("use `init(style: Style, text: String)` instead")
     }
 
-//    deinit {
-//        MLog("[\(self)] died!")
-//    }
+    deinit {
+        MLog("[\(self)] died!")
+    }
 
     // MARK: Subviews Initialize
+    
     private func setupSubview() {
         self.updateDesign({ (des) in
-            des.background(UIColor(rgb: 0xE7E8EA)).cornerRadius(6)
-                .border(1, color: UIColor(rgb: 0xD7D8DA))
+            des.background(UIColor(rgb: 0xE7E8EA)).cornerRadius(6).border(1, color: UIColor(rgb: 0xD7D8DA))
         })
         label.text = message
 
