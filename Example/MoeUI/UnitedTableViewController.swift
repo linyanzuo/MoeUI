@@ -21,13 +21,13 @@ public protocol UnitedTableCellDataProtocol {
 
 
 /// Cell协议
-public protocol UnitedTableCellProtocol where Self: UITableViewCell {
+public protocol UnitedTableCellProtocol where Self: TableViewCell {
     /// 根据模型值, 更新样式
     func updateUI(with data: UnitedTableCellDataProtocol)
 }
 
 
-open class UnitedTableViewController: UnitedViewController {
+open class UnitedTableViewController: ViewController {
     public enum Style {
         case plain([UnitedTableCellDataProtocol])
         case group([[UnitedTableCellDataProtocol]])
@@ -38,13 +38,11 @@ open class UnitedTableViewController: UnitedViewController {
     private var registedReuseIDs: [String] = []
     var style: Style?
     
-    override open func setupViews() {
+    override open func setupSubview() {
         style = styleDataSources()
         view.addSubview(tableView)
         registerAllCell()
-    }
-    
-    override open func setupViewConstraints() {
+        
         tableView.snp.makeConstraints { (maker) in
             maker.top.equalTo(topLayoutGuide.snp.top)
             maker.left.right.equalToSuperview()

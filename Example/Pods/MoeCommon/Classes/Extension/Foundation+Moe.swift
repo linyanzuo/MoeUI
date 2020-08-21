@@ -7,9 +7,27 @@
 
 import Foundation
 
-// MARK: UserDefaults
 
-/// 增加多个键值对数据至`用户默认配置`数据库
+// MARK: - NSObject
+
+public extension TypeWrapperProtocol where WrappedType: NSObject {
+
+    var clazzName: String {
+        return String(describing: wrappedValue.self)
+//        let thisType = type(of: self)
+//        return String(describing: thisType)
+    }
+
+    static var clazzName: String {
+        return String(describing: WrappedType.self)
+    }
+
+}
+
+
+// MARK: - UserDefaults
+
+/// 保存多个键值对数据至`用户默认配置`数据库
 /// - Parameter pairs: 保存所有要添加键值对的字典
 public func userDefaultsSave(pairs: [String: Any?]) {
     let standard = UserDefaults.standard

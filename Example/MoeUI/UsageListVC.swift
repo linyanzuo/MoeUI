@@ -11,7 +11,7 @@ import MoeUI
 import MoeCommon
 
 
-class UsageListVC: UITableViewController, ViewControllerUnity {
+class UsageListVC: TableViewController {
     
     // MARK: Property
     
@@ -35,7 +35,7 @@ class UsageListVC: UITableViewController, ViewControllerUnity {
     
     // MARK: Navigation
     
-    func setupNavigation() {
+    override func setupNavigation() {
         self.navigationItem.title = "Main"
         let btn = UIButton(type: .contactAdd)
         btn.addTarget(self, action: #selector(btnAction), for: .touchUpInside)
@@ -72,8 +72,8 @@ class UsageListVC: UITableViewController, ViewControllerUnity {
         let usage = usages[indexPath.row]
 
         if indexPath.section == 0 && indexPath.row == 0 {
-            let targetVC = AppearanceVC.moe.storyboardInstance()
-            self.navigationController?.pushViewController(targetVC, animated: true)
+            let targetVC = AppearanceVC.storyboardInstance()
+            self.navigationController?.pushViewController(targetVC!, animated: true)
         } else {
             pushToTargetClass(with: usage.clazzName)
         }

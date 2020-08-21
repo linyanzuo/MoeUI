@@ -20,23 +20,7 @@ import MoeCommon
 
 // MARK: 图片的“圆角遮罩处理”
 
-extension UIImage: NamespaceWrappable {}
-extension TypeWrapperProtocol where WrappedType: UIImage {
-    
-    /// 在指定尺寸的图形上下文中，执行闭包代码绘制图片并返回
-    /// - Parameter size: 图形上下文的尺寸
-    /// - Parameter drawClosure: 绘制图片的闭包代码
-    static func drawImage(with size: CGSize,
-                           drawClosure: (CGContext) -> Void)  -> UIImage?
-    {
-        UIGraphicsBeginImageContextWithOptions(size, false, UIScreen.main.scale)
-        guard let context = UIGraphicsGetCurrentContext() else { return nil }
-        drawClosure(context)
-        
-        let output = UIGraphicsGetImageFromCurrentImageContext();
-        UIGraphicsEndImageContext();
-        return output
-    }
+public extension TypeWrapperProtocol where WrappedType: UIImage {
     
     // MARK: 图片的圆角遮罩处理
     
@@ -51,13 +35,13 @@ extension TypeWrapperProtocol where WrappedType: UIImage {
     /// - Parameter radius: 圆角半径
     /// - Parameter corner: 圆角位置，默认为全部4个角都处理
     /// - Parameter size: 圆角图片的尺寸
-    func radiusImage(radius: CGFloat,
-               corner: UIRectCorner = .allCorners,
-               size: CGSize) -> UIImage?
-    {
-        
+    func radiusImage(
+        radius: CGFloat,
+        corner: UIRectCorner = .allCorners,
+        size: CGSize
+    ) -> UIImage? {
         let rect = CGRect(origin: CGPoint(x: 0, y: 0), size: size)
-        return UIImage.moe.drawImage(with: rect.size) { (context) in
+        return UIImage.moe.drawImage(with: rect.size, opaque: false) { (context) in
             let roundingPath = UIBezierPath(
                 roundedRect: rect,
                 byRoundingCorners: corner,
@@ -66,37 +50,6 @@ extension TypeWrapperProtocol where WrappedType: UIImage {
             context.clip()
             
             wrappedValue.draw(in: rect)
-            context.drawPath(using: .fillStroke)
-        }
-    }
-    
-    // MARK: 生成圆角图片
-    
-    /// 根据配置参数绘制圆角图片并返回
-    /// - Parameter radius: 圆角半径
-    /// - Parameter corner: 圆角位置，默认为全部4个角都处理
-    /// - Parameter size: 圆角图片的尺寸
-    /// - Parameter borderWidth: 图片边框的线宽。默认为0，即无边框
-    /// - Parameter borderColor: 图片边框的颜色。默认为黑色
-    /// - Parameter backgroundColor: 图片背景色
-    static func roundedRectImage(
-        radius: CGFloat,
-        corner: UIRectCorner = .allCorners,
-        size: CGSize,
-        borderWidth: CGFloat = 0,
-        borderColor: UIColor = UIColor.black,
-        backgroundColor: UIColor) -> UIImage?
-    {
-        return drawImage(with: size) { (context) in
-            let roundedRect = CGRect(x: 0, y: 0, width: size.width, height: size.height)
-            let roundedPath = UIBezierPath(roundedRect: roundedRect,
-                                           byRoundingCorners: corner,
-                                           cornerRadii: CGSize(width: radius, height: radius))
-            context.addPath(roundedPath.cgPath)
-
-            context.setLineWidth(borderWidth)
-            borderColor.setStroke()
-            backgroundColor.setFill()
             context.drawPath(using: .fillStroke)
         }
     }
@@ -114,9 +67,9 @@ extension TypeWrapperProtocol where WrappedType: UIImage {
         size: CGSize,
         maskColor: UIColor,
         borderWidth: CGFloat = 0,
-        borderColor: UIColor = UIColor.black) -> UIImage?
-    {
-        return drawImage(with: size) { (context) in
+        borderColor: UIColor = UIColor.black
+    ) -> UIImage? {
+        return drawImage(with: size, opaque: false) { (context) in
             maskColor.setFill()
             let rect = CGRect(x: 0, y: 0, width: size.width, height: size.height)
             let rectPath = UIBezierPath(rect: rect)
@@ -218,14 +171,6 @@ extension CALayer: Runtime {
         return image
     }
     
-    /// 添加“圆角遮罩图层”，使当前图层形成圆角裁切的效果。溢出的子图层部分也会被遮挡
-    /// - Parameter radius: 圆角半径
-    /// - Parameter corner: 圆角位置，默认为全部4个角都处理
-    /// - Parameter maskColor: 圆角遮罩图片的圆角颜色，通常为图片展示视图的父视图背景色，默认为白色
-    public func addCornerRadius(_ radius: CGFloat, corner: UIRectCorner = .allCorners, maskColor: UIColor) {
-        addCornerRadius(radius: radius, size: .zero, maskColor: maskColor)
-    }
-    
     /// 添加带边框的“圆角遮罩图层”，使当前图层形成圆角裁切的效果。溢出的子图层部分也会被遮挡
     /// - Parameter radius: 圆角半径
     /// - Parameter corner: 圆角位置，默认为全部4个角都处理
@@ -233,13 +178,14 @@ extension CALayer: Runtime {
     /// - Parameter borderWidth: 图片边框的线宽。默认为0，即无边框
     /// - Parameter borderColor: 图片边框的颜色。默认为黑色
     /// - Parameter maskColor: 圆角遮罩图片的圆角颜色，通常为图片展示视图的父视图背景色，默认为白色
-    public func addCornerRadius(radius: CGFloat,
-                                corner: UIRectCorner = .allCorners,
-                                size: CGSize = .zero,
-                                borderWidth: CGFloat = 0,
-                                borderColor: UIColor = .black,
-                                maskColor: UIColor = .white)
-    {
+    public func addCornerRadius(
+        radius: CGFloat,
+        corner: UIRectCorner = .allCorners,
+        size: CGSize = .zero,
+        borderWidth: CGFloat = 0,
+        borderColor: UIColor = .black,
+        maskColor: UIColor = .white
+    ) {
         let maskImageAttribute = MaskImage.Attribute(
             size: self.bounds.size,
             color: maskColor,

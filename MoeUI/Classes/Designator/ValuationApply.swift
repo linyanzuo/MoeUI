@@ -69,7 +69,7 @@ extension ValuationApplyProtocol {
         if let radius = valuator.cornerRadius {
             if valuator.isMaskCornerRadius == true {
                 let maskColor = valuator.maskColor ?? superview?.backgroundColor
-                layer.addCornerRadius(radius, maskColor: maskColor ?? .black)
+                layer.addCornerRadius(radius: radius, maskColor: maskColor ?? .black)
             }
             else {
                 layer.cornerRadius = radius

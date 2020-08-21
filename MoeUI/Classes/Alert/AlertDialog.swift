@@ -27,8 +27,8 @@ public class AlertDialog: MoeView {
         self.style = style
         self.message = text
         super.init(frame: .zero)
-        setupSubviews()
-        setupConstraints()
+        setupSubview()
+        setupConstraint()
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -40,7 +40,7 @@ public class AlertDialog: MoeView {
 //    }
 
     // MARK: Subviews Initialize
-    private func setupSubviews() {
+    private func setupSubview() {
         self.updateDesign({ (des) in
             des.background(UIColor(rgb: 0xE7E8EA)).cornerRadius(6)
                 .border(1, color: UIColor(rgb: 0xD7D8DA))
@@ -62,7 +62,7 @@ public class AlertDialog: MoeView {
         }
     }
 
-    private func setupConstraints() {
+    private func setupConstraint() {
         var labelTopConstraint: NSLayoutConstraint? = nil
         var labelBottomConstraint: NSLayoutConstraint? = nil
 

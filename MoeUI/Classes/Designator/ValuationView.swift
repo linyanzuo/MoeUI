@@ -285,4 +285,5 @@ extension Designator {
     
     public static func makeImageView(toView: UIView? = nil, _ closure: DesignClosure? = nil) -> MoeImageView
     { return addView(MoeImageView(frame: .zero), to: toView, closure) as! MoeImageView }
+    
 }

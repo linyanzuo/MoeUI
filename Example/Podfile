@@ -1,6 +1,10 @@
 use_frameworks!
 
+#source 'https://github.com/linyanzuo/MoeCommon.git'
+#source 'https://github.com/CocoaPods/Specs.git'
+
 target 'MoeUI_Example' do
+  pod 'MoeCommon', :git=>'https://github.com/linyanzuo/MoeCommon.git'
   pod 'MoeUI', :path => '../'
   pod 'SnapKit', '~> 4.2.0'
 

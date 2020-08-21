@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import MoeCommon
 import MoeUI
 
 class CornerRadiusVC: UIViewController {
@@ -17,26 +18,25 @@ class CornerRadiusVC: UIViewController {
         super.viewDidLoad()
         self.view.backgroundColor = UIColor.lightGray
 
-//        let image = UIImage.roundedRectImage(radius: 60,
+//        let image = UIImage.moe.roundedImage(radius: 60,
 //                                             corner: .allCorners,
 //                                             size: CGSize(width: 160, height: 160),
 //                                             borderWidth: 0,
 //                                             borderColor: UIColor.white,
 //                                             backgroundColor: UIColor.white)
-//        let image = UIImage.roundedMaskIamge(radius: 60,
-//                                             size: CGSize(width: 160, height: 160),
-//                                             maskColor: UIColor.white,
-//                                             borderWidth: 5,
-//                                             borderColor: UIColor.red)
-//        onePieceImgView.image = image
+        let image = UIImage.moe.roundedMaskImage(radius: 60,
+                                             size: CGSize(width: 160, height: 160),
+                                             maskColor: UIColor.white,
+                                             borderWidth: 5,
+                                             borderColor: UIColor.red)
+        onePieceImgView.image = image
 
-//        onePieceImgView.backgroundColor = UIColor.white
-//        onePieceImgView.addCornerRadius(68)
-//        onePieceImgView.layer.addCornerRadius(60)
+        onePieceImgView.backgroundColor = UIColor.white
+        onePieceImgView.layer.addCornerRadius(radius: 60)
 
-//        clearView.backgroundColor = UIColor.white
-//        clearView.addCornerRadius(radius: 32, backgroundColor: UIColor.green)
-//        clearView.addCornerRadius(radius: 32, corner: UIRectCorner(arrayLiteral: [.topLeft, .topRight]), borderWidth: 0, borderColor: nil, backgroundColor: UIColor.green)
+        clearView.backgroundColor = UIColor.white
+        clearView.layer.addCornerRadius(radius: 32, maskColor: UIColor.green)
+//        clearView.layer.addCornerRadius(radius: 32, corner: UIRectCorner(arrayLiteral: [.topLeft, .topRight]), borderWidth: 0, maskColor: UIColor.green)
 
     }
 }

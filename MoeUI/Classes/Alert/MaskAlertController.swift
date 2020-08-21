@@ -56,11 +56,11 @@ open class MaskAlertController: UIViewController, UIViewControllerTransitioningD
 
         view.addSubview(maskBtn)
         view.addSubview(bezelView)
-        setupConstraints()
+        setupConstraint()
         addConstraintsFor(bezelView, in: self.view)
     }
 
-    private func setupConstraints() {
+    private func setupConstraint() {
         maskBtn.translatesAutoresizingMaskIntoConstraints = false
         self.view.addConstraints([
             NSLayoutConstraint(item: maskBtn, attribute: .top, relatedBy: .equal, toItem: self.view, attribute: .top, multiplier: 1.0, constant: 0.0),

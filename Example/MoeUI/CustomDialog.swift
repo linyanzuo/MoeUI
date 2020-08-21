@@ -19,7 +19,7 @@ class CustomDialog: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupSelf()
-        setupConstraints()
+        setupConstraint()
     }
 
     deinit {
@@ -31,7 +31,7 @@ class CustomDialog: UIView {
         layer.cornerRadius = 8
     }
 
-    private func setupConstraints() {
+    private func setupConstraint() {
         imgView.translatesAutoresizingMaskIntoConstraints = false
         self.addConstraints([
             NSLayoutConstraint(item: imgView, attribute: .top, relatedBy: .equal, toItem: self, attribute: .top, multiplier: 1.0, constant: 24.0),

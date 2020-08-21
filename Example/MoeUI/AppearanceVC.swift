@@ -22,6 +22,10 @@ class AppearanceVC: UIViewController {
     @IBOutlet weak var leftBtn: MoeButton!
     @IBOutlet weak var rightBtn: MoeButton!
     
+    class func storyboardInstance() -> AppearanceVC? {
+        return UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: NSStringFromClass(self.classForCoder())) as? AppearanceVC
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = UIColor.white

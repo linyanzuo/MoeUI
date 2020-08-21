@@ -1,46 +1,56 @@
 PODS:
   - MoeCommon (0.1.2):
     - MoeCommon/Base (= 0.1.2)
+    - MoeCommon/Extension (= 0.1.2)
     - MoeCommon/Runtime (= 0.1.2)
   - MoeCommon/Base (0.1.2)
+  - MoeCommon/Extension (0.1.2)
   - MoeCommon/Runtime (0.1.2):
     - MoeCommon/Base
-  - MoeUI (1.2.0):
-    - MoeCommon (~> 0.1.2)
-    - MoeUI/Alert (= 1.2.0)
-    - MoeUI/Appearance (= 1.2.0)
-    - MoeUI/PanDrawer (= 1.2.0)
-    - MoeUI/Unity (= 1.2.0)
-  - MoeUI/Alert (1.2.0):
-    - MoeCommon (~> 0.1.2)
-    - MoeUI/Appearance
+    - MoeCommon/Extension
+  - MoeUI (1.3.0):
+    - MoeCommon
+    - MoeUI/Alert (= 1.3.0)
+    - MoeUI/Designator (= 1.3.0)
+    - MoeUI/PanDrawer (= 1.3.0)
+    - MoeUI/Unity (= 1.3.0)
+  - MoeUI/Alert (1.3.0):
+    - MoeCommon
+    - MoeUI/Designator
     - MoeUI/Unity
-  - MoeUI/Appearance (1.2.0):
-    - MoeCommon (~> 0.1.2)
-  - MoeUI/PanDrawer (1.2.0):
-    - MoeCommon (~> 0.1.2)
-  - MoeUI/Unity (1.2.0):
-    - MoeCommon (~> 0.1.2)
+  - MoeUI/Designator (1.3.0):
+    - MoeCommon
+  - MoeUI/PanDrawer (1.3.0):
+    - MoeCommon
+  - MoeUI/Unity (1.3.0):
+    - MoeCommon
   - SnapKit (4.2.0)
 
 DEPENDENCIES:
+  - MoeCommon (from `https://github.com/linyanzuo/MoeCommon.git`)
   - MoeUI (from `../`)
   - SnapKit (~> 4.2.0)
 
 SPEC REPOS:
-  https://github.com/cocoapods/specs.git:
-    - MoeCommon
+  https://github.com/CocoaPods/Specs.git:
     - SnapKit
 
 EXTERNAL SOURCES:
+  MoeCommon:
+    :git: https://github.com/linyanzuo/MoeCommon.git
   MoeUI:
     :path: "../"
 
+CHECKOUT OPTIONS:
+  MoeCommon:
+    :commit: 49257ff42ba0d9b59aec50e7047d8a12472ace7d
+    :git: https://github.com/linyanzuo/MoeCommon.git
+
 SPEC CHECKSUMS:
-  MoeCommon: a5c02520c16045129d791c0b6e38d737cb41b648
-  MoeUI: 920d651a5e1dd45c44fe466e3d0ab53a22183a11
+  MoeCommon: 58429fce47df711e46147d7d34c07648459012ef
+  MoeUI: f2bcee7a24b63d6c48f4fbb78982d845f2929b15
   SnapKit: fe8a619752f3f27075cc9a90244d75c6c3f27e2a
 
-PODFILE CHECKSUM: 0e0c0e3ba41c921e06c1b8faf5b2515b5c1ab078
+PODFILE CHECKSUM: 220e20e4479fa3b3b55278c2025f88e5f3a607fe
 
-COCOAPODS: 1.7.4
+COCOAPODS: 1.9.3

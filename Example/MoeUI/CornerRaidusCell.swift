@@ -38,13 +38,13 @@ class CornerRaidusCell: UITableViewCell {
 //        iconImgView.layer.cornerRadius = 8
 //        iconImgView.layer.masksToBounds = true
 //        iconImgView.addCornerRadius(16)
-        iconImgView.layer.addCornerRadius(16, maskColor: UIColor.lightGray)
+        iconImgView.layer.addCornerRadius(radius: 16, maskColor: UIColor.lightGray)
 
         tagLab.backgroundColor = UIColor.red
 //        tagLab.layer.masksToBounds = false
 //        tagLab.layer.cornerRadius = 8
 //        tagLab.layer.backgroundColor = UIColor.red.cgColor
-        tagLab.layer.addCornerRadius(8, maskColor: UIColor.lightGray)
+        tagLab.layer.addCornerRadius(radius: 8, maskColor: UIColor.lightGray)
 
 //        let bgImg = UIImage(named: "color")
 //        rightBtn.setBackgroundImage(bgImg?.image(radius: 16), for: .normal)

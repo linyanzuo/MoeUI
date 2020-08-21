@@ -55,7 +55,7 @@ struct SettingID {
 }
 
 
-class SettingCell: UnitedTableViewCell, UnitedTableCellProtocol {
+class SettingCell: TableViewCell, UnitedTableCellProtocol {
     func updateUI(with data: UnitedTableCellDataProtocol) {
     }
     
@@ -190,11 +190,11 @@ class SettingCell: UnitedTableViewCell, UnitedTableCellProtocol {
     }
 
     // MARK: Override methods
-    override func setupSelf() {
-        super.setupSelf()
-        self.selectionStyle = .none
-    }
     
+    override func setupSubview() {
+        selectionStyle = .none
+    }
+
     private func autoRegister(id: DesignatorID, for design: DesignClosure) -> Designator? {
         if Accessor.shared.isRegistered(valuatorID: id) == false {
             let designator = Designator()
@@ -242,4 +242,5 @@ class SettingCell: UnitedTableViewCell, UnitedTableCellProtocol {
         }
         return des!.makeView(toView: self.contentView)
     }()
+    
 }
