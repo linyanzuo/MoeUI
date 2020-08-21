@@ -49,13 +49,13 @@
 		8D96DF26E0A864287279CDBC34E7FD3B /* Pods-MoeUI_Example-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 4339174B3D9FDFD77C3932D47BE14FA9 /* Pods-MoeUI_Example-dummy.m */; };
 		8D97247F540E5B1F8A7204EECD1046DB /* MoeUI-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 1178E17A28E0E6CF731C905557D24D4A /* MoeUI-dummy.m */; };
 		9432185152350A4A90F6DD19C33AC057 /* Debugging.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E85D3C4DA15AA903EA40ACCD97E7CC1 /* Debugging.swift */; };
-		95CB74DA24EF6754003C8DEB /* Unity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95CB74D424EF6754003C8DEB /* Unity.swift */; };
-		95CB74DB24EF6754003C8DEB /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95CB74D524EF6754003C8DEB /* ViewController.swift */; };
-		95CB74DC24EF6754003C8DEB /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95CB74D624EF6754003C8DEB /* CollectionViewCell.swift */; };
-		95CB74DD24EF6754003C8DEB /* TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95CB74D724EF6754003C8DEB /* TableView.swift */; };
-		95CB74DE24EF6754003C8DEB /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95CB74D824EF6754003C8DEB /* TableViewController.swift */; };
-		95CB74DF24EF6754003C8DEB /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95CB74D924EF6754003C8DEB /* View.swift */; };
 		95CB74EA24EFB82A003C8DEB /* HUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95CB74E824EFB7F1003C8DEB /* HUD.swift */; };
+		95CB74F724EFD35B003C8DEB /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95CB74F524EFD0FF003C8DEB /* CollectionViewCell.swift */; };
+		95CB74F824EFD35B003C8DEB /* TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95CB74ED24EFD05C003C8DEB /* TableView.swift */; };
+		95CB74F924EFD35B003C8DEB /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95CB74EC24EFD05C003C8DEB /* TableViewController.swift */; };
+		95CB74FA24EFD35B003C8DEB /* Unity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95CB74EB24EFD05C003C8DEB /* Unity.swift */; };
+		95CB74FB24EFD35B003C8DEB /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95CB74EE24EFD05C003C8DEB /* View.swift */; };
+		95CB74FC24EFD35B003C8DEB /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95CB74EF24EFD05C003C8DEB /* ViewController.swift */; };
 		98AE4E2F24A858A47B5A1B405CEAD8FD /* UILayoutSupport+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60C228CB6AAED192640F17AF88A906BE /* UILayoutSupport+Extensions.swift */; };
 		9C7B946C7BBCBA3D2A7031FD2EF11838 /* MoeCommon-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 1A1A01D50F06690C4948AEE29E59AAB4 /* MoeCommon-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		9E6184458532BFF2E3E3F804C54BD0E7 /* ConstraintDescription.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CC6EFFE775E5F7C10D1B98388721ADF /* ConstraintDescription.swift */; };
@@ -216,13 +216,13 @@
 		91605249B892F9BE7020106300F75065 /* MoeUI-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "MoeUI-Info.plist"; sourceTree = "<group>"; };
 		923B1CCC8D3031D64A5F68BBC9038D82 /* Pods-MoeUI_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-MoeUI_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		93DC78FB3E069A8FAD5571108C09C961 /* MoeUI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MoeUI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		95CB74D424EF6754003C8DEB /* Unity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Unity.swift; sourceTree = "<group>"; };
-		95CB74D524EF6754003C8DEB /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		95CB74D624EF6754003C8DEB /* CollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionViewCell.swift; sourceTree = "<group>"; };
-		95CB74D724EF6754003C8DEB /* TableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableView.swift; sourceTree = "<group>"; };
-		95CB74D824EF6754003C8DEB /* TableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
-		95CB74D924EF6754003C8DEB /* View.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
 		95CB74E824EFB7F1003C8DEB /* HUD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = HUD.swift; path = MoeUI/Classes/Alert/HUD.swift; sourceTree = "<group>"; };
+		95CB74EB24EFD05C003C8DEB /* Unity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Unity.swift; path = MoeUI/Classes/Unity/Unity.swift; sourceTree = "<group>"; };
+		95CB74EC24EFD05C003C8DEB /* TableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TableViewController.swift; path = MoeUI/Classes/Unity/TableViewController.swift; sourceTree = "<group>"; };
+		95CB74ED24EFD05C003C8DEB /* TableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TableView.swift; path = MoeUI/Classes/Unity/TableView.swift; sourceTree = "<group>"; };
+		95CB74EE24EFD05C003C8DEB /* View.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = View.swift; path = MoeUI/Classes/Unity/View.swift; sourceTree = "<group>"; };
+		95CB74EF24EFD05C003C8DEB /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ViewController.swift; path = MoeUI/Classes/Unity/ViewController.swift; sourceTree = "<group>"; };
+		95CB74F524EFD0FF003C8DEB /* CollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CollectionViewCell.swift; path = MoeUI/Classes/Unity/CollectionViewCell.swift; sourceTree = "<group>"; };
 		970CA9823D4FD9ECB3ACCFB16E818DE8 /* ConstraintConfig.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintConfig.swift; path = Source/ConstraintConfig.swift; sourceTree = "<group>"; };
 		979486118B3E90C08386079D57962701 /* SnapKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SnapKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
@@ -624,12 +624,12 @@
 		CF14A3C339FBE5EF1939EB70B6F1F73B /* Unity */ = {
 			isa = PBXGroup;
 			children = (
-				95CB74D624EF6754003C8DEB /* CollectionViewCell.swift */,
-				95CB74D724EF6754003C8DEB /* TableView.swift */,
-				95CB74D824EF6754003C8DEB /* TableViewController.swift */,
-				95CB74D424EF6754003C8DEB /* Unity.swift */,
-				95CB74D924EF6754003C8DEB /* View.swift */,
-				95CB74D524EF6754003C8DEB /* ViewController.swift */,
+				95CB74F524EFD0FF003C8DEB /* CollectionViewCell.swift */,
+				95CB74ED24EFD05C003C8DEB /* TableView.swift */,
+				95CB74EC24EFD05C003C8DEB /* TableViewController.swift */,
+				95CB74EB24EFD05C003C8DEB /* Unity.swift */,
+				95CB74EE24EFD05C003C8DEB /* View.swift */,
+				95CB74EF24EFD05C003C8DEB /* ViewController.swift */,
 			);
 			name = Unity;
 			sourceTree = "<group>";
@@ -969,32 +969,32 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				95CB74DF24EF6754003C8DEB /* View.swift in Sources */,
+				95CB74FB24EFD35B003C8DEB /* View.swift in Sources */,
 				84E3A4A0DDC5B6941736448A2B7D9428 /* Accessor.swift in Sources */,
 				D30711EF53610C45840C53D5D879C17F /* AlertDialog.swift in Sources */,
 				A14847631A2CD701F02441CA86BCBF07 /* Alerter.swift in Sources */,
 				E34F2AF61006978BBAFE8477533FCBB2 /* AlertView.swift in Sources */,
-				95CB74DB24EF6754003C8DEB /* ViewController.swift in Sources */,
 				DF1F447FE2E83E26BF9259FEB2705B57 /* AlertWindow.swift in Sources */,
-				95CB74DC24EF6754003C8DEB /* CollectionViewCell.swift in Sources */,
 				5D40A67B6DC5F3E1D58D473D8F17E423 /* Animator.swift in Sources */,
 				E92DF973A2E2E22C6C171CE73A3EEBFE /* Configuration.swift in Sources */,
 				FA599896C48BD890EC73FE4EAA21B528 /* Designator.swift in Sources */,
 				86FAD095B362D397BE09E80F443E8817 /* DrawerTransition.swift in Sources */,
+				95CB74FA24EFD35B003C8DEB /* Unity.swift in Sources */,
 				A7A501988531F8EF4AC6ABD63D0A12D9 /* InteractiveTransition.swift in Sources */,
+				95CB74F724EFD35B003C8DEB /* CollectionViewCell.swift in Sources */,
 				57F27FA51B856468DC3AD3A5397229BF /* MaskAlertAnimator.swift in Sources */,
-				95CB74DD24EF6754003C8DEB /* TableView.swift in Sources */,
+				95CB74F824EFD35B003C8DEB /* TableView.swift in Sources */,
 				95CB74EA24EFB82A003C8DEB /* HUD.swift in Sources */,
 				3C697FE734F9A5651B2F7B8E030413E1 /* MaskAlertController.swift in Sources */,
 				4745DF6989482D59E53EDF49DA18916B /* MaskCornerRadius.swift in Sources */,
 				3097A50FB06F718C0076570FFDC03E88 /* MaskView.swift in Sources */,
 				8D97247F540E5B1F8A7204EECD1046DB /* MoeUI-dummy.m in Sources */,
 				6B43EB7F9F8F9089B3E03828EB11D2DC /* ProgressAlertController.swift in Sources */,
+				95CB74FC24EFD35B003C8DEB /* ViewController.swift in Sources */,
+				95CB74F924EFD35B003C8DEB /* TableViewController.swift in Sources */,
 				B8F59CDF62E8D90C4554E8D26936F346 /* UIViewController+SidePanDrawer.swift in Sources */,
 				452D68F08A098F337DE2454044CC9AB2 /* ValuationApply.swift in Sources */,
 				B3ACE51948958C65442625545D1709B7 /* ValuationView.swift in Sources */,
-				95CB74DA24EF6754003C8DEB /* Unity.swift in Sources */,
-				95CB74DE24EF6754003C8DEB /* TableViewController.swift in Sources */,
 				CED7012CB50404930348410F7CB30640 /* Valuator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

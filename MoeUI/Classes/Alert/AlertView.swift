@@ -19,7 +19,7 @@ struct Alert {
 
 
 /// popup view used for alert
-public class AlertView: View {
+open class AlertView: View {
     private(set) var alerts: [Alert] = []
     private var targetAlert: Alert? = nil
     private var customViewAlpha: CGFloat = 0.0

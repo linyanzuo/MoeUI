@@ -35,7 +35,7 @@ class AlertUsageVC: UITableViewController {
         super.viewDidLoad()
 
         tableView.separatorStyle = .none
-        tableView.register(TitleCell.classForCoder(), forCellReuseIdentifier: kReuseID)
+        tableView.register(TitleCell.self, forCellReuseIdentifier: kReuseID)
     }
 
     // MARK: -- UITableViewDelegate & UITableViewDataSource

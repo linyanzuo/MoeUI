@@ -10,13 +10,13 @@ import UIKit
 import MoeUI
 
 
-class TitleCell: TableViewCell {
+open class TitleCell: TableViewCell {
     
-    override func setupSubview() {
+    open override func setupSubview() {
         selectionStyle = .none
     }
     
-    override func setupConstraint() {
+    open override func setupConstraint() {
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
         self.addConstraints([
             NSLayoutConstraint(item: titleLabel, attribute: .centerX, relatedBy: .equal, toItem: self, attribute: .centerX, multiplier: 1.0, constant: 0.0),
@@ -26,7 +26,7 @@ class TitleCell: TableViewCell {
         ])
     }
 
-    override func layoutSubviews() {
+    open override func layoutSubviews() {
         super.layoutSubviews()
 
         separator.frame = CGRect(x: 16, y: self.frame.height - 1, width: self.frame.width - 16 * 2, height: 1)

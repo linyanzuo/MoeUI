@@ -30,7 +30,7 @@ class UsageListVC: TableViewController {
         setupNavigation()
 
         self.title = "MoeUI"
-        self.tableView.register(TitleCell.classForCoder(), forCellReuseIdentifier: kTitleCellReuseID)
+        self.tableView.register(TitleCell.self, forCellReuseIdentifier: kTitleCellReuseID)
     }
     
     // MARK: Navigation
