@@ -8,14 +8,27 @@
 import UIKit
 
 
+/// 遮罩弹窗控制器，请使用「present」方式展示
 open class MaskAlertController: UIViewController, UIViewControllerTransitioningDelegate, MaskAlertAnimatorProtocol {
-    // MARK: Subclass override methods
+    /// 点击遮罩时，弹窗是否消失
+    open var dismissWhenMaskTap: Bool = true {
+        didSet { maskBtn.isUserInteractionEnabled = dismissWhenMaskTap }
+    }
+    
+    // MARK: 子类应该重写的方法
+    
+    /// 控制器要展示的自定义视图
+    /// - Returns: 自定义视图
     open func viewToAlert() -> UIView {
         let content = "Plaese override the `viewToAlert` method, and return custom view which you want to alert"
         let bezelView = AlertDialog(style: .toast, text: content)
         return bezelView
     }
-
+    
+    /// 为控制器要展示的视图添加AutoLayout约束
+    /// - Parameters:
+    ///   - alertView: 要展示的视图，由「viewToAlert」方法返回
+    ///   - superView: 要展示视图的父视图，即控制器根视图
     open func addConstraintsFor(_ alertView: UIView, in superView: UIView) {
         alertView.translatesAutoresizingMaskIntoConstraints = false
         superView.addConstraints([
@@ -25,7 +38,9 @@ open class MaskAlertController: UIViewController, UIViewControllerTransitioningD
             NSLayoutConstraint(item: alertView, attribute: .right, relatedBy: .lessThanOrEqual, toItem: superView, attribute: .right, multiplier: 1.0, constant: -24)
         ])
     }
-
+    
+    /// 为控制器选择转场动画的具体类型
+    /// - Returns: 支持的转场动画类型
     open func animationType() -> MaskAlertAnimator.AnimationType {
         return .external
     }

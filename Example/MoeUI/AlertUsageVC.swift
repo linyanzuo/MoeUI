@@ -17,7 +17,8 @@ class AlertUsageVC: UITableViewController {
          ("HUD ShowError"),
          ("HUD ShowProgress"),
          ("HUD ShowToast"),
-         ("HUD ShowCustom")]
+         ("HUD ShowCustom")],
+        [("MaskAlertController")]
     ]
     private let kReuseID = "TitleCellResueID"
 
@@ -78,8 +79,14 @@ class AlertUsageVC: UITableViewController {
                     self.doSomework()
                     DispatchQueue.main.async { HUD.hide(with: id) }
                 }
-            default:
-                MLog("Nothing")
+            default: MLog("Nothing")
+            }
+        } else if indexPath.section == 1 {
+            switch indexPath.row {
+            case 0:
+                let vc = ProgressAlertController(style: .progress, text: "正在处理")
+                self.present(vc, animated: true, completion: nil)
+            default: MLog("Nothing")
             }
         }
     }

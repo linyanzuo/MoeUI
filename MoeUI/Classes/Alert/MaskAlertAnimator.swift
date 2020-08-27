@@ -8,13 +8,14 @@
 import UIKit
 
 
+/// 转场动画执行协议
 public protocol MaskAlertAnimatorProtocol where Self: UIViewController {
     func contentViewForAnimation() -> UIView
     func maskViewForAnimation() -> UIView
 }
 
 
-/// Transition Animation Performer
+/// 转场动画执行器
 public class MaskAlertAnimator: NSObject, UIViewControllerAnimatedTransitioning, CAAnimationDelegate {
     public enum TransitionType {
         case present
