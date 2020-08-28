@@ -29,7 +29,7 @@ public class Accessor {
 }
 
 
-// MARK: - 设计器相关
+// MARK: - 设计器相关扩展
 extension Accessor {
     /// 判断ID值是否已被设计器注册，已注册返回`true`，反之亦然
     /// - Parameter designatorID: 要判断的ID值
@@ -73,7 +73,7 @@ extension Accessor {
 }
 
 
-// MARK: - 赋值器相关
+// MARK: - 赋值器相关扩展
 extension Accessor {
     /// 判断ID值是否已被赋值器注册，已注册返回`true`，反之亦然
     /// - Parameter valuatorID: 要判断的ID值
@@ -99,5 +99,25 @@ extension Accessor {
     public func dequeue(valuatorWith valuatorID: ValuatorID) -> Valuator? {
         if isRegistered(valuatorID: valuatorID) == false { return nil }
         return valuators[valuatorID]
+    }
+}
+
+
+// MARK: - 生成控件的类方法扩展
+extension Accessor {
+    public static func makeView(toView: UIView? = nil, with id: DesignatorID) -> MoeView? {
+        return shared.dequeue(designatorWith: id)?.makeView(toView: toView)
+    }
+    
+    public static func makeLabel(toView: UIView? = nil, with id: DesignatorID) -> MoeLabel? {
+        return shared.dequeue(designatorWith: id)?.makeLabel(toView: toView)
+    }
+    
+    public static func makeButton(toView: UIView? = nil, with id: DesignatorID) -> MoeButton? {
+        return shared.dequeue(designatorWith: id)?.makeButton(toView: toView)
+    }
+    
+    public static func makeImageView(toView: UIView? = nil, with id: DesignatorID) -> MoeImageView? {
+        return shared.dequeue(designatorWith: id)?.makeImageView(toView: toView)
     }
 }

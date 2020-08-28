@@ -13,17 +13,17 @@ import UIKit
 public class Designator: NSObject, NSCopying {
     public required override init() {}
     
-    public func copy(with zone: NSZone? = nil) -> Any {
-        let copyObj = type(of: self).init()
-        copyObj.valuators = self.valuators
-        return copyObj
-    }
-    
     /// 创建设计器实例，并携带了指定的多个赋值器
     /// - Parameter valuators: 赋值器数组
     public convenience init(valuators: [Valuator]) {
         self.init()
         self.valuators += valuators
+    }
+    
+    public func copy(with zone: NSZone? = nil) -> Any {
+        let copyObj = type(of: self).init()
+        copyObj.valuators = self.valuators
+        return copyObj
     }
     
     /// 携带的所有赋值器
@@ -141,30 +141,61 @@ public class Designator: NSObject, NSCopying {
 }
 
 
-// MARK: 生产视图
-
-public extension Designator {
-    func makeView(toView: UIView? = nil) -> MoeView {
-        return addView(MoeView(frame: .zero), to: toView) as! MoeView
-    }
-    
-    func makeLabel(toView: UIView? = nil) -> MoeLabel {
-        return addView(MoeLabel(frame: .zero), to: toView) as! MoeLabel
-    }
-    
-    func makeButton(toView: UIView? = nil) -> MoeButton {
-        return addView(MoeButton(type: .custom), to: toView) as! MoeButton
-    }
-    
-    func makeImageView(toView: UIView? = nil) -> MoeImageView {
-        return addView(MoeImageView(frame: .zero), to: toView) as! MoeImageView
-    }
-    
-    func addView(_ view: ValuationViewProtocol,
-                 to superView: UIView?) -> ValuationViewProtocol
-    {
+// MARK: - 生成控件的实例方法扩展
+extension Designator {
+    func addView(_ view: ValuationViewProtocol, to superView: UIView?) -> ValuationViewProtocol {
         superView?.addSubview(view)
         self.applyValuator(toView: view)
         return view
     }
+    
+    public func makeView(toView: UIView? = nil) -> MoeView {
+        return addView(MoeView(frame: .zero), to: toView) as! MoeView
+    }
+    
+    public func makeLabel(toView: UIView? = nil) -> MoeLabel {
+        return addView(MoeLabel(frame: .zero), to: toView) as! MoeLabel
+    }
+    
+    public func makeButton(toView: UIView? = nil) -> MoeButton {
+        return addView(MoeButton(type: .custom), to: toView) as! MoeButton
+    }
+    
+    public func makeImageView(toView: UIView? = nil) -> MoeImageView {
+        return addView(MoeImageView(frame: .zero), to: toView) as! MoeImageView
+    }
 }
+
+
+// MARK: - 生成控件的类方法扩展
+extension Designator {
+    static func addView(
+        _ view: ValuationViewProtocol,
+        to superView: UIView?,_ closure: DesignClosure?
+    ) -> ValuationViewProtocol {
+        superView?.addSubview(view)
+        
+        let designator = Designator()
+        closure?(designator)
+        designator.applyValuator(toView: view)
+        
+        return view
+    }
+    
+    public static func makeView(toView: UIView? = nil, _ closure: DesignClosure? = nil) -> MoeView {
+        return addView(MoeView(frame: .zero), to: toView, closure) as! MoeView
+    }
+    
+    public static func makeLabel(toView: UIView? = nil, _ closure: DesignClosure? = nil) -> MoeLabel {
+        return addView(MoeLabel(frame: .zero), to: toView, closure) as! MoeLabel
+    }
+    
+    public static func makeButton(toView: UIView? = nil, _ closure: DesignClosure? = nil) -> MoeButton {
+        return addView(MoeButton(type: .custom), to: toView, closure) as! MoeButton
+    }
+    
+    public static func makeImageView(toView: UIView? = nil, _ closure: DesignClosure? = nil) -> MoeImageView {
+        return addView(MoeImageView(frame: .zero), to: toView, closure) as! MoeImageView
+    }
+}
+

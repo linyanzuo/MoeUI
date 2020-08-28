@@ -250,37 +250,3 @@ open class MoeImageView: UIImageView, ValuationViewProtocol, ValuationApplyProto
         updateShadowLayout()
     }
 }
-
-
-// MARK: MoeUI Extension
-
-extension Designator {
-    
-    static func addView(
-        _ view: ValuationViewProtocol,
-        to superView: UIView?,_ closure: DesignClosure?
-    ) -> ValuationViewProtocol {
-        superView?.addSubview(view)
-        
-        let designator = Designator()
-        closure?(designator)
-        designator.applyValuator(toView: view)
-        
-        return view
-    }
-    
-    // MARK: Public Method
-    
-    public static func makeView(toView: UIView? = nil, _ closure: DesignClosure? = nil) -> MoeView
-    { return addView(MoeView(frame: .zero), to: toView, closure) as! MoeView }
-    
-    public static func makeLabel(toView: UIView? = nil, _ closure: DesignClosure? = nil) -> MoeLabel
-    { return addView(MoeLabel(frame: .zero), to: toView, closure) as! MoeLabel }
-    
-    public static func makeButton(toView: UIView? = nil, _ closure: DesignClosure? = nil) -> MoeButton
-    { return addView(MoeButton(type: .custom), to: toView, closure) as! MoeButton }
-    
-    public static func makeImageView(toView: UIView? = nil, _ closure: DesignClosure? = nil) -> MoeImageView
-    { return addView(MoeImageView(frame: .zero), to: toView, closure) as! MoeImageView }
-    
-}
