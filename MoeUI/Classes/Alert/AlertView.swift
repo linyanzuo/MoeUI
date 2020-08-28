@@ -28,7 +28,9 @@ open class AlertView: View {
     let kCustomOpacityAnimKey = "customOpacityAnimation"
     let kMaskOpacityAnimKey = "maskOpacityAnimation"
 
-    public var isMaskEnable = true
+    public var maskEnable = true {
+        didSet { maskBtn.isHidden = !maskEnable }
+    }
     public var useAnaimation = true
     public var removeFromSuperViewOnHide = true
     public var completionHandler: (() -> Void)?
@@ -48,8 +50,7 @@ open class AlertView: View {
     }
 
     override public func setupConstraint() {
-        maskBtn.isHidden = !isMaskEnable
-        guard isMaskEnable == true else { return }
+        maskBtn.isHidden = !maskEnable
         maskBtn.translatesAutoresizingMaskIntoConstraints = false
         self.addConstraints([
             NSLayoutConstraint(item: maskBtn, attribute: .top, relatedBy: .equal, toItem: self, attribute: .top, multiplier: 1.0, constant: 0.0),

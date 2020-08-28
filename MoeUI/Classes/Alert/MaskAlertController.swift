@@ -15,6 +15,10 @@ open class MaskAlertController: UIViewController, UIViewControllerTransitioningD
         didSet { maskBtn.isUserInteractionEnabled = dismissWhenMaskTap }
     }
     
+    open var maskEnable: Bool = true {
+        didSet { maskBtn.isHidden = !maskEnable }
+    }
+    
     // MARK: 子类应该重写的方法
     
     /// 控制器要展示的自定义视图
@@ -110,7 +114,9 @@ open class MaskAlertController: UIViewController, UIViewControllerTransitioningD
         des.general.alpha(0.6)
         des.background(.black)
         des.event(.touchUpInside, for: self, action: #selector(self.maskTapAction(_:)))
-        return des.makeButton()
+        let btn = des.makeButton()
+        btn.isHidden = !self.maskEnable
+        return btn
     }()
 
     private(set) lazy var bezelView: UIView = {

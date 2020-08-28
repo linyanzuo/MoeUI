@@ -44,7 +44,7 @@ extension Alerter {
     ///   - customView: 自定义视图
     ///   - view:       依赖视图，自定义视图作为它的子视图展示
     ///   - identifier: 提示视图绑定的标识，关闭提示时使用
-    public class func show(_ customView: UIView, in view: UIView, with identifier: String) {
+    public class func show(_ customView: UIView, in view: UIView, with identifier: String, maskEnable: Bool = false) {
         checkThread()
 
         var alertView: AlertView? = nil
@@ -59,6 +59,7 @@ extension Alerter {
             }
             view.addSubview(alertView!)
 
+            alertView?.maskEnable = maskEnable
             alertView!.translatesAutoresizingMaskIntoConstraints = false
             view.addConstraints([
                 NSLayoutConstraint(item: alertView!, attribute: .top, relatedBy: .equal, toItem: view, attribute: .top, multiplier: 1.0, constant: 0.0),
@@ -95,8 +96,9 @@ extension Alerter {
     /// - Parameters:
     ///   - customView: 自定义视图
     ///   - identifier: 提示视图绑定的标识
-    public class func showGlobal(_ customView: UIView, with identifier: AlertIdentifier) {
+    public class func showGlobal(_ customView: UIView, with identifier: AlertIdentifier, maskEnable: Bool = false) {
         checkThread()
+        AlertWindow.shared.maskEnable = maskEnable
         AlertWindow.shared.addAlert(customView: customView, with: identifier)
     }
 

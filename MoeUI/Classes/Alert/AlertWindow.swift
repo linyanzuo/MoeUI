@@ -9,9 +9,12 @@ import UIKit
 
 
 final class AlertWindow: UIWindow {
-    
     static let shared = AlertWindow()
     internal var completionHandler: (() -> Void)?
+    
+    public var maskEnable: Bool = false {
+        didSet { alertView?.maskEnable = maskEnable }
+    }
 
     // MARK: Object Life Cycle
     required init?(coder aDecoder: NSCoder) {
@@ -50,6 +53,7 @@ final class AlertWindow: UIWindow {
         get {
             guard _alertView == nil else { return _alertView }
             _alertView = AlertView(frame: .zero)
+            _alertView?.maskEnable = maskEnable
             _alertView!.maskTapHandler = { [weak self] in
                 self?.removeAlert()
             }
