@@ -21,18 +21,18 @@ open class HUD {
     ///   - style:      指定样式
     ///   - text:       指定内容
     ///   - continued:  持续时间
-    public class func show(style: AlertDialog.Style, text: String, continued: TimeInterval = 1.0) {
+    public class func show(style: AlertDialog.Style, text: String, maskEnable: Bool = false, continued: TimeInterval = 1.0) {
         let dialog = AlertDialog(style: style, text: text)
-        show(customView: dialog, continued: continued)
+        show(customView: dialog, maskEnable: maskEnable, continued: continued)
     }
     
     /// 展示自定义视图，并在持续一定时间后自动消失
     /// - Parameters:
     ///   - customView: 自定义视图
     ///   - continued:  持续时间
-    public class func show(customView: UIView, continued: TimeInterval) {
+    public class func show(customView: UIView, maskEnable: Bool = false, continued: TimeInterval) {
         let id = Alerter.generateIdentifier()
-        Alerter.showGlobal(customView, with: id)
+        Alerter.showGlobal(customView, with: id, maskEnable: maskEnable)
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + continued, execute: {
             Alerter.hideGlobal(with: id)
         })
@@ -43,10 +43,10 @@ open class HUD {
     ///   - customView: 自定义视图
     ///   - alertId:    与视图关联的标识，不传值时则自动生成
     /// - Returns:      关联标识
-    public class func show(customView: UIView, with alertId: AlertIdentifier? = nil) -> AlertIdentifier {
+    public class func show(customView: UIView, with alertId: AlertIdentifier? = nil, maskEnable: Bool = false) -> AlertIdentifier {
         var id = alertId
         if id == nil { id = Alerter.generateIdentifier() }
-        Alerter.showGlobal(customView, with: id!)
+        Alerter.showGlobal(customView, with: id!, maskEnable: maskEnable)
         idStack.append(id!)
         return id!
     }

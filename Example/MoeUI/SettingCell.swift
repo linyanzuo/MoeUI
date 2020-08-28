@@ -199,7 +199,7 @@ class SettingCell: TableViewCell, UnitedTableCellProtocol {
         if Accessor.shared.isRegistered(valuatorID: id) == false {
             let designator = Designator()
             design(designator)
-            Accessor.shared.register(designator: designator, for: id)
+            Accessor.shared.register(id: id, designator: designator)
         }
         return Accessor.shared.dequeue(designatorWith: id)
     }

@@ -10,9 +10,6 @@ import UIKit
 import MoeCommon
 
 
-public typealias DesignClosure = (_ designator: Designator) -> Void
-
-
 /// 控件可赋值协议。控件在该协议方法实现中完成赋值器对自身属性的赋值
 public protocol ValuationViewProtocol where Self: UIView {
     var designator: Designator { get set }
