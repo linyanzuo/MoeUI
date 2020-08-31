@@ -106,18 +106,18 @@ extension Accessor {
 // MARK: - 生成控件的类方法扩展
 extension Accessor {
     public static func makeView(toView: UIView? = nil, with id: DesignatorID) -> MoeView? {
-        return shared.dequeue(designatorWith: id)?.makeView(toView: toView)
+        return Accessor.shared.dequeue(designatorWith: id)?.makeView(toView: toView)
     }
     
     public static func makeLabel(toView: UIView? = nil, with id: DesignatorID) -> MoeLabel? {
-        return shared.dequeue(designatorWith: id)?.makeLabel(toView: toView)
+        return Accessor.shared.dequeue(designatorWith: id)?.makeLabel(toView: toView)
     }
     
     public static func makeButton(toView: UIView? = nil, with id: DesignatorID) -> MoeButton? {
-        return shared.dequeue(designatorWith: id)?.makeButton(toView: toView)
+        return Accessor.shared.dequeue(designatorWith: id)?.makeButton(toView: toView)
     }
     
     public static func makeImageView(toView: UIView? = nil, with id: DesignatorID) -> MoeImageView? {
-        return shared.dequeue(designatorWith: id)?.makeImageView(toView: toView)
+        return Accessor.shared.dequeue(designatorWith: id)?.makeImageView(toView: toView)
     }
 }

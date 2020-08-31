@@ -15,10 +15,16 @@ public protocol ValuationViewProtocol where Self: UIView {
     var designator: Designator { get set }
     func applyValuation(valuatorType: ValuatorType)
     
+    func updateDesignator(_ designator: Designator)
     func updateDesign(_ closure: DesignClosure)
     func resetDesign(_ closure: DesignClosure)
 }
 public extension ValuationViewProtocol {
+    func updateDesignator(_ designator: Designator) {
+        self.designator = designator
+        self.designator.applyValuator(toView: self)
+    }
+    
     func updateDesign(_ closure: DesignClosure) {
         closure(self.designator)
         designator.applyValuator(toView: self)
@@ -124,7 +130,7 @@ open class MoeLabel: UILabel, ValuationViewProtocol, ValuationApplyProtocol {
         self.numberOfLines = valuator.numberOfLines
         
         if let alignment = valuator.alignment { self.textAlignment = alignment }
-        if let indent = valuator.firstLineIndent {
+        if let indent = valuator.firstLineIndent, let title = valuator.text {
             var attrDict: [NSAttributedString.Key: Any] = [
                 NSAttributedString.Key.foregroundColor : valuator.color,
                 NSAttributedString.Key.font : valuator.font
@@ -135,7 +141,7 @@ open class MoeLabel: UILabel, ValuationViewProtocol, ValuationApplyProtocol {
             style.lineSpacing = 5
             attrDict[NSAttributedString.Key.paragraphStyle] = style
 
-            let attrText = NSAttributedString(string: valuator.text, attributes: attrDict)
+            let attrText = NSAttributedString(string: title, attributes: attrDict)
             self.attributedText = attrText
         }
     }
@@ -163,8 +169,8 @@ open class MoeButton: UIButton, ValuationViewProtocol, ValuationApplyProtocol {
         let title = valuator.text
         let defaultFont = UIFont.systemFont(ofSize: 15)
         
-        guard state == .normal, valuator.font != defaultFont, title != "" else {
-            let attrStr = NSAttributedString(string: title, attributes: [
+        guard state == .normal, valuator.font != defaultFont, title != "", title != nil else {
+            let attrStr = NSAttributedString(string: title!, attributes: [
                 NSAttributedString.Key.font : valuator.font,
                 NSAttributedString.Key.foregroundColor : valuator.color
             ])

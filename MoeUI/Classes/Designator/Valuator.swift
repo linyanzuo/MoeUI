@@ -305,7 +305,7 @@ public class StateValuator: Valuator {
 
 /// 文本赋值器。负责视图文本的赋值，支持内容、字体、颜色、对齐方式、状态等
 public class TextValuator: StateValuator {
-    internal var text: String = ""
+    internal var text: String?
     internal var font: UIFont = UIFont.systemFont(ofSize: 15)
     internal var color: UIColor = .black
     internal var numberOfLines: Int = 1

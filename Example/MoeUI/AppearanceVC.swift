@@ -104,6 +104,9 @@ class AppearanceVC: UIViewController {
 //            des.image(UIImage(named: "Lambert")!).cornerRadius(16)
             des.image(UIImage(named: "Lambert")!).maskCornerRadius(32, maskColor: .white)
         }
+        let dtor = Designator()
+        dtor.background().color(.green)
+        colorView.updateDesignator(dtor)
     }
     
     @objc func outsideAction(_ sender: Any) {
