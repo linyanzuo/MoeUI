@@ -6,7 +6,7 @@
 import UIKit
 
 
-/// 表格视图的单元格基类
+/// 表格视图的单元项基类
 open class TableViewCell: UITableViewCell, ViewUnity {
     
     public required init?(coder aDecoder: NSCoder) {

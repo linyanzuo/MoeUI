@@ -166,20 +166,21 @@ open class MoeLabel: UILabel, ValuationViewProtocol, ValuationApplyProtocol {
 open class MoeButton: UIButton, ValuationViewProtocol, ValuationApplyProtocol {
     func applyText(_ valuator: TextValuator) {
         let state = valuator.state
-        let title = valuator.text
-        let defaultFont = UIFont.systemFont(ofSize: 15)
-        
-        guard state == .normal, valuator.font != defaultFont, title != "", title != nil else {
-            let attrStr = NSAttributedString(string: title!, attributes: [
+        switch state {
+        case .normal:
+            // .normal状态时，字体配置直接操作`titleLabel`来实现
+            titleLabel?.font = valuator.font
+            setTitleColor(valuator.color, for: state)
+            if let title = valuator.text { setTitle(title, for: state) }
+        default:
+            // 其余状态时，使用富文本来实现标题展示，由富文本控制字体
+            guard let title = valuator.text else { return }
+            let attrStr = NSAttributedString(string: title, attributes: [
                 NSAttributedString.Key.font : valuator.font,
                 NSAttributedString.Key.foregroundColor : valuator.color
             ])
             setAttributedTitle(attrStr, for: state)
-            return
         }
-        setTitle(title, for: state)
-        setTitleColor(valuator.color, for: state)
-        titleLabel?.font = valuator.font
     }
     
     func applyImage(_ valuator: ImageValuator) {
