@@ -324,7 +324,7 @@ public class TextValuator: StateValuator {
     // MARK: 链式赋值方法
     
     @discardableResult
-    public func text(_ text: String) -> Self {
+    public func text(_ text: String?) -> Self {
         self.text = text
         return self
     }

@@ -75,7 +75,7 @@ extension UIView: Runtime {
 
 // MARK: MoeView
 
-open class MoeView: UIView, ValuationViewProtocol, ValuationApplyProtocol {
+open class MoeView: View, ValuationViewProtocol, ValuationApplyProtocol {
     public convenience init(designator: Designator) {
         self.init(frame: .zero)
         designator.applyValuator(toView: self)
@@ -173,13 +173,20 @@ open class MoeButton: UIButton, ValuationViewProtocol, ValuationApplyProtocol {
             setTitleColor(valuator.color, for: state)
             if let title = valuator.text { setTitle(title, for: state) }
         default:
-            // 其余状态时，使用富文本来实现标题展示，由富文本控制字体
-            guard let title = valuator.text else { return }
-            let attrStr = NSAttributedString(string: title, attributes: [
-                NSAttributedString.Key.font : valuator.font,
-                NSAttributedString.Key.foregroundColor : valuator.color
-            ])
-            setAttributedTitle(attrStr, for: state)
+            // 非normal状态时，若text无指定值，尝试获取normal状态的text值
+            var text = valuator.text
+            if text == nil {
+                let normalVtor = self.designator.find(valuatorType: TextValuator.self, coditionType: .state(.normal))
+                text = normalVtor?.text
+            }
+            if let title = text {
+                // 非normal状态时，使用富文本来实现标题展示，由富文本控制字体
+                let attrStr = NSAttributedString(string: title, attributes: [
+                    NSAttributedString.Key.font : valuator.font,
+                    NSAttributedString.Key.foregroundColor : valuator.color
+                ])
+                setAttributedTitle(attrStr, for: state)
+            }
         }
     }
     

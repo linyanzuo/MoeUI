@@ -50,7 +50,7 @@ public class AlertDialog: MoeView {
 
     // MARK: Subviews Initialize
     
-    private func setupSubview() {
+    public override func setupSubview() {
         self.updateDesign({ (des) in
             des.background(UIColor(rgb: 0xE7E8EA)).cornerRadius(6).border(1, color: UIColor(rgb: 0xD7D8DA))
         })
@@ -71,7 +71,7 @@ public class AlertDialog: MoeView {
         }
     }
 
-    private func setupConstraint() {
+    public override func setupConstraint() {
         var labelTopConstraint: NSLayoutConstraint? = nil
         var labelBottomConstraint: NSLayoutConstraint? = nil
 

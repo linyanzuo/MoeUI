@@ -68,8 +68,7 @@ public class Designator: NSObject, NSCopying {
     @discardableResult
     public func text(_ text: String? = nil, for state: UIControl.State = .normal) -> TextValuator {
         let valuator = read(valuatorType: TextValuator.self, conditionType: .state(state))
-        if let title = text { return valuator.text(title) }
-        return valuator
+        return valuator.text(text)
     }
     
     /// 返回指定状态的图片赋值器。并指定图片
@@ -109,10 +108,7 @@ public class Designator: NSObject, NSCopying {
     /// 获取指定条件的赋值器，如果不存在则会自动创建
     /// - Parameter valuatorType: 赋值器类型
     /// - Parameter conditionType: 条件类型
-    internal func read<T: Valuator>(
-        valuatorType: T.Type,
-        conditionType: ConditionType) -> T
-    {
+    internal func read<T: Valuator>(valuatorType: T.Type, conditionType: ConditionType) -> T {
         var valuator = find(valuatorType: valuatorType, coditionType: conditionType)
         if valuator == nil {
             valuator = T(condition: conditionType)
@@ -124,10 +120,7 @@ public class Designator: NSObject, NSCopying {
     /// 查找指定条件的赋值器是否存在
     /// - Parameter valuatorType: 赋值器类型
     /// - Parameter coditionType: 条件类型
-    internal func find<T: Valuator>(
-        valuatorType: T.Type,
-        coditionType: ConditionType) -> T?
-    {
+    internal func find<T: Valuator>(valuatorType: T.Type, coditionType: ConditionType) -> T? {
         for item in valuators {
             guard item is T else { continue }
             if item.isDuplicate(type: coditionType) { return item as? T }
