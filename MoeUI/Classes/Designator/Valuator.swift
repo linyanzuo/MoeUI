@@ -195,15 +195,18 @@ public class BackgroundValuator: NoneValuator {
     }
 
     @discardableResult
-    public func gradient(startPoint: CGPoint,
-                         endPoint: CGPoint,
-                         colors: [UIColor],
-                         locations: [NSNumber]) -> Self
-    {
-        self.gradient = BackgroundGradient(startPoint: startPoint,
-                                           endPoint: endPoint,
-                                           colors: colors,
-                                           locations: locations)
+    public func gradient(
+        startPoint: CGPoint,
+        endPoint: CGPoint,
+        colors: [UIColor],
+        locations: [NSNumber]
+    ) -> Self {
+        self.gradient = BackgroundGradient(
+            startPoint: startPoint,
+            endPoint: endPoint,
+            colors: colors,
+            locations: locations
+        )
         return self
     }
 }
