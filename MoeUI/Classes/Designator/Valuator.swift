@@ -328,7 +328,7 @@ public class TextValuator: StateValuator {
     
     @discardableResult
     public func text(_ text: String?) -> Self {
-        self.text = text
+        if let text = text { self.text = text }
         return self
     }
 

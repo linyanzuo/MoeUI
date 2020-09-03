@@ -179,6 +179,7 @@ open class MoeButton: UIButton, ValuationViewProtocol, ValuationApplyProtocol {
                 let normalVtor = self.designator.find(valuatorType: TextValuator.self, coditionType: .state(.normal))
                 text = normalVtor?.text
             }
+            if text == nil { text = titleLabel?.text }
             if let title = text {
                 // 非normal状态时，使用富文本来实现标题展示，由富文本控制字体
                 let attrStr = NSAttributedString(string: title, attributes: [
