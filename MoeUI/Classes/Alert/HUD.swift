@@ -20,10 +20,15 @@ open class HUD {
     /// - Parameters:
     ///   - style:      指定样式
     ///   - text:       指定内容
-    ///   - continued:  持续时间
+    ///   - maskEnable: 是否启用遮罩，默认为不启用
+    ///   - continued:  持续一段时间后自动消失，为0时需要手动关闭
     public class func show(style: AlertDialog.Style, text: String, maskEnable: Bool = false, continued: TimeInterval = 1.0) {
         let dialog = AlertDialog(style: style, text: text)
-        show(customView: dialog, maskEnable: maskEnable, continued: continued)
+        if continued == 0.0 {
+            let _ = show(customView: dialog, with: nil, maskEnable: true)
+        } else {
+            show(customView: dialog, maskEnable: maskEnable, continued: continued)
+        }
     }
     
     /// 展示自定义视图，并在持续一定时间后自动消失
@@ -54,8 +59,7 @@ open class HUD {
     /// 隐藏关联标识关联的自定义视图
     /// - Parameter alertId: 关联标识
     public class func hide(with alertId: AlertIdentifier? = nil) {
-        var id = alertId
-        if (id == nil) { id = idStack.popLast() }
-        Alerter.hideGlobal(with: id!)
+        guard let id = alertId ?? idStack.popLast() else { return }
+        Alerter.hideGlobal(with: id)
     }
 }

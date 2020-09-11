@@ -12,29 +12,35 @@ import UIKit
 import MoeCommon
 
 
+/// 提示
 struct Alert {
+    /// 提示的标识，作唯一识别用
     var id: String
+    /// 提示的内容，作弹出展示用
     var view: UIView
 }
 
 
-/// popup view used for alert
+/// 提示视图
+/// 所有要弹出展示的提示内容，都作为它的子视图进行管理。
 open class AlertView: View {
-    private(set) var alerts: [Alert] = []
-    private var targetAlert: Alert? = nil
-    private var customViewAlpha: CGFloat = 0.0
-
     let kMaskAlpha: CGFloat = 0.4
     let kCustomOpacityAnimKey = "customOpacityAnimation"
     let kMaskOpacityAnimKey = "maskOpacityAnimation"
 
-    public var maskEnable = true {
-        didSet { maskBtn.isHidden = !maskEnable }
-    }
-    public var useAnaimation = true
-    public var removeFromSuperViewOnHide = true
-    public var completionHandler: (() -> Void)?
+    /// 是否启用遮罩
+    public var maskEnable = true { didSet { maskBtn.isHidden = !maskEnable } }
+    /// 遮罩被点击时执行的回调闭包
     public var maskTapHandler: (() -> Void)?
+    /// 是否启用动画
+    public var useAnaimation = true
+    /// 提示视图隐藏时，是否从父视图上移动
+    public var removeFromSuperViewOnHide = true
+    /// 提示视图隐藏后的执行回调闭包
+    public var completionHandler: (() -> Void)?
+    
+    private(set) var alerts: [Alert] = []       // 记录所有提示（标识，内容）
+    private var customViewAlpha: CGFloat = 0.0  // 记录待弹出视图的原透明度
 
     deinit {
         MLog("[\(self)] died!")
@@ -43,6 +49,7 @@ open class AlertView: View {
     override public func setupSubview() {
         self.backgroundColor = .clear
         self.addSubview(maskBtn)
+        maskBtn.isHidden = !maskEnable
 
         maskTapHandler = {
             self.removeAlert(completionHandler: nil)
@@ -50,7 +57,6 @@ open class AlertView: View {
     }
 
     override public func setupConstraint() {
-        maskBtn.isHidden = !maskEnable
         maskBtn.translatesAutoresizingMaskIntoConstraints = false
         self.addConstraints([
             NSLayoutConstraint(item: maskBtn, attribute: .top, relatedBy: .equal, toItem: self, attribute: .top, multiplier: 1.0, constant: 0.0),
@@ -59,69 +65,73 @@ open class AlertView: View {
             NSLayoutConstraint(item: maskBtn, attribute: .right, relatedBy: .equal, toItem: self, attribute: .right, multiplier: 1.0, constant: 0.0)
         ])
     }
-
+    
+    /// 添加新提示
+    /// - Parameters:
+    ///   - customView: 提示的展示内容
+    ///   - identifier: 提示的唯一标识
     public func addAlert(customView: UIView, with identifier: String? = nil) {
         if let previousView = alerts.last?.view { previousView.layer.removeAllAnimations() }
-
-        customViewAlpha = customView.alpha
         maskBtn.isUserInteractionEnabled = false
-        var id = identifier
-        if id == nil { id = Alerter.generateIdentifier() }
+        customViewAlpha = customView.alpha
+        let id = identifier ?? Alerter.generateIdentifier()
         for alert in alerts {
             if alert.id == id {
-                MLog("Can't alert view which identifier \(id!) is already in use. ")
+                MLog("标识值「\(id)」已被使用")
                 return
             }
         }
-        let alert = Alert(id: id!, view: customView)
+        // 记录新提示
+        let alert = Alert(id: id, view: customView)
         if alerts.count > 0 { bringSubviewToFront(maskBtn) }
         alerts.append(alert)
-        addSubview(customView)
-
+        // 添加提示内容
+        addSubview(alert.view)
         customView.translatesAutoresizingMaskIntoConstraints = false
         addConstraints([
-            NSLayoutConstraint(item: customView, attribute: .centerX, relatedBy: .equal, toItem: self, attribute: .centerX, multiplier: 1.0, constant: 0.0),
             NSLayoutConstraint(item: customView, attribute: .centerY, relatedBy: .equal, toItem: self, attribute: .centerY, multiplier: 1.0, constant: 0.0),
             NSLayoutConstraint(item: customView, attribute: .left, relatedBy: .greaterThanOrEqual, toItem: self, attribute: .left, multiplier: 1.0, constant: 24),
             NSLayoutConstraint(item: customView, attribute: .right, relatedBy: .lessThanOrEqual, toItem: self, attribute: .right, multiplier: 1.0, constant: -24)
         ])
-
+        // 添加动画效果
         if useAnaimation == true {
             addAlphaAnimation(to: alert, transitionType: .present)
             if alerts.count == 0 { addMaskAnimation(transitionType: .present) }
         }
         else { maskBtn.isUserInteractionEnabled = true }
     }
-
+    
+    /// 移除已存在的提示
+    /// - Parameters:
+    ///   - identifier:         提示的唯一标识，不指定时则使用展示在最顶层的提示
+    ///   - completionHandler:  移动完成后执行的闭包
     public func removeAlert(with identifier: String? = nil, completionHandler: (() -> Void)?) {
         if let previousView = alerts.last?.view { previousView.layer.removeAllAnimations() }
-
         maskBtn.isUserInteractionEnabled = false
         guard alerts.count > 0 else {
-            MLog("There's no view alert now")
+            MLog("没有正在展示的提示")
             return
         }
         self.completionHandler = completionHandler
 
+        // 查找要移除的目标提示
+        var targetAlert: Alert? = alerts.last
         if identifier != nil {
-            var index = 0
             for alert in alerts {
                 if alert.id == identifier {
                     targetAlert = alert
                     break
                 }
-                index += 1
             }
             if targetAlert == nil {
-                MLog("Can't hide view which identifier \(identifier!) has not in use")
+                MLog("找不到与指定标识\(identifier!)匹配的提示")
                 return
             }
         }
-        else { targetAlert = alerts.last }
 
         var shouldMaskDismiss = false
         if alerts.count <= 1 { shouldMaskDismiss = true }
-
+        // 添加动画
         if useAnaimation == true {
             addAlphaAnimation(to: targetAlert!, transitionType: .dismiss)
             if shouldMaskDismiss == true { addMaskAnimation(transitionType: .dismiss) }
@@ -129,6 +139,7 @@ open class AlertView: View {
         else { done(with: targetAlert!) }
     }
 
+    /// 移除提示的结束操作
     private func done(with alert: Alert) {
         for index in 0 ..< alerts.count {
             if alerts[index].id == alert.id {
@@ -147,11 +158,6 @@ open class AlertView: View {
         completionHandler?()
     }
 
-    // MARK: Event Response
-    @objc func maskTapAction(_ sender: UIButton) {
-        maskTapHandler?()
-    }
-
     // MARK: Getter & Setter
     private(set) lazy var maskBtn: UIButton = {
         let des = Designator()
@@ -163,7 +169,15 @@ open class AlertView: View {
 }
 
 
-// MARK: AlertView Animation
+// MARK: - 提示视图 + 事件响应
+@objc extension AlertView {
+    @objc func maskTapAction(_ sender: UIButton) {
+        maskTapHandler?()
+    }
+}
+
+
+// MARK: - 提示视图 + 动画效果
 extension AlertView: CAAnimationDelegate {
     public enum TransitionType {
         case present

@@ -91,6 +91,8 @@ extension ValuationApplyProtocol {
             gradientLayer.endPoint = gradient.endPoint
             if let radius = valuator.cornerRadius { gradientLayer.cornerRadius = radius }
             layer.insertSublayer(gradientLayer, at: 0)
+        } else {
+            if (gradientLayer.superlayer != nil) { gradientLayer.removeFromSuperlayer() }
         }
     }
     

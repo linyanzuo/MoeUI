@@ -25,11 +25,11 @@ open class CollectionViewCell: UICollectionViewCell, ViewUnity {
     /// * 如果通过IB加载视图, 则直接在`awakeFromNib`方法中完成初始化
     /// * 本方法只负责子视图的实例化配置, 约束操作在`setupConstraint`方法中完成
     /// * 使用"懒加载"创建的子视图，不需要在该方法中做初始化.
-    public func setupSubview() {}
+    open func setupSubview() {}
     
     //// 【统一规范】子视图约束初始化方法
     /// 子类重写该方法, 实现视图中"子视图约束的初始化"工作, 方便纯代码结构时能清晰获取视图结构
     /// * 如果通过IB加载视图, 则直接在`awakeFromNib`方法中完成初始化
     /// * 使用"懒加载"创建的子视图，不需要在该方法中做初始化.
-    public func setupConstraint() {}
+    open func setupConstraint() {}
 }
