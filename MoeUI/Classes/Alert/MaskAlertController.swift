@@ -48,6 +48,9 @@ open class MaskAlertController: UIViewController, UIViewControllerTransitioningD
         ])
     }
     
+    /// 转场动画时长
+    open var animationDuratoin: TimeInterval = 0.25
+    
     /// 点击遮罩时，弹窗是否消失
     open var dismissWhenMaskTap: Bool = true {
         didSet { maskBtn.isUserInteractionEnabled = dismissWhenMaskTap }
@@ -91,11 +94,11 @@ open class MaskAlertController: UIViewController, UIViewControllerTransitioningD
 
     // MARK: - UIViewControllerTransitioningDelegate
     public func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-        return MaskAlertAnimator(owner: self, transitionType: .present, animationType: self.animationType())
+        return MaskAlertAnimator(owner: self, transitionType: .present, animationType: animationType(), animationDuration: animationDuratoin)
     }
 
     public func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-        return MaskAlertAnimator(owner: self, transitionType: .dismiss, animationType: self.animationType())
+        return MaskAlertAnimator(owner: self, transitionType: .dismiss, animationType: animationType(), animationDuration: animationDuratoin)
     }
 
     // MARK: - SheetAnimatorProtocol

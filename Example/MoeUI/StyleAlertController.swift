@@ -6,6 +6,7 @@
 //
 
 import MoeUI
+import MoeCommon
 import UIKit
 
 
@@ -13,7 +14,7 @@ public class StyleAlertController: MaskAlertController {
 
     var style: AlertDialog.Style
     var text: String
-
+    
     public required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -22,17 +23,18 @@ public class StyleAlertController: MaskAlertController {
         self.style = style
         self.text = text
         super.init()
+        self.animationDuratoin = 2.0
     }
 
     // MARK: View Life Cycle
     public override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        if style == .progress { self.dialog.indicator.startAnimating() }
+//        if style == .progress { self.dialog.indicator.startAnimating() }
     }
 
     public override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        if style == .progress { self.dialog.indicator.stopAnimating() }
+//        if style == .progress { self.dialog.indicator.stopAnimating() }
     }
 
     // MARK: Override Methods
@@ -42,21 +44,28 @@ public class StyleAlertController: MaskAlertController {
 
     public override func addConstraintsFor(_ alert: UIView, in superView: UIView) {
         alert.translatesAutoresizingMaskIntoConstraints = false
-        self.view.addConstraints([
-            NSLayoutConstraint(item: alert, attribute: .centerX, relatedBy: .equal, toItem: superView, attribute: .centerX, multiplier: 1.0, constant: 0.0),
-            NSLayoutConstraint(item: alert, attribute: .bottom, relatedBy: .equal, toItem: superView, attribute: .bottom, multiplier: 1.0, constant: -48.0),
-            NSLayoutConstraint(item: alert, attribute: .left, relatedBy: .greaterThanOrEqual, toItem: superView, attribute: .left, multiplier: 1.0, constant: 24),
-            NSLayoutConstraint(item: alert, attribute: .right, relatedBy: .lessThanOrEqual, toItem: superView, attribute: .right, multiplier: 1.0, constant: -24)
-        ])
+//        alert.snp.makeConstraints { (maker) in
+//            maker.center.equalTo(superView)
+//        }
+        alert.snp.makeConstraints { (maker) in
+            maker.left.right.bottom.equalTo(superView)
+            maker.height.equalTo(188)
+        }
     }
 
     public override func animationType() -> MaskAlertAnimator.AnimationType {
-//        return .transform
-        return .external
+        return .transformFromBottom(outOffScreen: true)
+//        return .external
     }
 
     // MARK: Getter & Setter
-    private(set) lazy var dialog: AlertDialog = {
-        return AlertDialog(style: style, text: text)
+//    private(set) lazy var dialog: AlertDialog = {
+//        return AlertDialog(style: style, text: text)
+//    }()
+    
+    private(set) lazy var dialog: UIView = {
+        let dialog = UIView(frame: .zero)
+        dialog.backgroundColor = .blue
+        return dialog
     }()
 }

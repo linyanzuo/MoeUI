@@ -25,8 +25,8 @@ public class MaskAlertAnimator: NSObject, UIViewControllerAnimatedTransitioning,
     public enum AnimationType {
         /// 将视图由内向外扩散呈现在目标位置
         case external
-        /// 将视图由底部向目标位置移动呈现
-        case transform
+        /// 将视图从屏幕底部向目标位置移动呈现，携带true则初始时视图顶部与屏幕底部对齐，携带false则初始时视图底部与屏幕底部对齐
+        case transformFromBottom(outOffScreen: Bool)
         /// 将视图由不透明向指定透明度渐变
         case alpha
     }
@@ -37,15 +37,22 @@ public class MaskAlertAnimator: NSObject, UIViewControllerAnimatedTransitioning,
     var owner: MaskAlertAnimatorProtocol
     var transitionType: TransitionType
     var animationType: AnimationType
+    var animationDuration: TimeInterval
 
-    public init(owner: MaskAlertAnimatorProtocol, transitionType: TransitionType, animationType: AnimationType = .transform) {
+    public init(
+        owner: MaskAlertAnimatorProtocol,
+        transitionType: TransitionType,
+        animationType: AnimationType = .transformFromBottom(outOffScreen: false),
+        animationDuration: TimeInterval = 0.25
+    ) {
         self.owner = owner
         self.transitionType = transitionType
         self.animationType = animationType
+        self.animationDuration = animationDuration
     }
 
     public func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
-        return 0.25
+        return animationDuration
     }
 
     public func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
@@ -71,8 +78,8 @@ public class MaskAlertAnimator: NSObject, UIViewControllerAnimatedTransitioning,
         case .external:
             externalAnimation(using: transitionContext, transitionType: .present)
             alphaAnimation(using: transitionContext, transitionType: .present)
-        case .transform:
-            translationAnimation(in: containerView, using: transitionContext, transitionType: .present)
+        case .transformFromBottom(let outOffScreen):
+            translationAnimation(in: containerView, using: transitionContext, transitionType: .present, outOffScreen: outOffScreen)
             alphaAnimation(using: transitionContext, transitionType: .present)
         case .alpha:
             alphaAnimation(using: transitionContext, transitionType: .present)
@@ -91,8 +98,8 @@ public class MaskAlertAnimator: NSObject, UIViewControllerAnimatedTransitioning,
         case .external:
             externalAnimation(using: transitionContext, transitionType: .dismiss)
             alphaAnimation(using: transitionContext, transitionType: .dismiss)
-        case .transform:
-            translationAnimation(in: containerView, using: transitionContext, transitionType: .dismiss)
+        case .transformFromBottom(let outOffScreen):
+            translationAnimation(in: containerView, using: transitionContext, transitionType: .dismiss, outOffScreen: outOffScreen)
             alphaAnimation(using: transitionContext, transitionType: .dismiss)
         case .alpha:
             alphaAnimation(using: transitionContext, transitionType: .dismiss)
@@ -100,11 +107,11 @@ public class MaskAlertAnimator: NSObject, UIViewControllerAnimatedTransitioning,
     }
 
     // MARK: Animation
-    private func translationAnimation(in containerView: UIView, using transitionContext: UIViewControllerContextTransitioning, transitionType: TransitionType) {
+    private func translationAnimation(in containerView: UIView, using transitionContext: UIViewControllerContextTransitioning, transitionType: TransitionType, outOffScreen: Bool) {
         let bezelPosition = bezelView.center
-        let bezelTargetPosition = CGPoint(x: bezelPosition.x,
-                                          y: containerView.frame.height - bezelView.frame.height / 2)
-
+        let delta = outOffScreen ? 0 : bezelView.frame.height / 2
+        let bezelTargetPosition = CGPoint(x: bezelPosition.x, y: containerView.frame.height - delta)
+        
         let bezelPositionAnim = CABasicAnimation(keyPath:"position")
         bezelPositionAnim.delegate = self
         bezelPositionAnim.timingFunction = CAMediaTimingFunction(name: .easeInEaseOut)
