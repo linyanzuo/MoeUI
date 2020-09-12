@@ -23,11 +23,11 @@ public class MaskAlertAnimator: NSObject, UIViewControllerAnimatedTransitioning,
     }
 
     public enum AnimationType {
-        /// tiled content from inner to external
+        /// 将视图由内向外扩散呈现在目标位置
         case external
-        /// translate content from bottom to target position
-        case translation
-        /// translate content from fully transparent to target alpha
+        /// 将视图由底部向目标位置移动呈现
+        case transform
+        /// 将视图由不透明向指定透明度渐变
         case alpha
     }
 
@@ -38,7 +38,7 @@ public class MaskAlertAnimator: NSObject, UIViewControllerAnimatedTransitioning,
     var transitionType: TransitionType
     var animationType: AnimationType
 
-    public init(owner: MaskAlertAnimatorProtocol, transitionType: TransitionType, animationType: AnimationType = .translation) {
+    public init(owner: MaskAlertAnimatorProtocol, transitionType: TransitionType, animationType: AnimationType = .transform) {
         self.owner = owner
         self.transitionType = transitionType
         self.animationType = animationType
@@ -71,7 +71,7 @@ public class MaskAlertAnimator: NSObject, UIViewControllerAnimatedTransitioning,
         case .external:
             externalAnimation(using: transitionContext, transitionType: .present)
             alphaAnimation(using: transitionContext, transitionType: .present)
-        case .translation:
+        case .transform:
             translationAnimation(in: containerView, using: transitionContext, transitionType: .present)
             alphaAnimation(using: transitionContext, transitionType: .present)
         case .alpha:
@@ -91,7 +91,7 @@ public class MaskAlertAnimator: NSObject, UIViewControllerAnimatedTransitioning,
         case .external:
             externalAnimation(using: transitionContext, transitionType: .dismiss)
             alphaAnimation(using: transitionContext, transitionType: .dismiss)
-        case .translation:
+        case .transform:
             translationAnimation(in: containerView, using: transitionContext, transitionType: .dismiss)
             alphaAnimation(using: transitionContext, transitionType: .dismiss)
         case .alpha:

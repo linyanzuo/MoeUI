@@ -12,15 +12,17 @@ import MoeCommon
 
 
 class AlertUsageVC: UITableViewController {
-    private let datasources: [[String]] = [
-        [("HUD ShowSuccess"),
-         ("HUD ShowError"),
-         ("HUD ShowProgress"),
-         ("HUD ShowToast"),
-         ("HUD ShowCustom")],
-        [("MaskAlertController")]
+    private let sectionSource: [[String]] = [
+        [("View ShowSuccess"),
+         ("View ShowError"),
+         ("View ShowProgress"),
+         ("View ShowToast"),
+         ("View ShowCustom")],
+        [("Controller ShowSuccess"),
+         ("Controller ShowError"),
+         ("Controller ShowProgress"),
+         ("Controller ShowToast")]
     ]
-    private let kReuseID = "TitleCellResueID"
 
     // MARK: Object Life Cycle
     required init?(coder aDecoder: NSCoder) {
@@ -34,26 +36,25 @@ class AlertUsageVC: UITableViewController {
     // MARK: View Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-
         tableView.separatorStyle = .none
-        tableView.register(TitleCell.self, forCellReuseIdentifier: kReuseID)
+        tableView.moe.registerCells(cellClasses: [TitleCell.self])
     }
 
     // MARK: -- UITableViewDelegate & UITableViewDataSource
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return datasources.count
+        return sectionSource.count
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        let titles = datasources[section]
-        return titles.count
+        let indexSource = sectionSource[section]
+        return indexSource.count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let titles = datasources[indexPath.section]
+        let titles = sectionSource[indexPath.section]
         let title = titles[indexPath.row]
 
-        let cell = tableView.dequeueReusableCell(withIdentifier: kReuseID) as! TitleCell
+        let cell = tableView.moe.dequeueCell(cellClass: TitleCell.self)
         cell.titleLabel.text = title
         return cell
     }
@@ -61,11 +62,11 @@ class AlertUsageVC: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.section == 0 {
             switch indexPath.row {
-            case 0: HUD.show(style: .success, text: "Configuration, it work!")
-            case 1: HUD.show(style: .error, text: "unfortunately, it does't work!")
+            case 0: HUD.show(style: .success, text: "Congratulation, it work!", maskEnable: true)
+            case 1: HUD.show(style: .error, text: "unfortunately, it does't work!", maskEnable: true)
             case 2:
                 let dialog = AlertDialog(style: .progress, text: "Loading...")
-                let id = HUD.show(customView: dialog)
+                let id = HUD.show(customView: dialog, maskEnable: true)
                 DispatchQueue.global().async {
                     self.doSomework()
                     DispatchQueue.main.async { HUD.hide(with: id) }
@@ -74,7 +75,6 @@ class AlertUsageVC: UITableViewController {
             case 4:
                 let customDialog = CustomDialog()
                 let id = HUD.show(customView: customDialog)
-
                 DispatchQueue.global().async {
                     self.doSomework()
                     DispatchQueue.main.async { HUD.hide(with: id) }
@@ -82,10 +82,17 @@ class AlertUsageVC: UITableViewController {
             default: MLog("Nothing")
             }
         } else if indexPath.section == 1 {
+            MLog("控制器形式的弹窗展示")
             switch indexPath.row {
             case 0:
-                let vc = ProgressAlertController(style: .progress, text: "正在处理")
-                self.present(vc, animated: true, completion: nil)
+                let vc = StyleAlertController(style: .success, text: "祝贺您，操作已成功")
+                moe.present(viewController: vc)
+            case 1:
+                let vc = StyleAlertController(style: .error, text: "很不幸，并没有生效")
+                moe.present(viewController: vc)
+            case 2:
+                let vc = StyleAlertController(style: .progress, text: "正在处理")
+                moe.present(viewController: vc)
             default: MLog("Nothing")
             }
         }

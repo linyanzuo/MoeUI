@@ -13,8 +13,7 @@ import MoeCommon
 
 
 public class AlertDialog: MoeView {
-    
-    /// 界面样式
+    /// 弹窗样式
     public enum Style {
         /// 纯文本提示
         case toast
@@ -27,8 +26,8 @@ public class AlertDialog: MoeView {
     }
 
     private let fontColor = UIColor(rgb: 0x666666)
-    var style: AlertDialog.Style
-    var message: String
+    public var style: AlertDialog.Style
+    public var message: String
 
     // MARK: Object Life Cycle
     
@@ -126,7 +125,7 @@ public class AlertDialog: MoeView {
     }
 
     // MARK: Getter & Setter
-    private(set) lazy var indicator: UIActivityIndicatorView = {
+    public private(set) lazy var indicator: UIActivityIndicatorView = {
         let indicator = UIActivityIndicatorView(style: .whiteLarge)
         indicator.hidesWhenStopped = true
         indicator.color = UIColor(rgb: 0x999999)
@@ -135,11 +134,11 @@ public class AlertDialog: MoeView {
         return indicator
     }()
 
-    private(set) lazy var imageView: UIImageView = {
+    public private(set) lazy var imageView: UIImageView = {
         return Designator.makeImageView(toView: self, nil)
     }()
 
-    private(set) lazy var label: MoeLabel = {
+    public private(set) lazy var label: MoeLabel = {
         let des = Designator()
         des.text("Loading").font(15, weight: .medium).color(self.fontColor).lines(0).alignment(.center)
         return des.makeLabel(toView: self)

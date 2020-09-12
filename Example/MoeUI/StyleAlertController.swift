@@ -5,10 +5,11 @@
 //  Created by Zed on 2019/9/2.
 //
 
+import MoeUI
 import UIKit
 
 
-public class ProgressAlertController: MaskAlertController {
+public class StyleAlertController: MaskAlertController {
 
     var style: AlertDialog.Style
     var text: String
@@ -24,11 +25,6 @@ public class ProgressAlertController: MaskAlertController {
     }
 
     // MARK: View Life Cycle
-    public override func viewDidLoad() {
-        super.viewDidLoad()
-        self.view.backgroundColor = .clear
-    }
-
     public override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         if style == .progress { self.dialog.indicator.startAnimating() }
@@ -55,7 +51,8 @@ public class ProgressAlertController: MaskAlertController {
     }
 
     public override func animationType() -> MaskAlertAnimator.AnimationType {
-        return .translation
+//        return .transform
+        return .external
     }
 
     // MARK: Getter & Setter
