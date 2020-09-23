@@ -124,7 +124,7 @@ open class MoeLabel: UILabel, ValuationViewProtocol, ValuationApplyProtocol {
             return
         }
         
-        self.text = valuator.text
+        if let text = valuator.text { self.text = text }
         self.textColor = valuator.color
         self.font = valuator.font
         self.numberOfLines = valuator.numberOfLines

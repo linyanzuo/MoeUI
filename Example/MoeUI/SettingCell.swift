@@ -15,7 +15,6 @@ protocol SettingData {}
 
 
 struct TitleSetting: SettingData, UnitedTableCellDataProtocol {
-    
     func cellClass() -> UnitedTableCellProtocol.Type {
         return SettingCell.self
     }
@@ -205,6 +204,7 @@ class SettingCell: TableViewCell, UnitedTableCellProtocol {
     }
 
     // MARK: Getter & Setter
+    
     private(set) lazy var titleLabel: MoeLabel = {
         let des = autoRegister(id: SettingID.Title) { (des) in
             des.text(nil).color(UIColor(rgb: 0x333333)).font(15, weight: .medium)
@@ -242,5 +242,4 @@ class SettingCell: TableViewCell, UnitedTableCellProtocol {
         }
         return des!.makeView(toView: self.contentView)
     }()
-    
 }
