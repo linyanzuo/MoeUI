@@ -32,7 +32,7 @@ DEPENDENCIES:
   - SnapKit (~> 4.2.0)
 
 SPEC REPOS:
-  https://github.com/CocoaPods/Specs.git:
+  trunk:
     - SnapKit
 
 EXTERNAL SOURCES:
@@ -43,7 +43,7 @@ EXTERNAL SOURCES:
 
 CHECKOUT OPTIONS:
   MoeCommon:
-    :commit: 49257ff42ba0d9b59aec50e7047d8a12472ace7d
+    :commit: be66504774666aa7941e0bccae68f469f07780d9
     :git: https://github.com/linyanzuo/MoeCommon.git
 
 SPEC CHECKSUMS:

@@ -58,28 +58,28 @@ public extension TypeWrapperProtocol where WrappedType: UIImage {
     /// 生成渐变背景色的图片
     /// - Parameters:
     ///   - colors:     包含渐变颜色的数组
+    ///   - locations:  颜色占比，值范围 0 ~ 1.0
     ///   - size:       图片导语
-    ///   - percentage: 每个颜色绘制的占比
     ///   - type:       渐变颜色的绘制方向
     /// - Returns:      生成的渐变背景色图片
     static func gradientImage(
-        with colors: Array<UIColor>,
+        colors: Array<UIColor>,
+        locations: [CGFloat],
         size: CGSize,
-        percentage: Array<Int>,
         type: GradientType
     ) -> UIImage? {
         let defaultAllocaor = CFAllocatorGetDefault().takeUnretainedValue()
         // CFArrayCreateMutable得到的是一个托管对象,所以不需要像OC一样使用CFRelease来释放它了
-        let arr = CFArrayCreateMutable(defaultAllocaor, 0, nil)
-        if (arr == nil) { return nil }
+        let cgColors = CFArrayCreateMutable(defaultAllocaor, 0, nil)
+        if (cgColors == nil) { return nil }
         for color in colors {
-            CFArrayAppendValue(arr, Unmanaged.passRetained(color.ciColor).autorelease().toOpaque())
+            CFArrayAppendValue(cgColors, Unmanaged.passRetained(color.cgColor).autorelease().toOpaque())
         }
         
         return drawImage(with: size, opaque: true) { (context) in
             context.saveGState()
             let colorSpace = colors.last?.cgColor.colorSpace
-            guard let gradient = CGGradient(colorsSpace: colorSpace, colors: arr!, locations: nil)
+            guard let gradient = CGGradient(colorsSpace: colorSpace, colors: cgColors!, locations: locations)
                 else { return }
             var start: CGPoint, end: CGPoint
             switch type {

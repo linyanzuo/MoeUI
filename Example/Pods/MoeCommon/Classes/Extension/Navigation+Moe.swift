@@ -2,13 +2,15 @@
 //  Created by Zed on 2020/8/18.
 //  Copyright © 2020 www.moemone.com. All rights reserved.
 //
+/**
+ 【导航栏】相关扩展
+ */
 
 import UIKit
 
 
 // MARK: - UIBarButtonItem Extension
 public extension UIBarButtonItem {
-    
     /// 根据图标名称、响应目标及事件生成导航栏按钮
     /// - Parameters:
     ///   - imageName:      图标名称
@@ -46,7 +48,6 @@ public extension UIBarButtonItem {
 
 // MARK: - UIViewController WrappedType
 public extension TypeWrapperProtocol where WrappedType: UIViewController {
-    
     /// 获取当前导航栏的高度，注意控制器需被PUSH至导航控制器，才能取得高度值
     /// - Returns: 导航栏的高度，获取失败则返回nil
     func getNavigationSize() -> CGSize? {
@@ -80,16 +81,35 @@ public extension TypeWrapperProtocol where WrappedType: UIViewController {
         wrappedValue.navigationItem.leftBarButtonItem = backItem
     }
     
+    /// 将控制器添加至导航栈中，并展示其界面
+    /// - Parameters:
+    ///   - viewController: 要展示的视图控制器
+    ///   - animated:       转场过程是否启用动画，默认为true
+    func push(viewController: UIViewController, animated: Bool = true) {
+        guard let navCtrler = wrappedValue.navigationController else {
+            MLog("当前控制器【\(wrappedValue.moe.clazzName)】未处于导航栈中，无法完成PUSH操作")
+            return
+        }
+        navCtrler.pushViewController(viewController, animated: animated)
+    }
+    
+    /// 模态呈现控制器，展示其界面。
+    /// 通过「转场动画 + 控制器」形式实现的功能控件，都应该通过该方法呈现，而不是调用 `push(viewController: animated:)` 方法
+    /// - Parameters:
+    ///   - viewController: 要展示的视图控制器
+    ///   - animated:       转场过程是否启用动画，默认为true
+    ///   - completion:     转场动画执行完成后的回调闭包
+    func present(viewController: UIViewController, animated: Bool = true, completion: (() -> Void)? = nil) {
+        wrappedValue.present(viewController, animated: animated, completion: completion)
+    }
 }
 
 
 // MARK: - UIViewController Extension
 extension UIViewController {
-    
     /// 导航栏返回按钮响应事件
     @objc open func navigationBackItemAction() {
         UIApplication.shared.keyWindow?.endEditing(true)
         navigationController?.popViewController(animated: true)
     }
-    
 }
