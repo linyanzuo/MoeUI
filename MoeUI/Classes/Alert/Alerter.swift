@@ -17,7 +17,6 @@ public typealias AlertIdentifier = String
 
 /// 提示器
 open class Alerter: NSObject {
-    
     /// 获取当前时间字符串（精确到毫秒），作为提示视图标识ID并返回
     /// - Returns: 提示视图标识ID
     public class func generateIdentifier() -> AlertIdentifier {
@@ -31,14 +30,11 @@ open class Alerter: NSObject {
     private class func checkThread() {
         assert(Thread.current.isMainThread == true, "【MoeUI.Alert】UI操作必须在主线程中执行")
     }
-    
 }
 
 
 // MARK: - 【提示器】基于视图提示
-
 extension Alerter {
-    
     /// 将自定义视图作为某视图的子视图，进行提示操作
     /// - Parameters:
     ///   - customView: 自定义视图
@@ -50,12 +46,14 @@ extension Alerter {
         var alertView: AlertView? = nil
         // 若父视图中已存在AlertView实例则直接使用，否则创建新的AlertView实例
         for subview in view.subviews {
-            if subview.isMember(of: AlertView.classForCoder()) { alertView = subview as? AlertView }
+            if let alertView = subview as? AlertView {
+                view.bringSubviewToFront(alertView)
+            }
         }
         if alertView == nil {
             alertView = AlertView(frame: .zero)
             alertView?.maskTapHandler = {
-                self.hide(in: view, with: identifier)
+                hide(in: view, with: identifier)
             }
             view.addSubview(alertView!)
 
@@ -78,20 +76,16 @@ extension Alerter {
     public class func hide(in view: UIView, with identifier: String) {
         checkThread()
         for subview in view.subviews {
-            if subview.isMember(of: AlertView.classForCoder()) {
-                let alertView = subview as! AlertView
+            if let alertView = subview as? AlertView {
                 alertView.removeAlert(with: identifier, completionHandler: nil)
             }
         }
     }
-    
 }
 
 
 // MARK: - 【提示器】基于窗口提示
-
 extension Alerter {
-    
     /// 全局提示自定义视图
     /// - Parameters:
     ///   - customView: 自定义视图
@@ -108,5 +102,4 @@ extension Alerter {
         checkThread()
         AlertWindow.shared.removeAlert(with: identifier)
     }
-    
 }

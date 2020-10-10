@@ -9,6 +9,8 @@ import MoeCommon
 
 /// 表格视图控制器基类
 open class TableViewController: UITableViewController, ViewControllerUnity {
+    /// 自定义回调闭包，使用字典对参数及返回值进行包装，用于控制器间传值
+    open var customCallback: ((Dictionary<String, Any?>?) -> Dictionary<String, Any?>?)?
     
     // MARK: - Life Cycle
     

@@ -18,6 +18,11 @@ class AlertUsageVC: UITableViewController {
          ("View ShowProgress"),
          ("View ShowToast"),
          ("View ShowCustom")],
+        [("Window ShowSuccess"),
+         ("Window ShowError"),
+         ("Window ShowProgress"),
+         ("Window ShowToast"),
+         ("Window ShowCustom")],
         [("Controller ShowSuccess"),
          ("Controller ShowError"),
          ("Controller ShowProgress"),
@@ -61,6 +66,21 @@ class AlertUsageVC: UITableViewController {
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.section == 0 {
+            MLog("UIView形式的弹窗展示")
+            switch indexPath.row {
+            case 0:
+                let dialog = AlertDialog(style: .success, text: "祝贺您，操作已成功")
+                Alerter.show(dialog, in: self.view.window!, with: "Paying", maskEnable: true)
+            case 1:
+                let dialog = AlertDialog(style: .error, text: "很不幸，并没有生效")
+                Alerter.show(dialog, in: self.view.window!, with: "Paying", maskEnable: true)
+            case 2:
+                let dialog = AlertDialog(style: .progress, text: "正在处理")
+                Alerter.show(dialog, in: self.view.window!, with: "Paying", maskEnable: true)
+            default: MLog("Nothing")
+            }
+        } else if indexPath.section == 1 {
+            MLog("UIWindow形式的弹窗展示")
             switch indexPath.row {
             case 0: HUD.show(style: .success, text: "Congratulation, it work!", maskEnable: true)
             case 1: HUD.show(style: .error, text: "unfortunately, it does't work!", maskEnable: true)
@@ -81,11 +101,12 @@ class AlertUsageVC: UITableViewController {
                 }
             default: MLog("Nothing")
             }
-        } else if indexPath.section == 1 {
-            MLog("控制器形式的弹窗展示")
+        } else if indexPath.section == 2 {
+            MLog("UIViewController形式的弹窗展示")
             switch indexPath.row {
             case 0:
                 let vc = StyleAlertController(style: .success, text: "祝贺您，操作已成功")
+                vc.moe.clearPresentationBackground()
                 moe.present(viewController: vc)
             case 1:
                 let vc = StyleAlertController(style: .error, text: "很不幸，并没有生效")
