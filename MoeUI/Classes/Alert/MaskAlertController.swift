@@ -128,7 +128,12 @@ open class MaskAlertController: UIViewController, UIViewControllerTransitioningD
 
 
 @objc extension MaskAlertController {
-    func wakeupMainThread() {
+    /// 遮罩点击事件
+    open func maskTapAction(_ sender: UIButton) {
+        self.dismiss(animated: true, completion: nil)
+    }
+    
+    private func wakeupMainThread() {
         /**
          执行`present`控制器跳转时，并不会立即触发转场动画的执行。因某些原因会有延迟触发的情况
          表现为目标控制器的视图已经生成，但转场动画相关方法不执行。此时随便点击屏幕就会触发转场动画执行
@@ -136,10 +141,5 @@ open class MaskAlertController: UIViewController, UIViewControllerTransitioningD
             1. 在主线中执行`present`方法实现控制器跳转
             2. 在目标控制器内，执行主线程方法（无需操作，仅唤醒主线程）
          */
-    }
-    
-    /// 遮罩点击事件
-    open func maskTapAction(_ sender: UIButton) {
-        self.dismiss(animated: true, completion: nil)
     }
 }

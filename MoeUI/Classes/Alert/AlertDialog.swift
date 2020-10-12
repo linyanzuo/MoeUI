@@ -4,14 +4,12 @@
 //
 //  Created by Zed on 2019/8/29.
 //
-/**
- 【提示】默认对话框
- */
 
 import UIKit
 import MoeCommon
 
 
+/// 提示对话框
 public class AlertDialog: MoeView {
     /// 弹窗样式
     public enum Style {

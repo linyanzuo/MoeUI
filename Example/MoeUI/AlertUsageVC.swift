@@ -25,8 +25,7 @@ class AlertUsageVC: UITableViewController {
          ("Window ShowCustom")],
         [("Controller ShowSuccess"),
          ("Controller ShowError"),
-         ("Controller ShowProgress"),
-         ("Controller ShowToast")]
+         ("Controller ShowProgress")]
     ]
 
     // MARK: Object Life Cycle

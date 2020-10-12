@@ -23,7 +23,7 @@ public class StyleAlertController: MaskAlertController {
         self.style = style
         self.text = text
         super.init()
-        self.animationDuratoin = 2.0
+        self.animationDuratoin = 0.25
     }
 
     // MARK: View Life Cycle
@@ -59,13 +59,13 @@ public class StyleAlertController: MaskAlertController {
     }
 
     // MARK: Getter & Setter
-//    private(set) lazy var dialog: AlertDialog = {
-//        return AlertDialog(style: style, text: text)
-//    }()
-    
-    private(set) lazy var dialog: UIView = {
-        let dialog = UIView(frame: .zero)
-        dialog.backgroundColor = .blue
-        return dialog
+    private(set) lazy var dialog: AlertDialog = {
+        return AlertDialog(style: style, text: text)
     }()
+    
+//    private(set) lazy var dialog: UIView = {
+//        let dialog = UIView(frame: .zero)
+//        dialog.backgroundColor = .blue
+//        return dialog
+//    }()
 }

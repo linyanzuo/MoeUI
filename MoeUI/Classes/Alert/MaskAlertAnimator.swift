@@ -16,7 +16,7 @@ public protocol MaskAlertAnimatorProtocol where Self: UIViewController {
 
 
 /// 转场动画执行器
-public class MaskAlertAnimator: NSObject, UIViewControllerAnimatedTransitioning, CAAnimationDelegate {
+public class MaskAlertAnimator: NSObject {
     public enum TransitionType {
         case present
         case dismiss
@@ -59,6 +59,19 @@ public class MaskAlertAnimator: NSObject, UIViewControllerAnimatedTransitioning,
         self.animationDuration = animationDuration
     }
 
+    // MARK: Getter & Setter
+    private var maskView: UIView {
+        get { return owner.maskViewForAnimation() }
+    }
+
+    private var bezelView: UIView {
+        get { return owner.contentViewForAnimation() }
+    }
+}
+
+
+// MARK: - 转场动画
+extension MaskAlertAnimator: UIViewControllerAnimatedTransitioning {
     public func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
         return animationDuration
     }
@@ -71,8 +84,7 @@ public class MaskAlertAnimator: NSObject, UIViewControllerAnimatedTransitioning,
             animateDismissTransition(using: transitionContext)
         }
     }
-
-    // MARK: Private Method
+    
     private func animatePresentTransition(using transitionContext: UIViewControllerContextTransitioning) {
         guard let _ = transitionContext.viewController(forKey: .from),
             let toVC = transitionContext.viewController(forKey: .to) as? MaskAlertAnimatorProtocol
@@ -113,20 +125,11 @@ public class MaskAlertAnimator: NSObject, UIViewControllerAnimatedTransitioning,
             alphaAnimation(using: transitionContext, transitionType: .dismiss)
         }
     }
-
-    // MARK: Getter & Setter
-    private var maskView: UIView {
-        get { return owner.maskViewForAnimation() }
-    }
-
-    private var bezelView: UIView {
-        get { return owner.contentViewForAnimation() }
-    }
 }
 
 
-// MARK: - 动画
-extension MaskAlertAnimator {
+// MARK: - 基础动画
+extension MaskAlertAnimator: CAAnimationDelegate {
     private func basicAnimation(keyPath: String, duration: TimeInterval) -> CABasicAnimation {
         let animation = CABasicAnimation(keyPath: keyPath)
         animation.timingFunction = CAMediaTimingFunction(name: .easeInEaseOut)
@@ -212,7 +215,12 @@ extension MaskAlertAnimator {
     }
     
     // MARK: CAAnimationDelegate
+    public func animationDidStart(_ anim: CAAnimation) {
+        debugPrint("动画开始")
+    }
+    
     public func animationDidStop(_ anim: CAAnimation, finished flag: Bool) {
+        debugPrint("动画结束")
         if let mask = anim.value(forKey: "mask") as? CAShapeLayer { mask.removeFromSuperlayer() }
         if let transitionContext = anim.value(forKey: "transitionContext") as? UIViewControllerContextTransitioning {
             transitionContext.completeTransition(flag)

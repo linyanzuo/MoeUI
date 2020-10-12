@@ -17,56 +17,63 @@ public typealias AlertIdentifier = String
 
 /// 提示器
 open class Alerter: NSObject {
+    /// 检查是否在主线程执行（UI操作必须在主线程完成）
+    private class func checkThread() {
+        assert(Thread.current.isMainThread == true, "【MoeUI.Alert】UI操作必须在主线程中执行")
+    }
+    
     /// 获取当前时间字符串（精确到毫秒），作为提示视图标识ID并返回
     /// - Returns: 提示视图标识ID
     public class func generateIdentifier() -> AlertIdentifier {
-        let formatter = DateFormatter()
-        formatter.dateFormat = "MMddHHmmssSSSSSS"
         let dateDesc = formatter.string(from: Date())
         return dateDesc
     }
     
-    /// 检查是否在主线程执行提示操作
-    private class func checkThread() {
-        assert(Thread.current.isMainThread == true, "【MoeUI.Alert】UI操作必须在主线程中执行")
-    }
+    static let formatter: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "MMddHHmmssSSSSSS"
+        return formatter
+    }()
 }
 
 
 // MARK: - 【提示器】基于视图提示
 extension Alerter {
-    /// 将自定义视图作为某视图的子视图，进行提示操作
+    /// 将自定义视图覆盖于目标视图上；
+    /// 该方法会给目标视图添加AlertView（遮罩层）作为子视图覆盖在目标视图上，而自定义视图将作为AlertView的子视图
     /// - Parameters:
     ///   - customView: 自定义视图
-    ///   - view:       依赖视图，自定义视图作为它的子视图展示
-    ///   - identifier: 提示视图绑定的标识，关闭提示时使用
+    ///   - view:       目标视图
+    ///   - identifier: 提示视图绑定的标识，关闭提示视图时根据该标识进行匹配
     public class func show(_ customView: UIView, in view: UIView, with identifier: String, maskEnable: Bool = false) {
         checkThread()
 
-        var alertView: AlertView? = nil
-        // 若父视图中已存在AlertView实例则直接使用，否则创建新的AlertView实例
+        var optionalAlertView: AlertView? = nil
+        // 1. 若父视图中已存在AlertView实例，则直接置顶使用
         for subview in view.subviews {
-            if let alertView = subview as? AlertView {
-                view.bringSubviewToFront(alertView)
+            if let subAlertView = subview as? AlertView {
+                view.bringSubviewToFront(subAlertView)
+                optionalAlertView = subAlertView
             }
         }
-        if alertView == nil {
-            alertView = AlertView(frame: .zero)
-            alertView?.maskTapHandler = {
+        // 2. 否则创建新的AlertView实例（AlertView透明覆盖于父视图之上，自定义视图作为AlertView的子视图展示）
+        if optionalAlertView == nil {
+            optionalAlertView = AlertView(frame: .zero)
+            optionalAlertView?.maskEnable = maskEnable
+            optionalAlertView?.maskTapHandler = {
                 hide(in: view, with: identifier)
             }
-            view.addSubview(alertView!)
-
-            alertView?.maskEnable = maskEnable
-            alertView!.translatesAutoresizingMaskIntoConstraints = false
+            view.addSubview(optionalAlertView!)
+            // AlertView的尺寸与目标视图相同；使用AutoLayout让AlertView与目标视图保持同步尺寸变化
+            optionalAlertView!.translatesAutoresizingMaskIntoConstraints = false
             view.addConstraints([
-                NSLayoutConstraint(item: alertView!, attribute: .top, relatedBy: .equal, toItem: view, attribute: .top, multiplier: 1.0, constant: 0.0),
-                NSLayoutConstraint(item: alertView!, attribute: .bottom, relatedBy: .equal, toItem: view, attribute: .bottom, multiplier: 1.0, constant: 0.0),
-                NSLayoutConstraint(item: alertView!, attribute: .left, relatedBy: .equal, toItem: view, attribute: .left, multiplier: 1.0, constant: 0.0),
-                NSLayoutConstraint(item: alertView!, attribute: .right, relatedBy: .equal, toItem: view, attribute: . right, multiplier: 1.0, constant: 0.0)
+                NSLayoutConstraint(item: optionalAlertView!, attribute: .top, relatedBy: .equal, toItem: view, attribute: .top, multiplier: 1.0, constant: 0.0),
+                NSLayoutConstraint(item: optionalAlertView!, attribute: .bottom, relatedBy: .equal, toItem: view, attribute: .bottom, multiplier: 1.0, constant: 0.0),
+                NSLayoutConstraint(item: optionalAlertView!, attribute: .left, relatedBy: .equal, toItem: view, attribute: .left, multiplier: 1.0, constant: 0.0),
+                NSLayoutConstraint(item: optionalAlertView!, attribute: .right, relatedBy: .equal, toItem: view, attribute: . right, multiplier: 1.0, constant: 0.0)
             ])
         }
-        alertView!.addAlert(customView: customView, with: identifier)
+        optionalAlertView!.addAlert(customView: customView, with: identifier)
     }
 
     /// 关闭在某视图上执行的提示
