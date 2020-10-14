@@ -22,7 +22,7 @@ open class HUD {
     ///   - text:       指定内容
     ///   - maskEnable: 是否启用遮罩，默认为不启用
     ///   - continued:  持续一段时间后自动消失，为0时需要手动关闭
-    public class func show(style: AlertDialog.Style, text: String, maskEnable: Bool = false, continued: TimeInterval = 1.0) {
+    public class func show(style: AlertDialog.Style, text: String, maskEnable: Bool = false, continued: TimeInterval = 3.0) {
         let dialog = AlertDialog(style: style, text: text)
         if continued == 0.0 {
             let _ = show(customView: dialog, with: nil, maskEnable: true)

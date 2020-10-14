@@ -28,6 +28,8 @@ open class AlertView: View {
     public var useAnaimation = true
     /// 是否启用遮罩
     public var maskEnable = true { didSet { maskBtn.isHidden = !maskEnable } }
+    /// 点击遮罩时是否关闭提示视图
+    public var hideWhenMaskTap = true
     /// 遮罩被点击时执行的回调闭包
     public var maskTapHandler: (() -> Void)?
     /// 提示视图隐藏后的执行回调闭包
@@ -51,9 +53,6 @@ open class AlertView: View {
         self.backgroundColor = .clear
         
         maskBtn.isHidden = !maskEnable
-        maskTapHandler = { [weak self] in
-            self?.removeAlert(completionHandler: nil)
-        }
         self.addSubview(maskBtn)
     }
     
@@ -87,6 +86,7 @@ extension AlertView {
     ///   - customView: 提示的展示内容
     ///   - identifier: 提示的唯一标识
     public func addAlert(customView: UIView, with identifier: String? = nil) {
+//        MLog("新增提示")
         // 1. 清除上一个提示的动画效果，避免动画效果冲突
         if let previousView = alerts.last?.view { previousView.layer.removeAllAnimations() }
         // 2. 检查提示标识是否冲突（重复）
@@ -122,6 +122,7 @@ extension AlertView {
     ///   - identifier:         提示的唯一标识，不指定时则使用展示在最顶层的提示
     ///   - completionHandler:  移动完成后执行的闭包
     public func removeAlert(with identifier: String? = nil, completionHandler: (() -> Void)?) {
+//        MLog("移除提示")
         // 1. 清除上一个提示的动画效果，避免动画效果冲突
         if let previousView = alerts.last?.view { previousView.layer.removeAllAnimations() }
         maskBtn.isUserInteractionEnabled = false
@@ -252,20 +253,29 @@ extension AlertView: CAAnimationDelegate {
     }
 
     // MARK: CAAnimationDelegate
-    public func animationDidStart(_ anim: CAAnimation) {
-        debugPrint("AlertView 动画开始")
-    }
+    
+//    public func animationDidStart(_ anim: CAAnimation) {
+//        guard let animName = anim.value(forKey: "NAME") as? String else { return }
+//        switch animName {
+//        case "MaskAnimation":
+//            MLog("【AlertView】遮罩动画开始")
+//        case "AlertAnimation":
+//            MLog("【AlertView】提示动画开始")
+//        default: break
+//        }
+//    }
     
     public func animationDidStop(_ anim: CAAnimation, finished flag: Bool) {
-        debugPrint("AlertView 动画结束")
         guard let animName = anim.value(forKey: "NAME") as? String,
               let transitionType = anim.value(forKey: "TRANSACTION_TYPE") as? TransitionType
         else { return }
         
         switch animName {
         case "MaskAnimation":
+//            MLog("【AlertView】遮罩动画结束")
             maskAnimationDidStop(type: transitionType)
         case "AlertAnimation":
+//            MLog("【AlertView】提示动画结束")
             let alert = anim.value(forKey: "Alert") as! Alert
             alertAnimationDidStop(alert: alert, type: transitionType)
         default: break
@@ -277,6 +287,9 @@ extension AlertView: CAAnimationDelegate {
 // MARK: - 事件响应
 @objc extension AlertView {
     @objc func maskTapAction(_ sender: UIButton) {
+        if hideWhenMaskTap {
+            self.removeAlert(completionHandler: nil)
+        }
         maskTapHandler?()
     }
 }

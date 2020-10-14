@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import MoeCommon
 
 
 /// 转场动画执行协议
@@ -130,8 +131,9 @@ extension MaskAlertAnimator: UIViewControllerAnimatedTransitioning {
 
 // MARK: - 基础动画
 extension MaskAlertAnimator: CAAnimationDelegate {
-    private func basicAnimation(keyPath: String, duration: TimeInterval) -> CABasicAnimation {
+    private func basicAnimation(keyPath: String, duration: TimeInterval, transitionType: TransitionType) -> CABasicAnimation {
         let animation = CABasicAnimation(keyPath: keyPath)
+        animation.setValue(transitionType, forKey: "TRANSITION_TYPE")
         animation.timingFunction = CAMediaTimingFunction(name: .easeInEaseOut)
         animation.isRemovedOnCompletion = false
         animation.fillMode = .forwards
@@ -145,17 +147,20 @@ extension MaskAlertAnimator: CAAnimationDelegate {
         let bezelAlpha = bezelView.alpha
         let duration = self.transitionDuration(using: transitionContext)
         
-        let bezelAlphaAnim = basicAnimation(keyPath: "opacity", duration: duration)
-        let maskAlphaAnim = basicAnimation(keyPath: "opacity", duration: duration)
-
+        let bezelAlphaAnim = basicAnimation(keyPath: "opacity", duration: duration, transitionType: transitionType)
+        let maskAlphaAnim = basicAnimation(keyPath: "opacity", duration: duration, transitionType: transitionType)
         if transitionType == .present {
+//            bezelView.alpha = 0.0
             bezelAlphaAnim.fromValue = 0.0
             bezelAlphaAnim.toValue = bezelAlpha
+//            maskView.alpha = 0.0
             maskAlphaAnim.fromValue = 0.0
             maskAlphaAnim.toValue = maskAlpha
         } else if transitionType == .dismiss {
+//            bezelView.alpha = bezelAlpha
             bezelAlphaAnim.fromValue = bezelAlpha
             bezelAlphaAnim.toValue = 0.0
+//            maskView.alpha = maskAlpha
             maskAlphaAnim.fromValue = maskAlpha
             maskAlphaAnim.toValue = 0.0
         }
@@ -170,7 +175,11 @@ extension MaskAlertAnimator: CAAnimationDelegate {
         let delta = outOffScreen ? 0 : bezelView.frame.height / 2
         let bezelTargetPosition = CGPoint(x: bezelPosition.x, y: containerView.frame.height - delta)
         
-        let bezelPositionAnim = basicAnimation(keyPath: "position", duration: self.transitionDuration(using: transitionContext))
+        let bezelPositionAnim = basicAnimation(
+            keyPath: "position",
+            duration: self.transitionDuration(using: transitionContext),
+            transitionType: transitionType
+        )
         bezelPositionAnim.delegate = self
         bezelPositionAnim.setValue(transitionContext, forKey: "transitionContext")
 
@@ -184,6 +193,11 @@ extension MaskAlertAnimator: CAAnimationDelegate {
         bezelView.layer.add(bezelPositionAnim, forKey: "bezelPositionAnimation")
     }
     
+//    // 平移动画结束
+//    private func translationAnimationComplete(transitionType: TransitionType) {
+//
+//    }
+    
     // 缩放动画
     private func externalAnimation(using transitionContext: UIViewControllerContextTransitioning, transitionType: TransitionType) {
         let bezelCornerRadii = CGSize(width: kBezelCornerRadius, height: kBezelCornerRadius)
@@ -195,7 +209,10 @@ extension MaskAlertAnimator: CAAnimationDelegate {
         let destinPtah = UIBezierPath(roundedRect: bezelView.bounds, byRoundingCorners: .allCorners, cornerRadii: bezelCornerRadii)
         let mask = CAShapeLayer()
 
-        let bezelMaskPathAnim = basicAnimation(keyPath: "path", duration: self.transitionDuration(using: transitionContext))
+        let bezelMaskPathAnim = basicAnimation(
+            keyPath: "path",
+            duration: self.transitionDuration(using: transitionContext),
+            transitionType: transitionType)
         bezelMaskPathAnim.delegate = self
         bezelMaskPathAnim.setValue(mask, forKey: "mask")
         bezelMaskPathAnim.setValue(transitionContext, forKey: "transitionContext")
@@ -216,12 +233,16 @@ extension MaskAlertAnimator: CAAnimationDelegate {
     
     // MARK: CAAnimationDelegate
     public func animationDidStart(_ anim: CAAnimation) {
-        debugPrint("动画开始")
+        MLog("动画开始")
     }
     
     public func animationDidStop(_ anim: CAAnimation, finished flag: Bool) {
-        debugPrint("动画结束")
+        MLog("动画结束")
+        // 1. 执行动画处理的收尾处理（避免闪屏）
+//        let transitionType = anim.value(forKey: "TRANSITION_TYPE") as? TransitionType
+        // 2. 移除动画效果
         if let mask = anim.value(forKey: "mask") as? CAShapeLayer { mask.removeFromSuperlayer() }
+        // 3. 完成转场动画
         if let transitionContext = anim.value(forKey: "transitionContext") as? UIViewControllerContextTransitioning {
             transitionContext.completeTransition(flag)
         }

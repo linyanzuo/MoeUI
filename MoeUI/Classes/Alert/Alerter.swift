@@ -45,7 +45,13 @@ extension Alerter {
     ///   - customView: 自定义视图
     ///   - view:       目标视图
     ///   - identifier: 提示视图绑定的标识，关闭提示视图时根据该标识进行匹配
-    public class func show(_ customView: UIView, in view: UIView, with identifier: String, maskEnable: Bool = false) {
+    public class func show(
+        _ customView: UIView,
+        in view: UIView,
+        with identifier: String,
+        maskEnable: Bool = false,
+        tapHide: Bool = true
+    ) {
         checkThread()
 
         var optionalAlertView: AlertView? = nil
@@ -60,9 +66,7 @@ extension Alerter {
         if optionalAlertView == nil {
             optionalAlertView = AlertView(frame: .zero)
             optionalAlertView?.maskEnable = maskEnable
-            optionalAlertView?.maskTapHandler = {
-                hide(in: view, with: identifier)
-            }
+            optionalAlertView?.hideWhenMaskTap = tapHide
             view.addSubview(optionalAlertView!)
             // AlertView的尺寸与目标视图相同；使用AutoLayout让AlertView与目标视图保持同步尺寸变化
             optionalAlertView!.translatesAutoresizingMaskIntoConstraints = false
@@ -72,6 +76,9 @@ extension Alerter {
                 NSLayoutConstraint(item: optionalAlertView!, attribute: .left, relatedBy: .equal, toItem: view, attribute: .left, multiplier: 1.0, constant: 0.0),
                 NSLayoutConstraint(item: optionalAlertView!, attribute: .right, relatedBy: .equal, toItem: view, attribute: . right, multiplier: 1.0, constant: 0.0)
             ])
+        } else {
+            optionalAlertView?.maskEnable = maskEnable
+            optionalAlertView?.hideWhenMaskTap = tapHide
         }
         optionalAlertView!.addAlert(customView: customView, with: identifier)
     }
@@ -97,9 +104,15 @@ extension Alerter {
     /// - Parameters:
     ///   - customView: 自定义视图
     ///   - identifier: 提示视图绑定的标识
-    public class func showGlobal(_ customView: UIView, with identifier: AlertIdentifier, maskEnable: Bool = false) {
+    public class func showGlobal(
+        _ customView: UIView,
+        with identifier: AlertIdentifier,
+        maskEnable: Bool = false,
+        tapHide: Bool = true
+    ) {
         checkThread()
         AlertWindow.shared.maskEnable = maskEnable
+        AlertWindow.shared.hideWhenMaskTap = true
         AlertWindow.shared.addAlert(customView: customView, with: identifier)
     }
 

@@ -15,9 +15,7 @@ class AlertUsageVC: UITableViewController {
     private let sectionSource: [[String]] = [
         [("View ShowSuccess"),
          ("View ShowError"),
-         ("View ShowProgress"),
-         ("View ShowToast"),
-         ("View ShowCustom")],
+         ("View ShowProgress")],
         [("Window ShowSuccess"),
          ("Window ShowError"),
          ("Window ShowProgress"),
@@ -69,20 +67,27 @@ class AlertUsageVC: UITableViewController {
             switch indexPath.row {
             case 0:
                 let dialog = AlertDialog(style: .success, text: "祝贺您，操作已成功")
-                Alerter.show(dialog, in: self.view.window!, with: "Paying", maskEnable: true)
+                Alerter.show(dialog, in: self.view.window!, with: "Success", maskEnable: true)
             case 1:
                 let dialog = AlertDialog(style: .error, text: "很不幸，并没有生效")
-                Alerter.show(dialog, in: self.view.window!, with: "Paying", maskEnable: true)
+                Alerter.show(dialog, in: self.view.window!, with: "Error", maskEnable: true)
             case 2:
                 let dialog = AlertDialog(style: .progress, text: "正在处理")
-                Alerter.show(dialog, in: self.view.window!, with: "Paying", maskEnable: true)
+                Alerter.show(dialog, in: self.view.window!, with: "Progress", maskEnable: true)
             default: MLog("Nothing")
             }
         } else if indexPath.section == 1 {
             MLog("UIWindow形式的弹窗展示")
             switch indexPath.row {
-            case 0: HUD.show(style: .success, text: "Congratulation, it work!", maskEnable: true)
-            case 1: HUD.show(style: .error, text: "unfortunately, it does't work!", maskEnable: true)
+            case 0:
+                let dialog = AlertDialog(style: .success, text: "Congratulation, it work!")
+                Alerter.showGlobal(dialog, with: "GlobalSuccess", maskEnable: true)
+            case 1:
+                let dialog = AlertDialog(style: .success, text: "Unfortunately, it does't work!")
+                Alerter.showGlobal(dialog, with: "GlobalError", maskEnable: true, tapHide: false)
+                DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 2.0, execute: {
+                    Alerter.hideGlobal(with: "GlobalError")
+                })
             case 2:
                 let dialog = AlertDialog(style: .progress, text: "Loading...")
                 let id = HUD.show(customView: dialog, maskEnable: true)
