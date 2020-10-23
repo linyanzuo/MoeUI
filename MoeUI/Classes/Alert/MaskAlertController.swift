@@ -94,11 +94,13 @@ open class MaskAlertController: UIViewController, UIViewControllerTransitioningD
 
     // MARK: - UIViewControllerTransitioningDelegate
     public func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-        return MaskAlertAnimator(owner: self, transitionType: .present, animationType: animationType(), animationDuration: animationDuratoin)
+        let animator = MaskAlertAnimator(owner: self, transitionType: .present, animationType: animationType(), animationDuration: animationDuratoin)
+        return animator
     }
 
     public func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-        return MaskAlertAnimator(owner: self, transitionType: .dismiss, animationType: animationType(), animationDuration: animationDuratoin)
+        let animator = MaskAlertAnimator(owner: self, transitionType: .dismiss, animationType: animationType(), animationDuration: animationDuratoin)
+        return animator
     }
 
     // MARK: - SheetAnimatorProtocol

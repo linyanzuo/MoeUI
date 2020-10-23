@@ -66,6 +66,7 @@
 		90702CFC0854E2C47286DD3B9D58D042 /* ValuationApply.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31FC50C7A273FEC18E5B3536F223CE14 /* ValuationApply.swift */; };
 		9328D197D896E2751F994F83AAE50455 /* SwiftyNameSpace.swift in Sources */ = {isa = PBXBuildFile; fileRef = 962F1D4308B0CA166BEBC899F632F4C7 /* SwiftyNameSpace.swift */; };
 		9432185152350A4A90F6DD19C33AC057 /* Debugging.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E85D3C4DA15AA903EA40ACCD97E7CC1 /* Debugging.swift */; };
+		9536AB3225427B2600569F6C /* AlertView+Animation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9536AB3125427B2600569F6C /* AlertView+Animation.swift */; };
 		98AE4E2F24A858A47B5A1B405CEAD8FD /* UILayoutSupport+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60C228CB6AAED192640F17AF88A906BE /* UILayoutSupport+Extensions.swift */; };
 		9A6BDF08E95F8CD3509C573E6825D91D /* MoeCommon-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = C5B15CE1CDBDD21565076E7A17AA40CA /* MoeCommon-dummy.m */; };
 		9A7B8429B7C8DFAC1559EDB9711DA03E /* DrawerTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D7267F5C4474253017828FDEE0FD8E8 /* DrawerTransition.swift */; };
@@ -222,6 +223,7 @@
 		8EF6C85AC02063B3362C89A1AAADA061 /* MoeUI-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "MoeUI-prefix.pch"; sourceTree = "<group>"; };
 		923B1CCC8D3031D64A5F68BBC9038D82 /* Pods-MoeUI_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-MoeUI_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		93DC78FB3E069A8FAD5571108C09C961 /* MoeUI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MoeUI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9536AB3125427B2600569F6C /* AlertView+Animation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AlertView+Animation.swift"; sourceTree = "<group>"; };
 		962F1D4308B0CA166BEBC899F632F4C7 /* SwiftyNameSpace.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SwiftyNameSpace.swift; path = Classes/Extension/SwiftyNameSpace.swift; sourceTree = "<group>"; };
 		970CA9823D4FD9ECB3ACCFB16E818DE8 /* ConstraintConfig.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintConfig.swift; path = Source/ConstraintConfig.swift; sourceTree = "<group>"; };
 		973194639D70CC8B6F9E5DC61D8A42B3 /* View.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = View.swift; path = MoeUI/Classes/Unity/View.swift; sourceTree = "<group>"; };
@@ -417,6 +419,7 @@
 				6A61CD4E75D53C08F811A7208F9AA7D9 /* AlertDialog.swift */,
 				F881A86AB1A5438F897A6A4E0E5AEFCB /* Alerter.swift */,
 				AC96E081D58841713390871A6B165A24 /* AlertView.swift */,
+				9536AB3125427B2600569F6C /* AlertView+Animation.swift */,
 				2FDEBD0C305CCF85487D17352DB0C4D2 /* AlertWindow.swift */,
 				EF3D3FE89BA6CA159B99AFFCE7DD117E /* MaskAlertAnimator.swift */,
 				17BD1DC95EEEA7E970576C8C84A1421D /* MaskAlertController.swift */,
@@ -513,6 +516,13 @@
 			name = Pod;
 			sourceTree = "<group>";
 		};
+		959E236A2537E4220032B42E /* IBUnity */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = IBUnity;
+			sourceTree = "<group>";
+		};
 		9816393EFB9AD7CFE9869244C218F804 /* Extension */ = {
 			isa = PBXGroup;
 			children = (
@@ -585,6 +595,7 @@
 		CC39A680226C27B1F1DBF2607B0EC7AB /* MoeUI */ = {
 			isa = PBXGroup;
 			children = (
+				959E236A2537E4220032B42E /* IBUnity */,
 				3B4C17CE3082BC28AEBAF0241E9EE049 /* Alert */,
 				995B85C8B2875CCE2A70243F52A9473E /* Designator */,
 				E967858BA4266BCF3750FA3DB2E2D5D4 /* PanDrawer */,
@@ -922,6 +933,7 @@
 				DB9C6B7C6D08E42CA00608075EFC44D5 /* Alerter.swift in Sources */,
 				B0C715735B6EA8C1A95BF58BD4A2A08C /* AlertView.swift in Sources */,
 				7749E53B8853092D3B5F2D02B3080A30 /* AlertWindow.swift in Sources */,
+				9536AB3225427B2600569F6C /* AlertView+Animation.swift in Sources */,
 				849AC13E51805FFD0FCEDBA2F2081B66 /* Animator.swift in Sources */,
 				DEA1779EBF009357B07DE2567CF67D74 /* CollectionViewCell.swift in Sources */,
 				36085D4002B7C3784A6B01CDA870D4AD /* Configuration.swift in Sources */,

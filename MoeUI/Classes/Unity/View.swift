@@ -8,7 +8,6 @@ import UIKit
 
 /// 视图基类
 open class View: UIView, ViewUnity {
-    
     public override init(frame: CGRect) {
         super.init(frame: frame)
         setupSubview()

@@ -8,7 +8,6 @@ import UIKit
 
 
 public extension TypeWrapperProtocol where WrappedType: UIViewController {
-    
     /// 加载指定Storyboard文件，实例化其中控制器场景的`identifier`与`调用类`同名的控制器实例
     ///
     /// 调用该方法前，请确认Storyboard文件已正确配置
@@ -34,5 +33,4 @@ public extension TypeWrapperProtocol where WrappedType: UIViewController {
         wrappedValue.definesPresentationContext = true
         wrappedValue.modalPresentationStyle = .overCurrentContext
     }
-    
 }

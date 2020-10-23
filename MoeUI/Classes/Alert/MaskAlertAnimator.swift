@@ -170,7 +170,12 @@ extension MaskAlertAnimator: CAAnimationDelegate {
     }
 
     // 平移动画
-    private func translationAnimation(in containerView: UIView, using transitionContext: UIViewControllerContextTransitioning, transitionType: TransitionType, outOffScreen: Bool) {
+    private func translationAnimation(
+        in containerView: UIView,
+        using transitionContext: UIViewControllerContextTransitioning,
+        transitionType: TransitionType,
+        outOffScreen: Bool
+    ) {
         let bezelPosition = bezelView.center
         let delta = outOffScreen ? 0 : bezelView.frame.height / 2
         let bezelTargetPosition = CGPoint(x: bezelPosition.x, y: containerView.frame.height - delta)
@@ -212,7 +217,8 @@ extension MaskAlertAnimator: CAAnimationDelegate {
         let bezelMaskPathAnim = basicAnimation(
             keyPath: "path",
             duration: self.transitionDuration(using: transitionContext),
-            transitionType: transitionType)
+            transitionType: transitionType
+        )
         bezelMaskPathAnim.delegate = self
         bezelMaskPathAnim.setValue(mask, forKey: "mask")
         bezelMaskPathAnim.setValue(transitionContext, forKey: "transitionContext")

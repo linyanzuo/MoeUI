@@ -23,7 +23,7 @@ public class StyleAlertController: MaskAlertController {
         self.style = style
         self.text = text
         super.init()
-        self.animationDuratoin = 0.25
+        self.animationDuratoin = 2.0
     }
 
     // MARK: View Life Cycle

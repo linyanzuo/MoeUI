@@ -9,6 +9,7 @@
  */
 
 import UIKit
+import MoeCommon
 
 
 /// 提示视图标识ID
@@ -40,6 +41,7 @@ open class Alerter: NSObject {
 // MARK: - 【提示器】基于视图提示
 extension Alerter {
     /// 将自定义视图覆盖于目标视图上；
+    /// 若使用动画，需要确保目标视图的Frame值已更新，否则将导致动画值计算出现错误
     /// 该方法会给目标视图添加AlertView（遮罩层）作为子视图覆盖在目标视图上，而自定义视图将作为AlertView的子视图
     /// - Parameters:
     ///   - customView: 自定义视图
@@ -64,18 +66,10 @@ extension Alerter {
         }
         // 2. 否则创建新的AlertView实例（AlertView透明覆盖于父视图之上，自定义视图作为AlertView的子视图展示）
         if optionalAlertView == nil {
-            optionalAlertView = AlertView(frame: .zero)
+            optionalAlertView = AlertView(frame: view.bounds)
             optionalAlertView?.maskEnable = maskEnable
             optionalAlertView?.hideWhenMaskTap = tapHide
             view.addSubview(optionalAlertView!)
-            // AlertView的尺寸与目标视图相同；使用AutoLayout让AlertView与目标视图保持同步尺寸变化
-            optionalAlertView!.translatesAutoresizingMaskIntoConstraints = false
-            view.addConstraints([
-                NSLayoutConstraint(item: optionalAlertView!, attribute: .top, relatedBy: .equal, toItem: view, attribute: .top, multiplier: 1.0, constant: 0.0),
-                NSLayoutConstraint(item: optionalAlertView!, attribute: .bottom, relatedBy: .equal, toItem: view, attribute: .bottom, multiplier: 1.0, constant: 0.0),
-                NSLayoutConstraint(item: optionalAlertView!, attribute: .left, relatedBy: .equal, toItem: view, attribute: .left, multiplier: 1.0, constant: 0.0),
-                NSLayoutConstraint(item: optionalAlertView!, attribute: .right, relatedBy: .equal, toItem: view, attribute: . right, multiplier: 1.0, constant: 0.0)
-            ])
         } else {
             optionalAlertView?.maskEnable = maskEnable
             optionalAlertView?.hideWhenMaskTap = tapHide
@@ -91,7 +85,7 @@ extension Alerter {
         checkThread()
         for subview in view.subviews {
             if let alertView = subview as? AlertView {
-                alertView.removeAlert(with: identifier, completionHandler: nil)
+                alertView.prepareToRemoveAlert(with: identifier, completionHandler: nil)
             }
         }
     }

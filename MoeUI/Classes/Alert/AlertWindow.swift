@@ -43,7 +43,7 @@ final class AlertWindow: UIWindow {
     
     public func removeAlert(with identifier: String? = nil) {
         // 由AlertView先执行移除动画，执行结束后再隐藏AlertWindow
-        self.alertView.removeAlert(with: identifier) { [weak self] in
+        self.alertView.prepareToRemoveAlert(with: identifier) { [weak self] in
             if self?.alertView.alerts.count == 0 { self?.isHidden = true }
         }
     }
