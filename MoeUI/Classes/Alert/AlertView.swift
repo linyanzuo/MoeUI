@@ -26,8 +26,8 @@ struct Alert {
 open class AlertView: View {
     /// 是否启用动画
     public var useAnaimation = true
-//    public var animationType: AnimationType = .transformFromBottom(outOffScreen: true)
-    open var animationType: AnimationType { return .alpha }
+    /// 动画效果类型
+    public var animationType: AnimationType = .alpha
     /// 是否启用遮罩
     public var maskEnable = true { didSet { maskBtn.isHidden = !maskEnable } }
     /// 点击遮罩时是否关闭提示视图
@@ -166,7 +166,11 @@ extension AlertView {
             // 为弹窗内容添加动画
             addContentAnimation(to: targetAlert!, transitionType: .dismiss)
             // 为遮罩按钮添加动画
-            if shouldMaskDismiss == true { addAnimationForMaskBtn(to: targetAlert!, transitionType: .dismiss) }
+            if shouldMaskDismiss == true {
+                addAnimationForMaskBtn(to: targetAlert!, transitionType: .dismiss)
+            } else {
+                removeAlert(with: targetAlert!)
+            }
         }
         else { removeAlert(with: targetAlert!) }
     }
@@ -277,6 +281,8 @@ extension AlertView: CAAnimationDelegate {
             maskBtnAnimationDidStop(alert: alert, type: transitionType)
         case ContentAlphaAnimName:
             alphaAnimationDidStop(contentView: alert.view, type: transitionType)
+        case ContentTranslationAnimName:
+            translationAnimationDidStop(contentView: alert.view, type: transitionType)
         default: break
         }
     }
@@ -350,8 +356,8 @@ extension AlertView {
         let customSize = contentView.systemLayoutSizeFitting(selfSize)
 
         let visibleCenter = CGPoint(x: selfSize.width / 2.0, y: selfSize.height - customSize.height / 2.0)
-        let delta = outOffScreen ? 0 : customSize.height / 2.0
-        let invisibleCenter = CGPoint(x: visibleCenter.x, y: selfSize.height - delta)
+        let delta = outOffScreen ? customSize.height / 2.0 : 0
+        let invisibleCenter = CGPoint(x: visibleCenter.x, y: selfSize.height + delta)
 
         let contentPositionAnim = basicAnimation(keyPath: "position", name: ContentTranslationAnimName, type: transitionType, alert: alert)
         if transitionType == .present {
@@ -362,5 +368,10 @@ extension AlertView {
             contentPositionAnim.toValue = invisibleCenter
         }
         contentView.layer.add(contentPositionAnim, forKey: ContentTranslationAnimName)
+    }
+    
+    /// 位置移动动画结束处理
+    private func translationAnimationDidStop(contentView: UIView, type: TransitionType) {
+        contentView.layer.removeAnimation(forKey: ContentTranslationAnimName)
     }
 }

@@ -72,16 +72,8 @@ class AlertUsageVC: UITableViewController {
                 let dialog = AlertDialog(style: .error, text: "很不幸，并没有生效")
                 Alerter.show(dialog, in: self.view.window!, with: "Error", maskEnable: true)
             case 2:
-                let dialog = AlertDialog(style: .progress, text: "正在处理")
-//                Alerter.show(dialog, in: self.view.window!, with: "Progress", maskEnable: true)
-                let alertView = BottomAlertView(frame: view.bounds)
-                alertView.maskEnable = true
-                alertView.hideWhenMaskTap = true
-                self.view.window!.addSubview(alertView)
-                alertView.snp.makeConstraints { (maker) in
-                    maker.edges.equalTo(UIEdgeInsets.zero)
-                }
-                alertView.addAlert(customView: dialog, with: "Progress")
+                let alertView = BottomAlertView(frame: .zero)
+                alertView.show(in: view.window!)
             default: MLog("Nothing")
             }
         } else if indexPath.section == 1 {

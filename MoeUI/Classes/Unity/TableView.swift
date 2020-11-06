@@ -8,7 +8,6 @@ import UIKit
 
 /// 表格视图的单元项基类
 open class TableViewCell: UITableViewCell, ViewUnity {
-    
     public required init?(coder aDecoder: NSCoder) {
         fatalError("请调用 `init(style, reuseIdentifier)` 方法替代")
     }
@@ -32,13 +31,11 @@ open class TableViewCell: UITableViewCell, ViewUnity {
     /// * 如果通过IB加载视图, 则直接在`awakeFromNib`方法中完成初始化
     /// * 使用"懒加载"创建的子视图，不需要在该方法中做初始化.
     open func setupConstraint() {}
-    
 }
 
 
 /// 表格视图的页眉（页脚）基类
 open class TableViewHeaderFooterView: UITableViewHeaderFooterView {
-    
     public required init?(coder aDecoder: NSCoder) {
         fatalError("请调用 `init(reuseIdentifier: String?)` 方法替代")
     }
@@ -62,5 +59,4 @@ open class TableViewHeaderFooterView: UITableViewHeaderFooterView {
     /// * 如果通过IB加载视图, 则直接在`awakeFromNib`方法中完成初始化
     /// * 使用"懒加载"创建的子视图，不需要在该方法中做初始化.
     open func setupConstraint() {}
-    
 }

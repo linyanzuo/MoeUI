@@ -21,7 +21,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool
     {
         window = UIWindow(frame: MScreen.bounds)
-        window?.makeKeyAndVisible()
 
         // 侧滑案例
         let mainVC = UsageListVC(style: .grouped)

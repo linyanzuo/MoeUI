@@ -11,8 +11,13 @@ import MoeUI
 
 
 class BottomAlertView: AlertView {
-    override var animationType: AlertView.AnimationType {
-        return .transformFromBottom(outOffScreen: true)
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        self.animationType = .transformFromBottom(outOffScreen: true)
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
     
     override func setupContentConstraint(contentView: UIView) {
@@ -22,4 +27,15 @@ class BottomAlertView: AlertView {
             maker.height.equalTo(380)
         }
     }
+    
+    public func show(in view: UIView) {
+        self.frame = view.bounds
+        view.addSubview(self)
+        self.addAlert(customView: dialog, with: "Progress")
+    }
+    
+    private(set) lazy var dialog: AlertDialog = {
+        let dialog = AlertDialog(style: .progress, text: "正在处理")
+        return dialog
+    }()
 }
