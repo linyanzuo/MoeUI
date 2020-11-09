@@ -151,7 +151,7 @@ extension Designator {
     }
     
     public func makeButton(toView: UIView? = nil) -> MoeButton {
-        return addView(MoeButton(type: .custom), to: toView) as! MoeButton
+        return addView(MoeButton(type: .system), to: toView) as! MoeButton
     }
     
     public func makeImageView(toView: UIView? = nil) -> MoeImageView {
@@ -184,7 +184,7 @@ extension Designator {
     }
     
     public static func makeButton(toView: UIView? = nil, _ closure: DesignClosure? = nil) -> MoeButton {
-        return addView(MoeButton(type: .custom), to: toView, closure) as! MoeButton
+        return addView(MoeButton(type: .system), to: toView, closure) as! MoeButton
     }
     
     public static func makeImageView(toView: UIView? = nil, _ closure: DesignClosure? = nil) -> MoeImageView {

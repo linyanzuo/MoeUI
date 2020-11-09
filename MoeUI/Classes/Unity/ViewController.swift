@@ -47,12 +47,4 @@ open class ViewController: UIViewController, ViewControllerUnity {
     /// * 发起网络请求获取页面所需数据，建议将每个网络请求单独封装
     /// * 获取持久化存储的数据
     open func setupData() {}
-    
-    // MARK: - Navigation
-    
-    /// 状态栏样式
-    open override var preferredStatusBarStyle: UIStatusBarStyle {
-        return .lightContent
-    }
-
 }
