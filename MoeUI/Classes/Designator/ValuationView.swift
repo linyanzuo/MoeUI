@@ -195,7 +195,7 @@ open class MoeButton: UIButton, ValuationViewProtocol, ValuationApplyProtocol {
         let state = valuator.state
         let radius = valuator.cornerRadius ?? 0.0
         
-        if let image = valuator.image {
+        if let image = valuator.image?.withRenderingMode(.alwaysOriginal) {
             if radius <= 0.0 { setImage(image, for: state) }
             else { setImage(image.moe.radiusImage(radius: radius), for: state) }
         }
