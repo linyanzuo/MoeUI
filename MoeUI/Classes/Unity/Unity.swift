@@ -9,7 +9,6 @@ public protocol Unity {}
 
 /// **控制器**统一规范协议
 public protocol ViewControllerUnity: Unity {
-    
     /// 【统一规范】导航的初始化方法
     /// ---
     /// 该方法在`viewDidLoad`中被调用, 子类重写该方法, 完成控制器中"导航相关的初始化"工作
@@ -43,7 +42,6 @@ extension ViewControllerUnity {
 
 /// **视图**统一规范协议
 public protocol ViewUnity: Unity {
-
     /// 【统一规范】子视图初始化方法
     /// ---
     /// 子类重写该方法, 实现视图中"子视图的初始化"工作

@@ -8,17 +8,17 @@
 import Foundation
 
 /// 隐藏导航栏协议；遵守该协议的视图控制器的导航栏将被隐藏
-protocol HideNavigationBar {}
+public protocol HideNavigationBar {}
 
 
 /// 导航控制器基类
-class NavigationController: UINavigationController, UINavigationControllerDelegate, UIGestureRecognizerDelegate {
-    override func viewDidLoad() {
+open class NavigationController: UINavigationController, UINavigationControllerDelegate, UIGestureRecognizerDelegate {
+    open override func viewDidLoad() {
         super.viewDidLoad()
         delegate = self
     }
     
-    func navigationController(_ navigationController: UINavigationController, willShow viewController: UIViewController, animated: Bool) {
+    public func navigationController(_ navigationController: UINavigationController, willShow viewController: UIViewController, animated: Bool) {
         // 如果控制器遵守了 HideNavigationBar 协议，则需要隐藏导航栏
         var isBarHidden = false
         if (viewController as? HideNavigationBar != nil) { isBarHidden = true }
@@ -27,7 +27,7 @@ class NavigationController: UINavigationController, UINavigationControllerDelega
         interactivePopGestureRecognizer?.delegate = self
     }
     
-    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
+    public func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
         // 子控制器数量大于1时，支持手势返回
         return children.count > 1
     }
