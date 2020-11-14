@@ -9,6 +9,8 @@ import Foundation
 
 /// 隐藏导航栏协议；遵守该协议的视图控制器的导航栏将被隐藏
 protocol HideNavigationBar {}
+/// 透明导航栏协议；遵守该协议的视图控制器的导航栏背景色会被置为透明
+protocol TransparencyNavigationBar {}
 
 
 /// 导航控制器基类
@@ -25,6 +27,14 @@ class NavigationController: UINavigationController, UINavigationControllerDelega
         setNavigationBarHidden(isBarHidden, animated: true)
         // 隐藏导航栏后会导致边缘右滑返回的手势失效，需要重新设置手势代码
         interactivePopGestureRecognizer?.delegate = self
+        
+        // 如果控制器遵守了 TransparencyNavigationBar 协议，则需要透明导航栏
+        var isTransparency: UIImage? = nil
+        if (viewController as? TransparencyNavigationBar != nil) { isTransparency = UIImage() }
+        // 通过设置导航栏背景图片为空图，实现导航栏透明
+        navigationBar.setBackgroundImage(isTransparency, for: .default)
+        // 通过设置导航栏阴影图片为空图，去掉导航栏阴影
+        navigationBar.shadowImage = isTransparency
     }
     
     func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
