@@ -80,6 +80,15 @@ public class Designator: NSObject, NSCopying {
         return valuator
     }
     
+    /// 返回指定状态的图片赋值器。并指定背景图片
+    /// - Parameter state: 指定的状态
+    @discardableResult
+    public func backgroundImage(_ image: UIImage?, for state: UIControl.State = .normal) -> ImageValuator {
+        let valuator = read(valuatorType: ImageValuator.self, conditionType: .state(state))
+        if let image = image { return valuator.backgroundImage(image) }
+        return valuator
+    }
+    
     /// 返回指定状态的事件赋值器。事件赋值器支持多状态
     /// - Parameter state: 指定的状态
     @discardableResult
