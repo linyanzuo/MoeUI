@@ -20,9 +20,7 @@ public enum GradientType: Int {
 
 
 // MARK: - UIImage 图片绘制相关扩展
-
 public extension TypeWrapperProtocol where WrappedType: UIImage {
-    
     /// 在指定尺寸的图形上下文环境中，执行闭包代码绘制图片
     /// - Parameters:
     ///   - size:           图形上下文尺寸，即生成图片的尺寸

@@ -9,9 +9,9 @@ import Foundation
 
 
 /// 隐藏导航栏协议；遵守该协议的视图控制器的导航栏将被隐藏
-protocol HideNavigationBar {}
+public protocol HideNavigationBar {}
 /// 透明导航栏协议；遵守该协议的视图控制器的导航栏背景色会被置为透明
-protocol TransparencyNavigationBar {}
+public protocol TransparencyNavigationBar {}
 
 
 /// 导航控制器基类
