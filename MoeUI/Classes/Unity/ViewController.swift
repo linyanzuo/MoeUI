@@ -9,6 +9,11 @@ import MoeCommon
 
 /// 视图控制器基类
 open class ViewController: UIViewController, ViewControllerUnity {
+    /// 尝试获取置顶窗口，若失败则返回控制器根视图
+    public var topView: UIView {
+        get { return MWindow.top ?? self.view }
+    }
+    
     /// 自定义回调闭包，使用字典对参数及返回值进行包装，用于控制器间传值
     open var customCallback: ((Dictionary<String, Any?>?) -> Dictionary<String, Any?>?)?
     
