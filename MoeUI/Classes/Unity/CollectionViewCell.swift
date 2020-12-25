@@ -9,7 +9,9 @@ import UIKit
 /// 集合视图的单元项基类
 open class CollectionViewCell: UICollectionViewCell, ViewUnity {
     public required init?(coder aDecoder: NSCoder) {
-        fatalError("请调用 `init(style: UICollectionViewCell.CellStyle, reuseIdentifier: String?)` 方法替代")
+        super.init(coder: aDecoder)
+        self.setupSubview()
+        self.setupConstraint()
     }
     
     override init(frame: CGRect) {

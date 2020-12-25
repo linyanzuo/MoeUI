@@ -9,7 +9,9 @@ import UIKit
 /// 表格视图的单元项基类
 open class TableViewCell: UITableViewCell, ViewUnity {
     public required init?(coder aDecoder: NSCoder) {
-        fatalError("请调用 `init(style, reuseIdentifier)` 方法替代")
+        super.init(coder: aDecoder)
+        self.setupSubview()
+        self.setupConstraint()
     }
 
     public override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {

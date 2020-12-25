@@ -56,7 +56,7 @@ open class AlertView: View {
 //    }
 
     /// 子视图初始化，子类可重写该方法修改配置或添加视图，记得调用`super`
-    override public func setupSubview() {
+    override open func setupSubview() {
         self.backgroundColor = .clear
         
         maskBtn.isHidden = !maskEnable
@@ -65,7 +65,7 @@ open class AlertView: View {
     
     /// 子视图约束初始化，默认为覆盖父视图
     /// 子类应根据实际需求，重写该方法完成约束的配置，不需要调用`super`
-    override public func setupConstraint() {
+    override open func setupConstraint() {
         maskBtn.translatesAutoresizingMaskIntoConstraints = false
         self.addConstraints([
             NSLayoutConstraint(item: maskBtn, attribute: .top, relatedBy: .equal, toItem: self, attribute: .top, multiplier: 1.0, constant: 0.0),

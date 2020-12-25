@@ -35,13 +35,13 @@ open class TableViewController: ViewController, UITableViewDataSource, UITableVi
     open func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {}
     
     open private(set) lazy var tableView: UITableView = {
-        let tableView = UITableView(frame: self.view.bounds, style: self.tableStyle)
+        let tableView = UITableView(frame: view.bounds, style: tableStyle)
         tableView.dataSource = self
         tableView.delegate = self
         tableView.separatorStyle = .none
         tableView.showsVerticalScrollIndicator = false
         tableView.showsHorizontalScrollIndicator = false
-        self.view.addSubview(tableView)
+        view.addSubview(tableView)
         return tableView;
     }()
 }
