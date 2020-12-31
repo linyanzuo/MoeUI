@@ -23,6 +23,7 @@
 		9519C6EE230A49F9005AEF22 /* PickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9519C6ED230A49F9005AEF22 /* PickerViewController.swift */; };
 		9536AB3A2542910B00569F6C /* BottomAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9536AB392542910B00569F6C /* BottomAlertView.swift */; };
 		95686A1022FA76F200485864 /* OtherVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95686A0F22FA76F200485864 /* OtherVC.swift */; };
+		95A9741D259C6C5B00344F93 /* MoeAlertProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95A9741C259C6C5B00344F93 /* MoeAlertProtocol.swift */; };
 		95AF992F22F4604F002CFC76 /* ContactCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95AF992C22F4604F002CFC76 /* ContactCell.swift */; };
 		95AF993022F4604F002CFC76 /* ContactCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 95AF992D22F4604F002CFC76 /* ContactCell.xib */; };
 		95AF993122F4604F002CFC76 /* ContactViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95AF992E22F4604F002CFC76 /* ContactViewController.swift */; };
@@ -72,6 +73,7 @@
 		9519C6ED230A49F9005AEF22 /* PickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PickerViewController.swift; sourceTree = "<group>"; };
 		9536AB392542910B00569F6C /* BottomAlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomAlertView.swift; sourceTree = "<group>"; };
 		95686A0F22FA76F200485864 /* OtherVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtherVC.swift; sourceTree = "<group>"; };
+		95A9741C259C6C5B00344F93 /* MoeAlertProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoeAlertProtocol.swift; sourceTree = "<group>"; };
 		95AF992C22F4604F002CFC76 /* ContactCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactCell.swift; sourceTree = "<group>"; };
 		95AF992D22F4604F002CFC76 /* ContactCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ContactCell.xib; sourceTree = "<group>"; };
 		95AF992E22F4604F002CFC76 /* ContactViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactViewController.swift; sourceTree = "<group>"; };
@@ -146,6 +148,7 @@
 		607FACD21AFB9204008FA782 /* Example for MoeUI */ = {
 			isa = PBXGroup;
 			children = (
+				95A9741B259C6C3200344F93 /* MoeAlertController */,
 				95102A8A23B6561F00287422 /* TableView */,
 				607FACD51AFB9204008FA782 /* AppDelegate.swift */,
 				95C55D7522F03BB2001CF9FF /* Appearance */,
@@ -225,6 +228,14 @@
 				95102A8B23B6566900287422 /* DemoTableVC.swift */,
 			);
 			name = TableView;
+			sourceTree = "<group>";
+		};
+		95A9741B259C6C3200344F93 /* MoeAlertController */ = {
+			isa = PBXGroup;
+			children = (
+				95A9741C259C6C5B00344F93 /* MoeAlertProtocol.swift */,
+			);
+			name = MoeAlertController;
 			sourceTree = "<group>";
 		};
 		95AF992822F44FB0002CFC76 /* PageMenu */ = {
@@ -478,6 +489,7 @@
 				607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */,
 				95102A8723B634B800287422 /* UnitedTableViewController.swift in Sources */,
 				95AF993122F4604F002CFC76 /* ContactViewController.swift in Sources */,
+				95A9741D259C6C5B00344F93 /* MoeAlertProtocol.swift in Sources */,
 				95F98CD6233219620091017B /* CustomDialog.swift in Sources */,
 				9536AB3A2542910B00569F6C /* BottomAlertView.swift in Sources */,
 				95051DAF250CCC2100967B7A /* StyleAlertController.swift in Sources */,
@@ -626,7 +638,7 @@
 			baseConfigurationReference = 97C8E5E34F804AC69415C4EC /* Pods-MoeUI_Example.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "Apple Development: HuiLiang Li (BQ488XZVU7)";
+				CODE_SIGN_IDENTITY = "Apple Development: Yanzuo Lin (C3T57XZ9JZ)";
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = 8LK2ZWLG9Q;
 				INFOPLIST_FILE = MoeUI/Info.plist;
@@ -635,7 +647,7 @@
 				MODULE_NAME = ExampleApp;
 				PRODUCT_BUNDLE_IDENTIFIER = com.moemone.moeui;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = YBK_DEV_ZED;
+				PROVISIONING_PROFILE_SPECIFIER = DEV_GEN_ALL;
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -647,8 +659,8 @@
 			baseConfigurationReference = BB5A5ABE435860855C4DE2C3 /* Pods-MoeUI_Example.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "Apple Development: HuiLiang Li (BQ488XZVU7)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "Apple Development: HuiLiang Li (BQ488XZVU7)";
+				CODE_SIGN_IDENTITY = "Apple Distribution: Shenzhen Canderaction Technology Co., Ltd. (8LK2ZWLG9Q)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "Apple Distribution: Shenzhen Aiguqin Culture Co., Ltd. (368DW97H5X)";
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = 8LK2ZWLG9Q;
 				INFOPLIST_FILE = MoeUI/Info.plist;
@@ -657,7 +669,7 @@
 				MODULE_NAME = ExampleApp;
 				PRODUCT_BUNDLE_IDENTIFIER = com.moe.moeui;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = YBK_DEV_ZED;
+				PROVISIONING_PROFILE_SPECIFIER = DEV_GEN_ALL;
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;

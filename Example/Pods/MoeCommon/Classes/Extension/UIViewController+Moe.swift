@@ -27,10 +27,64 @@ public extension TypeWrapperProtocol where WrappedType: UIViewController {
         return vc
     }
     
-    /// 呈现模态视图(Model Present)时，清除其背景色
-    func clearPresentationBackground()  {
-        wrappedValue.providesPresentationContextTransitionStyle = true
-        wrappedValue.definesPresentationContext = true
-        wrappedValue.modalPresentationStyle = .overCurrentContext
+    /// 将控制器添加至导航栈中，并展示其界面
+    /// - Parameters:
+    ///   - viewController: 要展示的视图控制器
+    ///   - animated:       转场过程是否启用动画，默认为true
+    func push(viewController: UIViewController, animated: Bool = true) {
+        guard let navCtrler = wrappedValue.navigationController else {
+            MLog("当前控制器【\(wrappedValue.moe.clazzName)】未处于导航栈中，无法完成PUSH操作")
+            return
+        }
+        navCtrler.pushViewController(viewController, animated: animated)
+    }
+    
+    /// 从导航栈中出栈，直至目标控制器处于栈顶，并展示其界面
+    /// - Parameters:
+    ///   - toViewController:   目标控制器
+    ///   - animated:           转场过程是否启用动画，默认为true
+    func pop(toViewController: UIViewController? = nil, animated: Bool = true) {
+        guard let navCtrler = wrappedValue.navigationController else {
+            MLog("当前控制器【\(wrappedValue.moe.clazzName)】未处于导航栈中，无法完成POP操作")
+            return
+        }
+        if let vc = toViewController {
+            navCtrler.popToViewController(vc, animated: animated)
+        } else {
+            navCtrler.popViewController(animated: animated)
+        }
+    }
+    
+    /// 呈现模态控制器，展示其界面。
+    /// 通过「转场动画 + 控制器」形式实现的功能控件，都应该通过该方法呈现，而不是调用 `push(viewController: animated:)` 方法
+    /// - Parameters:
+    ///   - viewController: 要展示的视图控制器
+    ///   - animated:       转场过程是否启用动画，默认为true
+    ///   - completion:     转场动画执行完成后的回调闭包
+    func present(viewController: UIViewController, animated: Bool = true, completion: (() -> Void)? = nil) {
+        if #available(iOS 13.0, *) { viewController.modalPresentationStyle = .fullScreen }
+        wrappedValue.present(viewController, animated: animated, completion: completion)
+    }
+    
+    /// 呈现模态视图(Model Present)，并使控制器根视图透明时可穿透（看到后面的内容）
+    /// 通过「转场动画 + 控制器」形式实现的功能控件，或需要内容穿透，应该通过该方法呈现，而不是调用`present(viewController: animated: completion:)`方法
+    /// - Parameters:
+    ///   - viewController: 要展示的视图控制器
+    ///   - animated:       转场过程是否启用动画，默认为true
+    ///   - completion:     转场动画执行完成后的回调闭包
+    func transparencyPresent(viewController: UIViewController, animated: Bool = true, completion: (() -> Void)? = nil)  {
+        viewController.providesPresentationContextTransitionStyle = true
+        viewController.definesPresentationContext = true
+        viewController.modalPresentationStyle = .overCurrentContext
+//        if #available(iOS 13.0, *) { wrappedValue.modalPresentationStyle = .overFullScreen }
+        wrappedValue.present(viewController, animated: animated, completion: completion)
+    }
+    
+    /// 释放模态控制器，移除其界面。
+    /// - Parameters:
+    ///   - animated:       转场过程是否启用动画，默认为true
+    ///   - completion:     转场动画执行完成后的回调闭包
+    func dismiss(animated: Bool = true, completion: (() -> Void)? = nil) {
+        wrappedValue.dismiss(animated: animated, completion: completion)
     }
 }

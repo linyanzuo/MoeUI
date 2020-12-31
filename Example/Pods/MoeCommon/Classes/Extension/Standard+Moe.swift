@@ -24,6 +24,36 @@ extension TypeWrapperProtocol where WrappedType == URL {
     }
 }
 
+// MARK: - Array
+
+public extension Array where Element: Any {
+    /// 将数组拆分成多个子数组，每个子数组的元素个数不超过指定值
+    /// - Parameter subSize: 每个子数组最多包含的元素个数
+    /// - Returns: 返回拆分后的子数组
+    func split(in subSize: Int) -> Array<Array<Element>>? {
+        let numberOfSubArray = self.count % subSize == 0 ? (self.count / subSize) : (self.count / subSize + 1)
+        guard numberOfSubArray != 0 else { return nil }
+        
+        var subArrays: [[Element]] = []
+        var beginIndex: Int = 0
+        for _ in 0..<numberOfSubArray {
+            let endIndex: Int = beginIndex + subSize
+            let subArray = Array(self[beginIndex..<endIndex])
+            subArrays.append(subArray)
+            beginIndex += subSize
+        }
+        return subArrays
+    }
+    
+    /// 获取指定下标的元素
+    /// - Parameter index:  指定下标
+    /// - Returns:          指定下标对应的元素，若不存在则返回nil
+    func objectAt(_ index: Int) -> Element? {
+        guard self.count > index else { return nil }
+        return self[index]
+    }
+}
+
 
 // MARK: - Operator
 

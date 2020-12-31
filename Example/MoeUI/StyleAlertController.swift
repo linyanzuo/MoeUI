@@ -10,7 +10,7 @@ import MoeCommon
 import UIKit
 
 
-public class StyleAlertController: MaskAlertController {
+public class StyleAlertController: MoeAlertController {
 
     var style: AlertDialog.Style
     var text: String
@@ -22,7 +22,7 @@ public class StyleAlertController: MaskAlertController {
     public init(style: AlertDialog.Style, text: String) {
         self.style = style
         self.text = text
-        super.init()
+        super.init(nibName: nil, bundle: nil)
         self.animationDuratoin = 2.0
     }
 
@@ -53,7 +53,7 @@ public class StyleAlertController: MaskAlertController {
         }
     }
 
-    public override func animationType() -> MaskAlertAnimator.AnimationType {
+    public override func animationType() -> MoeAlertAnimator.AnimationType {
         return .transformFromBottom(outOffScreen: true)
 //        return .external
     }

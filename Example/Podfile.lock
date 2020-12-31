@@ -43,7 +43,7 @@ EXTERNAL SOURCES:
 
 CHECKOUT OPTIONS:
   MoeCommon:
-    :commit: be66504774666aa7941e0bccae68f469f07780d9
+    :commit: b51719dd16dbc7dad052ee96422b01357a35e8b8
     :git: https://github.com/linyanzuo/MoeCommon.git
 
 SPEC CHECKSUMS:
@@ -53,4 +53,4 @@ SPEC CHECKSUMS:
 
 PODFILE CHECKSUM: 220e20e4479fa3b3b55278c2025f88e5f3a607fe
 
-COCOAPODS: 1.9.3
+COCOAPODS: 1.10.0

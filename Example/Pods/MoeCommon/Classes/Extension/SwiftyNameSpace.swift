@@ -7,7 +7,7 @@
 
 import UIKit
 
-// MARK: - Wrappable Define
+// MARK: - 数据类型包装
 
 /// 数据类型包装协议
 /// 适用于`基本类型`、`结构体`等, 使用等号`==`确认类型
@@ -16,12 +16,9 @@ public protocol TypeWrapperProtocol {
     var wrappedValue: WrappedType { get }
     init(value: WrappedType)
 }
-public struct NamespaceWrapper<T>: TypeWrapperProtocol {
-    public let wrappedValue: T
-    public init(value: T) {
-        self.wrappedValue = value
-    }
-}
+
+
+// MARK: - 对象类型包装
 
 /// 命名空间包装协议
 /// 适用于对象类型, 使用冒号`:`实现协议
@@ -30,6 +27,14 @@ public protocol NamespaceWrappable {
     var moe: WrapperType { get }
     static var moe: WrapperType.Type { get }
 }
+
+public struct NamespaceWrapper<T>: TypeWrapperProtocol {
+    public let wrappedValue: T
+    public init(value: T) {
+        self.wrappedValue = value
+    }
+}
+
 public extension NamespaceWrappable {
     var moe: NamespaceWrapper<Self> {
         return NamespaceWrapper(value: self)

@@ -10,7 +10,7 @@ import MoeCommon
 import MoeUI
 
 
-class MoeAlertController: UIViewController, UIViewControllerTransitioningDelegate, MaskAlertAnimatorProtocol {
+class AlertController: UIViewController, UIViewControllerTransitioningDelegate, MoeAlertAnimatorProtocol {
     // MARK: View Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,11 +43,15 @@ class MoeAlertController: UIViewController, UIViewControllerTransitioningDelegat
 
     // MARK: UIViewControllerTransitioningDelegate
     public func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-        return MaskAlertAnimator(owner: self, transitionType: .present, animationType: .external)
+        let animator = MoeAlertAnimator(owner: self, transitionType: .present)
+        animator.animationType = .external
+        return animator
     }
 
     public func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-        return MaskAlertAnimator(owner: self, transitionType: .dismiss, animationType: .external)
+        let animator = MoeAlertAnimator(owner: self, transitionType: .dismiss)
+        animator.animationType = .external
+        return animator
     }
 
     // MARK: SheetAnimatorProtocol

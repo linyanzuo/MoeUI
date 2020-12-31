@@ -4,38 +4,52 @@
 //
 //  Created by Zed on 2019/8/29.
 //
+/**
+ 弹窗控制器的相关实现
+ */
 
 import UIKit
 
 
-/// 遮罩弹窗控制器，请使用`present`方式展示，不能使用`push`方式
-open class MaskAlertController: UIViewController, UIViewControllerTransitioningDelegate, MaskAlertAnimatorProtocol {
-    // MARK: - Object Life Cycle
-    public required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+/// 弹窗控制器，请使用`present`方式展示，不能使用`push`方式
+open class MoeAlertController: UIViewController, MoeAlertAnimatorProtocol {
+    /// 转场动画时长
+    open var animationDuratoin: TimeInterval = 0.25
+    /// 是否启用遮罩
+    open var isMaskEnable: Bool = true {
+        didSet { maskBtn.isHidden = !isMaskEnable }
     }
-
-    public init() {
+    /// 点击遮罩时，弹窗是否消失
+    open var isDismissWhenMaskTap: Bool = true {
+        didSet { maskBtn.isUserInteractionEnabled = isDismissWhenMaskTap }
+    }
+    
+    public override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nil, bundle: nil)
-        self.setupSelf()
+        self.setupTransition()
+    }
+    
+    public required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        self.setupTransition()
     }
 
-    private func setupSelf() {
-        self.moe.clearPresentationBackground()
-        self.transitioningDelegate = self
+    private func setupTransition() {
+        // 必须在此配置transitioningDelegate，否则present时无自定义转场动画
+        transitioningDelegate = self
     }
 
     // MARK: - View Life Cycle
+    
     open override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .clear
-
         view.addSubview(maskBtn)
         view.addSubview(bezelView)
         setupConstraint()
         addConstraintsFor(bezelView, in: self.view)
         
-        self.performSelector(onMainThread: #selector(wakeupMainThread), with: nil, waitUntilDone: false)
+        performSelector(onMainThread: #selector(wakeupMainThread), with: nil, waitUntilDone: false)
     }
 
     private func setupConstraint() {
@@ -48,20 +62,13 @@ open class MaskAlertController: UIViewController, UIViewControllerTransitioningD
         ])
     }
     
-    /// 转场动画时长
-    open var animationDuratoin: TimeInterval = 0.25
-    
-    /// 点击遮罩时，弹窗是否消失
-    open var dismissWhenMaskTap: Bool = true {
-        didSet { maskBtn.isUserInteractionEnabled = dismissWhenMaskTap }
-    }
-    
-    /// 是否启用遮罩
-    open var maskEnable: Bool = true {
-        didSet { maskBtn.isHidden = !maskEnable }
-    }
-    
     // MARK: Subclass Should Override
+    
+    /// 为控制器选择转场动画的具体类型
+    /// - Returns: 支持的转场动画类型
+    open func animationType() -> MoeAlertAnimator.AnimationType {
+        return .external
+    }
     
     /// 子类重写该方法，返回要展示的自定义视图；
     /// 注意控制器应该持有该视图，避免被释放。但并不需要将其作为子视图添加至控制器根视图上
@@ -72,7 +79,8 @@ open class MaskAlertController: UIViewController, UIViewControllerTransitioningD
         return bezelView
     }
     
-    /// 为控制器要展示的视图添加AutoLayout约束
+    /// 根据实际需求为控制器要展示的视图添加AutoLayout约束；
+    /// 默认为位置居中、左右间隔屏幕24像素，高度自适应
     /// - Parameters:
     ///   - alertView: 要展示的视图，由「viewToAlert」方法返回
     ///   - superView: 要展示视图的父视图，即控制器根视图
@@ -86,20 +94,38 @@ open class MaskAlertController: UIViewController, UIViewControllerTransitioningD
         ])
     }
     
-    /// 为控制器选择转场动画的具体类型
-    /// - Returns: 支持的转场动画类型
-    open func animationType() -> MaskAlertAnimator.AnimationType {
-        return .external
-    }
+    // MARK: - Lazy Load
+    
+    /// 遮罩按钮，提供灰色遮罩
+    private(set) lazy var maskBtn: UIButton = {
+        let btn = UIButton(type: .custom)
+        btn.alpha = 0.6
+        btn.backgroundColor = .black
+        btn.addTarget(self, action: #selector(maskTapAction(_:)), for: .touchUpInside)
+        btn.isHidden = !self.isMaskEnable
+        return btn
+    }()
 
-    // MARK: - UIViewControllerTransitioningDelegate
+    /// 底座视图，用于放置要展示的内容
+    private(set) lazy var bezelView: UIView = {
+        return self.viewToAlert()
+    }()
+}
+
+
+// MARK: - 转场动画处理
+extension MoeAlertController: UIViewControllerTransitioningDelegate {
     public func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-        let animator = MaskAlertAnimator(owner: self, transitionType: .present, animationType: animationType(), animationDuration: animationDuratoin)
+        let animator = MoeAlertAnimator(owner: self, transitionType: .present)
+        animator.animationType = animationType()
+        animator.animationDuration = animationDuratoin
         return animator
     }
 
     public func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-        let animator = MaskAlertAnimator(owner: self, transitionType: .dismiss, animationType: animationType(), animationDuration: animationDuratoin)
+        let animator = MoeAlertAnimator(owner: self, transitionType: .dismiss)
+        animator.animationType = animationType()
+        animator.animationDuration = animationDuratoin
         return animator
     }
 
@@ -111,25 +137,11 @@ open class MaskAlertController: UIViewController, UIViewControllerTransitioningD
     public func contentViewForAnimation() -> UIView {
         return bezelView
     }
-
-    // MARK: Getter & Setter
-    private(set) lazy var maskBtn: UIButton = {
-        let des = Designator()
-        des.general.alpha(0.6)
-        des.background(.black)
-        des.event(.touchUpInside, for: self, action: #selector(self.maskTapAction(_:)))
-        let btn = des.makeButton()
-        btn.isHidden = !self.maskEnable
-        return btn
-    }()
-
-    private(set) lazy var bezelView: UIView = {
-        return self.viewToAlert()
-    }()
 }
 
 
-@objc extension MaskAlertController {
+// MARK: - 点击事件处理
+@objc extension MoeAlertController {
     /// 遮罩点击事件
     open func maskTapAction(_ sender: UIButton) {
         self.dismiss(animated: true, completion: nil)

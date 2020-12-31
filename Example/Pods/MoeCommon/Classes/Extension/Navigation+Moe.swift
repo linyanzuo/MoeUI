@@ -74,33 +74,13 @@ public extension TypeWrapperProtocol where WrappedType: UIViewController {
         }
     }
     
-    /// 为导航栏添加返回按钮
-    func navigationAddBackItem() {
+    /// 为导航栏添加返回按钮。注意此方法内部对图片进行强制解析，若不存在与名称匹配的图片会导致应用崩溃
+    /// - Parameter imageName: 返回按钮图片名称；若不存在，则会因可选类型的强制解析失败导致崩溃
+    func navigationAddBackItem(image: UIImage) {
         let backItemAction = #selector(UIViewController.navigationBackItemAction)
-        let backItem = UIBarButtonItem(imageName: "nav_back", target: wrappedValue, selector: backItemAction)
+        let backImage = image.withRenderingMode(.alwaysOriginal)
+        let backItem = UIBarButtonItem(image: backImage, style: .plain, target: wrappedValue, action: backItemAction)
         wrappedValue.navigationItem.leftBarButtonItem = backItem
-    }
-    
-    /// 将控制器添加至导航栈中，并展示其界面
-    /// - Parameters:
-    ///   - viewController: 要展示的视图控制器
-    ///   - animated:       转场过程是否启用动画，默认为true
-    func push(viewController: UIViewController, animated: Bool = true) {
-        guard let navCtrler = wrappedValue.navigationController else {
-            MLog("当前控制器【\(wrappedValue.moe.clazzName)】未处于导航栈中，无法完成PUSH操作")
-            return
-        }
-        navCtrler.pushViewController(viewController, animated: animated)
-    }
-    
-    /// 模态呈现控制器，展示其界面。
-    /// 通过「转场动画 + 控制器」形式实现的功能控件，都应该通过该方法呈现，而不是调用 `push(viewController: animated:)` 方法
-    /// - Parameters:
-    ///   - viewController: 要展示的视图控制器
-    ///   - animated:       转场过程是否启用动画，默认为true
-    ///   - completion:     转场动画执行完成后的回调闭包
-    func present(viewController: UIViewController, animated: Bool = true, completion: (() -> Void)? = nil) {
-        wrappedValue.present(viewController, animated: animated, completion: completion)
     }
 }
 

@@ -39,7 +39,7 @@ class AlertUsageVC: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.separatorStyle = .none
-        tableView.moe.registerCells(cellClasses: [TitleCell.self])
+        tableView.moe.registerCell(cellClass: TitleCell.self)
     }
 
     // MARK: -- UITableViewDelegate & UITableViewDataSource
@@ -110,14 +110,15 @@ class AlertUsageVC: UITableViewController {
             switch indexPath.row {
             case 0:
                 let vc = StyleAlertController(style: .success, text: "祝贺您，操作已成功")
-                vc.moe.clearPresentationBackground()
-                moe.present(viewController: vc)
+//                vc.moe.clearPresentationBackground()
+                moe.transparencyPresent(viewController: vc)
             case 1:
                 let vc = StyleAlertController(style: .error, text: "很不幸，并没有生效")
-                moe.present(viewController: vc)
+//                moe.present(viewController: vc)
+                moe.transparencyPresent(viewController: vc)
             case 2:
                 let vc = StyleAlertController(style: .progress, text: "正在处理")
-                moe.present(viewController: vc)
+                moe.transparencyPresent(viewController: vc)
             default: MLog("Nothing")
             }
         }

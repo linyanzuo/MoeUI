@@ -4,63 +4,70 @@
 //
 //  Created by Zed on 2019/8/17.
 //
+/**
+ 弹窗转场动画的相关实现
+ */
 
 import UIKit
 import MoeCommon
 
 
 /// 转场动画执行协议
-public protocol MaskAlertAnimatorProtocol where Self: UIViewController {
+public protocol MoeAlertAnimatorProtocol where Self: UIViewController {
+    /// 执行动画的内容视图
     func contentViewForAnimation() -> UIView
+    /// 执行动画的遮罩视图
     func maskViewForAnimation() -> UIView
 }
 
 
 /// 转场动画执行器
-public class MaskAlertAnimator: NSObject {
+public class MoeAlertAnimator: NSObject {
+    /// 转场动作类型
     public enum TransitionType {
+        /// 将控制器内容呈现到屏幕上
         case present
+        /// 将控制器内容从屏幕上移除
         case dismiss
     }
 
+    /// 转场动画类型
     public enum AnimationType {
+        /// 将视图由不透明向指定透明度渐变
+        case alpha
         /// 将视图由内向外扩散呈现在目标位置（附带alpha效果）
         case external
         /// 将视图从屏幕底部向目标位置移动呈现（附带alpha效果）；
-        /// 携带true则初始时视图顶部与屏幕底部对齐，携带false则初始时视图底部与屏幕底部对齐
+        /// 携带true则初始时视图顶部与屏幕底部对齐，携带false则初始时视图竖直中心与屏幕底部对齐
         case transformFromBottom(outOffScreen: Bool)
-        /// 将视图由不透明向指定透明度渐变
-        case alpha
     }
 
-    private let kBezelCornerRadius: CGFloat = 8.0
-
     // MARK: Object Life Cycle
-    var owner: MaskAlertAnimatorProtocol
-    var transitionType: TransitionType
-    var animationType: AnimationType
-    var animationDuration: TimeInterval
-
+    
+    /// 要执行转场动画的控制器
+    private var owner: MoeAlertAnimatorProtocol
+    /// 转场动作类型
+    private var transitionType: TransitionType
+    
+    /// 底座视图（要呈现的内容将作为子视图添加至底座视图）的圆角值
+    public var bezelCornerRadius: CGFloat = 8.0
+    /// 转场动画类型
+    public var animationType: AnimationType = .transformFromBottom(outOffScreen: false)
+    /// 转场动画执行时长
+    public var animationDuration: TimeInterval = 0.25
     
     /// 实例化动画执行器
     /// - Parameters:
     ///   - owner:              应用动画执行器的对象
     ///   - transitionType:     转场类型
-    ///   - animationType:      动画类型
-    ///   - animationDuration:  动画持续时长
-    public init(
-        owner: MaskAlertAnimatorProtocol,
-        transitionType: TransitionType,
-        animationType: AnimationType = .transformFromBottom(outOffScreen: false),
-        animationDuration: TimeInterval = 0.25
-    ) {
+    ///   - animationDuration:  动画持续时长，默认0.25秒
+    public init(owner: MoeAlertAnimatorProtocol, transitionType: TransitionType) {
         self.owner = owner
         self.transitionType = transitionType
-        self.animationType = animationType
-        self.animationDuration = animationDuration
     }
 
     // MARK: Getter & Setter
+    
     private var maskView: UIView {
         get { return owner.maskViewForAnimation() }
     }
@@ -71,8 +78,8 @@ public class MaskAlertAnimator: NSObject {
 }
 
 
-// MARK: - 转场动画
-extension MaskAlertAnimator: UIViewControllerAnimatedTransitioning {
+// MARK: - 转场动画实现
+extension MoeAlertAnimator: UIViewControllerAnimatedTransitioning {
     public func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
         return animationDuration
     }
@@ -88,7 +95,7 @@ extension MaskAlertAnimator: UIViewControllerAnimatedTransitioning {
     
     private func animatePresentTransition(using transitionContext: UIViewControllerContextTransitioning) {
         guard let _ = transitionContext.viewController(forKey: .from),
-            let toVC = transitionContext.viewController(forKey: .to) as? MaskAlertAnimatorProtocol
+            let toVC = transitionContext.viewController(forKey: .to) as? MoeAlertAnimatorProtocol
         else { return }
 
         let containerView = transitionContext.containerView
@@ -108,7 +115,7 @@ extension MaskAlertAnimator: UIViewControllerAnimatedTransitioning {
     }
 
     private func animateDismissTransition(using transitionContext: UIViewControllerContextTransitioning) {
-        guard let fromVC = transitionContext.viewController(forKey: .from) as? MaskAlertAnimatorProtocol,
+        guard let fromVC = transitionContext.viewController(forKey: .from) as? MoeAlertAnimatorProtocol,
             let _ = transitionContext.viewController(forKey: .to)
         else { return }
 
@@ -130,7 +137,7 @@ extension MaskAlertAnimator: UIViewControllerAnimatedTransitioning {
 
 
 // MARK: - 基础动画
-extension MaskAlertAnimator: CAAnimationDelegate {
+extension MoeAlertAnimator: CAAnimationDelegate {
     private func basicAnimation(keyPath: String, duration: TimeInterval, transitionType: TransitionType) -> CABasicAnimation {
         let animation = CABasicAnimation(keyPath: keyPath)
         animation.setValue(transitionType, forKey: "TRANSITION_TYPE")
@@ -150,17 +157,13 @@ extension MaskAlertAnimator: CAAnimationDelegate {
         let bezelAlphaAnim = basicAnimation(keyPath: "opacity", duration: duration, transitionType: transitionType)
         let maskAlphaAnim = basicAnimation(keyPath: "opacity", duration: duration, transitionType: transitionType)
         if transitionType == .present {
-//            bezelView.alpha = 0.0
             bezelAlphaAnim.fromValue = 0.0
             bezelAlphaAnim.toValue = bezelAlpha
-//            maskView.alpha = 0.0
             maskAlphaAnim.fromValue = 0.0
             maskAlphaAnim.toValue = maskAlpha
         } else if transitionType == .dismiss {
-//            bezelView.alpha = bezelAlpha
             bezelAlphaAnim.fromValue = bezelAlpha
             bezelAlphaAnim.toValue = 0.0
-//            maskView.alpha = maskAlpha
             maskAlphaAnim.fromValue = maskAlpha
             maskAlphaAnim.toValue = 0.0
         }
@@ -198,18 +201,13 @@ extension MaskAlertAnimator: CAAnimationDelegate {
         bezelView.layer.add(bezelPositionAnim, forKey: "bezelPositionAnimation")
     }
     
-//    // 平移动画结束
-//    private func translationAnimationComplete(transitionType: TransitionType) {
-//
-//    }
-    
     // 缩放动画
     private func externalAnimation(using transitionContext: UIViewControllerContextTransitioning, transitionType: TransitionType) {
-        let bezelCornerRadii = CGSize(width: kBezelCornerRadius, height: kBezelCornerRadius)
+        let bezelCornerRadii = CGSize(width: bezelCornerRadius, height: bezelCornerRadius)
         let sourceRect = CGRect(x: bezelView.bounds.width / 2,
                                 y: bezelView.bounds.height / 2,
-                                width: kBezelCornerRadius * 2,
-                                height: kBezelCornerRadius * 2)
+                                width: bezelCornerRadius * 2,
+                                height: bezelCornerRadius * 2)
         let sourcePath = UIBezierPath(roundedRect: sourceRect, byRoundingCorners: .allCorners, cornerRadii: bezelCornerRadii)
         let destinPtah = UIBezierPath(roundedRect: bezelView.bounds, byRoundingCorners: .allCorners, cornerRadii: bezelCornerRadii)
         let mask = CAShapeLayer()
@@ -238,6 +236,7 @@ extension MaskAlertAnimator: CAAnimationDelegate {
     }
     
     // MARK: CAAnimationDelegate
+    
     public func animationDidStart(_ anim: CAAnimation) {
         MLog("动画开始")
     }

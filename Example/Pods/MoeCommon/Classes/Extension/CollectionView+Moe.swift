@@ -10,14 +10,12 @@ import UIKit
 
 
 public extension TypeWrapperProtocol where WrappedType: UICollectionView {
-    /// 向集合视图(CollectionView)批量注册单元格(Cell)，注册的复用ID值为类名
+    /// 向集合视图(CollectionView)注册单元格(Cell)，注册的复用ID值为类名
     /// - Parameters:
-    ///   - cellClasses:            包含单元格类型的数组
-    func registerCells<T: UICollectionViewCell>(cellClasses: Array<T.Type>) {
-        for cellClass in cellClasses {
-            let reuseId = cellClass.moe.clazzName
-            wrappedValue.register(cellClass, forCellWithReuseIdentifier: reuseId)
-        }
+    ///   - cellClasses:            单元格类型
+    func registerCell<T: UICollectionViewCell>(cellClass: T.Type) {
+        let reuseId = cellClass.moe.clazzName
+        wrappedValue.register(cellClass, forCellWithReuseIdentifier: reuseId)
     }
     
     /// 从集合视图(CollectionView)中取出可复用的单元格(Cell)，若获取失败会抛出错误并中止运行

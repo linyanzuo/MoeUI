@@ -130,8 +130,9 @@ public extension Runtime {
     /// - Parameter attributes: 属性的特性
     private func valueType(withAttributes attributes: String) -> Any {
         // Tq,N,Vcount : Int类型的, 属性名为count
-        let letter = attributes.moe.subString(start: 1, length: 1)
-        guard let type = valueTypesMap[letter] else { return Any.self }
+        guard let letter = attributes.moe.subString(start: 1, length: 1),
+              let type = valueTypesMap[letter]
+        else { return Any.self }
         
         return type
     }

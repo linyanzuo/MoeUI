@@ -10,30 +10,26 @@ import UIKit
 
 
 public extension TypeWrapperProtocol where WrappedType: UITableView {
-    /// 设置自定义TableHeaderView，注意该视图只需要约束宽高值，宽度通常与TableView一致
+    /// 设置自定义TableHeaderView，注意该视图只需要约束宽高值，宽度通常与TableView一致。
+    /// `注意Xib加载视图作为TableHeaderView时高度异常，外嵌UIView可解决`
     /// - Parameter view: 设置为TableHeaderView的自定义视图
     func setTableHeaderView(view: UIView) {
         wrappedValue.tableHeaderView = view
         wrappedValue.autoresizingMask = UIView.AutoresizingMask(rawValue: 0)
     }
     
-    /// 向表格视图(TableView)批量注册单元格(Cell)和页眉页脚(HeaderFooter)，注册的复用ID值为类名
-    /// - Parameters:
-    ///   - cellClasses:            包含单元格类型的数组
-    ///   - headerFooterClasses:    包含页眉页脚类型的数组，为nil时则不注册
-    func registerCells<T: UITableViewCell, AT: UITableViewHeaderFooterView>(
-        cellClasses: Array<T.Type>,
-        headerFooterClasses: Array<AT.Type>? = nil
-    ) {
-        for cellClass in cellClasses {
-            let reuseId = cellClass.moe.clazzName
-            wrappedValue.register(cellClass, forCellReuseIdentifier: reuseId)
-        }
-        if (headerFooterClasses == nil) { return }
-        for headerFooterClass in headerFooterClasses! {
-            let reuseId = headerFooterClass.moe.clazzName
-            wrappedValue.register(headerFooterClass, forHeaderFooterViewReuseIdentifier: reuseId)
-        }
+    /// 向表格视图(TableView)注册单元格(Cell), 注册的复用ID值为类名
+    ///   - cellClasses:            单元格类型
+    func registerCell<T: UITableViewCell>(cellClass: T.Type) {
+        let reuseId = cellClass.moe.clazzName
+        wrappedValue.register(cellClass, forCellReuseIdentifier: reuseId)
+    }
+    
+    /// 向表格视图(TableView)注册页眉页脚(HeaderFooter)，注册的复用ID值为类名
+    ///   - headerFooterClasses:    页眉页脚类型
+    func registerHeaderFooter<T: UITableViewHeaderFooterView>(headerFooterClass: T.Type) {
+        let reuseId = headerFooterClass.moe.clazzName
+        wrappedValue.register(headerFooterClass, forHeaderFooterViewReuseIdentifier: reuseId)
     }
     
     /// 从表格视图(TableView)中取出可复用的单元格(Cell)，若获取失败会抛出错误并中止运行
