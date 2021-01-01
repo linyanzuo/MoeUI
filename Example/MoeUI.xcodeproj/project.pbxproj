@@ -16,12 +16,10 @@
 		607FACEC1AFB9204008FA782 /* Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACEB1AFB9204008FA782 /* Tests.swift */; };
 		9503302822F198F7001A0F9B /* UsageListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9503302722F198F7001A0F9B /* UsageListVC.swift */; };
 		9503302A22F19903001A0F9B /* SidePageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9503302922F19903001A0F9B /* SidePageVC.swift */; };
-		95051DAF250CCC2100967B7A /* StyleAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95051DAE250CCC2100967B7A /* StyleAlertController.swift */; };
 		95102A8723B634B800287422 /* UnitedTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95102A8623B634B800287422 /* UnitedTableViewController.swift */; };
 		95102A8C23B6566900287422 /* DemoTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95102A8B23B6566900287422 /* DemoTableVC.swift */; };
 		9519C6EC230A49D1005AEF22 /* AlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9519C6EB230A49D1005AEF22 /* AlertController.swift */; };
 		9519C6EE230A49F9005AEF22 /* PickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9519C6ED230A49F9005AEF22 /* PickerViewController.swift */; };
-		9536AB3A2542910B00569F6C /* BottomAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9536AB392542910B00569F6C /* BottomAlertView.swift */; };
 		95686A1022FA76F200485864 /* OtherVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95686A0F22FA76F200485864 /* OtherVC.swift */; };
 		95A9741D259C6C5B00344F93 /* MoeAlertProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95A9741C259C6C5B00344F93 /* MoeAlertProtocol.swift */; };
 		95AF992F22F4604F002CFC76 /* ContactCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95AF992C22F4604F002CFC76 /* ContactCell.swift */; };
@@ -31,9 +29,7 @@
 		95B6337122E856EE00B6DC8F /* ListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95B6337022E856EE00B6DC8F /* ListVC.swift */; };
 		95B6337422E8583600B6DC8F /* CornerRaidusCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95B6337322E8583600B6DC8F /* CornerRaidusCell.swift */; };
 		95C55D7722F03BE1001CF9FF /* AppearanceVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95C55D7622F03BE1001CF9FF /* AppearanceVC.swift */; };
-		95F98CD22331E4200091017B /* AlertUsageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95F98CD12331E4200091017B /* AlertUsageVC.swift */; };
 		95F98CD42331E51E0091017B /* TitleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95F98CD32331E51E0091017B /* TitleCell.swift */; };
-		95F98CD6233219620091017B /* CustomDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95F98CD5233219620091017B /* CustomDialog.swift */; };
 		95F98D0F23337FC00091017B /* RegistrationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95F98D0E23337FC00091017B /* RegistrationVC.swift */; };
 		95F98D13233470500091017B /* SettingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95F98D12233470500091017B /* SettingCell.swift */; };
 		E7102A3B34A4D0BBE1D546E1 /* Pods_MoeUI_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A6ECB442DFE0164409B96F36 /* Pods_MoeUI_Tests.framework */; };
@@ -66,12 +62,10 @@
 		8A094EB94C775F3C4A27B6E9 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		9503302722F198F7001A0F9B /* UsageListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsageListVC.swift; sourceTree = "<group>"; };
 		9503302922F19903001A0F9B /* SidePageVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidePageVC.swift; sourceTree = "<group>"; };
-		95051DAE250CCC2100967B7A /* StyleAlertController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StyleAlertController.swift; sourceTree = "<group>"; };
 		95102A8623B634B800287422 /* UnitedTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnitedTableViewController.swift; sourceTree = "<group>"; };
 		95102A8B23B6566900287422 /* DemoTableVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoTableVC.swift; sourceTree = "<group>"; };
 		9519C6EB230A49D1005AEF22 /* AlertController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertController.swift; sourceTree = "<group>"; };
 		9519C6ED230A49F9005AEF22 /* PickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PickerViewController.swift; sourceTree = "<group>"; };
-		9536AB392542910B00569F6C /* BottomAlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomAlertView.swift; sourceTree = "<group>"; };
 		95686A0F22FA76F200485864 /* OtherVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtherVC.swift; sourceTree = "<group>"; };
 		95A9741C259C6C5B00344F93 /* MoeAlertProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoeAlertProtocol.swift; sourceTree = "<group>"; };
 		95AF992C22F4604F002CFC76 /* ContactCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactCell.swift; sourceTree = "<group>"; };
@@ -81,9 +75,7 @@
 		95B6337022E856EE00B6DC8F /* ListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListVC.swift; sourceTree = "<group>"; };
 		95B6337322E8583600B6DC8F /* CornerRaidusCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CornerRaidusCell.swift; sourceTree = "<group>"; };
 		95C55D7622F03BE1001CF9FF /* AppearanceVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppearanceVC.swift; sourceTree = "<group>"; };
-		95F98CD12331E4200091017B /* AlertUsageVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertUsageVC.swift; sourceTree = "<group>"; };
 		95F98CD32331E51E0091017B /* TitleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleCell.swift; sourceTree = "<group>"; };
-		95F98CD5233219620091017B /* CustomDialog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomDialog.swift; sourceTree = "<group>"; };
 		95F98D0E23337FC00091017B /* RegistrationVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationVC.swift; sourceTree = "<group>"; };
 		95F98D12233470500091017B /* SettingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingCell.swift; sourceTree = "<group>"; };
 		97C8E5E34F804AC69415C4EC /* Pods-MoeUI_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MoeUI_Example.debug.xcconfig"; path = "Target Support Files/Pods-MoeUI_Example/Pods-MoeUI_Example.debug.xcconfig"; sourceTree = "<group>"; };
@@ -152,7 +144,6 @@
 				95102A8A23B6561F00287422 /* TableView */,
 				607FACD51AFB9204008FA782 /* AppDelegate.swift */,
 				95C55D7522F03BB2001CF9FF /* Appearance */,
-				95F98CCE2331E2AA0091017B /* Alert */,
 				95AF992822F44FB0002CFC76 /* PageMenu */,
 				95B6337222E8581200B6DC8F /* CornerRadius */,
 				9503302622F198CF001A0F9B /* SidePanDrawer */,
@@ -276,17 +267,6 @@
 				9519C6ED230A49F9005AEF22 /* PickerViewController.swift */,
 			);
 			name = Appearance;
-			sourceTree = "<group>";
-		};
-		95F98CCE2331E2AA0091017B /* Alert */ = {
-			isa = PBXGroup;
-			children = (
-				95F98CD12331E4200091017B /* AlertUsageVC.swift */,
-				95051DAE250CCC2100967B7A /* StyleAlertController.swift */,
-				95F98CD5233219620091017B /* CustomDialog.swift */,
-				9536AB392542910B00569F6C /* BottomAlertView.swift */,
-			);
-			name = Alert;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -479,7 +459,6 @@
 				95B6337122E856EE00B6DC8F /* ListVC.swift in Sources */,
 				607FACD81AFB9204008FA782 /* CornerRadiusVC.swift in Sources */,
 				9503302822F198F7001A0F9B /* UsageListVC.swift in Sources */,
-				95F98CD22331E4200091017B /* AlertUsageVC.swift in Sources */,
 				95102A8C23B6566900287422 /* DemoTableVC.swift in Sources */,
 				95F98D13233470500091017B /* SettingCell.swift in Sources */,
 				95B6337422E8583600B6DC8F /* CornerRaidusCell.swift in Sources */,
@@ -490,9 +469,6 @@
 				95102A8723B634B800287422 /* UnitedTableViewController.swift in Sources */,
 				95AF993122F4604F002CFC76 /* ContactViewController.swift in Sources */,
 				95A9741D259C6C5B00344F93 /* MoeAlertProtocol.swift in Sources */,
-				95F98CD6233219620091017B /* CustomDialog.swift in Sources */,
-				9536AB3A2542910B00569F6C /* BottomAlertView.swift in Sources */,
-				95051DAF250CCC2100967B7A /* StyleAlertController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -660,7 +636,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "Apple Distribution: Shenzhen Canderaction Technology Co., Ltd. (8LK2ZWLG9Q)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "Apple Distribution: Shenzhen Aiguqin Culture Co., Ltd. (368DW97H5X)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "Apple Distribution: Shenzhen Canderaction Technology Co., Ltd. (8LK2ZWLG9Q)";
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = 8LK2ZWLG9Q;
 				INFOPLIST_FILE = MoeUI/Info.plist;

@@ -32,7 +32,6 @@
 		56E48652EED13BBE7609985CF9CA5CC3 /* UIViewController+Moe.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACADA77042B5077F5D55B10943AA2799 /* UIViewController+Moe.swift */; };
 		598206DFD2A1E9C8B99514B04B77240D /* UIViewController+SidePanDrawer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA3894B983E63A96800B6271EF66CBBA /* UIViewController+SidePanDrawer.swift */; };
 		5C376607904258A10F4DDD6D42EFC491 /* ConstraintMaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1407F92868BAFAB04343F1C51D74A0FB /* ConstraintMaker.swift */; };
-		5D5786865034D6BB94B84C398F5AF696 /* MoeAlertAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09C1A797D9F03C3060224B269F7E54AE /* MoeAlertAnimator.swift */; };
 		5DBFB9A0499F04CBE806486211A4ABD0 /* SnapKit-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = A2511FE493A5F5A833D090B191C2A245 /* SnapKit-dummy.m */; };
 		656F25AB537FE9EC01CB8693F7A94920 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5A479A5B5D52E12ABC2D6B2ACEF1CE9 /* Foundation.framework */; };
 		66DD90F32B64CD3231108CD5514CCF24 /* Pods-MoeUI_Tests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 17DA88FA67F211DA729DF98ED84A4F4A /* Pods-MoeUI_Tests-dummy.m */; };
@@ -46,7 +45,6 @@
 		752F7F3E13E7A868DA583AB0DC2B808A /* MoeCommon-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = A9001E4D283DEDB11FCC22AAB8BDB2CF /* MoeCommon-dummy.m */; };
 		77A618FE4FF299682F776C974300EBA1 /* ConstraintView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FC5A334E65C865677704AD84B64C96C /* ConstraintView+Extensions.swift */; };
 		7A7ADBD753091655DA0F5FC78FBD9E06 /* Pods-MoeUI_Tests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = D7032F47EEACE4F2550382D9C2B53657 /* Pods-MoeUI_Tests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		7E51EC6AEA05391E7D9EDEFCF3EE57AF /* MoeAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E1E5AE78290D48625407220D6012756 /* MoeAlertController.swift */; };
 		7ED12926E82C9D1DE457504DA75B80A9 /* LayoutConstraintItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86974A2A5BD182678838DE5DEA26640B /* LayoutConstraintItem.swift */; };
 		86A9D248C4CE8610EF4884EA11E56354 /* Pods-MoeUI_Example-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = B82BB26ECCA5A9BF58BC155B9E215F29 /* Pods-MoeUI_Example-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		8B17DB68773EF7F3D8E9A1F0942A2545 /* String+Moe.swift in Sources */ = {isa = PBXBuildFile; fileRef = C39C3B4B310204AF425F363936CE7BAB /* String+Moe.swift */; };
@@ -156,7 +154,6 @@
 		05D4DCB3F289EA9A27160BA09D9FD41B /* Foundation+Moe.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "Foundation+Moe.swift"; path = "Classes/Extension/Foundation+Moe.swift"; sourceTree = "<group>"; };
 		05F2DD5185EC565A41C8E17890C793A2 /* MoeCommon-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "MoeCommon-umbrella.h"; sourceTree = "<group>"; };
 		09664BD39977A04A59B7E19C5928F89A /* MaskCornerRadius.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MaskCornerRadius.swift; path = MoeUI/Classes/Designator/MaskCornerRadius.swift; sourceTree = "<group>"; };
-		09C1A797D9F03C3060224B269F7E54AE /* MoeAlertAnimator.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MoeAlertAnimator.swift; path = MoeUI/Classes/Alert/MoeAlertAnimator.swift; sourceTree = "<group>"; };
 		0A9B7103E45324135E42E688CC79B521 /* MoeUI-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "MoeUI-dummy.m"; sourceTree = "<group>"; };
 		0C754F272F1CC9128FAD4919BD69DD91 /* ConstraintView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintView.swift; path = Source/ConstraintView.swift; sourceTree = "<group>"; };
 		0E0525C72DBB291512F276CF99DFA1E4 /* Pods-MoeUI_Example-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-MoeUI_Example-Info.plist"; sourceTree = "<group>"; };
@@ -216,7 +213,6 @@
 		783A69C95839B0633D3238B64AFE2B36 /* WKWebView+Moe.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "WKWebView+Moe.swift"; path = "Classes/Extension/WKWebView+Moe.swift"; sourceTree = "<group>"; };
 		7917B88C8CFF5466AC869DB5DA13C099 /* SnapKit-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SnapKit-umbrella.h"; sourceTree = "<group>"; };
 		7D2EBCD89950654248A3AE076AFB1E8F /* MaskView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MaskView.swift; path = MoeUI/Classes/PanDrawer/MaskView.swift; sourceTree = "<group>"; };
-		7E1E5AE78290D48625407220D6012756 /* MoeAlertController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MoeAlertController.swift; path = MoeUI/Classes/Alert/MoeAlertController.swift; sourceTree = "<group>"; };
 		82B5B3988230973FB3D4973113760842 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS14.0.sdk/System/Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
 		83DA2F30DD49185D7EE8A30548D8D498 /* ConstraintMakerRelatable.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintMakerRelatable.swift; path = Source/ConstraintMakerRelatable.swift; sourceTree = "<group>"; };
 		86974A2A5BD182678838DE5DEA26640B /* LayoutConstraintItem.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = LayoutConstraintItem.swift; path = Source/LayoutConstraintItem.swift; sourceTree = "<group>"; };
@@ -647,8 +643,6 @@
 				B936EC46A0E2B57BCBAA8BF748DCAC81 /* AlertView.swift */,
 				01A0A2F0757EE06A12DD95C87A834714 /* AlertWindow.swift */,
 				FC3E482913E22BE567184D33F90E8DA2 /* HUD.swift */,
-				09C1A797D9F03C3060224B269F7E54AE /* MoeAlertAnimator.swift */,
-				7E1E5AE78290D48625407220D6012756 /* MoeAlertController.swift */,
 			);
 			name = Alert;
 			sourceTree = "<group>";
@@ -989,8 +983,6 @@
 				6A5AF6246723614335C253D66EE30BF4 /* DrawerTransition.swift in Sources */,
 				47CF2DF98A703B7FCE026FCAA0557DCB /* HUD.swift in Sources */,
 				BEC5A1D222541C32AA3333D165A8BEA4 /* InteractiveTransition.swift in Sources */,
-				5D5786865034D6BB94B84C398F5AF696 /* MoeAlertAnimator.swift in Sources */,
-				7E51EC6AEA05391E7D9EDEFCF3EE57AF /* MoeAlertController.swift in Sources */,
 				6A604C44E1345D363D2BD9D75785745D /* MaskCornerRadius.swift in Sources */,
 				493BBD293F3D166AD86AB685333F74C0 /* MaskView.swift in Sources */,
 				B3CAEBB02719000003D3FAB1CF2BF511 /* MoeUI-dummy.m in Sources */,
