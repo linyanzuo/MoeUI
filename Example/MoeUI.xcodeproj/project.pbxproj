@@ -18,14 +18,11 @@
 		9503302A22F19903001A0F9B /* SidePageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9503302922F19903001A0F9B /* SidePageVC.swift */; };
 		95102A8723B634B800287422 /* UnitedTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95102A8623B634B800287422 /* UnitedTableViewController.swift */; };
 		95102A8C23B6566900287422 /* DemoTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95102A8B23B6566900287422 /* DemoTableVC.swift */; };
+		951998B725B6BB22007C883C /* TextBlurViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 951998B625B6BB22007C883C /* TextBlurViewController.swift */; };
+		951998BF25B6DDC2007C883C /* UIlabel+Blur.swift in Sources */ = {isa = PBXBuildFile; fileRef = 951998BE25B6DDC2007C883C /* UIlabel+Blur.swift */; };
 		9519C6EC230A49D1005AEF22 /* AlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9519C6EB230A49D1005AEF22 /* AlertController.swift */; };
 		9519C6EE230A49F9005AEF22 /* PickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9519C6ED230A49F9005AEF22 /* PickerViewController.swift */; };
 		95686A1022FA76F200485864 /* OtherVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95686A0F22FA76F200485864 /* OtherVC.swift */; };
-		95A9741D259C6C5B00344F93 /* MoeAlertProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95A9741C259C6C5B00344F93 /* MoeAlertProtocol.swift */; };
-		95AF992F22F4604F002CFC76 /* ContactCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95AF992C22F4604F002CFC76 /* ContactCell.swift */; };
-		95AF993022F4604F002CFC76 /* ContactCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 95AF992D22F4604F002CFC76 /* ContactCell.xib */; };
-		95AF993122F4604F002CFC76 /* ContactViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95AF992E22F4604F002CFC76 /* ContactViewController.swift */; };
-		95AF993322F46345002CFC76 /* PageDemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95AF993222F46345002CFC76 /* PageDemoViewController.swift */; };
 		95B6337122E856EE00B6DC8F /* ListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95B6337022E856EE00B6DC8F /* ListVC.swift */; };
 		95B6337422E8583600B6DC8F /* CornerRaidusCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95B6337322E8583600B6DC8F /* CornerRaidusCell.swift */; };
 		95C55D7722F03BE1001CF9FF /* AppearanceVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95C55D7622F03BE1001CF9FF /* AppearanceVC.swift */; };
@@ -64,14 +61,11 @@
 		9503302922F19903001A0F9B /* SidePageVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidePageVC.swift; sourceTree = "<group>"; };
 		95102A8623B634B800287422 /* UnitedTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnitedTableViewController.swift; sourceTree = "<group>"; };
 		95102A8B23B6566900287422 /* DemoTableVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoTableVC.swift; sourceTree = "<group>"; };
+		951998B625B6BB22007C883C /* TextBlurViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextBlurViewController.swift; sourceTree = "<group>"; };
+		951998BE25B6DDC2007C883C /* UIlabel+Blur.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIlabel+Blur.swift"; sourceTree = "<group>"; };
 		9519C6EB230A49D1005AEF22 /* AlertController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertController.swift; sourceTree = "<group>"; };
 		9519C6ED230A49F9005AEF22 /* PickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PickerViewController.swift; sourceTree = "<group>"; };
 		95686A0F22FA76F200485864 /* OtherVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtherVC.swift; sourceTree = "<group>"; };
-		95A9741C259C6C5B00344F93 /* MoeAlertProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoeAlertProtocol.swift; sourceTree = "<group>"; };
-		95AF992C22F4604F002CFC76 /* ContactCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactCell.swift; sourceTree = "<group>"; };
-		95AF992D22F4604F002CFC76 /* ContactCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ContactCell.xib; sourceTree = "<group>"; };
-		95AF992E22F4604F002CFC76 /* ContactViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactViewController.swift; sourceTree = "<group>"; };
-		95AF993222F46345002CFC76 /* PageDemoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageDemoViewController.swift; sourceTree = "<group>"; };
 		95B6337022E856EE00B6DC8F /* ListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListVC.swift; sourceTree = "<group>"; };
 		95B6337322E8583600B6DC8F /* CornerRaidusCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CornerRaidusCell.swift; sourceTree = "<group>"; };
 		95C55D7622F03BE1001CF9FF /* AppearanceVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppearanceVC.swift; sourceTree = "<group>"; };
@@ -140,11 +134,10 @@
 		607FACD21AFB9204008FA782 /* Example for MoeUI */ = {
 			isa = PBXGroup;
 			children = (
-				95A9741B259C6C3200344F93 /* MoeAlertController */,
+				951998B525B6BB16007C883C /* TextBlur */,
 				95102A8A23B6561F00287422 /* TableView */,
 				607FACD51AFB9204008FA782 /* AppDelegate.swift */,
 				95C55D7522F03BB2001CF9FF /* Appearance */,
-				95AF992822F44FB0002CFC76 /* PageMenu */,
 				95B6337222E8581200B6DC8F /* CornerRadius */,
 				9503302622F198CF001A0F9B /* SidePanDrawer */,
 				607FACD91AFB9204008FA782 /* Main.storyboard */,
@@ -221,31 +214,13 @@
 			name = TableView;
 			sourceTree = "<group>";
 		};
-		95A9741B259C6C3200344F93 /* MoeAlertController */ = {
+		951998B525B6BB16007C883C /* TextBlur */ = {
 			isa = PBXGroup;
 			children = (
-				95A9741C259C6C5B00344F93 /* MoeAlertProtocol.swift */,
+				951998BE25B6DDC2007C883C /* UIlabel+Blur.swift */,
+				951998B625B6BB22007C883C /* TextBlurViewController.swift */,
 			);
-			name = MoeAlertController;
-			sourceTree = "<group>";
-		};
-		95AF992822F44FB0002CFC76 /* PageMenu */ = {
-			isa = PBXGroup;
-			children = (
-				95AF993222F46345002CFC76 /* PageDemoViewController.swift */,
-				95AF992B22F4604F002CFC76 /* Contact */,
-			);
-			name = PageMenu;
-			sourceTree = "<group>";
-		};
-		95AF992B22F4604F002CFC76 /* Contact */ = {
-			isa = PBXGroup;
-			children = (
-				95AF992C22F4604F002CFC76 /* ContactCell.swift */,
-				95AF992D22F4604F002CFC76 /* ContactCell.xib */,
-				95AF992E22F4604F002CFC76 /* ContactViewController.swift */,
-			);
-			path = Contact;
+			name = TextBlur;
 			sourceTree = "<group>";
 		};
 		95B6337222E8581200B6DC8F /* CornerRadius */ = {
@@ -322,13 +297,13 @@
 				TargetAttributes = {
 					607FACCF1AFB9204008FA782 = {
 						CreatedOnToolsVersion = 6.3.1;
-						DevelopmentTeam = 8LK2ZWLG9Q;
-						LastSwiftMigration = 0900;
+						DevelopmentTeam = YVYW5B4QC4;
+						LastSwiftMigration = 1230;
 						ProvisioningStyle = Manual;
 					};
 					607FACE41AFB9204008FA782 = {
 						CreatedOnToolsVersion = 6.3.1;
-						DevelopmentTeam = 8LK2ZWLG9Q;
+						DevelopmentTeam = YVYW5B4QC4;
 						LastSwiftMigration = 0900;
 						ProvisioningStyle = Manual;
 						TestTargetID = 607FACCF1AFB9204008FA782;
@@ -360,7 +335,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				95AF993022F4604F002CFC76 /* ContactCell.xib in Resources */,
 				607FACDB1AFB9204008FA782 /* Main.storyboard in Resources */,
 				607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */,
 				607FACDD1AFB9204008FA782 /* Images.xcassets in Resources */,
@@ -451,10 +425,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				9519C6EE230A49F9005AEF22 /* PickerViewController.swift in Sources */,
-				95AF993322F46345002CFC76 /* PageDemoViewController.swift in Sources */,
+				951998B725B6BB22007C883C /* TextBlurViewController.swift in Sources */,
 				9519C6EC230A49D1005AEF22 /* AlertController.swift in Sources */,
-				95AF992F22F4604F002CFC76 /* ContactCell.swift in Sources */,
 				95F98D0F23337FC00091017B /* RegistrationVC.swift in Sources */,
+				951998BF25B6DDC2007C883C /* UIlabel+Blur.swift in Sources */,
 				95686A1022FA76F200485864 /* OtherVC.swift in Sources */,
 				95B6337122E856EE00B6DC8F /* ListVC.swift in Sources */,
 				607FACD81AFB9204008FA782 /* CornerRadiusVC.swift in Sources */,
@@ -467,8 +441,6 @@
 				9503302A22F19903001A0F9B /* SidePageVC.swift in Sources */,
 				607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */,
 				95102A8723B634B800287422 /* UnitedTableViewController.swift in Sources */,
-				95AF993122F4604F002CFC76 /* ContactViewController.swift in Sources */,
-				95A9741D259C6C5B00344F93 /* MoeAlertProtocol.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -555,7 +527,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -601,7 +573,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
@@ -614,16 +586,20 @@
 			baseConfigurationReference = 97C8E5E34F804AC69415C4EC /* Pods-MoeUI_Example.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "Apple Development: Yanzuo Lin (C3T57XZ9JZ)";
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "Apple Development: Yanzuo Lin (DQ6QMT77F5)";
 				CODE_SIGN_STYLE = Manual;
-				DEVELOPMENT_TEAM = 8LK2ZWLG9Q;
+				DEVELOPMENT_TEAM = YVYW5B4QC4;
+				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = MoeUI/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MODULE_NAME = ExampleApp;
 				PRODUCT_BUNDLE_IDENTIFIER = com.moemone.moeui;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = DEV_GEN_ALL;
+				PROVISIONING_PROFILE_SPECIFIER = MoeGeneral;
+				SWIFT_OBJC_BRIDGING_HEADER = "";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -635,17 +611,20 @@
 			baseConfigurationReference = BB5A5ABE435860855C4DE2C3 /* Pods-MoeUI_Example.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "Apple Distribution: Shenzhen Canderaction Technology Co., Ltd. (8LK2ZWLG9Q)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "Apple Distribution: Shenzhen Canderaction Technology Co., Ltd. (8LK2ZWLG9Q)";
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "Apple Development: Yanzuo Lin (DQ6QMT77F5)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "Apple Development: Yanzuo Lin (DQ6QMT77F5)";
 				CODE_SIGN_STYLE = Manual;
-				DEVELOPMENT_TEAM = 8LK2ZWLG9Q;
+				DEVELOPMENT_TEAM = YVYW5B4QC4;
+				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = MoeUI/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MODULE_NAME = ExampleApp;
 				PRODUCT_BUNDLE_IDENTIFIER = com.moe.moeui;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = DEV_GEN_ALL;
+				PROVISIONING_PROFILE_SPECIFIER = MoeGeneral;
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -656,9 +635,9 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 0C912F6AA5AFBAE38844A20E /* Pods-MoeUI_Tests.debug.xcconfig */;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_IDENTITY = "Apple Development: Yanzuo Lin (DQ6QMT77F5)";
 				CODE_SIGN_STYLE = Manual;
-				DEVELOPMENT_TEAM = 8LK2ZWLG9Q;
+				DEVELOPMENT_TEAM = YVYW5B4QC4;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(PLATFORM_DIR)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -672,7 +651,6 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				"PROVISIONING_PROFILE_SPECIFIER[sdk=macosx*]" = "";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
 				SWIFT_VERSION = 5.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MoeUI_Example.app/MoeUI_Example";
@@ -683,8 +661,10 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = CB7E67C8A6FE370605998D5D /* Pods-MoeUI_Tests.release.xcconfig */;
 			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "Apple Development: Guohua Liu (ZY8THU9K5V)";
-				DEVELOPMENT_TEAM = 368DW97H5X;
+				CODE_SIGN_IDENTITY = "Apple Development: Yanzuo Lin (DQ6QMT77F5)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "Apple Development: Yanzuo Lin (DQ6QMT77F5)";
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = YVYW5B4QC4;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(PLATFORM_DIR)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -693,6 +673,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
 				SWIFT_VERSION = 5.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MoeUI_Example.app/MoeUI_Example";

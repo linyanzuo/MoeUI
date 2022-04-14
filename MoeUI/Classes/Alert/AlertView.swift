@@ -140,10 +140,7 @@ extension AlertView {
         // 1. 清除上一个提示的动画效果，避免动画效果冲突
         if let previousView = alerts.last?.view { previousView.layer.removeAllAnimations() }
         maskBtn.isUserInteractionEnabled = false
-        guard alerts.count > 0 else {
-            MLog("没有正在展示的提示")
-            return
-        }
+        guard alerts.count > 0 else { MLog("没有正在展示的提示"); return }
         self.completionHandler = completionHandler
         // 2. 查找要移除的目标提示
         var targetAlert: Alert? = alerts.last

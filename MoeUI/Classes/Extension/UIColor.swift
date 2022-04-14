@@ -1,13 +1,14 @@
 //
-//  Created by Zed on 2020/8/18.
-//  Copyright © 2020 www.moemone.com. All rights reserved.
+//  UIColor.swift
+//  MoeUI-MoeUI
+//
+//  Created by Zed on 2022/4/14.
 //
 
 import UIKit
 
 
 public extension UIColor {
-    
     /// 随机颜色
     class var random: UIColor {
         get {
@@ -35,6 +36,5 @@ public extension UIColor {
 
         self.init(red: red, green: green, blue: blue, alpha: alpha)
     }
-    
 }
 

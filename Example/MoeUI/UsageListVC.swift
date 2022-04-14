@@ -18,8 +18,7 @@ class UsageListVC: TableViewController {
     private let usagesGroup: [[(title: String, clazzName: String)]] = [
         [("Designator - 样式设计", "AppearanceVC"),
          ("Accessor - 样式注册", "RegistrationVC")],
-        [("HUD & Alert - 弹窗提示", "AlertUsageVC")],
-        [("PageMenu - 多标签页", "PageDemoViewController")]
+        [("BlurLabel - 文字模糊", "TextBlurViewController")]
     ]
     private let kTitleCellReuseID = "TitleCellReuseID"
     
@@ -83,7 +82,7 @@ class UsageListVC: TableViewController {
     
     @discardableResult
     private func pushToTargetClass(with clazzName: String) -> Bool {
-        let namespace = MInfo.namespace ?? ""
+        let namespace = Bundle.infoPlist.namespace ?? ""
         guard let clazz: AnyClass = NSClassFromString(namespace + "." + clazzName)
             else { return false }
 

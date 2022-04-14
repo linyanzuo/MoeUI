@@ -85,8 +85,8 @@ class AppearanceVC: UIViewController {
 
     /// `Designator`提供了快速创建可赋值控件的方法
     @IBAction func designatorDemo3(_ sender: Any) {
-        let x = CGFloat(arc4random_uniform(UInt32(MScreen.width - 100)))
-        let y = CGFloat(arc4random_uniform(UInt32(MScreen.height - 100)))
+        let x = CGFloat(arc4random_uniform(UInt32(UIScreen.main.bounds.width - 100)))
+        let y = CGFloat(arc4random_uniform(UInt32(UIScreen.main.bounds.height - 100)))
         
         let newBtn = Designator.makeButton(toView: view) { (des) in
             des.background(.random).cornerRadius(8)

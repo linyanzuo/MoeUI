@@ -104,6 +104,8 @@ class SettingCell: TableViewCell, UnitedTableCellProtocol {
     private func setDetail(_ data: DetailSetting) {
         titleLabel.text = data.title
         detailLabel.text = data.detail
+//        detailLabel.sizeToFit()
+        detailLabel.gaussianBlur(radius: 10)
         hiddenSubview(except: [titleLabel, detailLabel, arrowImgView])
 
         titleLabel.snp.makeConstraints { (maker) in

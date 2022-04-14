@@ -4,6 +4,7 @@
 //
 
 import UIKit
+import MoeCommon
 
 
 /// 渐变颜色的绘制方向
@@ -20,7 +21,6 @@ public enum GradientType: Int {
 
 
 // MARK: - UIImage 图片绘制相关扩展
-
 public extension TypeWrapperProtocol where WrappedType: UIImage {
     // MARK: - 在指定尺寸的图形上下文环境中，执行闭包代码绘制图片
     /// 在指定尺寸的图形上下文环境中，执行闭包代码绘制图片
@@ -209,3 +209,4 @@ public extension TypeWrapperProtocol where WrappedType: UIImage {
         }
     }
 }
+

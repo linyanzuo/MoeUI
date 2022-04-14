@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'MoeUI'
-  s.version          = '1.3.0'
+  s.version          = '1.2.0'
   s.summary          = 'MoeUI is a framework that make UI controls create and configure easily'
 
   # This description is used to generate tags and improve search results.
@@ -28,10 +28,14 @@ Pod::Spec.new do |s|
   s.source           = { :git => 'https://github.com/linyanzuo/MoeUI.git', :tag => s.version.to_s }
   # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
 
-  s.ios.deployment_target = '9.0'
+  s.ios.deployment_target = '11.0'
   s.swift_versions = '5.0'
 
   #  s.source_files = 'MoeUI/Classes/*'
+  s.subspec 'Extension' do |extension|
+    extension.source_files = 'MoeUI/Classes/Extension/*'
+    extension.frameworks = 'UIKit'
+  end
   s.subspec 'Unity' do |unity|
     unity.source_files = 'MoeUI/Classes/Unity/*'
     unity.frameworks = 'UIKit'
@@ -39,6 +43,7 @@ Pod::Spec.new do |s|
   s.subspec 'Designator' do |designator|
     designator.source_files = 'MoeUI/Classes/Designator/*'
     designator.frameworks = 'UIKit'
+    designator.dependency 'MoeUI/Extension'
   end
 # Appearance已废弃, 使用Designator替代
 #  s.subspec 'Appearance' do |appearance|

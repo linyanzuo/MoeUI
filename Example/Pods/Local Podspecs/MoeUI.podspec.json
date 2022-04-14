@@ -1,6 +1,6 @@
 {
   "name": "MoeUI",
-  "version": "1.3.0",
+  "version": "1.2.0",
   "summary": "MoeUI is a framework that make UI controls create and configure easily",
   "description": "TODO: Add long description of the pod here.",
   "homepage": "https://github.com/linyanzuo/MoeUI",
@@ -13,10 +13,10 @@
   },
   "source": {
     "git": "https://github.com/linyanzuo/MoeUI.git",
-    "tag": "1.3.0"
+    "tag": "1.2.0"
   },
   "platforms": {
-    "ios": "9.0"
+    "ios": "11.0"
   },
   "swift_versions": "5.0",
   "resource_bundles": {
@@ -31,6 +31,11 @@
   },
   "subspecs": [
     {
+      "name": "Extension",
+      "source_files": "MoeUI/Classes/Extension/*",
+      "frameworks": "UIKit"
+    },
+    {
       "name": "Unity",
       "source_files": "MoeUI/Classes/Unity/*",
       "frameworks": "UIKit"
@@ -38,7 +43,12 @@
     {
       "name": "Designator",
       "source_files": "MoeUI/Classes/Designator/*",
-      "frameworks": "UIKit"
+      "frameworks": "UIKit",
+      "dependencies": {
+        "MoeUI/Extension": [
+
+        ]
+      }
     },
     {
       "name": "PanDrawer",

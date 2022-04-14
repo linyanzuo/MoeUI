@@ -29,7 +29,8 @@ class DrawerTransition: NSObject, UIViewControllerAnimatedTransitioning {
     var animationType: AnimationType
     var animationDelayTime: TimeInterval {
         get {
-            if MDevice.phoneVersion >= 11.0 { return 0.03 }
+            let systemVersion = (UIDevice.current.systemVersion as NSString).doubleValue
+            if systemVersion >= 11.0 { return 0.03 }
             return 0.0
         }
     }
@@ -76,15 +77,16 @@ class DrawerTransition: NSObject, UIViewControllerAnimatedTransitioning {
         }
 
         // --- 动画效果计算; toTransform初始状态就显示一半内容, 执行动画时再移动一半内容的距离 ---
-        let sidePageWidth = configuration.distancePercent * MScreen.width
+        let screenWidth = UIScreen.main.bounds.width
+        let sidePageWidth = configuration.distancePercent * screenWidth
         let toViewX = configuration.panDirection == .fromLeft ?
-            (-sidePageWidth / 2) : (MScreen.width - sidePageWidth / 2)
+            (-sidePageWidth / 2) : (screenWidth - sidePageWidth / 2)
         toVC.view.frame = CGRect(x: toViewX, y: 0, width: containerView.frame.width, height: containerView.frame.height)
         containerView.addSubview(toVC.view)
         containerView.addSubview(fromVC.view)
 
         let multiple: CGFloat = configuration.panDirection == .fromLeft ? 1.0 : -1.0
-        let translationX = sidePageWidth - (MScreen.width * (1 - configuration.viewScaleY) / 2)
+        let translationX = sidePageWidth - (screenWidth * (1 - configuration.viewScaleY) / 2)
         let scale = CGAffineTransform(scaleX: configuration.viewScaleY, y: configuration.viewScaleY)
         let translation = CGAffineTransform(translationX: multiple * translationX, y: 0)
         let fromTransform = scale.concatenating(translation)

@@ -20,15 +20,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         _ application: UIApplication,
         didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?
     ) -> Bool {
-        window = UIWindow(frame: MScreen.bounds)
+        window = UIWindow(frame: UIScreen.main.bounds)
 
         // 侧滑案例
         let mainVC = UsageListVC(style: .grouped)
         let navVC = UINavigationController(rootViewController: mainVC)
-
-        // 分页菜单案例
-//        let pageVC = PageDemoViewController()
-//        let navVC = UINavigationController(rootViewController: pageVC)
         
         window?.rootViewController = navVC
         window?.makeKeyAndVisible()

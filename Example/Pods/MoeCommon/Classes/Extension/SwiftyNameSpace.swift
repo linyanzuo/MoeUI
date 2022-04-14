@@ -7,10 +7,9 @@
 
 import UIKit
 
-// MARK: - 数据类型包装
 
-/// 数据类型包装协议
-/// 适用于`基本类型`、`结构体`等, 使用等号`==`确认类型
+// MARK: - 数据类型包装
+/// 类型包装协议
 public protocol TypeWrapperProtocol {
     associatedtype WrappedType
     var wrappedValue: WrappedType { get }
@@ -19,9 +18,7 @@ public protocol TypeWrapperProtocol {
 
 
 // MARK: - 对象类型包装
-
 /// 命名空间包装协议
-/// 适用于对象类型, 使用冒号`:`实现协议
 public protocol NamespaceWrappable {
     associatedtype WrapperType
     var moe: WrapperType { get }
@@ -45,12 +42,7 @@ public extension NamespaceWrappable {
 }
 
 
-// MARK: - Standard
-
-extension String: NamespaceWrappable {}
-extension URL: NamespaceWrappable {}
-
-
-// MARK: - Foundation
-
+// MARK: - NSObject
+/// 基础类型需要手动继承NamespaceWrappable
+/// 对象类型都继承自NSObject，因此自动继承NamespaceWrappable协议
 extension NSObject: NamespaceWrappable {}

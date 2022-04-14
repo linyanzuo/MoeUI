@@ -23,7 +23,7 @@ public class AlertDialog: MoeView {
         case error
     }
 
-    private let fontColor = UIColor(rgb: 0x666666)
+    private let fontColor = UIColor()
     public var style: AlertDialog.Style
     public var message: String
 
