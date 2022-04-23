@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'MoeUI'
-  s.version          = '0.0.1'
+  s.version          = '0.0.2'
   s.summary          = 'Moe UI Library'
 
   # This description is used to generate tags and improve search results.
@@ -43,11 +43,11 @@ Pod::Spec.new do |s|
     unity.dependency 'MoeUI/Extension'
   end
 #  暂时关闭该库，待处理
-  s.subspec 'Designator' do |designator|
-    designator.source_files = 'MoeUI/Classes/Designator/*'
-    designator.frameworks = 'UIKit'
-    designator.dependency 'MoeUI/Extension'
-  end
+#  s.subspec 'Designator' do |designator|
+#    designator.source_files = 'MoeUI/Classes/Designator/*'
+#    designator.frameworks = 'UIKit'
+#    designator.dependency 'MoeUI/Extension'
+#  end
 # Appearance已废弃, 使用Designator替代
 #  s.subspec 'Appearance' do |appearance|
 #    appearance.source_files = 'MoeUI/Classes/Appearance/*'
