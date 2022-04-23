@@ -1,12 +1,11 @@
 use_frameworks!
 
-#source 'https://github.com/linyanzuo/MoeCommon.git'
-#source 'https://github.com/CocoaPods/Specs.git'
+source 'https://github.com/CocoaPods/Specs.git'
+source 'https://github.com/linyanzuo/MoeRepo.git'
 
 target 'MoeUI_Example' do
-  pod 'MoeUI', :path => '../'
-  pod 'MoeCommon', '~> 1.3.0'
   pod 'SnapKit', '~> 5.0.0'
+  pod 'MoeUI', :path => '../'
 
   target 'MoeUI_Tests' do
     inherit! :search_paths

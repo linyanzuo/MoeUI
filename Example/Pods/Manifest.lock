@@ -1,55 +1,46 @@
 PODS:
-  - MoeCommon (0.1.2):
-    - MoeCommon/Base (= 0.1.2)
-    - MoeCommon/Extension (= 0.1.2)
-    - MoeCommon/Runtime (= 0.1.2)
-  - MoeCommon/Base (0.1.2)
-  - MoeCommon/Extension (0.1.2)
-  - MoeCommon/Runtime (0.1.2):
+  - MoeCommon (0.0.1):
+    - MoeCommon/Base (= 0.0.1)
+    - MoeCommon/Extension (= 0.0.1)
+    - MoeCommon/Runtime (= 0.0.1)
+  - MoeCommon/Base (0.0.1)
+  - MoeCommon/Extension (0.0.1)
+  - MoeCommon/Runtime (0.0.1):
     - MoeCommon/Base
     - MoeCommon/Extension
-  - MoeUI (1.2.0):
-    - MoeCommon
-    - MoeUI/Designator (= 1.2.0)
-    - MoeUI/Extension (= 1.2.0)
-    - MoeUI/PanDrawer (= 1.2.0)
-    - MoeUI/Unity (= 1.2.0)
-  - MoeUI/Designator (1.2.0):
-    - MoeCommon
+  - MoeUI (0.0.1):
+    - MoeCommon (~> 0.0.1)
+    - MoeUI/Extension (= 0.0.1)
+    - MoeUI/PanDrawer (= 0.0.1)
+    - MoeUI/Unity (= 0.0.1)
+  - MoeUI/Extension (0.0.1):
+    - MoeCommon (~> 0.0.1)
+  - MoeUI/PanDrawer (0.0.1):
+    - MoeCommon (~> 0.0.1)
+  - MoeUI/Unity (0.0.1):
+    - MoeCommon (~> 0.0.1)
     - MoeUI/Extension
-  - MoeUI/Extension (1.2.0):
-    - MoeCommon
-  - MoeUI/PanDrawer (1.2.0):
-    - MoeCommon
-  - MoeUI/Unity (1.2.0):
-    - MoeCommon
   - SnapKit (5.0.1)
 
 DEPENDENCIES:
-  - MoeCommon (from `https://github.com/linyanzuo/MoeCommon.git`)
   - MoeUI (from `../`)
   - SnapKit (~> 5.0.0)
 
 SPEC REPOS:
+  https://github.com/linyanzuo/MoeRepo.git:
+    - MoeCommon
   trunk:
     - SnapKit
 
 EXTERNAL SOURCES:
-  MoeCommon:
-    :git: https://github.com/linyanzuo/MoeCommon.git
   MoeUI:
     :path: "../"
 
-CHECKOUT OPTIONS:
-  MoeCommon:
-    :commit: 6f666d2bd1b7fe066a0b23dffccf17ae29dd6387
-    :git: https://github.com/linyanzuo/MoeCommon.git
-
 SPEC CHECKSUMS:
-  MoeCommon: 8e5ebe9c6a3c9e34af5bcee9bb575b3f695c6f83
-  MoeUI: e5e3122473073d3ef66ae25ff09cd4420a2c1c07
+  MoeCommon: 51974af724f67140e1bde59c322ad7ac0cb4e7b8
+  MoeUI: 1b7e81bfab6f147c864937bc4c07476981acc11b
   SnapKit: 97b92857e3df3a0c71833cce143274bf6ef8e5eb
 
-PODFILE CHECKSUM: c0c258db5ffefbd680cf973645d237f924d90aad
+PODFILE CHECKSUM: b793ebc859f607001b58717e9f2abd673f35d306
 
 COCOAPODS: 1.11.2

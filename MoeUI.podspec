@@ -8,8 +8,8 @@
 
 Pod::Spec.new do |s|
   s.name             = 'MoeUI'
-  s.version          = '1.2.1'
-  s.summary          = 'MoeUI is a framework that make UI controls create and configure easily'
+  s.version          = '0.0.1'
+  s.summary          = 'Moe UI Library'
 
   # This description is used to generate tags and improve search results.
   #   * Think: What does it do? Why did you write it? What is the focus?
@@ -18,7 +18,7 @@ Pod::Spec.new do |s|
   #   * Finally, don't worry about the indent, CocoaPods strips it!
 
   s.description      = <<-DESC
-  TODO: Add long description of the pod here.
+  MoeUI is a framework that make UI controls create and configure easily
   DESC
 
   s.homepage         = 'https://github.com/linyanzuo/MoeUI'
@@ -63,11 +63,12 @@ Pod::Spec.new do |s|
 #    alert.dependency 'MoeUI/Designator'
 #  end
 
-  s.resource_bundles = {
-    'MoeUI' => ['MoeUI.xcassets']
-  }
+# pod库需要携带资源时配置
+#  s.resource_bundles = {
+#    'MoeUI' => ['MoeUI.xcassets']
+#  }
 
   # s.public_header_files = 'Pod/Classes/**/*.h'
   # s.frameworks = 'UIKit', 'MapKit'
-    s.dependency 'MoeCommon', '~> 0.1.3'
+    s.dependency 'MoeCommon', '~> 0.0.1'
 end

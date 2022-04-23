@@ -1,32 +1,27 @@
 {
   "name": "MoeUI",
-  "version": "1.2.0",
-  "summary": "MoeUI is a framework that make UI controls create and configure easily",
-  "description": "TODO: Add long description of the pod here.",
+  "version": "0.0.1",
+  "summary": "Moe UI Library",
+  "description": "MoeUI is a framework that make UI controls create and configure easily",
   "homepage": "https://github.com/linyanzuo/MoeUI",
   "license": {
     "type": "MIT",
     "file": "LICENSE"
   },
   "authors": {
-    "linyanzuo1222@gmail.com": "zed@moemone.com"
+    "linyanzuo": "zed@moemone.com"
   },
   "source": {
     "git": "https://github.com/linyanzuo/MoeUI.git",
-    "tag": "1.2.0"
+    "tag": "0.0.1"
   },
   "platforms": {
     "ios": "11.0"
   },
   "swift_versions": "5.0",
-  "resource_bundles": {
-    "MoeUI": [
-      "MoeUI.xcassets"
-    ]
-  },
   "dependencies": {
     "MoeCommon": [
-      "~> 0.1.3"
+      "~> 0.0.1"
     ]
   },
   "subspecs": [
@@ -38,11 +33,6 @@
     {
       "name": "Unity",
       "source_files": "MoeUI/Classes/Unity/*",
-      "frameworks": "UIKit"
-    },
-    {
-      "name": "Designator",
-      "source_files": "MoeUI/Classes/Designator/*",
       "frameworks": "UIKit",
       "dependencies": {
         "MoeUI/Extension": [
