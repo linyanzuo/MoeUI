@@ -41,6 +41,16 @@
       }
     },
     {
+      "name": "Designator",
+      "source_files": "MoeUI/Classes/Designator/*",
+      "frameworks": "UIKit",
+      "dependencies": {
+        "MoeUI/Extension": [
+
+        ]
+      }
+    },
+    {
       "name": "PanDrawer",
       "source_files": "MoeUI/Classes/PanDrawer/*",
       "frameworks": "UIKit"

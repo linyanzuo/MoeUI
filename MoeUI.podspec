@@ -25,8 +25,9 @@ Pod::Spec.new do |s|
   # s.screenshots     = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
   s.author           = { 'linyanzuo' => 'zed@moemone.com' }
-  s.source           = { :git => 'https://github.com/linyanzuo/MoeUI.git', :tag => s.version.to_s }
-  # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
+  s.source           = {
+      :git => 'https://github.com/linyanzuo/MoeUI.git', :tag => s.version.to_s
+  }
 
   s.ios.deployment_target = '11.0'
   s.swift_versions = '5.0'
@@ -42,11 +43,11 @@ Pod::Spec.new do |s|
     unity.dependency 'MoeUI/Extension'
   end
 #  暂时关闭该库，待处理
-#  s.subspec 'Designator' do |designator|
-#    designator.source_files = 'MoeUI/Classes/Designator/*'
-#    designator.frameworks = 'UIKit'
-#    designator.dependency 'MoeUI/Extension'
-#  end
+  s.subspec 'Designator' do |designator|
+    designator.source_files = 'MoeUI/Classes/Designator/*'
+    designator.frameworks = 'UIKit'
+    designator.dependency 'MoeUI/Extension'
+  end
 # Appearance已废弃, 使用Designator替代
 #  s.subspec 'Appearance' do |appearance|
 #    appearance.source_files = 'MoeUI/Classes/Appearance/*'

@@ -10,9 +10,13 @@ PODS:
     - MoeCommon/Extension
   - MoeUI (0.0.1):
     - MoeCommon (~> 0.0.1)
+    - MoeUI/Designator (= 0.0.1)
     - MoeUI/Extension (= 0.0.1)
     - MoeUI/PanDrawer (= 0.0.1)
     - MoeUI/Unity (= 0.0.1)
+  - MoeUI/Designator (0.0.1):
+    - MoeCommon (~> 0.0.1)
+    - MoeUI/Extension
   - MoeUI/Extension (0.0.1):
     - MoeCommon (~> 0.0.1)
   - MoeUI/PanDrawer (0.0.1):
@@ -38,9 +42,9 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   MoeCommon: 51974af724f67140e1bde59c322ad7ac0cb4e7b8
-  MoeUI: 1b7e81bfab6f147c864937bc4c07476981acc11b
+  MoeUI: e5d7ca9b7d3745420c2288ccd7f30bfa59ab6da5
   SnapKit: 97b92857e3df3a0c71833cce143274bf6ef8e5eb
 
-PODFILE CHECKSUM: b793ebc859f607001b58717e9f2abd673f35d306
+PODFILE CHECKSUM: 27542b8b8cd6f7ef4a89a9c0b4b7b8c869fcf6aa
 
 COCOAPODS: 1.11.2
