@@ -48,8 +48,8 @@
 		8FD9CD608C4EAAFDE6AC7B8B9EF0FF5E /* ConstraintDescription.swift in Sources */ = {isa = PBXBuildFile; fileRef = 945F227A3E5DFB2B418C6EDD183F22FD /* ConstraintDescription.swift */; };
 		90FD5AE525E138A473723FD79AF73273 /* ConstraintDSL.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3D52A86A6BE99D7A713B2CF1A55D819 /* ConstraintDSL.swift */; };
 		92B70587B095B88A4067CD68BC00B652 /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 740A6919D7D753B37A72A0369F7619CD /* Configuration.swift */; };
-		95560ED5281402B3007F81F7 /* UITableView+Moe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95560ED4281402B3007F81F7 /* UITableView+Moe.swift */; };
-		95560ED7281403F8007F81F7 /* UICollectionView+Moe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95560ED6281403F8007F81F7 /* UICollectionView+Moe.swift */; };
+		95560EDA28140B90007F81F7 /* UICollectionView+Moe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95560ED828140B90007F81F7 /* UICollectionView+Moe.swift */; };
+		95560EDB28140B90007F81F7 /* UITableView+Moe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95560ED928140B90007F81F7 /* UITableView+Moe.swift */; };
 		968B4874A9F12D67C8B901136C9C8157 /* SnapKit-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 5696123683635CC3B63FA0A980482B6E /* SnapKit-dummy.m */; };
 		9CA608599D16BD7942C018D23E713CAD /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44F64D33F0D1E3CFCF2193894F5547A7 /* NavigationController.swift */; };
 		A02752EB6C042C3C7239129AABA1DEAA /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EAB6F611E86A4758835A715E4B4184F6 /* Foundation.framework */; };
@@ -210,8 +210,8 @@
 		945F227A3E5DFB2B418C6EDD183F22FD /* ConstraintDescription.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintDescription.swift; path = Source/ConstraintDescription.swift; sourceTree = "<group>"; };
 		9491181259174FE204DC63520D3DD9CA /* ConstraintPriority.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintPriority.swift; path = Source/ConstraintPriority.swift; sourceTree = "<group>"; };
 		94B44AEA0DE46AED13655C2C6D6B76B1 /* ConstraintViewDSL.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintViewDSL.swift; path = Source/ConstraintViewDSL.swift; sourceTree = "<group>"; };
-		95560ED4281402B3007F81F7 /* UITableView+Moe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Moe.swift"; sourceTree = "<group>"; };
-		95560ED6281403F8007F81F7 /* UICollectionView+Moe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionView+Moe.swift"; sourceTree = "<group>"; };
+		95560ED828140B90007F81F7 /* UICollectionView+Moe.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UICollectionView+Moe.swift"; path = "MoeUI/Classes/Extension/UICollectionView+Moe.swift"; sourceTree = "<group>"; };
+		95560ED928140B90007F81F7 /* UITableView+Moe.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UITableView+Moe.swift"; path = "MoeUI/Classes/Extension/UITableView+Moe.swift"; sourceTree = "<group>"; };
 		97869ABAF42787A521DDFAF5AA451D51 /* UIApplication+Moe.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "UIApplication+Moe.swift"; path = "MoeUI/Classes/Extension/UIApplication+Moe.swift"; sourceTree = "<group>"; };
 		979486118B3E90C08386079D57962701 /* SnapKit */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = SnapKit; path = SnapKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		987A67DE5D3A8EA1277E84499736B420 /* ConstraintMakerFinalizable.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintMakerFinalizable.swift; path = Source/ConstraintMakerFinalizable.swift; sourceTree = "<group>"; };
@@ -609,8 +609,8 @@
 				25E19CC3E95E16F47688E5CF67E8A774 /* UIScreen+Moe.swift */,
 				CBD5196CCCCD5B37A64EFEB333CF2293 /* UIView+Moe.swift */,
 				76C5A96BE4922DEB8ADA2F9F418F10A8 /* UIViewController+Moe.swift */,
-				95560ED4281402B3007F81F7 /* UITableView+Moe.swift */,
-				95560ED6281403F8007F81F7 /* UICollectionView+Moe.swift */,
+				95560ED828140B90007F81F7 /* UICollectionView+Moe.swift */,
+				95560ED928140B90007F81F7 /* UITableView+Moe.swift */,
 			);
 			name = Extension;
 			sourceTree = "<group>";
@@ -893,13 +893,14 @@
 				C5D81A31B691821708433E096637C42D /* Accessor.swift in Sources */,
 				A3343BFCF9689C25536C0185A29AB0C9 /* Animator.swift in Sources */,
 				FA1FFE138DB4048D9F39D4A26E8E8943 /* CollectionViewCell.swift in Sources */,
+				95560EDB28140B90007F81F7 /* UITableView+Moe.swift in Sources */,
 				FEAECBFB6A71797A0423D09167AF9C4C /* CollectionViewController.swift in Sources */,
 				92B70587B095B88A4067CD68BC00B652 /* Configuration.swift in Sources */,
 				A8A6B245F559A93E2E983AE0702BEEAC /* Designator.swift in Sources */,
-				95560ED7281403F8007F81F7 /* UICollectionView+Moe.swift in Sources */,
 				F8F5E51AC708BA35405D9DECE58DACCB /* DrawerTransition.swift in Sources */,
 				A78A9B8CA8061C7C6D699130D00CF4A4 /* InteractiveTransition.swift in Sources */,
 				C46E2E4109F1A44D0446373DD500163F /* MaskCornerRadius.swift in Sources */,
+				95560EDA28140B90007F81F7 /* UICollectionView+Moe.swift in Sources */,
 				4E4FAA1668EA148054BACD92C8652F7A /* MaskView.swift in Sources */,
 				647685220F71BD60EB2F823966A139CC /* MoeUI-dummy.m in Sources */,
 				9CA608599D16BD7942C018D23E713CAD /* NavigationController.swift in Sources */,
@@ -908,7 +909,6 @@
 				CE2984C3AA2527E7BDB8E47969802514 /* UIApplication+Moe.swift in Sources */,
 				3C90E02F01EB47FEE27759C9FE0806B0 /* UIColor+Moe.swift in Sources */,
 				BF7F171D5AE13B747F0EFA1FF5F5A1D1 /* UIImage+Moe.swift in Sources */,
-				95560ED5281402B3007F81F7 /* UITableView+Moe.swift in Sources */,
 				7110E67DA8D92281357A92AE607F090A /* UIScreen+Moe.swift in Sources */,
 				F4975B22159824DC38B0AF186640D339 /* UIView+Moe.swift in Sources */,
 				F6DD11A773CE142FEB74C09E979A19BB /* UIViewController+Moe.swift in Sources */,
