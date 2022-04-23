@@ -41,7 +41,7 @@ public class InteractiveTransition: UIPercentDrivenInteractiveTransition, UIGest
     }
 
     deinit {
-//        MLog("InteractiveTransition deinit")
+//        debugPrint("InteractiveTransition deinit")
         NotificationCenter.default.removeObserver(self)
     }
 
@@ -98,7 +98,7 @@ public class InteractiveTransition: UIPercentDrivenInteractiveTransition, UIGest
 
         switch pan.state {
         case .began:
-            MLog("Begin Interactive Transition")
+            debugPrint("Begin Interactive Transition")
         case .changed:
             if isInteracting == false {
                 // 开始交互, 执行呈现操作
@@ -111,10 +111,10 @@ public class InteractiveTransition: UIPercentDrivenInteractiveTransition, UIGest
             // 交互中, 更新交互状态
             else { updateInteracting() }
         case .cancelled, .ended:
-            MLog("End Interactive Transition")
+            debugPrint("End Interactive Transition")
             endInteracting()
         default:
-            MLog("Panning but not handle")
+            debugPrint("Panning but not handle")
         }
     }
 
@@ -128,16 +128,16 @@ public class InteractiveTransition: UIPercentDrivenInteractiveTransition, UIGest
 
         switch edgePan.state {
         case .began:
-            MLog("Begin Interactive Transition")
+            debugPrint("Begin Interactive Transition")
             isInteracting = true
             didPanClosure?(configuration.panDirection)
         case .changed:
             updateInteracting()
         case .cancelled, .ended:
-            MLog("End Interactive Transition")
+            debugPrint("End Interactive Transition")
             endInteracting()
         default:
-            MLog("Panning but not handle")
+            debugPrint("Panning but not handle")
         }
     }
 
@@ -145,7 +145,7 @@ public class InteractiveTransition: UIPercentDrivenInteractiveTransition, UIGest
     private func updateInteracting() {
         percent = fmax(percent, cancelLimitPercent)
         percent = fmin(percent, finishLimitPercent)
-//        MLog("updatingInteraction: \(percent)")
+//        debugPrint("updatingInteraction: \(percent)")
         update(percent)
     }
 

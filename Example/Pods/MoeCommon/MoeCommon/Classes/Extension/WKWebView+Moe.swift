@@ -17,9 +17,9 @@ public extension TypeWrapperProtocol where WrappedType: WKWebView {
     func injectJSMethod(name: String, sourceCode: String, completionHandler: ((Any?, Error?) -> Void)?) {
         self.wrappedValue.evaluateJavaScript(sourceCode) { (result, error) in
             if let e = error {
-                MLog("【WebView】注入方法：\(name), 出现错误：\(e)")
+                print("【WebView】注入方法：\(name), 出现错误：\(e)")
             } else {
-                MLog("【WebView】注入方法：\(name), 处理结果：\(String(describing: result))")
+                print("【WebView】注入方法：\(name), 处理结果：\(String(describing: result))")
             }
             completionHandler?(result, error)
         }
@@ -32,9 +32,9 @@ public extension TypeWrapperProtocol where WrappedType: WKWebView {
     func executeJSMethod(name: String, completionHandler: ((Any?, Error?) -> Void)?) {
         self.wrappedValue.evaluateJavaScript("\(name)()") { (result, error) in
             if let e = error {
-                MLog("【WebView】执行方法：\(name), 出现错误：\(e)")
+                print("【WebView】执行方法：\(name), 出现错误：\(e)")
             } else {
-                MLog("【WebView】执行方法：\(name), 处理结果：\(String(describing: result))")
+                print("【WebView】执行方法：\(name), 处理结果：\(String(describing: result))")
             }
             completionHandler?(result, error)
         }

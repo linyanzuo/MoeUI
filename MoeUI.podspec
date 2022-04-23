@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'MoeUI'
-  s.version          = '1.2.0'
+  s.version          = '1.2.1'
   s.summary          = 'MoeUI is a framework that make UI controls create and configure easily'
 
   # This description is used to generate tags and improve search results.
@@ -24,7 +24,7 @@ Pod::Spec.new do |s|
   s.homepage         = 'https://github.com/linyanzuo/MoeUI'
   # s.screenshots     = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
-  s.author           = { 'linyanzuo1222@gmail.com' => 'zed@moemone.com' }
+  s.author           = { 'linyanzuo' => 'zed@moemone.com' }
   s.source           = { :git => 'https://github.com/linyanzuo/MoeUI.git', :tag => s.version.to_s }
   # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
 
@@ -39,12 +39,14 @@ Pod::Spec.new do |s|
   s.subspec 'Unity' do |unity|
     unity.source_files = 'MoeUI/Classes/Unity/*'
     unity.frameworks = 'UIKit'
+    unity.dependency 'MoeUI/Extension'
   end
-  s.subspec 'Designator' do |designator|
-    designator.source_files = 'MoeUI/Classes/Designator/*'
-    designator.frameworks = 'UIKit'
-    designator.dependency 'MoeUI/Extension'
-  end
+#  暂时关闭该库，待处理
+#  s.subspec 'Designator' do |designator|
+#    designator.source_files = 'MoeUI/Classes/Designator/*'
+#    designator.frameworks = 'UIKit'
+#    designator.dependency 'MoeUI/Extension'
+#  end
 # Appearance已废弃, 使用Designator替代
 #  s.subspec 'Appearance' do |appearance|
 #    appearance.source_files = 'MoeUI/Classes/Appearance/*'
@@ -54,12 +56,12 @@ Pod::Spec.new do |s|
     drawer.source_files = 'MoeUI/Classes/PanDrawer/*'
     drawer.frameworks = 'UIKit'
   end
-  s.subspec 'Alert' do |alert|
-    alert.source_files = 'MoeUI/Classes/Alert/*'
-    alert.frameworks = 'UIKit'
-    alert.dependency 'MoeUI/Unity'
-    alert.dependency 'MoeUI/Designator'
-  end
+#  s.subspec 'Alert' do |alert|
+#    alert.source_files = 'MoeUI/Classes/Alert/*'
+#    alert.frameworks = 'UIKit'
+#    alert.dependency 'MoeUI/Unity'
+#    alert.dependency 'MoeUI/Designator'
+#  end
 
   s.resource_bundles = {
     'MoeUI' => ['MoeUI.xcassets']
@@ -67,6 +69,5 @@ Pod::Spec.new do |s|
 
   # s.public_header_files = 'Pod/Classes/**/*.h'
   # s.frameworks = 'UIKit', 'MapKit'
-  #  s.dependency 'MoeCommon', '~> 0.1.2'
-  s.dependency 'MoeCommon'
+    s.dependency 'MoeCommon', '~> 0.1.3'
 end

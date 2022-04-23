@@ -21,7 +21,7 @@ open class ViewController: UIViewController, ViewControllerUnity {
 
     open override func viewDidLoad() {
         super.viewDidLoad()
-        MLog("【定位控制器】\(String(describing: self))")
+        debugPrint("【定位控制器】\(String(describing: self))")
         self.view.backgroundColor = UIColor.white
         
         setupNavigation()

@@ -22,7 +22,7 @@ pod 'MoeCommon'
 
 ## Author
 
-linyanzuo1222@gmail.com, zed@moemoetech.com
+linyanzuo1222@gmail.com
 
 ## License
 

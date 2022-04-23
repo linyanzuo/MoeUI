@@ -105,17 +105,17 @@ extension ValuationApplyProtocol {
     
     func applyText(_ valuator: TextValuator) {
         let clazzName = NSStringFromClass(self.classForCoder)
-        MLog("注意：`\(clazzName)`类并不支持文本赋值(`TextValuator`)")
+        debugPrint("注意：`\(clazzName)`类并不支持文本赋值(`TextValuator`)")
     }
     
     func applyImage(_ valuator: ImageValuator) {
         let clazzName = NSStringFromClass(self.classForCoder)
-        MLog("注意：`\(clazzName)`类并不支持图片赋值(`ImageValuator`)")
+        debugPrint("注意：`\(clazzName)`类并不支持图片赋值(`ImageValuator`)")
     }
     
     func applyEvent(_ valuator: EventValuator) {
         let clazzName = NSStringFromClass(self.classForCoder)
-        MLog("注意：`\(clazzName)`类并不支持事件赋值(`EventValuator`)")
+        debugPrint("注意：`\(clazzName)`类并不支持事件赋值(`EventValuator`)")
     }
     
     // MARK: 布局更新相关

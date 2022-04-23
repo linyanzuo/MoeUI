@@ -82,7 +82,7 @@ class UsageListVC: TableViewController {
     
     @discardableResult
     private func pushToTargetClass(with clazzName: String) -> Bool {
-        let namespace = Bundle.infoPlist.namespace ?? ""
+        let namespace = InfoPlist.namespace
         guard let clazz: AnyClass = NSClassFromString(namespace + "." + clazzName)
             else { return false }
 

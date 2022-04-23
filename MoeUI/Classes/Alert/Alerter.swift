@@ -20,21 +20,22 @@ public typealias AlertIdentifier = String
 open class Alerter: NSObject {
     /// 检查是否在主线程执行（UI操作必须在主线程完成）
     private class func checkThread() {
-        assert(Thread.current.isMainThread == true, "【MoeUI.Alert】UI操作必须在主线程中执行")
+        assert(Thread.current.isMainThread == true, "【MoeAlert】UI操作必须在主线程中执行")
     }
     
-    /// 获取当前时间字符串（精确到毫秒），作为提示视图标识ID并返回
-    /// - Returns: 提示视图标识ID
+    /// 生成提示视图的唯一标识ID并返回
+    /// - Returns: 唯一标识
     public class func generateIdentifier() -> AlertIdentifier {
-        let dateDesc = formatter.string(from: Date())
-        return dateDesc
+        return UUID().uuidString
+//        let dateDesc = formatter.string(from: Date())
+//        return dateDesc
     }
     
-    static let formatter: DateFormatter = {
-        let formatter = DateFormatter()
-        formatter.dateFormat = "MMddHHmmssSSSSSS"
-        return formatter
-    }()
+//    static let formatter: DateFormatter = {
+//        let formatter = DateFormatter()
+//        formatter.dateFormat = "MMddHHmmssSSSSSS"
+//        return formatter
+//    }()
 }
 
 

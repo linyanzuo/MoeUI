@@ -23,7 +23,7 @@ public class Animator: NSObject, UIViewControllerTransitioningDelegate {
     }
 
 //    deinit {
-//        MLog("Animator deinit")
+//        debugPrint("Animator deinit")
 //    }
 
     // MARK: UIViewControllerTransitioningDelegate

@@ -18,7 +18,7 @@ class SidePageVC: UITableViewController {
     }
     
     deinit {
-        MLog("SidePageVC Died!")
+        debugPrint("SidePageVC Died!")
     }
 
     override func awakeFromNib() {
@@ -37,19 +37,19 @@ class SidePageVC: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        MLog("SidePageVC View Did Load")
+        debugPrint("SidePageVC View Did Load")
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        MLog("SidePageVC View Will Appear")
+        debugPrint("SidePageVC View Will Appear")
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        MLog("SidePageVC View Did Appear")
+        debugPrint("SidePageVC View Did Appear")
     }
 
     @objc private func tapAction() {

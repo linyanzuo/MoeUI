@@ -95,7 +95,7 @@ class AppearanceVC: UIViewController {
             des.event(.touchUpOutside, for: self, action: #selector(self.outsideAction(_:)))
             des.general.frame(CGRect(x: x, y: y, width: 100, height: 100))
         }
-        MLog(newBtn)
+        debugPrint(newBtn)
     }
     
     /// 每个视图上都保存了属性自己的`Designator`实例，可随时更新样式配置
@@ -119,7 +119,7 @@ class AppearanceVC: UIViewController {
     
     // MARK: Add appearance control methods
 //    @objc func addAppearanceControl() {
-//        MLog("it work!")
+//        debugPrint("it work!")
 //        // 添加新 Label 示例
 //        let newLabel = Designator.makeLabel(toView: self.view) { (des) in
 //            des.text("New Label").font(18).color(.orange)
@@ -217,11 +217,11 @@ class AppearanceVC: UIViewController {
 
     // MARK: Event response methods
     @objc func bgBtnTouchUpOutsideAction() {
-        MLog("Touch up outside")
+        debugPrint("Touch up outside")
     }
 
     @objc func bgBtnTouchUpInsideAction() {
-        MLog("Touch up inside")
+        debugPrint("Touch up inside")
 //        bigLabel.updateDesign { (designator) in
 //            designator.text(nil).color(.green)
 //            designator.background(.orange)

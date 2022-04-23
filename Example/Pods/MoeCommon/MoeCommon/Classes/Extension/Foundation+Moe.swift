@@ -8,20 +8,17 @@
 import Foundation
 
 
-// MARK: - Bundle
-public extension Bundle {
-    /// Info.plist文件匹配的字典值
-    struct InfoPlist {
-        /// 命名空间
-        public var namespace: String? = Bundle.main.infoDictionary?["CFBundleExecutable"] as? String
-        /// 应用版本号
-        public var appVersion: String? = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String
-        /// 应用BundleID
-        public var bundleID: String? = Bundle.main.infoDictionary?["CFBundleIdentifier"] as? String
-    }
-    
-    /// info.plist 字典映射
-    static var infoPlist: InfoPlist = InfoPlist()
+// MARK: - InfoPlist
+/// Info.plist文件匹配的字典值
+public struct InfoPlist {
+    /// Info.plist参数字典
+    public static var dictionary: Dictionary? = Bundle.main.infoDictionary
+    /// 命名空间
+    public static var namespace: String = dictionary?["CFBundleExecutable"] as? String ?? ""
+    /// 应用版本号
+    public static var appVersion: String = dictionary?["CFBundleShortVersionString"] as? String ?? ""
+    /// 应用BundleID
+    public static var bundleID: String = dictionary?["CFBundleIdentifier"] as? String ?? ""
 }
 
 

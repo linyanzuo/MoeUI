@@ -42,7 +42,7 @@ class MaskView: UIView {
     }
 
 //    deinit {
-//        MLog("MaskView deinit")
+//        debugPrint("MaskView deinit")
 //    }
 
     private func setupSelf() {

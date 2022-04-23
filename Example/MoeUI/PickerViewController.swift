@@ -94,7 +94,7 @@ import MoeCommon
 //    }
 //
 //    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-//        MLog(row)
+//        debugPrint(row)
 //        self.selectedIndex = row
 //    }
 //
@@ -194,7 +194,7 @@ import MoeCommon
 //            pickerVC.transitioningDelegate = pickerVC
 //
 //            topVC?.present(pickerVC, animated: true, completion: nil)
-//            MLog(topVC)
+//            debugPrint(topVC)
 //        }
 //    }
 //}

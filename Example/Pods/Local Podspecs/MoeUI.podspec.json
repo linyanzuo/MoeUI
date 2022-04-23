@@ -26,7 +26,7 @@
   },
   "dependencies": {
     "MoeCommon": [
-
+      "~> 0.1.3"
     ]
   },
   "subspecs": [
@@ -54,19 +54,6 @@
       "name": "PanDrawer",
       "source_files": "MoeUI/Classes/PanDrawer/*",
       "frameworks": "UIKit"
-    },
-    {
-      "name": "Alert",
-      "source_files": "MoeUI/Classes/Alert/*",
-      "frameworks": "UIKit",
-      "dependencies": {
-        "MoeUI/Unity": [
-
-        ],
-        "MoeUI/Designator": [
-
-        ]
-      }
     }
   ],
   "swift_version": "5.0"

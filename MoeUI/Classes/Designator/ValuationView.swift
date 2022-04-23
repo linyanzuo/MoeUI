@@ -113,14 +113,14 @@ open class MoeLabel: UILabel, ValuationViewProtocol, ValuationApplyProtocol {
         }
         if let _ = valuator.gradient {
             let clazzName = NSStringFromClass(self.classForCoder)
-            MLog("注意：`\(clazzName)`类并不支持直接使用渐变图层。请将`Label`作为子视图添加至配置渐变背景的视图")
+            debugPrint("注意：`\(clazzName)`类并不支持直接使用渐变图层。请将`Label`作为子视图添加至配置渐变背景的视图")
         }
     }
     
     func applyText(_ valuator: TextValuator) {
         guard valuator.state == .normal else {
             let clazzName = NSStringFromClass(self.classForCoder)
-            MLog("注意：`\(clazzName)`类仅支持普通状态的文本赋值(`TextValuator`)")
+            debugPrint("注意：`\(clazzName)`类仅支持普通状态的文本赋值(`TextValuator`)")
             return
         }
         
@@ -224,7 +224,7 @@ open class MoeImageView: UIImageView, ValuationViewProtocol, ValuationApplyProto
     func applyImage(_ valuator: ImageValuator) {
         guard valuator.state == .normal else {
             let clazzName = NSStringFromClass(self.classForCoder)
-            MLog("注意：`\(clazzName)`类仅支持普通状态的图片赋值(`TextValuator`)")
+            debugPrint("注意：`\(clazzName)`类仅支持普通状态的图片赋值(`TextValuator`)")
             return
         }
         let radius = valuator.cornerRadius ?? 0.0
@@ -247,7 +247,7 @@ open class MoeImageView: UIImageView, ValuationViewProtocol, ValuationApplyProto
         }
         if let _ = valuator.backgroundImage {
             let clazzName = NSStringFromClass(self.classForCoder)
-            MLog("注意：`\(clazzName)`类并不支持背景图的图片赋值(ImageValuator)")
+            debugPrint("注意：`\(clazzName)`类并不支持背景图的图片赋值(ImageValuator)")
         }
     }
     

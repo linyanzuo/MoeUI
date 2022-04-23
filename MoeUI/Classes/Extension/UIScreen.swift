@@ -9,16 +9,6 @@ import UIKit
 import MoeCommon
 
 
-// MARK: - UIApplication
-public extension TypeWrapperProtocol where WrappedType: UIApplication {
-    /// 获取当前置顶的窗口实例
-    static var topWindow: UIWindow? { get { UIApplication.shared.windows.first } }
-    
-    /// 获取AppDelegate关联的窗口实例
-    static var keyWindow: UIWindow? { get { UIApplication.shared.keyWindow } }
-}
-
-
 // MARK: - UIScreen
 public extension TypeWrapperProtocol where WrappedType: UIScreen {
     /// 判断当屏幕是否刘海屏

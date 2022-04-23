@@ -16,18 +16,18 @@
     "tag": "0.1.2"
   },
   "platforms": {
-    "ios": "9.0"
+    "ios": "11.0"
   },
   "swift_versions": "5.0",
   "subspecs": [
     {
       "name": "Base",
-      "source_files": "Classes/Base/*/*",
+      "source_files": "MoeCommon/Classes/Base/*",
       "frameworks": "UIKit"
     },
     {
       "name": "Runtime",
-      "source_files": "Classes/Runtime/*",
+      "source_files": "MoeCommon/Classes/Runtime/*",
       "dependencies": {
         "MoeCommon/Base": [
 
@@ -39,7 +39,7 @@
     },
     {
       "name": "Extension",
-      "source_files": "Classes/Extension/*",
+      "source_files": "MoeCommon/Classes/Extension/*",
       "frameworks": "UIKit"
     }
   ],
