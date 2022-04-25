@@ -7,6 +7,7 @@
 // 【集合视图】扩展
 
 import UIKit
+import MoeCommon
 
 
 public extension TypeWrapperProtocol where WrappedType: UICollectionView {
